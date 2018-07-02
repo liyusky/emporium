@@ -1,0 +1,50 @@
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_flex.scss';
+@mixin pxvw($style, $px) {
+  $style: $px / $unit * $symbol
+}
+.order{
+  width: 100vw;
+  height: 100vh;
+  padding: {
+    top: 163 / $unit * $symbol;
+  }
+  background: #f4f4f4;
+  overflow-y: auto;
+  .order-tabbar{
+    $param: (flex flex) (justifyContent space-around);
+    @include flexSet($param);
+    position: fixed;
+    top:  80 / $unit * $symbol;
+    left: 0;
+    width: 100%;
+    // height: 83 / $unit * $symbol;
+    @include pxvw(height,83);
+    padding: {
+      left: 30 / $unit * $symbol;
+      right: 30 / $unit * $symbol;
+    }
+    margin: {
+      bottom: 16 / $unit * $symbol;
+    }
+    background: #fff;
+    .tabbar-item{
+      height: 78 / $unit * $symbol;
+      line-height: 78 / $unit * $symbol;
+      border: {
+        bottom:5 / $unit * $symbol solid #fff;
+      }
+      font-size: 27 / $unit * $symbol;
+      color: #4b4b4b;  
+    }
+    .activeShow{
+      border: {
+        bottom: 5 / $unit * $symbol solid #eb2828;
+      }
+    }
+  }
+  .order-classify{
+    width: 100%;
+    height: 100%;
+  }
+}

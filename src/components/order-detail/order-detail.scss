@@ -1,0 +1,209 @@
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_flex.scss';
+.order-detail {
+  width: 100vw;
+  height: 100vh;
+  padding: {
+    top: 90 / $unit * $symbol;
+    bottom: 100 / $unit * $symbol;
+  }
+  overflow-y: auto;
+  background: #f4f4f4;
+  .order-detail-content {
+    position: relative;
+    width: 100%;
+    height: 130 / $unit * $symbol;
+    background: #f3c91e;
+    .content-order-information {
+      position: absolute;
+      top: 61 / $unit * $symbol;
+      left: 0;
+      z-index: 100;
+      $param: (flex flex) (direction column) (alignItems center);
+      @include flexSet($param);
+      width: 100%;
+      .information-person {
+        width: 690 / $unit * $symbol;
+        padding: {
+          left: 30 / $unit * $symbol;
+          top: 9 / $unit * $symbol;
+          right: 30 / $unit * $symbol;
+        }
+        margin: {
+          bottom: 21 / $unit * $symbol;
+        }
+        border-radius: 10 / $unit * $symbol;
+        background: #fff;
+        .person-number-status {
+          $param: (flex flex) (justifyContent space-between) (alignItems center);
+          @include flexSet($param);
+          height: 63 / $unit * $symbol;
+          border: {
+            bottom: 1px solid #ededed;
+          }
+          .person-number {
+            font-size: 24 / $unit * $symbol;
+            color: #000000;
+            font-weight: bold;
+          }
+          .person-status {
+            font-size: 27 / $unit * $symbol;
+            color: #eb2828;
+          }
+        }
+        .person-name-address {
+          width: 100%;
+          padding: {
+            top: 20 / $unit * $symbol;
+            bottom: 20 / $unit * $symbol;
+          }
+          .person-name {
+            $param: (flex flex) (alignItems center);
+            @include flexSet($param);
+            height: 53 / $unit * $symbol;
+            span {
+              font-size: 30 / $unit * $symbol;
+              font-weight: bold;
+              color: #000000;
+            }
+            .name-icon {
+              display: block;
+              width: 25 / $unit * $symbol;
+              height: 36 / $unit * $symbol;
+              margin: {
+                right: 15 / $unit * $symbol;
+              }
+              background: #000;
+            }
+          }
+          .address-receipt {
+            padding: {
+              top: 10 / $unit * $symbol;
+              right: 40 / $unit * $symbol;
+              bottom: 10 / $unit * $symbol;
+              left: 40 / $unit * $symbol;
+            }
+            line-height: 45 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            color: #353535;
+          }
+        }
+      }
+      .information-phone {
+        width: 690 / $unit * $symbol;
+        padding: {
+          left: 30 / $unit * $symbol;
+          top: 10 / $unit * $symbol;
+          right: 30 / $unit * $symbol;
+        }
+        border-radius: 10 / $unit * $symbol;
+        background: #fff;
+        .phone-detail {
+          $param: (flex flex) (alignItems center) (justifyContent flex-start);
+          @include flexSet($param);
+          width: 100%;
+          height: 204 / $unit * $symbol;
+          padding: {
+            left: 30 / $unit * $symbol;
+            right: 30 / $unit * $symbol;
+          }
+          border: {
+            bottom: 1px solid #ededed;
+          }
+          .detail-img {
+            width: 120 / $unit * $symbol;
+            height: 120 / $unit * $symbol;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .detail-content {
+            flex: 1;
+            margin: {
+              left: 20 / $unit * $symbol;
+            }
+            .content-title {
+              line-height: 36 / $unit * $symbol;
+              font-size: 30 / $unit * $symbol;
+              color: #2a2a2a;
+            }
+            .content-price-number {
+              $param: (flex flex) (justifyContent space-between);
+              @include flexSet($param);
+              .content-price {
+                font-size: 30 / $unit * $symbol;
+                color: #eb2828;
+                font-weight: bold;
+              }
+              .content-number {
+                font-size: 24 / $unit * $symbol;
+                color: #666666;
+              }
+            }
+          }
+        }
+        .phone-list {
+          width: 100%;
+          padding: {
+            top: 28 / $unit * $symbol;
+            bottom: 28 / $unit * $symbol;
+            right: 10 / $unit * $symbol;
+          }
+          .list-item {
+            $param: (flex flex) (alignItems center) (justifyContent space-between);
+            @include flexSet($param);
+            height: 70 / $unit * $symbol;
+            .item-title,
+            .item-value {
+              font-size: 27 / $unit * $symbol;
+              color: #353535;
+            }
+          }
+        }
+      }
+    }
+  }
+  .detail-button{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    $param: (flex flex) (alignItems center) (justifyContent flex-end);
+            @include flexSet($param);
+    width: 100%;
+    height: 99 / $unit * $symbol;
+    padding: {
+      right: 20 / $unit * $symbol;
+      left: 20 / $unit * $symbol;
+    }
+    border: {
+      top: 1px solid #ededed;
+    }
+    background: #fff;
+    .button-pay{
+      width: 160 / $unit * $symbol;
+      height: 60 / $unit * $symbol;
+      line-height: 65 / $unit * $symbol;
+      background: #eb2828;
+      font-size: 27 / $unit * $symbol;
+      color: #fff;
+      border-radius: 7 / $unit * $symbol;
+      outline: none;
+    }
+    .button-delete{
+      width: 158 / $unit * $symbol;
+      height: 60 / $unit * $symbol;
+      margin: {
+        right: 20 / $unit * $symbol;
+      }
+      line-height: 60 / $unit * $symbol;
+      background: #fff;
+      font-size: 27 / $unit * $symbol;
+      color: #000000;
+      border: 1px solid #818181;
+      border-radius: 7 / $unit * $symbol;
+      outline: none;
+    }
+  }
+}
