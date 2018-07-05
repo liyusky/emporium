@@ -1,0 +1,22 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_btn.scss';
+
+.button-default {
+  $param: (flex flex) (justifyContent center);
+  @include flexSet($param);
+  width: 100vw;
+  height: 90 / $unit * $symbol;
+  button {
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 690 / $unit * $symbol;
+    height: 100%;
+    border-radius: 9 / $unit * $symbol;
+    font-size: 33 / $unit * $symbol;
+  }
+}
+
+.active {
+  @include defaultBtn(#eb2828, #ffffff);
+}

@@ -1,0 +1,247 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_btn.scss';
+.quality {
+  width: 100%;
+  margin: {
+    top: 21 / $unit * $symbol;
+  }
+  background-color: #fff;
+  .quality-title {
+    $param: (flex flex) (alignItems center);
+    @include flexSet($param);
+    width: 100%;
+    height: 90 / $unit * $symbol;
+    padding: {
+      left: 24 / $unit * $symbol;
+      right: 24 / $unit * $symbol;
+    }
+    font-size: 30 / $unit * $symbol;
+    color: #000;
+  }
+  .quality-detail {
+    width: 100%;
+    height: 1311 / $unit * $symbol;
+    padding: {
+      left: 21 / $unit * $symbol;
+      right: 21 / $unit * $symbol;
+    }
+    .detail-panel {
+      width: 100%;
+      height: 100%;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      border-radius: 12 / $unit * $symbol;
+      background-color: #fff;
+      box-shadow: 0 0 12 / $unit * $symbol 12 / $unit * $symbol #efefef;
+      .panel-inspector {
+        $param: (flex flex) (alignItems center) (justifyContent space-between);
+        @include flexSet($param);
+        width: 100%;
+        height: 177 / $unit * $symbol;
+        padding: {
+          top: 24 / $unit * $symbol;
+          bottom: 24 / $unit * $symbol;
+        }
+        .inspector-information {
+          $param: (flex flex) (alignItems center);
+          @include flexSet($param);
+          width: 330 / $unit * $symbol;
+          height: 114 / $unit * $symbol;
+          .information-portrait {
+            width: 114 / $unit * $symbol;
+            height: 114 / $unit * $symbol;
+            margin: {
+              right: 30 / $unit * $symbol;
+            }
+            img {
+              width: 114 / $unit * $symbol;
+              height: 114 / $unit * $symbol;
+              border-radius: 50%;
+            }
+          }
+          .information-resume {
+            $param: (flex flex) (direction column) (justifyContent space-between);
+            @include flexSet($param);
+            height: 100%;
+            padding: {
+              top: 18 / $unit * $symbol;
+              bottom: 24 / $unit * $symbol;
+            }
+            p:first-of-type {
+              font-size: 27 / $unit * $symbol;
+              color: #333333;
+            }
+            p:last-of-type {
+              font-size: 21 / $unit * $symbol;
+              color: #ffffff;
+              background-color: #333333;
+            }
+          }
+        }
+        .inspector-seal {
+          width: 129 / $unit * $symbol;
+          height: 129 / $unit * $symbol;
+          img {
+            width: 129 / $unit * $symbol;
+            height: 129 / $unit * $symbol;
+              border-radius: 50%;
+          }
+        }
+      }
+      .panel-message {
+        width: 100%;
+        height: 312 / $unit * $symbol;
+        padding: {
+          bottom: 12 / $unit * $symbol;
+        }
+        border: {
+          top: 1px solid #eeeeee;
+        }
+        .message-title {
+          $param: (flex flex) (alignItems center) (justifyContent center);
+          @include flexSet($param);
+          width: 100%;
+          height: 90 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #000;
+        }
+        .message-list {
+          $param: (flex flex) (flexWrap wrap);
+          @include flexSet($param);
+          width: 100%;
+          height: 210 / $unit * $symbol;
+          padding: {
+            top: 15 / $unit * $symbol;
+            bottom: 15 / $unit * $symbol;
+            left: 21 / $unit * $symbol;
+            right: 21 / $unit * $symbol;
+          }
+          background-color: #f5f5f5;
+          .list-item {
+            $param: (flex flex) (alignItems center);
+            @include flexSet($param);
+            width: 50%;
+            height: 60 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            p:first-of-type {
+              $param: (flex flex) (alignItems center);
+              @include flexSet($param);
+              width: 168 / $unit * $symbol;
+              height: 100%;
+              color: #999999;
+            }
+            p:last-of-type {
+              $param: (flex flex) (alignItems center);
+              @include flexSet($param);
+              width: 100%;
+              height: 100%;
+              text-indent: 15 / $unit * $symbol;
+              color: #333333;
+            }
+          }
+        }
+      }
+      .panel-hardware {
+        width: 100%;
+        padding: {
+          left: 12 / $unit * $symbol;
+          right: 12 / $unit * $symbol;
+        }
+        .hardware-title {
+          $param: (flex flex) (alignItems center) (justifyContent center);
+          @include flexSet($param);
+          width: 100%;
+          height: 90 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #000;
+        }
+        .hardware-list {
+          $param: (flex flex) (flexWrap wrap);
+          @include flexSet($param);
+          width: 100%;
+          .list-item {
+            $param: (flex flex) (alignItems center) (justifyContent space-between);
+            @include flexSet($param);
+            width: 50%;
+            height: 54 / $unit * $symbol;
+            padding: {
+              left: 36 / $unit * $symbol;
+              right: 64 / $unit * $symbol;
+            }
+            font-size: 27 / $unit * $symbol;
+            color: #333333;
+            i {
+              color: #1dce68;
+            }
+          }
+        }
+      }
+    }
+  }
+  .quality-process {
+    $param: (flex flex) (direction column) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: 834 / $unit * $symbol;
+    padding: {
+      top: 36 / $unit * $symbol;
+      left: 24 / $unit * $symbol;
+      right: 24 / $unit * $symbol;
+    }
+    .process-title {
+      $param: (flex flex) (alignItems center) (justifyContent center);
+      @include flexSet($param);
+      width: 100%;
+      height: 64 / $unit * $symbol;
+      font-size: 27 / $unit * $symbol;
+      color: #000;
+    }
+    .process-tip {
+      font-size: 27 / $unit * $symbol;
+      color: #333333;
+    }
+    .process-flow {
+      $param: (flex flex) (alignItems center) (justifyContent space-between);
+      @include flexSet($param);
+      width: 100%;
+      height: 237 / $unit * $symbol;
+      .flow-item {
+        $param: (flex flex) (direction column) (alignItems center) (justifyContent space-between);
+        @include flexSet($param);
+        width: 25%;
+        height: 100%;
+        padding: {
+          top: 18 / $unit * $symbol;
+          bottom: 24 / $unit * $symbol;
+        }
+        i{
+          font-size: 75 / $unit * $symbol;
+        }
+        .item-tip {
+          $param: (flex flex) (direction column) (alignItems center) (justifyContent space-between);
+          @include flexSet($param);
+          width: 100%;
+          height: 90 / $unit * $symbol;
+          .tip-sequence {
+            $param: (flex flex) (alignItems center) (justifyContent center);
+            @include flexSet($param);
+            width: 42 / $unit * $symbol;
+            height: 42 / $unit * $symbol;
+            border-radius: 50%;
+            background-color: #f75258;
+            font-size: 30 / $unit * $symbol;
+            color: #ffffff;
+          }
+          font-size: 24 / $unit * $symbol;
+        }
+      }
+    }
+    .process-video {
+      width: 100%;
+      height: 390 / $unit * $symbol;
+    }
+  }
+}

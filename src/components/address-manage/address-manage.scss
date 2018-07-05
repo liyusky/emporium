@@ -1,0 +1,22 @@
+@import '../../../dependencies/sass/_flex.scss';
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_btn.scss';
+
+.address-manage {
+  position: relative;
+  width: 100%;
+  .manage-btn {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 120;
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    height: 99 / $unit * $symbol;
+    background-color: #fff;
+    font-size: 33 / $unit * $symbol;
+    color: #eb2828;
+  } 
+}

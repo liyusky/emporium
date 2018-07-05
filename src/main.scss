@@ -1,0 +1,10 @@
+@import "./assets/iconfont/iconfont.css";
+@import "../dependencies/sass/_reset.scss";
+@import "../dependencies/sass/_flex.scss";
+html {
+  width: 100%;
+  body {
+    width: 100%;
+    background-color: #f0f2f5;
+  }
+}

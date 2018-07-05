@@ -1,0 +1,27 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+.tab {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  $param: (flex flex) (justifyContent space-between);
+  @include flexSet($param);
+  width: 100vw;
+  height: 99 / $unit * $symbol;
+  background-color: #fff;
+  box-shadow: 0 0 (12 / $unit * $symbol) (3 / $unit * $symbol) #efefef;
+  &-item {
+    $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 50%;
+    height: 100%;
+    i {
+      font-size: 54 / $unit * $symbol;
+    }
+    .item-name {
+      font-size: 27 / $unit * $symbol;
+      color: #2d2d2d;
+    }
+  }
+}

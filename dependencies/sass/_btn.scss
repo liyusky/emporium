@@ -1,0 +1,8 @@
+@mixin defaultBtn($background, $color) {
+  .button-default {
+    button {
+      background-color: $background;
+      color: $color;
+    }
+  }
+}
