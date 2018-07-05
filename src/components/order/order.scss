@@ -18,7 +18,6 @@
     top:  80 / $unit * $symbol;
     left: 0;
     width: 100%;
-    // height: 83 / $unit * $symbol;
     @include pxvw(height,83);
     padding: {
       left: 30 / $unit * $symbol;
@@ -35,6 +34,7 @@
         bottom:5 / $unit * $symbol solid #fff;
       }
       font-size: 27 / $unit * $symbol;
+      font-weight: bold;
       color: #4b4b4b;  
     }
     .activeShow{

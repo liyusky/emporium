@@ -10,282 +10,285 @@
   }
   overflow-y: auto;
   background: #f4f4f4;
-  .comfirm-address {
+  .confirm-content {
     width: 100%;
-    padding: {
-      left: 25 / $unit * $symbol;
-      right: 25 / $unit * $symbol;
-    }
-    background: #fff;
-    .address-detail {
-      position: relative;
-      $param: (flex flex) (justifyContent flex-start) (alignItems center);
-      @include flexSet($param);
+    .content-address {
       width: 100%;
-      padding: {
-        top: 20 / $unit * $symbol;
-        bottom: 20 / $unit * $symbol;
-      }
-      .detail-arrow {
-        display: block;
-        width: 13 / $unit * $symbol;
-        height: 25 / $unit * $symbol;
-        background: #000;
-      }
-      .detail-person-info {
-        flex: 1;
-        .info-name-telphone {
-          $param: (flex flex) (alignItems center) (justifyContent flex-start);
-          @include flexSet($param);
-          height: 53 / $unit * $symbol;
-          span {
-            font-size: 30 / $unit * $symbol;
-            font-weight: bold;
-            color: #000000;
-          }
-          .info-icon {
-            display: block;
-            width: 25 / $unit * $symbol;
-            height: 36 / $unit * $symbol;
-            margin: {
-              right: 15 / $unit * $symbol;
-            }
-            background: #000;
-          }
-        }
-        .info-receipt-place {
-          padding: {
-            top: 10 / $unit * $symbol;
-            right: 40 / $unit * $symbol;
-            bottom: 10 / $unit * $symbol;
-            left: 40 / $unit * $symbol;
-          }
-          line-height: 45 / $unit * $symbol;
-          font-size: 27 / $unit * $symbol;
-          color: #353535;
-        }
-      }
-    }
-    .address-process {
-      width: 100%;
-      height: 7 / $unit * $symbol;
-      img {
-        display: block;
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  .comfirm-order-number {
-    width: 100%;
-    height: 80;
-    padding: {
-      left: 25 / $unit * $symbol;
-    }
-    margin: {
-      top: 20 / $unit * $symbol;
-    }
-    background: #fff;
-    .title-time {
-      font-size: 27 / $unit * $symbol;
-      color: #111111;
-      height: 80 / $unit * $symbol;
-      line-height: 80 / $unit * $symbol;
-    }
-  }
-  .comfirm-detail {
-    $param: (flex flex) (alignItems center) (justifyContent flex-start);
-    @include flexSet($param);
-    width: 100%;
-    height: 180 / $unit * $symbol;
-    padding: {
-      left: 30 / $unit * $symbol;
-      right: 30 / $unit * $symbol;
-    }
-    .detail-img {
-      width: 130 / $unit * $symbol;
-      height: 130 / $unit * $symbol;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .detail-content {
-      flex: 1;
-      margin: {
-        left: 30 / $unit * $symbol;
-      }
-      .content-title {
-        line-height: 36 / $unit * $symbol;
-        font-size: 30 / $unit * $symbol;
-        color: #2a2a2a;
-      }
-      .content-price-number {
-        $param: (flex flex) (justifyContent space-between);
-        @include flexSet($param);
-        .content-price {
-          font-size: 30 / $unit * $symbol;
-          color: #eb2828;
-          font-weight: bold;
-        }
-        .content-number {
-          font-size: 24 / $unit * $symbol;
-          color: #999999;
-        }
-      }
-    }
-  }
-  .comfirm-service {
-    width: 100%;
-    padding: {
-      top: 10 / $unit * $symbol;
-      left: 25 / $unit * $symbol;
-      right: 30 / $unit * $symbol;
-      bottom: 10 / $unit * $symbol;
-    }
-    background: #fff;
-    .service-item {
-      $param: (flex flex) (alignItems center) (justifyContent space-between);
-      @include flexSet($param);
-      height: 55 / $unit * $symbol;
-      p {
-        font-size: 27 / $unit * $symbol;
-        color: #333333;
-      }
-    }
-  }
-  .comfirm-distribution {
-    width: 100%;
-    height: 78 / $unit * $symbol;
-    $param: (flex flex) (alignItems center) (justifyContent space-between);
-    @include flexSet($param);
-    padding: {
-      left: 30 / $unit * $symbol;
-      right: 30 / $unit * $symbol;
-    }
-    margin: {
-      top: 1px;
-      bottom: 1px;
-    }
-    background: #fff;
-    p {
-      font-size: 27 / $unit * $symbol;
-      color: #333333;
-    }
-  }
-  .comfirm-leave-message {
-    width: 100%;
-    height: 110 / $unit * $symbol;
-    $param: (flex flex) (alignItems center) (justifyContent center);
-    @include flexSet($param);
-    background: #fff;
-    margin: {
-      bottom: 1px;
-    }
-    .leave-message {
-      height: 85 / $unit * $symbol;
-      width: 700 / $unit * $symbol;
-      background: #f4f4f4;
-      font-size: 27 / $unit * $symbol;
-      color: #353535;
-      line-height: 85 / $unit * $symbol;
-      padding: {
-        left: 15 / $unit * $symbol;
-      }
-      border-radius: 4px;
-      outline: none;
-      resize: none;
-      &::-webkit-input-placeholder {
-        color: #bcbcbc;
-      }
-    }
-  }
-  .comfirm-summary {
-    $param: (flex flex) (alignItems center) (justifyContent flex-end);
-    @include flexSet($param);
-    width: 100%;
-    height: 89 / $unit * $symbol;
-    padding: {
-      right: 25 / $unit * $symbol;
-    }
-    background: #fff;
-    margin: {
-      bottom: 20 / $unit * $symbol;
-    }
-    p {
-      font-size: 27 / $unit * $symbol;
-      color: #333333;
-      .summary-price {
-        font-size: 27 / $unit * $symbol;
-        color: #eb2828;
-        font-weight: bold;
-      }
-    }
-  }
-  .comfirm-way {
-    width: 100%;
-    margin: {
-      bottom: 20 / $unit * $symbol;
-    }
-    .way-title {
-      $param: (flex flex) (alignItems center);
-      @include flexSet($param);
-      height: 79 / $unit * $symbol;
-      padding: {
-        left: 25 / $unit * $symbol;
-      }
-      background: #fff;
-      span {
-        font-size: 27 / $unit * $symbol;
-        color: #000000;
-      }
-    }
-    .way-item {
-      $param: (flex flex) (alignItems center) (justifyContent space-between);
-      @include flexSet($param);
-      width: 100%;
-      height: 128 / $unit * $symbol;
-      margin: {
-        top: 1px;
-      }
       padding: {
         left: 25 / $unit * $symbol;
         right: 25 / $unit * $symbol;
       }
       background: #fff;
-      .item-detail {
-        .detail-name {
-          $param: (flex flex) (alignItems center) (justifyContent flex-start);
-          @include flexSet($param);
-          height: 48 / $unit * $symbol;
-          i {
-            display: block;
-            width: 48 / $unit * $symbol;
-            height: 48 / $unit * $symbol;
-            border-radius: 9 / $unit * $symbol;
-            background: red;
-          }
-          span {
-            margin: {
-              left: 12 / $unit * $symbol;
-            }
-            font-size: 24 / $unit * $symbol;
-            color: #2a2a2a;
-          }
+      .address-detail {
+        position: relative;
+        $param: (flex flex) (justifyContent flex-start) (alignItems center);
+        @include flexSet($param);
+        width: 100%;
+        padding: {
+          top: 20 / $unit * $symbol;
+          bottom: 20 / $unit * $symbol;
         }
-        .itme-introduce {
-          height: 49 / $unit * $symbol;
-          line-height: 49 / $unit * $symbol;
-          font-size: 21 / $unit * $symbol;
-          color: #9f9f9f;
+        .detail-arrow {
+          display: block;
+          width: 13 / $unit * $symbol;
+          height: 25 / $unit * $symbol;
+          background: #000;
+        }
+        .detail-person-info {
+          flex: 1;
+          .info-name-telphone {
+            $param: (flex flex) (alignItems center) (justifyContent flex-start);
+            @include flexSet($param);
+            height: 53 / $unit * $symbol;
+            span {
+              font-size: 30 / $unit * $symbol;
+              font-weight: bold;
+              color: #000000;
+            }
+            .info-icon {
+              display: block;
+              width: 25 / $unit * $symbol;
+              height: 36 / $unit * $symbol;
+              margin: {
+                right: 15 / $unit * $symbol;
+              }
+              background: #000;
+            }
+          }
+          .info-receipt-place {
+            padding: {
+              top: 10 / $unit * $symbol;
+              right: 40 / $unit * $symbol;
+              bottom: 10 / $unit * $symbol;
+              left: 40 / $unit * $symbol;
+            }
+            line-height: 45 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            color: #353535;
+          }
         }
       }
-      i {
-        display: block;
-        width: 42 / $unit * $symbol;
-        height: 42 / $unit * $symbol;
-        border-radius: 50%;
-        background: red;
+      .address-process {
+        width: 100%;
+        height: 7 / $unit * $symbol;
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .content-order-number {
+      width: 100%;
+      height: 80;
+      padding: {
+        left: 25 / $unit * $symbol;
+      }
+      margin: {
+        top: 20 / $unit * $symbol;
+      }
+      background: #fff;
+      .title-time {
+        font-size: 27 / $unit * $symbol;
+        color: #111111;
+        height: 80 / $unit * $symbol;
+        line-height: 80 / $unit * $symbol;
+      }
+    }
+    .content-detail {
+      $param: (flex flex) (alignItems center) (justifyContent flex-start);
+      @include flexSet($param);
+      width: 100%;
+      height: 180 / $unit * $symbol;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      .detail-img {
+        width: 130 / $unit * $symbol;
+        height: 130 / $unit * $symbol;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .detail-content {
+        flex: 1;
+        margin: {
+          left: 30 / $unit * $symbol;
+        }
+        .content-title {
+          line-height: 36 / $unit * $symbol;
+          font-size: 30 / $unit * $symbol;
+          color: #2a2a2a;
+        }
+        .content-price-number {
+          $param: (flex flex) (justifyContent space-between);
+          @include flexSet($param);
+          .content-price {
+            font-size: 30 / $unit * $symbol;
+            color: #eb2828;
+            font-weight: bold;
+          }
+          .content-number {
+            font-size: 24 / $unit * $symbol;
+            color: #999999;
+          }
+        }
+      }
+    }
+    .content-service {
+      width: 100%;
+      padding: {
+        top: 10 / $unit * $symbol;
+        left: 25 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+        bottom: 10 / $unit * $symbol;
+      }
+      background: #fff;
+      .service-item {
+        $param: (flex flex) (alignItems center) (justifyContent space-between);
+        @include flexSet($param);
+        height: 55 / $unit * $symbol;
+        p {
+          font-size: 27 / $unit * $symbol;
+          color: #333333;
+        }
+      }
+    }
+    .content-distribution {
+      width: 100%;
+      height: 78 / $unit * $symbol;
+      $param: (flex flex) (alignItems center) (justifyContent space-between);
+      @include flexSet($param);
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      margin: {
+        top: 1px;
+        bottom: 1px;
+      }
+      background: #fff;
+      p {
+        font-size: 27 / $unit * $symbol;
+        color: #333333;
+      }
+    }
+    .content-leave-message {
+      width: 100%;
+      height: 110 / $unit * $symbol;
+      $param: (flex flex) (alignItems center) (justifyContent center);
+      @include flexSet($param);
+      background: #fff;
+      margin: {
+        bottom: 1px;
+      }
+      .leave-message {
+        height: 85 / $unit * $symbol;
+        width: 700 / $unit * $symbol;
+        background: #f4f4f4;
+        font-size: 27 / $unit * $symbol;
+        color: #353535;
+        line-height: 85 / $unit * $symbol;
+        padding: {
+          left: 15 / $unit * $symbol;
+        }
+        border-radius: 4px;
+        outline: none;
+        resize: none;
+        &::-webkit-input-placeholder {
+          color: #bcbcbc;
+        }
+      }
+    }
+    .content-summary {
+      $param: (flex flex) (alignItems center) (justifyContent flex-end);
+      @include flexSet($param);
+      width: 100%;
+      height: 89 / $unit * $symbol;
+      padding: {
+        right: 25 / $unit * $symbol;
+      }
+      background: #fff;
+      margin: {
+        bottom: 20 / $unit * $symbol;
+      }
+      p {
+        font-size: 27 / $unit * $symbol;
+        color: #333333;
+        .summary-price {
+          font-size: 27 / $unit * $symbol;
+          color: #eb2828;
+          font-weight: bold;
+        }
+      }
+    }
+    .content-way {
+      width: 100%;
+      margin: {
+        bottom: 20 / $unit * $symbol;
+      }
+      .way-title {
+        $param: (flex flex) (alignItems center);
+        @include flexSet($param);
+        height: 79 / $unit * $symbol;
+        padding: {
+          left: 25 / $unit * $symbol;
+        }
+        background: #fff;
+        span {
+          font-size: 27 / $unit * $symbol;
+          color: #000000;
+        }
+      }
+      .way-item {
+        $param: (flex flex) (alignItems center) (justifyContent space-between);
+        @include flexSet($param);
+        width: 100%;
+        height: 128 / $unit * $symbol;
+        margin: {
+          top: 1px;
+        }
+        padding: {
+          left: 25 / $unit * $symbol;
+          right: 25 / $unit * $symbol;
+        }
+        background: #fff;
+        .item-detail {
+          .detail-name {
+            $param: (flex flex) (alignItems center) (justifyContent flex-start);
+            @include flexSet($param);
+            height: 48 / $unit * $symbol;
+            i {
+              display: block;
+              width: 48 / $unit * $symbol;
+              height: 48 / $unit * $symbol;
+              border-radius: 9 / $unit * $symbol;
+              background: red;
+            }
+            span {
+              margin: {
+                left: 12 / $unit * $symbol;
+              }
+              font-size: 24 / $unit * $symbol;
+              color: #2a2a2a;
+            }
+          }
+          .itme-introduce {
+            height: 49 / $unit * $symbol;
+            line-height: 49 / $unit * $symbol;
+            font-size: 21 / $unit * $symbol;
+            color: #9f9f9f;
+          }
+        }
+        i {
+          display: block;
+          width: 42 / $unit * $symbol;
+          height: 42 / $unit * $symbol;
+          border-radius: 50%;
+          background: red;
+        }
       }
     }
   }

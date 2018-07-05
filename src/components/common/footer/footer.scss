@@ -20,9 +20,7 @@
       @include flexSet($param);
       width: 80 / $unit * $symbol;
       .item-icon{
-        width: 44 / $unit * $symbol;
-        height: 42 / $unit * $symbol;
-        background: #fff;
+        font-size: 44 / $unit * $symbol;
       }
       .item_name{
         margin: {

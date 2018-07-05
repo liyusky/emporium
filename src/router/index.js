@@ -8,6 +8,9 @@ import AddressManage from '@/components/address-manage/address-manage.vue'
 import AppendAddress from '@/components/append-address/append-address.vue'
 import Faq from '@/components/faq/faq.vue'
 import EvaluateOrder from '@/components/evaluate-order/evaluate-order.vue'
+import Feedback from '@/components/feedback/feedback.vue'
+import CustomerService from '@/components/customer-service/customer-service.vue'
+import Bill from '@/components/installment-bill/installment-bill.vue'
 import OrderComfirm from '@/components/order-comfirm/order-comfirm.vue'
 import OrderDetail from '@/components/order-detail/order-detail.vue'
 import OrderAll from '@/components/common/order-classify/order-all/order-all.vue'
@@ -16,6 +19,7 @@ import OrderSend from '@/components/common/order-classify/order-send/order-send.
 import OrderReceive from '@/components/common/order-classify/order-receive/order-receive.vue'
 import OrderEvaluate from '@/components/common/order-classify/order-evaluate/order-evaluate.vue'
 
+import OrderList from '@/components/order/order-list/order-list.vue'
 
 Vue.use(Router)
 
@@ -23,6 +27,31 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'orderlist',
+      component: OrderList
+    },
+    {
+      path: '/bill',
+      name: 'bill',
+      component: Bill
+    },
+    {
+      path: '/ordercomfirm',
+      name: 'ordercomfirm',
+      component: OrderComfirm
+    },
+    {
+      path: '/customerservice',
+      name: 'customerservice',
+      component: CustomerService
+    },
+    {
+      path: '/feedback',
+      name: 'feedback',
+      component: Feedback
+    },
+    {
+      path: '/evaluateorder',
       name: 'evaluateorder',
       component: EvaluateOrder
     },

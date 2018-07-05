@@ -1,0 +1,53 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+.mask-parameter{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: #fff;
+  .parameter-title{
+    position: relative;
+    $param: (flex flex) (justifyContent center) (alignItems center);
+    @include flexSet($param);
+    height: 108 / $unit * $symbol;
+    p{
+      font-size: 30 / $unit * $symbol;
+      color: #000000;
+      font-weight: bold;
+    }
+    i{
+      position: absolute;
+      top: 40 / $unit * $symbol;
+      right: 28 / $unit * $symbol;
+      z-index: 9;
+      display: block;
+      width: 30 / $unit * $symbol;
+      height: 30 / $unit * $symbol;
+      background:red;
+    }
+  }
+  .share-detail{
+    width: 100%;
+    padding: {
+      left: 46 / $unit * $symbol;
+      right: 39 / $unit * $symbol;
+      bottom: 42 / $unit * $symbol;
+    }
+    .detail-item{
+      $param: (flex flex) (justifyContent space-between) (alignItems center);
+    @include flexSet($param);
+      width: 100%;
+      height: 50 / $unit * $symbol;
+      .item-key{
+        font-size: 27 / $unit * $symbol;
+      color: #333333;
+      }
+      .item-value{
+        font-size: 27 / $unit * $symbol;
+      color: #333333;
+      }
+    }
+  }
+}

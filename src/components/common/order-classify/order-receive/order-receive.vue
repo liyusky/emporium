@@ -1,7 +1,8 @@
 <template>
-  <section class="order-item">
+  <transition name="fade">
+    <section class="order-item" v-show="animationShow">
       <div class="item-title">
-        <p class="title-time">2018-12-19  12:29:11</p>
+        <p class="title-time">2018-12-19 12:29:11</p>
         <p class="title-sign">交易成功</p>
       </div>
       <div class="item-detail">
@@ -17,19 +18,32 @@
         </div>
       </div>
       <div class="item-summary">
-        <p>共1件商品 合计: <span class="summary-price">￥580</span><span class="summary-fare"> (含运费￥0.00)</span></p>
+        <p>共1件商品 合计:
+          <span class="summary-price">￥580</span>
+          <span class="summary-fare"> (含运费￥0.00)</span>
+        </p>
       </div>
       <div class="item-button">
         <button>删除订单</button>
         <button>评价订单</button>
       </div>
     </section>
+  </transition>
 </template>
 <script>
-export default {
-  
-}
+  export default {
+    data() {
+      return {
+        animationShow: false
+      }
+    },
+    mounted() {
+      this.animationShow = true
+    }
+  }
+
 </script>
 <style scoped lang="scss">
-@import './order-receive.scss'
+  @import './order-receive.scss'
+
 </style>

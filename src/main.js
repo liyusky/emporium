@@ -4,6 +4,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './main.scss'
+import '../static/icon/iconfont.css'
+//引入数据交互axios 
+import axios from 'axios'
+//挂载在Vue原型上
+Vue.prototype.http=axios;
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

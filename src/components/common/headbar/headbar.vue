@@ -3,7 +3,12 @@
     <div class="headbar-content">
       <i></i>
       <span>{{HeadbarName}}</span>
+      <!-- <div class="content-icon">
+        <i></i>
+        <p>评价</p>
+      </div> -->
     </div>
+    
   </section>
 </template>
 

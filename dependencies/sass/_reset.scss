@@ -18,3 +18,9 @@ img {
   border: none;
   outline: none;
 }
+.fade-enter-active,.fade-leave-active{
+	transition: all .3s;
+}
+.fade-enter,.fade-leave-to{
+	transform: translateX(100%);
+}

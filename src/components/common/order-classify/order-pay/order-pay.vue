@@ -1,8 +1,8 @@
 <template>
-      <!-- 待付款 -->
-    <section class="order-pay">
+  <transition name="fade">
+    <section class="order-pay" v-show="animationShow">
       <div class="pay-title">
-        <p class="title-time">2018-12-19  12:29:11</p>
+        <p class="title-time">2018-12-19 12:29:11</p>
         <p class="title-sign">待付款</p>
       </div>
       <div class="pay-detail">
@@ -18,18 +18,31 @@
         </div>
       </div>
       <div class="pay-summary">
-        <p>共1件商品 合计: <span class="summary-price">￥580</span><span class="summary-fare"> (含运费￥0.00)</span></p>
+        <p>共1件商品 合计:
+          <span class="summary-price">￥580</span>
+          <span class="summary-fare"> (含运费￥0.00)</span>
+        </p>
       </div>
       <div class="pay-topay">
         <button>去支付</button>
       </div>
     </section>
+  </transition>
 </template>
 <script>
-export default {
-  
-}
+  export default {
+    data() {
+      return {
+        animationShow: false
+      }
+    },
+    mounted() {
+      this.animationShow = true
+    }
+  }
+
 </script>
 <style scoped lang="scss">
-@import './order-pay.scss'
+  @import './order-pay.scss'
+
 </style>

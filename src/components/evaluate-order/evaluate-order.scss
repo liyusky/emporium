@@ -140,10 +140,10 @@
         bottom: 1px solid #e7e7e7;
       }
       i {
-        width: 40 / $unit * $symbol;
-        height: 40 / $unit * $symbol;
+        font-size: 27 / $unit * $symbol;
+        color: #333333;
         margin: {
-          right: 15 / $unit * $symbol;
+          left: 15 / $unit * $symbol;
           right: 10 / $unit * $symbol;
         }
         border-radius:50%;
