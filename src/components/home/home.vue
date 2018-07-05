@@ -11,7 +11,10 @@
 import Tab from '../common/tab/tab.vue'
 export default {
   name: 'Home',
+<<<<<<< HEAD
   mounted: {},
+=======
+>>>>>>> 8b14ae497142e0c133291a648e9adee0397b5e81
   data () {
     return {}
   },
