@@ -1,0 +1,93 @@
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_flex.scss';
+.feedback {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  padding: {
+    top: 90 / $unit * $symbol;
+    left: 30 / $unit * $symbol;
+    right: 30 / $unit * $symbol;
+  }
+  background: #f0f2f5;
+  .feedback-content {
+    width: 100%;
+    height: 100%;
+    .content-form {
+      width: 100%;
+      margin: {
+        top: 21 / $unit * $symbol;
+      }
+      .form-opinion {
+<<<<<<< HEAD
+        position: relative;
+=======
+>>>>>>> 3738b51f08ec515a9257ec8458578598b3a2ad28
+        width: 100%;
+        height: 420 / $unit * $symbol;
+        background: #fff;
+        border-radius: 9 / $unit * $symbol;
+        .opinion-input {
+          width: 100%;
+          height: 100%;
+          padding: {
+            top: 34 / $unit * $symbol;
+            left: 30 / $unit * $symbol;
+            right: 30 / $unit * $symbol;
+          }
+          border-radius: 9 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #333;
+          resize: none;
+          outline: none;
+        }
+<<<<<<< HEAD
+        .input-number{
+          position: absolute;
+          bottom: 28 / $unit * $symbol;
+          right: 21 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #666666;
+        }
+=======
+>>>>>>> 3738b51f08ec515a9257ec8458578598b3a2ad28
+      }
+      .form-contact-way {
+        width: 100%;
+        height: 90 / $unit * $symbol;
+        margin: {
+          top: 21 / $unit * $symbol;
+        }
+        background: #fff;
+        border-radius: 9 / $unit * $symbol;
+        .way-input {
+          width: 100%;
+          height: 100%;
+          padding: {
+            left: 30 / $unit * $symbol;
+          }
+          border-radius: 9 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #333;
+          outline: none;
+        }
+      }
+    }
+    .content-save-button {
+      display: block;
+      width: 690 / $unit * $symbol;
+      height: 91 / $unit * $symbol;
+      margin: {
+        top: 81 / $unit * $symbol;
+        left: auto;
+        right: auto;
+      }
+      line-height: 91 / $unit * $symbol;
+      background: #eb2828;
+      font-size: 30 / $unit * $symbol;
+      color: #fff;
+      border-radius: 10 / $unit * $symbol;
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../../../../dependencies/sass/_flex.scss';
+@import '../../../../../dependencies/sass/_unit.scss';
+.order {
+  width: 100%;
+  height: 243 / $unit * $symbol;
+  padding: {
+    bottom: 21 / $unit * $symbol;
+  }
+  background-color: #f4f4f4;
+  &-title {
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: 75 / $unit * $symbol;
+    padding: {
+      left: 24 / $unit * $symbol;
+      right: 24 / $unit * $symbol;
+    }
+    background-color: #fff;
+    h3 {
+      font-size: 30 / $unit * $symbol;
+      color: #333333;
+    }
+    p {
+      font-size: 24 / $unit * $symbol;
+      color: #999999;
+    }
+  }
+  &-menu {
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: (243 - 75 - 21) / $unit * $symbol;
+    background-color: #fff;
+    .menu-item {
+      $param: (flex flex) (direction column) (alignItems center) (justifyContent space-between);
+      @include flexSet($param);
+      width: 25%;
+      height: 100%;
+      padding: {
+        top: 12 / $unit * $symbol;
+        bottom: 45 / $unit * $symbol;
+      }
+      .iconfont {
+        font-size: 51 / $unit * $symbol;
+      }
+      p {
+        font-size: 27 / $unit * $symbol;
+        color: #686868;
+      }
+    }
+  }
+} 

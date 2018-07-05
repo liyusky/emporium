@@ -1,0 +1,41 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+.theme {
+  position: fixed;
+  $param: (flex flex) (alignItems center) (justifyContent center);
+  @include flexSet($param);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 129 / $unit * $symbol;
+  padding: {
+    top: 36 / $unit * $symbol;
+    left: 30 / $unit * $symbol;
+    right: 30 / $unit * $symbol;
+  }
+  border: {
+    bottom: 1px solid #d9d9d9;
+  }
+  background-color: #fff;
+  &-title {
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    height: 100%;
+    font-size: 36 / $unit * $symbol;
+    color: #333;
+  }
+  &-left {
+    position: absolute;
+    left: 30 / $unit * $symbol;
+    z-index: 100;
+  }
+  &-right {
+    position: absolute;
+    right: 30 / $unit * $symbol;
+    z-index: 100;
+    font-size: 36 / $unit * $symbol;
+  }
+}

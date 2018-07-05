@@ -1,0 +1,20 @@
+.DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+<<<<<<< HEAD
+/test/unit/coverage/
+/test/e2e/reports/
+selenium-debug.log
+=======
+>>>>>>> 3738b51f08ec515a9257ec8458578598b3a2ad28
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

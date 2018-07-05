@@ -1,0 +1,149 @@
+<<<<<<< HEAD
+@import '../../../dependencies/sass/_flex.scss';
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_btn.scss';
+
+.address-manage {
+  position: relative;
+  width: 100%;
+  .manage-btn {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 120;
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    height: 99 / $unit * $symbol;
+    background-color: #fff;
+    font-size: 33 / $unit * $symbol;
+    color: #eb2828;
+  } 
+}
+=======
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_flex.scss';
+.address-manage {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  padding: {
+    top: 90 / $unit * $symbol;
+    bottom: 100 / $unit * $symbol;
+  }
+  background: #f0f2f5;
+  .manage-list {
+    width: 690 / $unit * $symbol;
+    margin: 0 auto;
+    .list-item {
+      width: 100%;
+      margin: {
+        top: 21 / $unit * $symbol;
+      }
+      padding: {
+        left: 27 / $unit * $symbol;
+        right: 27 / $unit * $symbol;
+      }
+      background: #fff;
+      border-radius: 9 / $unit * $symbol;
+      .item-detaili {
+        width: 100%;
+        border: {
+          bottom: 1px solid #ededed;
+        }
+        padding: {
+          bottom: 26 / $unit * $symbol;
+        }
+        .detail-info {
+          $param: (flex flex) (justifyContent space-between) (alignItems center);
+          @include flexSet($param);
+          width: 100%;
+          height: 89 / $unit * $symbol;
+          .info-name,
+          .info-telphone {
+            font-size: 30 / $unit * $symbol;
+            font-weight: bold;
+            color: #000000;
+          }
+        }
+        .detaili-address {
+          padding: {
+            left: 10 / $unit * $symbol;
+            right: 30 / $unit * $symbol;
+          }
+          line-height: 50 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #353535;
+        }
+      }
+      .item-status {
+        $param: (flex flex) (justifyContent space-between) (alignItems center);
+        @include flexSet($param);
+        width: 100%;
+        height: 84 / $unit * $symbol;
+        .status-default {
+          $param: (flex flex)(alignItems center);
+          @include flexSet($param);
+          i {
+            display: block;
+            width: 35 / $unit * $symbol;
+            height: 35 / $unit * $symbol;
+            margin: {
+              right: 14 / $unit * $symbol;
+            }
+            background: #eb2828;
+            border-radius: 50%
+          }
+          span {
+            font-size: 27 / $unit * $symbol;
+            color: #353535;
+          }
+        }
+        .status-mark {
+          $param: (flex flex)(alignItems center);
+          @include flexSet($param);
+          padding: {
+            right: 5 / $unit * $symbol;
+          }
+          .mark-delete,
+          .mark-edit {
+            $param: (flex flex)(alignItems center);
+            @include flexSet($param);
+            margin: {
+              left: 34 / $unit * $symbol;
+            }
+            i {
+              display: block;
+              width: 35 / $unit * $symbol;
+              height: 30 / $unit * $symbol;
+              margin: {
+                right: 7 / $unit * $symbol;
+              }
+              background: #eb2828;
+            }
+            span {
+              font-size: 27 / $unit * $symbol;
+              color: #353535;
+            }
+          }
+        }
+      }
+    }
+  }
+  .manage-add {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    $param: (flex flex) (justifyContent center) (alignItems center);
+    @include flexSet($param);
+    width: 100%;
+    height: 100/ $unit * $symbol;
+    background: #fff;
+    span {
+      font-size: 30 / $unit * $symbol;
+      color: #eb2828;
+    }
+  }
+}
+>>>>>>> 3738b51f08ec515a9257ec8458578598b3a2ad28

@@ -1,0 +1,72 @@
+@mixin flex($flex) {
+  display: $flex;
+  @if $flex == inline-flex {
+    display: -webkit-inline-box;
+  }
+  @else {
+    display: -webkit-box;
+  }
+  display: -webkit- + $flex;
+}
+
+@mixin flexFlow ($flexFlow) {
+  flex-flow: $flexFlow;
+  -webkit-flex-flow: $flexFlow;
+}
+
+@mixin flexWrap ($flexWrap) {
+  flex-wrap: $flexWrap;
+  -webkit-flex-wrap: $flexWrap;
+}
+
+@mixin direction($direction) {
+  flex-direction: $direction;
+  -webkit-flex-direction: $direction;
+}
+
+@mixin alignItems($alignItems) {
+  align-items: $alignItems;
+  -webkit-box-align: $alignItems;
+  -webkit-align-items: $alignItems;
+}
+
+@mixin justifyContent($justifyContent) {
+  justify-content: $justifyContent;
+  -webkit-box-pack: $justifyContent;
+  -webkit-justify-content: $justifyContent;
+}
+
+@mixin alignContent($alignContent) {
+  align-content: $alignContent;
+  -webkit-align-content: $alignContent;
+}
+
+@mixin flexSet($params) {
+  @each $param in $params {
+
+    $name: nth($param, 1);
+    $content: nth($param, 2);
+
+    @if $name == flex {
+      @include flex($content);
+    }
+    @else if $name == direction {
+      @include direction($content);
+    }
+    @else if $name == alignItems {
+      @include alignItems($content);
+    }
+    @else if $name == justifyContent {
+      @include justifyContent($content);
+    }
+    @else if $name == alignContent {
+      @include alignContent($content);
+    }
+    @else if $name == flexFlow {
+      @include flexFlow($content);
+    }
+    @else if $name == flexWrap {
+      @include flexWrap($content);
+    }
+  }
+}

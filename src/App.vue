@@ -1,8 +1,11 @@
 <template>
+<<<<<<< HEAD
+  <router-view></router-view>
+=======
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
+>>>>>>> 3738b51f08ec515a9257ec8458578598b3a2ad28
 </template>
 
 <script>
@@ -11,13 +14,9 @@ export default {
 }
 </script>
 
+<<<<<<< HEAD
+<style lang="sass" scoped>
+=======
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+>>>>>>> 3738b51f08ec515a9257ec8458578598b3a2ad28
 </style>

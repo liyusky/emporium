@@ -1,0 +1,117 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+.mask-payment {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  padding: {
+    left: 25 / $unit * $symbol;
+    right: 25 / $unit * $symbol;
+  }
+  background-color: #fff;
+  .payment-title {
+    $param: (flex flex) (justifyContent center) (alignItems center);
+    @include flexSet($param);
+    height: 113 / $unit * $symbol;
+    p {
+      font-size: 30 / $unit * $symbol;
+      color: #000000;
+      font-weight: bold;
+    }
+  }
+  .payment-way {
+    width: 100%;
+    .way-jietiao {
+      width: 100%;
+      .jietiao-title {
+        $param: (flex flex) (justifyContent flex-start) (alignItems center);
+        @include flexSet($param);
+        width: 100%;
+        height: 36 / $unit * $symbol;
+        margin: {
+          bottom: 26 / $unit * $symbol;
+        }
+        .title-icon {
+          display: block;
+          width: 28 / $unit * $symbol;
+          height: 28 / $unit * $symbol;
+          margin: {
+            right: 18 / $unit * $symbol;
+          }
+          border-radius: 50%;
+          background: red;
+        }
+        .title-payname {
+          font-size: 27 / $unit * $symbol;
+          color: #333333;
+        }
+      }
+      .jietiao-installment {
+        $param: (flex flex) (flexWrap wrap);
+        @include flexSet($param);
+        width: 100%;
+        border: {
+          bottom: 1px solid #dddddd;
+        }
+        .installment-item {
+          width: 50%;
+          margin: {
+            bottom: 28 / $unit * $symbol;
+          }
+          padding: {
+            left: 10 / $unit * $symbol;
+          }
+          .item-title {
+            height: 35 / $unit * $symbol;
+            line-height: 35 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            color: #333333;
+          }
+          .item-tip {
+            height: 35 / $unit * $symbol;
+            line-height: 33 / $unit * $symbol;
+            font-size: 24 / $unit * $symbol;
+            color: #999999;
+          }
+        }
+      }
+    }
+    .way-alipay,
+    .way-wechat {
+      $param: (flex flex) (justifyContent flex-start) (alignItems center);
+      @include flexSet($param);
+      width: 100%;
+      height: 98 / $unit * $symbol;
+      border: {
+        bottom: 1px solid #dddddd;
+      }
+      i {
+        display: block;
+        width: 28 / $unit * $symbol;
+        height: 28 / $unit * $symbol;
+        margin: {
+          right: 18 / $unit * $symbol;
+        }
+        border-radius: 50%;
+        background: red;
+      }
+    }
+  }
+  .payment-button {
+    $param: (flex flex) (alignItems center);
+    @include flexSet($param);
+    width: 100%;
+    height: 150 / $unit * $symbol;
+    .button-sure {
+      width: 100%;
+      height: 91 / $unit * $symbol;
+      text-align: center;
+      border-radius: 8 / $unit * $symbol;
+      background: #eb2828;
+      font-size: 30 / $unit * $symbol;
+      color: #fff;
+    }
+  }
+}

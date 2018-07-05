@@ -1,0 +1,100 @@
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_flex.scss';
+.append-address {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  padding: {
+    top: 90 / $unit * $symbol;
+  }
+  background: #f0f2f5;
+  .address-content {
+    width: 100%;
+    .content-form {
+      width: 690 / $unit * $symbol;
+      margin: {
+        top: 21 / $unit * $symbol;
+        left: auto;
+        right: auto;
+      }
+      padding: {
+        left: 28 / $unit * $symbol;
+        right: 28 / $unit * $symbol;
+        bottom: 63 / $unit * $symbol;
+      }
+      border-radius: 9 / $unit * $symbol;
+      background: #fff;
+      .form-list {
+        width: 100%;
+        .list-item {
+          width: 100%;
+          height: 100 / $unit * $symbol;
+          $param: (flex flex) (justifyContent space-between) (alignItems center);
+          @include flexSet($param);
+          .item-title {
+            font-size: 30 / $unit * $symbol;
+            color: #000000;
+            font-weight: bold;
+          }
+          .item-input {
+            height: 99 / $unit * $symbol;
+            width: 480 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            color: #333;
+            border: {
+              bottom: 1px solid #ededed;
+            }
+            outline: none;
+          }
+        }
+        .list-detail {
+          width: 100%;
+          .detail-title {
+            width: 100%;
+            height: 100 / $unit * $symbol;
+            line-height: 100 / $unit * $symbol;
+            font-size: 30 / $unit * $symbol;
+            color: #000000;
+            font-weight: bold;
+          }
+          .detail-input {
+            width: 100%;
+            line-height: 40 / $unit * $symbol;
+            padding: {
+              top: 10 / $unit * $symbol;
+              bottom: 10 / $unit * $symbol;
+            }
+            font-size: 27 / $unit * $symbol;
+            color: #333;
+            border: {
+              bottom: 1px solid #ededed;
+            }
+            outline: none; // &:empty:before {
+            //   content: '请填写详细收货地址';
+            //   color: gray;
+            // }
+            // &:focus:before {
+            //   content: none;
+            // }
+          }
+        }
+      }
+    }
+    .content-save-button {
+      display: block;
+      width: 690 / $unit * $symbol;
+      height: 91 / $unit * $symbol;
+      margin: {
+        top: 102 / $unit * $symbol;
+        left: auto;
+        right: auto;
+      }
+      line-height: 91 / $unit * $symbol;
+      background: #eb2828;
+      font-size: 30 / $unit * $symbol;
+      color: #fff;
+      border-radius: 10 / $unit * $symbol;
+      outline: none;
+    }
+  }
+}

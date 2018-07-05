@@ -1,0 +1,8 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+.mine {
+  $param: (flex flex) (direction column);
+  @include flexSet($param);
+  width: 100%;
+  height: 100%;
+}

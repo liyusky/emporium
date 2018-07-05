@@ -1,0 +1,615 @@
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_flex.scss';
+.customer-service {
+  width: 100vw;
+  height: 100vh;
+  padding: {
+    top: 90 / $unit * $symbol;
+    bottom: 100 / $unit * $symbol;
+  }
+  .service-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #f4f4f4;
+    .content-pull {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      width: 100%;
+      background: #fff;
+      .pull-info {
+        $param: (flex flex) (alignItems center);
+        @include flexSet($param);
+        width: 100%;
+        height: 124 / $unit * $symbol;
+        padding: {
+          left: 30 / $unit * $symbol;
+          right: 30 / $unit * $symbol;
+        }
+        border: {
+          bottom: 1px solid #eeeeee;
+        }
+        .info-picture {
+          width: 80 / $unit * $symbol;
+          height: 80 / $unit * $symbol;
+          margin: {
+            right: 25 / $unit * $symbol;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .info-detail {
+          flex: 1;
+          .detail-price {
+            font-size: 27 / $unit * $symbol;
+            color: #eb2828;
+          }
+          .detail-title {
+            width: 380 / $unit * $symbol;
+            font-size: 30 / $unit * $symbol;
+            color: #2a2a2a;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+        .info-rightbuy {
+          width: 140 / $unit * $symbol;
+          height: 60 / $unit * $symbol;
+          margin: {
+            top: 16 / $unit * $symbol;
+          }
+          line-height: 62 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #fff;
+          background: #eb2828;
+          border-radius: 7 / $unit * $symbol;
+          outline: none;
+        }
+      }
+      .pull-notice {
+        position: relative;
+        $param: (flex flex) (justifyContent flex-start);
+        @include flexSet($param);
+        width: 100%;
+        height: 116 / $unit * $symbol;
+        padding: {
+          left: 30 / $unit * $symbol;
+          right: 30 / $unit * $symbol;
+          top: 24 / $unit * $symbol;
+        }
+        .notice-icon {
+          display: block;
+          width: 32 / $unit * $symbol;
+          height: 28 / $unit * $symbol;
+          margin: {
+            top: 5 / $unit * $symbol;
+            right: 10 / $unit * $symbol;
+          }
+          background: red;
+        }
+        .notice-title {
+          line-height: 36 / $unit * $symbol;
+          font-size: 24 / $unit * $symbol;
+          color: #222222;
+        }
+        .notice-button {
+          position: absolute;
+          bottom: -40 / $unit * $symbol;
+          left: 50%;
+          z-index: 9;
+          display: block;
+          width: 98 / $unit * $symbol;
+          height: 40 / $unit * $symbol;
+          background: red;
+          border: {
+            bottom-left-radius: 8 / $unit * $symbol;
+            bottom-right-radius: 8 / $unit * $symbol;
+          }
+          transform: translateX(-50%);
+        }
+      }
+    }
+     // 聊天面板 start
+    .content-session {
+      width: 100%;
+      padding: {
+        top: 282 / $unit * $symbol;
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      overflow-y: auto; 
+      // 文字消息 start
+      .session-text-message {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin: {
+          top: 40 / $unit * $symbol;
+          bottom: 40 / $unit * $symbol;
+        }
+        .message-waiter {
+          $param: (flex flex) (alignItems flex-start) (justifyContent flex-start);
+          @include flexSet($param);
+          width: 100%;
+          height: 100%;
+          .waiter-say {
+            position: relative;
+            max-width: 490 / $unit * $symbol;
+            min-height: 84 / $unit * $symbol;
+            line-height: 36 / $unit * $symbol;
+            margin: {
+              top: 4 / $unit * $symbol;
+              left: 30 / $unit * $symbol;
+            }
+            padding: {
+              top: 24 / $unit * $symbol;
+              bottom: 24 / $unit * $symbol;
+              left: 25 / $unit * $symbol;
+              right: 25 / $unit * $symbol;
+            }
+            background: #fff;
+            border-radius: 8 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            color: #323232;
+            &::before {
+              position: absolute;
+              left: -28 / $unit * $symbol;
+              top: 26 / $unit * $symbol;
+              z-index: 10;
+              display: block;
+              content: '';
+              width: 0;
+              height: 0;
+              border-width: 14 / $unit * $symbol;
+              border-style: solid;
+              border-color: transparent #fff transparent transparent;
+            }
+          }
+          .waiter-portrait {
+            height: 80 / $unit * $symbol;
+            width: 80 / $unit * $symbol;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+          }
+        }
+        .message-customer {
+          $param: (flex flex) (alignItems flex-start) (justifyContent flex-end);
+          @include flexSet($param);
+          width: 100%;
+          height: 100%;
+          .customer-say {
+            position: relative;
+            max-width: 490 / $unit * $symbol;
+            min-height: 84 / $unit * $symbol;
+            line-height: 36 / $unit * $symbol;
+            margin: {
+              top: 4 / $unit * $symbol;
+              right: 30 / $unit * $symbol;
+            }
+            padding: {
+              top: 24 / $unit * $symbol;
+              bottom: 24 / $unit * $symbol;
+              left: 25 / $unit * $symbol;
+              right: 25 / $unit * $symbol;
+            }
+            background: #e6f0f6;
+            border-radius: 8 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            color: #323232;
+            &::after {
+              position: absolute;
+              right: -28 / $unit * $symbol;
+              top: 26 / $unit * $symbol;
+              z-index: 10;
+              display: block;
+              content: '';
+              width: 0;
+              height: 0;
+              border-width: 14 / $unit * $symbol;
+              border-style: solid;
+              border-color: transparent transparent transparent #e6f0f6;
+            }
+          }
+          .customer-portrait {
+            height: 80 / $unit * $symbol;
+            width: 80 / $unit * $symbol;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+      // 文字消息 end
+      .session-time{
+        $param: (flex flex) (alignItems center) (justifyContent center);
+        @include flexSet($param);
+        width: 100%;
+        height: 41 / $unit * $symbol;
+        .time-number{
+          width: 145 / $unit * $symbol;
+          height: 41 / $unit * $symbol;
+          line-height: 41 / $unit * $symbol;
+          text-align: center;
+          border-radius: 4 / $unit * $symbol;
+          background: #e8eaee;
+          font-size: 27 / $unit * $symbol;
+          color: #fff;
+        }
+      }
+    }
+    // 聊天面板 end
+    // 输入消息 start
+    .content-input-area {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      $param: (flex flex) (alignItems center);
+      @include flexSet($param);
+      width: 100%;
+      height: 98 / $unit * $symbol;
+      background: #fff;
+      border: {
+        top: 1px solid #e9ebec;
+      }
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      .area-edit {
+        width: 526 / $unit * $symbol;
+        height: 66 / $unit * $symbol;
+        padding: {
+          left: 18 / $unit * $symbol;
+        }
+        border: 1px solid #f0f2f4;
+        border-radius: 4 / $unit * $symbol;
+        outline: none;
+      }
+      .area-facebread,
+      .area-more {
+        width: 50 / $unit * $symbol;
+        height: 50 / $unit * $symbol;
+        margin: {
+          left: 30 / $unit * $symbol;
+        }
+        background: red;
+        border-radius: 50%;
+      }
+    }
+    // 输入消息 end
+  }
+}
+
+.order-comfirm {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: {
+    top: 90 / $unit * $symbol;
+    bottom: 100 / $unit * $symbol;
+  }
+  overflow-y: auto;
+  background: #f4f4f4;
+  .comfirm-address {
+    width: 100%;
+    padding: {
+      left: 25 / $unit * $symbol;
+      right: 25 / $unit * $symbol;
+    }
+    background: #fff;
+    .address-detail {
+      position: relative;
+      $param: (flex flex) (justifyContent flex-start) (alignItems center);
+      @include flexSet($param);
+      width: 100%;
+      padding: {
+        top: 20 / $unit * $symbol;
+        bottom: 20 / $unit * $symbol;
+      }
+      .detail-arrow {
+        display: block;
+        width: 13 / $unit * $symbol;
+        height: 25 / $unit * $symbol;
+        background: #000;
+      }
+      .detail-person-info {
+        flex: 1;
+        .info-name-telphone {
+          $param: (flex flex) (alignItems center) (justifyContent flex-start);
+          @include flexSet($param);
+          height: 53 / $unit * $symbol;
+          span {
+            font-size: 30 / $unit * $symbol;
+            font-weight: bold;
+            color: #000000;
+          }
+          .info-icon {
+            display: block;
+            width: 25 / $unit * $symbol;
+            height: 36 / $unit * $symbol;
+            margin: {
+              right: 15 / $unit * $symbol;
+            }
+            background: #000;
+          }
+        }
+        .info-receipt-place {
+          padding: {
+            top: 10 / $unit * $symbol;
+            right: 40 / $unit * $symbol;
+            bottom: 10 / $unit * $symbol;
+            left: 40 / $unit * $symbol;
+          }
+          line-height: 45 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #353535;
+        }
+      }
+    }
+    .address-process {
+      width: 100%;
+      height: 7 / $unit * $symbol;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .comfirm-order-number {
+    width: 100%;
+    height: 80;
+    padding: {
+      left: 25 / $unit * $symbol;
+    }
+    margin: {
+      top: 20 / $unit * $symbol;
+    }
+    background: #fff;
+    .title-time {
+      font-size: 27 / $unit * $symbol;
+      color: #111111;
+      height: 80 / $unit * $symbol;
+      line-height: 80 / $unit * $symbol;
+    }
+  }
+  .comfirm-detail {
+    $param: (flex flex) (alignItems center) (justifyContent flex-start);
+    @include flexSet($param);
+    width: 100%;
+    height: 180 / $unit * $symbol;
+    padding: {
+      left: 30 / $unit * $symbol;
+      right: 30 / $unit * $symbol;
+    }
+    .detail-img {
+      width: 130 / $unit * $symbol;
+      height: 130 / $unit * $symbol;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .detail-content {
+      flex: 1;
+      margin: {
+        left: 30 / $unit * $symbol;
+      }
+      .content-title {
+        line-height: 36 / $unit * $symbol;
+        font-size: 30 / $unit * $symbol;
+        color: #2a2a2a;
+      }
+      .content-price-number {
+        $param: (flex flex) (justifyContent space-between);
+        @include flexSet($param);
+        .content-price {
+          font-size: 30 / $unit * $symbol;
+          color: #eb2828;
+          font-weight: bold;
+        }
+        .content-number {
+          font-size: 24 / $unit * $symbol;
+          color: #999999;
+        }
+      }
+    }
+  }
+  .comfirm-service {
+    width: 100%;
+    padding: {
+      top: 10 / $unit * $symbol;
+      left: 25 / $unit * $symbol;
+      right: 30 / $unit * $symbol;
+      bottom: 10 / $unit * $symbol;
+    }
+    background: #fff;
+    .service-item {
+      $param: (flex flex) (alignItems center) (justifyContent space-between);
+      @include flexSet($param);
+      height: 55 / $unit * $symbol;
+      p {
+        font-size: 27 / $unit * $symbol;
+        color: #333333;
+      }
+    }
+  }
+  .comfirm-distribution {
+    width: 100%;
+    height: 78 / $unit * $symbol;
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    padding: {
+      left: 30 / $unit * $symbol;
+      right: 30 / $unit * $symbol;
+    }
+    margin: {
+      top: 1px;
+      bottom: 1px;
+    }
+    background: #fff;
+    p {
+      font-size: 27 / $unit * $symbol;
+      color: #333333;
+    }
+  }
+  .comfirm-leave-message {
+    width: 100%;
+    height: 110 / $unit * $symbol;
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    background: #fff;
+    margin: {
+      bottom: 1px;
+    }
+    .leave-message {
+      height: 85 / $unit * $symbol;
+      width: 700 / $unit * $symbol;
+      background: #f4f4f4;
+      font-size: 27 / $unit * $symbol;
+      color: #353535;
+      line-height: 85 / $unit * $symbol;
+      padding: {
+        left: 15 / $unit * $symbol;
+      }
+      border-radius: 4px;
+      outline: none;
+      resize: none;
+      &::-webkit-input-placeholder {
+        color: #bcbcbc;
+      }
+    }
+  }
+  .comfirm-summary {
+    $param: (flex flex) (alignItems center) (justifyContent flex-end);
+    @include flexSet($param);
+    width: 100%;
+    height: 89 / $unit * $symbol;
+    padding: {
+      right: 25 / $unit * $symbol;
+    }
+    background: #fff;
+    margin: {
+      bottom: 20 / $unit * $symbol;
+    }
+    p {
+      font-size: 27 / $unit * $symbol;
+      color: #333333;
+      .summary-price {
+        font-size: 27 / $unit * $symbol;
+        color: #eb2828;
+        font-weight: bold;
+      }
+    }
+  }
+  .comfirm-way {
+    width: 100%;
+    margin: {
+      bottom: 20 / $unit * $symbol;
+    }
+    .way-title {
+      $param: (flex flex) (alignItems center);
+      @include flexSet($param);
+      height: 79 / $unit * $symbol;
+      padding: {
+        left: 25 / $unit * $symbol;
+      }
+      background: #fff;
+      span {
+        font-size: 27 / $unit * $symbol;
+        color: #000000;
+      }
+    }
+    .way-item {
+      $param: (flex flex) (alignItems center) (justifyContent space-between);
+      @include flexSet($param);
+      width: 100%;
+      height: 128 / $unit * $symbol;
+      margin: {
+        top: 1px;
+      }
+      padding: {
+        left: 25 / $unit * $symbol;
+        right: 25 / $unit * $symbol;
+      }
+      background: #fff;
+      .item-detail {
+        .detail-name {
+          $param: (flex flex) (alignItems center) (justifyContent flex-start);
+          @include flexSet($param);
+          height: 48 / $unit * $symbol;
+          i {
+            display: block;
+            width: 48 / $unit * $symbol;
+            height: 48 / $unit * $symbol;
+            border-radius: 9 / $unit * $symbol;
+            background: red;
+          }
+          span {
+            margin: {
+              left: 12 / $unit * $symbol;
+            }
+            font-size: 24 / $unit * $symbol;
+            color: #2a2a2a;
+          }
+        }
+        .itme-introduce {
+          height: 49 / $unit * $symbol;
+          line-height: 49 / $unit * $symbol;
+          font-size: 21 / $unit * $symbol;
+          color: #9f9f9f;
+        }
+      }
+      i {
+        display: block;
+        width: 42 / $unit * $symbol;
+        height: 42 / $unit * $symbol;
+        border-radius: 50%;
+        background: red;
+      }
+    }
+  }
+  .comfirm-submit {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: 100 / $unit * $symbol;
+    padding: {
+      left: 25 / $unit * $symbol;
+      right: 25 / $unit * $symbol;
+    }
+    background: #fff;
+    .submit-total {
+      font-size: 27 / $unit * $symbol;
+      color: #999999;
+      span {
+        font-weight: bold;
+        color: #eb2828;
+      }
+    }
+    .submit-button {
+      width: 260 / $unit * $symbol;
+      height: 60 / $unit * $symbol;
+      line-height: 65 / $unit * $symbol;
+      background: #eb2828;
+      font-size: 27 / $unit * $symbol;
+      color: #fff;
+      border-radius: 7 / $unit * $symbol;
+      outline: none;
+    }
+  }
+}

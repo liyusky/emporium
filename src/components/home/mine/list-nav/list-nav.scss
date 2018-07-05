@@ -1,0 +1,46 @@
+@import '../../../../../dependencies/sass/_flex.scss';
+@import '../../../../../dependencies/sass/_unit.scss';
+.mine-list-nav {
+  flex-grow: 1;
+  width: 100%;
+  padding: {
+    left: 30 / $unit * $symbol;
+  }
+  background-color: #fff;
+  .nav-item {
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: 99 / $unit * $symbol;
+    padding: {
+      right: 30 / $unit * $symbol;
+    }
+    border: {
+      bottom: 1px solid #e4e4e4;
+    }
+    .item-title {
+      font-size: 30 / $unit * $symbol;
+      color: #222222;
+    }
+    div {
+      .item-tip {
+        display: inline-block;
+        font-size: 21 / $unit * $symbol;
+        padding: {
+          top: 3 / $unit * $symbol;
+          bottom: 3 / $unit * $symbol;
+          left: 12 / $unit * $symbol;
+          right: 12 / $unit * $symbol;
+        }
+        margin: {
+          right: 12 / $unit * $symbol;
+        }
+        background-color: #f75258;
+        color: #fff;
+      }
+      .iconfont {
+        font-size: 30 / $unit * $symbol;
+      }
+    }
+  }
+}

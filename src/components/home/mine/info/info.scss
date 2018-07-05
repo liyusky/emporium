@@ -1,0 +1,77 @@
+@import '../../../../../dependencies/sass/_flex.scss';
+@import '../../../../../dependencies/sass/_unit.scss';
+.mine-info {
+  position: relative;
+  $param: (flex flex) (direction column) (justifyContent space-between);
+  @include flexSet($param);
+  width: 100%;
+  height: 282 / $unit * $symbol;
+  background-color: transparent;
+  .info-header {
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: 127 / $unit * $symbol;
+    padding: {
+      top: 36 / $unit * $symbol;
+      left: 30 / $unit * $symbol;
+      right: 30 / $unit * $symbol;
+    }
+    p {
+      font-size: 24 / $unit * $symbol;
+      color: #ffffff;
+    }
+  }
+  .info-detail {
+    $param: (flex flex) (alignItems center);
+    @include flexSet($param);
+    width: 100%;
+    height: 111 / $unit * $symbol;
+    padding: {
+      left: 24 / $unit * $symbol;
+      right: 24 / $unit * $symbol;
+    }
+    .detail-portrait {
+      width: 111 / $unit * $symbol;
+      height: 111 / $unit * $symbol;
+      margin: {
+        right: 21 / $unit * $symbol;
+      }
+      img {
+        width: 111 / $unit * $symbol;
+        height: 111 / $unit * $symbol;
+        border-radius: 50%;
+      }
+    }
+    .detail-user {
+      $param: (flex flex) (direction column) (justifyContent space-between);
+      @include flexSet($param);
+      width: 100%;
+      height: 100%;
+      padding: {
+        top: 18 / $unit * $symbol;
+        bottom: 27 / $unit * $symbol;
+      }
+      color: #fff;
+      .user-name {
+        font-size: 36 / $unit * $symbol;
+      }
+      .user-account {
+        font-size: 24 / $unit * $symbol;
+      }
+    }
+  }
+  .info-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
