@@ -1,0 +1,24 @@
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_flex.scss';
+.order-no {
+  $param: (flex flex) (direction column) (justifyContent center) (alignItems center);
+  @include flexSet($param);
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  .no-bg-img {
+    width: 178 / $unit * $symbol;
+    height: 172 / $unit * $symbol;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .no-text {
+    margin: {
+      top: 45 / $unit * $symbol;
+    }
+    font-size: 27 / $unit * $symbol;
+    color: #999999;
+  }
+}

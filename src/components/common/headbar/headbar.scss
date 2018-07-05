@@ -1,0 +1,56 @@
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_flex.scss';
+.headbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  .headbar-content{
+    position: relative;
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100vw;
+    height: 89 / $unit * $symbol;
+    background: #ffffff;
+    border: {
+      bottom: 1px solid #d9d9d9;
+    }
+    i{
+      position: absolute;
+      left: 35 / $unit * $symbol;
+      top: 50%;
+      z-index: 10;
+      display: block;
+      width: 19 / $unit * $symbol;
+      height: 31 / $unit * $symbol;
+      background: #000;
+      transform: translateY(-50%);
+    }
+    span{
+      font-size: 33 / $unit * $symbol;
+      color: #333333;
+    }
+    .content-icon{
+      position: absolute;
+      right: 35 / $unit * $symbol;
+      bottom: -27 / $unit * $symbol;
+      z-index: 10;
+      $param: (flex flex) (direction column) (alignItems center);
+      @include flexSet($param);
+      width: 100 / $unit * $symbol;
+      height: 100 / $unit * $symbol;
+      i{
+        display: block;
+        width: 30 / $unit * $symbol;
+        height: 32 / $unit * $symbol;
+        background:red;
+      }
+      p{
+        height: 29 / $unit * $symbol;
+        line-height: 29 / $unit * $symbol;
+        font-size: 21 / $unit * $symbol;
+        color: #8e8e8e;
+      }
+    }
+  }
+}

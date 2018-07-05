@@ -3,10 +3,14 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+<<<<<<< HEAD
   border: none;
   outline: none;
 }
 
+=======
+}
+>>>>>>> 3738b51f08ec515a9257ec8458578598b3a2ad28
 ol,
 ul {
   list-style: none;
@@ -14,5 +18,21 @@ ul {
 
 a {
   text-decoration: none;
+<<<<<<< HEAD
   color: #333;
 }
+=======
+  color: none;
+}
+
+img {
+  border: none;
+  outline: none;
+}
+.fade-enter-active,.fade-leave-active{
+	transition: all .3s;
+}
+.fade-enter,.fade-leave-to{
+	transform: translateX(100%);
+}
+>>>>>>> 3738b51f08ec515a9257ec8458578598b3a2ad28
