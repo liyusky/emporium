@@ -1,0 +1,225 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+.mask-rightpay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: #fff;
+  .rightpay-title {
+    position: relative;
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    height: 96 / $unit * $symbol;
+    border: {
+      bottom: 1px solid #dddddd;
+    }
+    i {
+      position: absolute;
+      right: 39 / $unit * $symbol;
+      top: 32 / $unit * $symbol;
+      font-size: 30 / $unit * $symbol;
+      color: #b5b6b6;
+    }
+  }
+  .rightpay-total {
+    $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    height: 218 / $unit * $symbol;
+    .total-title {
+      font-size: 27 / $unit * $symbol;
+      color: #353535;
+    }
+    .total-price {
+      margin: {
+        top: 20 / $unit * $symbol;
+      }
+      font-size: 45 / $unit * $symbol;
+      color: #353535;
+      font-weight: bold;
+    }
+  }
+  .rightpay-thead {
+    $param: (flex flex) (alignItems center) (justifyContent space-around);
+    @include flexSet($param);
+    width: 100%;
+    height: 86 / $unit * $symbol;
+    border: {
+      top: 1px solid #f0f0f0;
+      bottom: 1px solid #f0f0f0;
+    }
+    p {
+      font-size: 24 / $unit * $symbol;
+      color: #333333;
+    }
+  }
+  .rightpay-installment {
+    width: 100%;
+    max-height: 510 / $unit * $symbol;
+    margin: {
+      bottom: 38 / $unit * $symbol;
+    }
+    overflow-y: auto;
+    .installment-item {
+      $param: (flex flex) (alignItems center) (justifyContent space-around);
+      @include flexSet($param);
+      width: 100%;
+      height: 79 / $unit * $symbol;
+      border: {
+        bottom: 1px solid #f0f0f0;
+      }
+      .item-periods,
+      .item-pay {
+        width: 33.3%;
+        text-align: center;
+        font-size: 24 / $unit * $symbol;
+        color: #333333;
+      }
+      .item-status{
+        $param: (flex flex) (alignItems center) (justifyContent space-around);
+        @include flexSet($param);
+        width: 33.3%;
+        .status-already,
+        .status-await{
+        
+          font-size: 24 / $unit * $symbol;
+          color: #858585;
+        }
+        .status-right{
+          width: 140 / $unit * $symbol;
+          height: 60 / $unit * $symbol;
+          line-height: 60 / $unit * $symbol;
+          text-align: center;
+          border-radius: 8 / $unit * $symbol;
+          background: red;
+          font-size: 27 / $unit * $symbol;
+          color: #fff;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.mask-rightbuy {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: #fff;
+  .rightbuy-commodity {
+    position: relative;
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    height: 159 / $unit * $symbol;
+    border: {
+      bottom: 1px solid #dddddd;
+    }
+    .commodity-detail {
+      width: 100%;
+      padding: {
+        left: 222 / $unit * $symbol;
+      }
+      .detail-name {
+        font-size: 30 / $unit * $symbol;
+        color: #000000;
+        font-weight: bold;
+      }
+      .detail-price {
+        font-size: 30 / $unit * $symbol;
+        color: #eb2828;
+        font-weight: bold;
+      }
+      .detail-advantage {
+        font-size: 21 / $unit * $symbol;
+        color: #999999;
+      }
+    }
+    .commodity-img {
+      position: absolute;
+      bottom: 15 / $unit * $symbol;
+      left: 20 / $unit * $symbol;
+      z-index: 10;
+      $param: (flex flex) (justifyContent center) (alignItems center);
+      @include flexSet($param);
+      width: 180 / $unit * $symbol;
+      height: 180 / $unit * $symbol;
+      background: #fff;
+      border-radius: 4 / $unit * $symbol;
+      img {
+        width: 80%;
+        height: 90%;
+      }
+    }
+    .commodity-close {
+      position: absolute;
+      top: 30 / $unit * $symbol;
+      right: 30 / $unit * $symbol;
+      display: block;
+      width: 30 / $unit * $symbol;
+      height: 30 / $unit * $symbol;
+      background: red;
+    }
+  }
+  .rightbuy-property {
+    width: 100%;
+    padding: {
+      left: 20 / $unit * $symbol;
+      right: 20 / $unit * $symbol;
+      top: 12 / $unit * $symbol;
+    }
+    .property-item {
+      width: 100%;
+      .item-title {
+        $param: (flex flex) (justifyContent flex-start) (alignItems center);
+        @include flexSet($param);
+        height: 68 / $unit * $symbol;
+        font-size: 24 / $unit * $symbol;
+        color: #666666;
+      }
+      .item-attribute {
+        width: 100%;
+        $param: (flex flex) (justifyContent flex-start) (flexWrap wrap);
+        @include flexSet($param);
+        .attribute-value {
+          height: 58 / $unit * $symbol;
+          line-height: 56 / $unit * $symbol;
+          padding: {
+            left: 15 / $unit * $symbol;
+            right: 15 / $unit * $symbol;
+          }
+          margin: {
+            right: 18 / $unit * $symbol;
+            bottom: 14 / $unit * $symbol;
+          }
+          border-radius: 8 / $unit * $symbol;
+          border: 1px solid #9c9c9c;
+          font-size: 24 / $unit * $symbol;
+          color: #2e3135;
+          span {
+            color: #ff5757;
+          }
+        }
+        .activeShow {
+          border: 1px solid #ff5757;
+          color: #ff5757;
+          background: #ffe0da;
+        }
+      }
+    }
+  }
+  .rightbuy-button {
+    $param: (flex flex) (justifyContent center) (alignItems center);
+    @include flexSet($param);
+    width: 100%;
+    height: 92 / $unit * $symbol;
+    background: #eb2828;
+    font-size: 30 / $unit * $symbol;
+    color: #fff;
+  }
+}
