@@ -11,9 +11,7 @@
 import Tab from '../common/tab/tab.vue'
 export default {
   name: 'Home',
-  mounted: {
-    
-  },
+  mounted: {},
   data () {
     return {}
   },

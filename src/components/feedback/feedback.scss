@@ -19,6 +19,7 @@
         top: 21 / $unit * $symbol;
       }
       .form-opinion {
+        position: relative;
         width: 100%;
         height: 420 / $unit * $symbol;
         background: #fff;
@@ -36,6 +37,13 @@
           color: #333;
           resize: none;
           outline: none;
+        }
+        .input-number{
+          position: absolute;
+          bottom: 28 / $unit * $symbol;
+          right: 21 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
+          color: #666666;
         }
       }
       .form-contact-way {

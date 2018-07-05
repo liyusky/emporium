@@ -15,7 +15,7 @@
     $param: (flex flex) (justifyContent space-around);
     @include flexSet($param);
     position: fixed;
-    top:  80 / $unit * $symbol;
+    top:  129 / $unit * $symbol;
     left: 0;
     width: 100%;
     @include pxvw(height,83);
