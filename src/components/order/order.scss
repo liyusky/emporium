@@ -3,48 +3,58 @@
 @mixin pxvw($style, $px) {
   $style: $px / $unit * $symbol
 }
-.order{
+
+.order {
   width: 100vw;
   height: 100vh;
   padding: {
-    top: 163 / $unit * $symbol;
+    top: 207 / $unit * $symbol;
   }
   background: #f4f4f4;
-  overflow-y: auto;
-  .order-tabbar{
+  .order-tabbar {
     $param: (flex flex) (justifyContent space-around);
     @include flexSet($param);
     position: fixed;
-    top:  80 / $unit * $symbol;
+    top: 129 / $unit * $symbol;
     left: 0;
     width: 100%;
-    @include pxvw(height,83);
+    height: 78 / $unit * $symbol;
+    @include pxvw(height, 83);
     padding: {
       left: 30 / $unit * $symbol;
       right: 30 / $unit * $symbol;
     }
-    margin: {
-      bottom: 16 / $unit * $symbol;
-    }
     background: #fff;
-    .tabbar-item{
-      height: 78 / $unit * $symbol;
-      line-height: 78 / $unit * $symbol;
-      border: {
-        bottom:5 / $unit * $symbol solid #fff;
-      }
+    .tabbar-item {
+      position: relative;
+      height: 73 / $unit * $symbol;
+      line-height: 73 / $unit * $symbol;
       font-size: 27 / $unit * $symbol;
       font-weight: bold;
-      color: #4b4b4b;  
+      color: #4b4b4b;
     }
-    .activeShow{
-      border: {
-        bottom: 5 / $unit * $symbol solid #eb2828;
-      }
+    .tabbar-item::after {
+      position: absolute;
+      bottom: -5 / $unit * $symbol;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      content: '';
+      width: 100%;
+      height: 5 / $unit * $symbol;
+      border-radius: 3 / $unit * $symbol;
+      background-color: fff;
+    }
+    .active::after {
+      background-color: red;
     }
   }
-  .order-classify{
+  .order-classify {
     width: 100%;
     height: 100%;
+    padding: {
+      top: 15 / $unit * $symbol;
+    }
+    overflow-y: auto;
   }
 }
