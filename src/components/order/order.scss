@@ -1,46 +1,44 @@
 @import '../../../dependencies/sass/_unit.scss';
 @import '../../../dependencies/sass/_flex.scss';
-@mixin pxvw($style, $px) {
-  $style: $px / $unit * $symbol
-}
 .order{
   width: 100vw;
   height: 100vh;
   padding: {
-    top: 163 / $unit * $symbol;
+    top: (129 + 84) / $unit * $symbol;
   }
   background: #f4f4f4;
   overflow-y: auto;
-  .order-tabbar{
+  .order-tabbar {
     $param: (flex flex) (justifyContent space-around);
     @include flexSet($param);
     position: fixed;
-    top:  80 / $unit * $symbol;
+    top:  129 / $unit * $symbol;
     left: 0;
+    right: 0;
+    z-index: 100;
     width: 100%;
-    @include pxvw(height,83);
+    height: 84 / $unit * $symbol;
     padding: {
       left: 30 / $unit * $symbol;
       right: 30 / $unit * $symbol;
     }
-    margin: {
-      bottom: 16 / $unit * $symbol;
-    }
-    background: #fff;
+    background-color: #fff;
     .tabbar-item{
+      position: relative;
+      $param: (flex flex) (alignItems center) (justifyContent center);
+      @include flexSet($param);
       height: 78 / $unit * $symbol;
       line-height: 78 / $unit * $symbol;
-      border: {
-        bottom:5 / $unit * $symbol solid #fff;
-      }
       font-size: 27 / $unit * $symbol;
       font-weight: bold;
       color: #4b4b4b;  
     }
-    .activeShow{
-      border: {
-        bottom: 5 / $unit * $symbol solid #eb2828;
-      }
+    .tabbar-item::after {
+      position: absolute;
+      content: '';
+    }
+    .active::after {
+      background-color: red;
     }
   }
   .order-classify{

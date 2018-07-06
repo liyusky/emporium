@@ -62,6 +62,7 @@
             @include flexSet($param);
             color: #666666;
             font-size: 24 / $unit * $symbol;
+            text-decoration: line-through;
           }
         }
         .bill-reduce {

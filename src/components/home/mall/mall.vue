@@ -19,7 +19,7 @@
             </div>
           </div>
           <ul class="classify-shop-list">
-            <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(brandItem)">
+            <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(group.Id)">
               <div class="item-shop-picture">
                 <img :src="phone.Icon">
               </div>

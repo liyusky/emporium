@@ -106,7 +106,7 @@
         bottom: 30 / $unit * $symbol;
       }
       border-radius: 15 / $unit * $symbol;
-      box-shadow: 0 0 (12 / $unit * $symbol) (12 / $unit * $symbol) #efefef;
+      box-shadow: 0 0 (12 / $unit * $symbol) (6 / $unit * $symbol) #efefef;
       .tip-message {
         $param: (flex flex) (direction column) (justifyContent space-between);
         @include flexSet($param);

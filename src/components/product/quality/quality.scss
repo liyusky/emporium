@@ -35,7 +35,7 @@
       }
       border-radius: 12 / $unit * $symbol;
       background-color: #fff;
-      box-shadow: 0 0 12 / $unit * $symbol 12 / $unit * $symbol #efefef;
+      box-shadow: 0 0 (12 / $unit * $symbol) (6 / $unit * $symbol) #efefef;
       .panel-inspector {
         $param: (flex flex) (alignItems center) (justifyContent space-between);
         @include flexSet($param);
