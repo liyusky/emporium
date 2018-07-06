@@ -10,13 +10,9 @@
       <ul class="content-brand">
         <li class="brand-classify" v-for="(group, index) in groups" :key="index">
           <div class="classify-title">
-            <div class="title-icon-left">
-              <img src="">
-            </div>
+            <i class="iconfont icon-dacong"></i>
             <p class="title-text">{{group.Key}}</p>
-            <div class="title-icon-right">
-              <img src="">
-            </div>
+            <i class="iconfont icon-dacong"></i>
           </div>
           <ul class="classify-shop-list">
             <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(group.Id)">

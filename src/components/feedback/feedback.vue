@@ -4,7 +4,8 @@
     <div class="feedback-content">
       <section class="content-form">
         <div class="form-opinion">
-          <textarea class="opinion-input" id="opinion-input" name="opinion-input" placeholder="欢迎您给我们提供宝贵的意见或建议"></textarea>
+          <textarea class="opinion-input" id="opinion-input" v-model="textareaNum" name="opinion-input" placeholder="欢迎您给我们提供宝贵的意见或建议"></textarea>
+          <div class="input-number">{{textareaNum.length}}/200</div>
         </div>
         <div class="form-contact-way">
           <input class="way-input" type="text" placeholder="手机号/邮箱（选填，方便我们联系您）">
@@ -23,7 +24,8 @@ export default {
     return {
       theme: {
         title: '用户反馈'
-      }
+      },
+      textareaNum: ''
     }
   },
   components: {
