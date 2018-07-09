@@ -13,9 +13,9 @@
         <a href="">实拍</a>
       </div>
     </nav>
-    <Summary></Summary>
-    <Quality></Quality>
-    <Sample></Sample>
+    <Summary :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
+    <Quality :quality="quality"></Quality>
+    <Sample :sample="sample" @OPEN_MODAL_EVENT="openModal"></Sample>
     <Guidance></Guidance>
     <footer class="product-order">
       <div class="order-content">
@@ -25,35 +25,115 @@
         </div>
         <div class="content-price">
           <p>￥</p>
-          <p>3580</p>
+          <p>{{summary.nowPrice}}</p>
         </div>
       </div>
-      <button class="order-btn">立即购买</button>
+      <button class="order-btn" @click="openModal('Buy')">立即购买</button>
     </footer>
+    <Modal v-show="modal">
+      <component :is="component" :parameter="parameter" :paymentMethod="paymentMethod" :buy="buy" @CLOSE_MODAL_EVENT="closeModal"></component>
+    </Modal>
   </section>
   <!-- e 产品详情 -->
 </template>
 
 <script>
+import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import Summary from './summary/summary.vue'
 import Quality from './quality/quality.vue'
 import Sample from './sample/sample.vue'
 import Guidance from './guidance/guidance.vue'
+import Modal from '../common/modal/modal.vue'
+import Parameter from './modal/parameter/parameter.vue'
+import Share from './modal/share/share.vue'
+import PaymentMethod from './modal/payment-method/payment-method.vue'
+import Buy from './modal/buy/buy.vue'
 export default {
   name: 'Product',
+  props: ['id'],
   components: {
     Theme,
     Summary,
     Quality,
     Sample,
-    Guidance
+    Guidance,
+    Modal,
+    Parameter,
+    Share,
+    PaymentMethod,
+    Buy
   },
   data () {
     return {
       theme: {
         title: 'iPhone 6S'
+      },
+      component: null,
+      modal: false,
+      summary: {},
+      banner: [],
+      sample: [],
+      quality: {},
+      parameter: [],
+      paymentMethod: {},
+      buy: {}
+    }
+  },
+  created () {
+    Http.request('http://localhost:3004/product?id=10008', (data) => {
+      setPaymentTypeArr()
+      this.summary = data.Phone
+      this.sample = data.AttachmentList.filter((item) => {
+        if (item.ArchiveType === '2') return item
+      })
+      this.banner = data.AttachmentList.filter((item) => {
+        if (item.ArchiveType === '1') return item
+      })
+      this.quality = data.PhoneTestInfo
+      this.parameter = data.Phone.ParamList
+      this.paymentMethod = {
+        list: [],
+        methods: data.Phone.PaymentTypeArr
       }
+      this.buy = data.Phone
+      function setPaymentTypeArr () {
+        let type = [
+          {
+            icon: '',
+            name: '支付宝'
+          },
+          {
+            icon: '',
+            name: '微信'
+          },
+          {
+            icon: '',
+            name: '大师分期'
+          }
+        ]
+        let allowArr = data.Phone.PaymentType.toString(2).split('').reverse()
+        let content = []
+        allowArr.forEach((item, index) => {
+          if (item * 1) content.push(type[index])
+        })
+        data.Phone.PaymentTypeArr = content
+      }
+    })
+  },
+  methods: {
+    openModal (component) {
+      let content = {
+        Parameter,
+        Share,
+        PaymentMethod,
+        Buy
+      }
+      this.modal = true
+      this.component = content[component]
+    },
+    closeModal () {
+      this.modal = false
     }
   }
 }

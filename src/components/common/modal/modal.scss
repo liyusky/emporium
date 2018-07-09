@@ -1,0 +1,30 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_btn.scss';
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  &-bg,
+  &-content {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &-bg {
+    z-index: 200;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+  }
+  &-content {
+    z-index: 250;
+    background-color: transparent;
+  }
+}

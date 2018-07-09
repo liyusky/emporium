@@ -4,10 +4,10 @@
 .product {
   width: 100%;
   position: relative;
-  background-color: #f4f4f4;
   padding: {
     top: (129 + 99) / $unit * $symbol;
   }
+  background-color: #f4f4f4;
   &-nav {
     position: fixed;
     top: 129 / $unit * $symbol;

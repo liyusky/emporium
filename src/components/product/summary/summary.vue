@@ -1,74 +1,78 @@
 <template>
   <!-- s 产品简介 -->
   <section class="product-summary">
-    <div class="summary-slide">
+    <!-- <div class="summary-slide">
       <img src="https://api.vtrois.com/image/750x480/bbbfc0">
+    </div> -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item, index) in banner" :key="index">
+          <img :src="item.ArchiveUri">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
     <div class="summary-content">
       <div class="content-phone">
-        <h3 class="phone-name">95新 iPhone 6S 128G黑</h3>
+        <h3 class="phone-name">{{summary.Title}}</h3>
         <div class="phone-version">
           <p>
             <span>网络:</span>
-            <span>移动4G/联通4G/电信4G</span>
+            <span>{{summary.NetType}}</span>
           </p>
-          <p>
+          <!-- <p>
             <span>版本:</span>
             <span>其他版本</span>
-          </p>
+          </p> -->
         </div>
         <div class="phone-bill">
           <div class="bill-amount">
             <p class="amount-current">
               <span>￥</span>
-              <span>3580</span>
+              <span>{{summary.nowPrice}}</span>
             </p>
             <p class="amount-original">
-              <span>新机</span>
-              <span>￥4080</span>
+              <span>{{summary.Degree == '100' ? '全' : summary.Degree + '成'}}新</span>
+              <span>￥{{summary.originalPrice}}</span>
             </p>
           </div>
           <div class="bill-reduce">
             <div>省</div>
-            <div>￥500</div>
+            <div>￥{{summary.originalPrice - summary.nowPrice}}</div>
           </div>
         </div>
         <div class="phone-installments">
-          <span>￥716</span>
-          <span> ×5期</span>
+          <span>￥{{summary.InstallmentAmount}}</span>
+          <span> ×{{summary.InstallmentNum}}期</span>
         </div>
       </div>
-      <div class="content-gift">
+      <!-- <div class="content-gift">
         <div>赠品</div>
         <p>国产苹果充电套装（充电头+数据线）</p>
-      </div>
+      </div> -->
       <div class="content-tip">
         <i class="iconfont icon-dacong"></i>
-        <span>官当自营/原装正品/七天包退/一年保修</span>
+        <span>{{summary.Guarantee}}</span>
       </div>
       <div class="content-pay-method">
-        <div class="method-selected">
+        <div class="method-selected" @click="openModal('PaymentMethod')">
           <div class="selected-tip">
             <b>支付方式</b>
             <p class="tip-sign">
               <i class="iconfont icon-dacong"></i>
-              <span>大师分期</span>
+              <span>请选择</span>
             </p>
           </div>
           <i class="iconfont icon-dacong"></i>
         </div>
         <ul class="method-selectable">
-          <li class="selectable-item">
+          <li class="selectable-item" v-for="(item, index) in summary.PaymentTypeArr" :key="index">
             <i class="iconfont icon-dacong"></i>
-            <span>支付宝支付</span>
-          </li>
-          <li class="selectable-item">
-            <i class="iconfont icon-dacong"></i>
-            <span>支付宝支付</span>
+            <span>{{item.name}}</span>
           </li>
         </ul>
       </div>
-      <div class="content-characteristic">
+      <div class="content-characteristic" @click="openModal('Parameter')">
         <span>产品参数</span>
         <i class="iconfont icon-dacong"></i>
       </div>
@@ -78,14 +82,33 @@
 </template>
 
 <script>
+import Swiper from 'Swiper'
 export default {
   name: 'Summary',
+  props: ['summary', 'banner'],
   data () {
-    return {}
+    return {
+      swiper: null
+    }
+  },
+  mounted () {
+    this.swiper = new Swiper('.swiper-container', {
+      direction: 'vertical',
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination'
+      }
+    })
+  },
+  methods: {
+    openModal (modal) {
+      this.$emit('OPEN_MODAL_EVENT', modal)
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+  @import "../../../css/swiper-4.3.3.min.css";
   @import "./summary.scss";
 </style>
