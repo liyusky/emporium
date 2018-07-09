@@ -2,7 +2,7 @@
   <!-- s 公共头部  -->
   <header class="theme">
     <p class="theme-title">{{theme.title}}</p>
-    <div class="theme-left">
+    <div class="theme-left" @click="goback">
       <i class="iconfont icon-dacong"></i>
     </div>
     <div class="theme-right">
@@ -15,7 +15,12 @@
 <script>
 export default {
   name: 'Theme',
-  props: ['theme']
+  props: ['theme'],
+  methods: {
+    goback () {
+      this.$router.back(-1)
+    }
+  }
 }
 </script>
 
