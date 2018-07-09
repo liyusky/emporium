@@ -3,9 +3,11 @@
     "code": 200,
     "message": null,
     "description": null,
-    "data": [{
+    "data": [
+      {
         "Key": "Iphone 6/6s",
-        "PhoneList": [{
+        "PhoneList": [
+          {
             "rownum": 1,
             "CatetoryNo": 1001,
             "Title": "测试手机数据13",
@@ -93,7 +95,8 @@
       },
       {
         "Key": "Iphone 7",
-        "PhoneList": [{
+        "PhoneList": [
+          {
             "rownum": 4,
             "CatetoryNo": 1001,
             "Title": "测试手机数据10",
@@ -293,151 +296,5 @@
       }
     ]
   },
-  "order": {
-    "code": 200,
-    "message": null,
-    "description": null,
-    "data": [
-      {
-        "OrderId": "1",
-        "buttonPayName": "去支付",
-        "buttonDeleteName": "删除订单",
-        "buttonLeftName": "",
-        "buttonRightName": "",
-        "StatusName": "orderPay",
-        "StatusTitle": "待付款",
-        "BuyNum": "2",
-        "orderNumber": "122456789124",
-        "Title": "99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G",
-        "Icon": "http://192.168.0.101:8083/demo.png",
-        "nowPrice": 1999,
-        "CreateTime": "2018-07-03T15:27:18.71",
-        "orderName": "李虎",
-        "telphone": "12457964432",
-        "orderAddress": "安徽省 合肥市 高新区 创新产业园2期 创新产业园2期 创新产业园2期",
-        "PaymentMethod": "支付宝",
-        "freight": "9.99"
-      },
-      {
-        "OrderId": "2",
-        "buttonPayName": "",
-        "buttonDeleteName": "删除订单",
-        "buttonLeftName": "删除订单",
-        "buttonRightName": "评价订单",
-        "StatusName": "orderEvaluate",
-        "StatusTitle": "交易成功",
-        "BuyNum": "1",
-        "orderNumber": "122456789124",
-        "Title": "99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G",
-        "Icon": "http://192.168.0.101:8083/demo.png",
-        "nowPrice": 1999,
-        "CreateTime": "2018-07-03T15:27:13.49",
-        "orderName": "李虎",
-        "telphone": "12457964432",
-        "orderAddress": "安徽省 合肥市 高新区 创新产业园2期 创新产业园2期 创新产业园2期",
-        "PaymentMethod": "支付宝",
-        "freight": "9.99"
-      },
-      {
-        "OrderId": "3",
-        "buttonPayName": "去支付",
-        "buttonDeleteName": "删除订单",
-        "buttonLeftName": "",
-        "buttonRightName": "",
-        "StatusName": "orderPay",
-        "StatusTitle": "待付款",
-        "BuyNum": "1",
-        "orderNumber": "122456789124",
-        "Title": "99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G",
-        "Icon": "http://192.168.0.101:8083/demo.png",
-        "nowPrice": 1999,
-        "CreateTime": "2018-07-03T15:27:13.49",
-        "orderName": "李虎",
-        "telphone": "12457964432",
-        "orderAddress": "安徽省 合肥市 高新区 创新产业园2期 创新产业园2期 创新产业园2期",
-        "PaymentMethod": "支付宝",
-        "freight": "9.99"
-      },
-      {
-        "OrderId": "4",
-        "buttonPayName": "",
-        "buttonDeleteName": "删除订单",
-        "buttonLeftName": "查看物流",
-        "buttonRightName": "确认收货",
-        "StatusName": "orderReceipt",
-        "StatusTitle": "已发货",
-        "BuyNum": "1",
-        "orderNumber": "122456789124",
-        "Title": "99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G",
-        "Icon": "http://192.168.0.101:8083/demo.png",
-        "nowPrice": 1999,
-        "CreateTime": "2018-07-03T15:27:13.49",
-        "orderName": "李虎",
-        "telphone": "12457964432",
-        "orderAddress": "安徽省 合肥市 高新区 创新产业园2期 创新产业园2期 创新产业园2期",
-        "PaymentMethod": "支付宝",
-        "freight": "9.99"
-      },
-      {
-        "OrderId": "5",
-        "buttonPayName": "",
-        "buttonDeleteName": "删除订单",
-        "buttonLeftName": "查看物流",
-        "buttonRightName": "确认收货",
-        "StatusName": "orderReceipt",
-        "StatusTitle": "已发货",
-        "BuyNum": "1",
-        "orderNumber": "122456789124",
-        "Title": "99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G",
-        "Icon": "http://192.168.0.101:8083/demo.png",
-        "nowPrice": 1999,
-        "CreateTime": "2018-07-03T15:27:13.49",
-        "orderName": "李虎",
-        "telphone": "12457964432",
-        "orderAddress": "安徽省 合肥市 高新区 创新产业园2期 创新产业园2期 创新产业园2期",
-        "PaymentMethod": "支付宝",
-        "freight": "9.99"
-      },
-      {
-        "OrderId": "6",
-        "buttonPayName": "",
-        "buttonDeleteName": "删除订单",
-        "buttonLeftName": "删除订单",
-        "buttonRightName": "评价订单",
-        "StatusName": "orderEvaluate",
-        "StatusTitle": "交易成功",
-        "BuyNum": "1",
-        "orderNumber": "122456789124",
-        "Title": "99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G",
-        "Icon": "http://192.168.0.101:8083/demo.png",
-        "nowPrice": 1999,
-        "CreateTime": "2018-07-03T15:27:13.49",
-        "orderName": "李虎",
-        "telphone": "12457964432",
-        "orderAddress": "安徽省 合肥市 高新区 创新产业园2期 创新产业园2期 创新产业园2期",
-        "PaymentMethod": "支付宝",
-        "freight": "9.99"
-      },
-      {
-        "OrderId": "7",
-        "buttonPayName": "",
-        "buttonDeleteName": "删除订单",
-        "buttonLeftName": "取消订单",
-        "buttonRightName": "催促发货",
-        "StatusName": "orderSend",
-        "StatusTitle": "等待发货",
-        "BuyNum": "1",
-        "orderNumber": "122456789124",
-        "Title": "99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G",
-        "Icon": "http://192.168.0.101:8083/demo.png",
-        "nowPrice": 1999,
-        "CreateTime": "2018-07-03T15:27:13.49",
-        "orderName": "李虎",
-        "telphone": "12457964432",
-        "orderAddress": "安徽省 合肥市 高新区 创新产业园2期 创新产业园2期 创新产业园2期",
-        "PaymentMethod": "支付宝",
-        "freight": "9.99"
-      }
-    ]
-  }
+  "order": {}
 }
