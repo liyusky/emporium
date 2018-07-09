@@ -3,9 +3,11 @@
     "code": 200,
     "message": null,
     "description": null,
-    "data": [{
+    "data": [
+      {
         "Key": "Iphone 6/6s",
-        "PhoneList": [{
+        "PhoneList": [
+          {
             "rownum": 1,
             "CatetoryNo": 1001,
             "Title": "测试手机数据13",
@@ -93,7 +95,8 @@
       },
       {
         "Key": "Iphone 7",
-        "PhoneList": [{
+        "PhoneList": [
+          {
             "rownum": 4,
             "CatetoryNo": 1001,
             "Title": "测试手机数据10",
@@ -293,6 +296,9 @@
       }
     ]
   },
+<<<<<<< HEAD
+  "order": {}
+=======
   "product": {
     "code": 200,
     "message": null,
@@ -676,4 +682,5 @@
       }
     }
   }
+>>>>>>> b57e94d89f76b9d54320f8c0d78d9b6535965ccb
 }

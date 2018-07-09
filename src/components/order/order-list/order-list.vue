@@ -12,7 +12,7 @@
         <div class="detail-content">
           <p class="content-title">{{item.Title}}</p>
           <div class="content-price-number">
-            <p class="content-price">{{item.nowPrice}}</p>
+            <p class="content-price">{{item.CommodityPrice}}</p>
             <p class="content-number">x{{item.BuyNum}}</p>
           </div>
         </div>
@@ -46,9 +46,6 @@ export default {
     }
   },
   props: ['orderList'],
-  created () {
-    console.log(this.orderList)
-  },
   methods: {
     gotoPage (id) {
       this.$router.push({
