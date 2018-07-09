@@ -11,7 +11,7 @@
           <div class="person-detail">
             <i class="iconfont icon-suan"></i>
             <div class="detail-name-address">
-              <h4 class="detail-name">{{orderDetail.orderName}} {{orderDetail.telphone}}</h4>
+              <h3 class="detail-name">{{orderDetail.orderName}} {{orderDetail.telphone}}</h3>
               <p class="detail-address">{{orderDetail.orderAddress}}</p>
             </div>
           </div>
@@ -22,7 +22,7 @@
               <img :src="orderDetail.Icon">
             </div>
             <div class="detail-content">
-              <p class="content-title">{{orderDetail.Title}}</p>
+              <h3 class="content-title">{{orderDetail.Title}}</h3>
               <div class="content-price-number">
                 <p class="content-price">￥{{orderDetail.nowPrice}}</p>
                 <p class="content-number">x{{orderDetail.BuyNum}}</p>
@@ -75,7 +75,6 @@ export default {
     this.id = this.$route.params.id
     Http.request('http://localhost:3004/order', (data) => {
       this.orderDetail = data[this.id]
-      console.log(this.orderDetail)
     })
   },
   components: {

@@ -3,9 +3,11 @@
     "code": 200,
     "message": null,
     "description": null,
-    "data": [{
+    "data": [
+      {
         "Key": "Iphone 6/6s",
-        "PhoneList": [{
+        "PhoneList": [
+          {
             "rownum": 1,
             "CatetoryNo": 1001,
             "Title": "测试手机数据13",
@@ -93,7 +95,8 @@
       },
       {
         "Key": "Iphone 7",
-        "PhoneList": [{
+        "PhoneList": [
+          {
             "rownum": 4,
             "CatetoryNo": 1001,
             "Title": "测试手机数据10",
@@ -675,5 +678,6 @@
         "CreateTime": "2018-07-06T10:39:41.747"
       }
     }
+  },
+  "order": {}
   }
-}
