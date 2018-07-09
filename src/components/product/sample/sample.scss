@@ -47,11 +47,12 @@
       color: #ff5555;
     }
     .service-project {
+      $param: (flex flex) (direction column) (justifyContent space-around);
+      @include flexSet($param);
       width: 100%;
       height: 315 / $unit * $symbol;
       padding: {
-        top: 36 / $unit * $symbol;
-        right: 36 / $unit * $symbol;
+        bottom: 15 / $unit * $symbol;
       }
       .project-group {
         $param: (flex flex) (justifyContent space-between);
@@ -59,7 +60,7 @@
         width: 100%;
         height: 117 / $unit * $symbol;
         .group-item {
-          width: 281 / $unit * $symbol;
+          width: 321 / $unit * $symbol;
           height: 100%;
           .item-name {
             $param: (flex flex) (alignItems center);
@@ -71,6 +72,9 @@
                 right: 21 / $unit * $symbol;
               }
               font-size: 54 / $unit * $symbol;
+            }
+            p {
+              font-size: 27 / $unit * $symbol;
             }
           }
           .item-introduction {
@@ -106,7 +110,7 @@
         bottom: 30 / $unit * $symbol;
       }
       border-radius: 15 / $unit * $symbol;
-      box-shadow: 0 0 (12 / $unit * $symbol) (12 / $unit * $symbol) #efefef;
+      box-shadow: 0 0 (12 / $unit * $symbol) (6 / $unit * $symbol) #efefef;
       .tip-message {
         $param: (flex flex) (direction column) (justifyContent space-between);
         @include flexSet($param);

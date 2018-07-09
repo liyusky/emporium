@@ -296,5 +296,391 @@
       }
     ]
   },
+<<<<<<< HEAD
   "order": {}
+=======
+  "product": {
+    "code": 200,
+    "message": null,
+    "description": null,
+    "data": {
+      "Phone": {
+        "ParamList": [
+          {
+            "Key": "model",
+            "Title": "号型",
+            "Value": "Iphone 6",
+            "Sortno": 1
+          },
+          {
+            "Key": "memory",
+            "Title": "内存",
+            "Value": "8G",
+            "Sortno": 2
+          },
+          {
+            "Key": "color",
+            "Title": "颜色",
+            "Value": "白",
+            "Sortno": 3
+          },
+          {
+            "Key": "chense",
+            "Title": "成色",
+            "Value": "8成新 ",
+            "Sortno": 4
+          },
+          {
+            "Key": "banben",
+            "Title": "版本",
+            "Value": "",
+            "Sortno": 5
+          },
+          {
+            "Key": "nettype",
+            "Title": "网络类型",
+            "Value": "电信4G",
+            "Sortno": 6
+          },
+          {
+            "Key": "screensize",
+            "Title": "屏幕大小",
+            "Value": "5.5",
+            "Sortno": 7
+          },
+          {
+            "Key": "dpi",
+            "Title": "分辨率",
+            "Value": "1024*768",
+            "Sortno": 8
+          },
+          {
+            "Key": "phonesize",
+            "Title": "手机尺寸",
+            "Value": "5",
+            "Sortno": 9
+          },
+          {
+            "Key": "simtype",
+            "Title": "sim型号",
+            "Value": "naio",
+            "Sortno": 10
+          },
+          {
+            "Key": "camerafront",
+            "Title": "前置摄像头",
+            "Value": "800万",
+            "Sortno": 11
+          },
+          {
+            "Key": "cameraback",
+            "Title": "后置摄像头",
+            "Value": "2000万",
+            "Sortno": 12
+          },
+          {
+            "Key": "cpu",
+            "Title": "cpu",
+            "Value": "A10",
+            "Sortno": 13
+          },
+          {
+            "Key": "cpuhz",
+            "Title": "cpu频率",
+            "Value": "2.0G",
+            "Sortno": 14
+          }
+        ],
+        "CatetoryNo": 1001,
+        "Title": "测试手机数据",
+        "Icon": "http://192.168.0.101:8083/demo.png",
+        "originalPrice": 4999,
+        "nowPrice": 1999,
+        "ProductName": "Iphone 6/6s",
+        "ModelNo": "IP619",
+        "PaymentType": 1,
+        "Guarantee": 1,
+        "CreateTime": "2018-07-03T14:48:25.3",
+        "UpdateTime": "2018-07-03T14:48:25.3",
+        "Degree": 100,
+        "IsTested": true,
+        "Parameters": "",
+        "Status": 1,
+        "RepertoryNum": 1,
+        "SoldNum": 0,
+        "NetType": "电信4G",
+        "ProductId": 1000000,
+        "Memory": "8G",
+        "PayTitle": "",
+        "InstallmentNum": 0,
+        "InstallmentAmount": 0
+      },
+      "AttachmentList": [
+        {
+          "Id": 10001,
+          "CommodityId": 10008,
+          "CategoryId": 1,
+          "ArchiveType": "2",
+          "ArchiveUri": "http://192.168.0.101:8083/demo.png",
+          "CreateTime": "2018-07-06T09:23:15.527"
+        },
+        {
+          "Id": 10002,
+          "CommodityId": 10008,
+          "CategoryId": 1,
+          "ArchiveType": "2",
+          "ArchiveUri": "http://192.168.0.101:8083/demo.png",
+          "CreateTime": "2018-07-06T09:23:15.527"
+        },
+        {
+          "Id": 10003,
+          "CommodityId": 10008,
+          "CategoryId": 1,
+          "ArchiveType": "1",
+          "ArchiveUri": "http://192.168.0.101:8083/demo.png",
+          "CreateTime": "2018-07-06T09:23:15.527"
+        },
+        {
+          "Id": 10004,
+          "CommodityId": 10008,
+          "CategoryId": 1,
+          "ArchiveType": "1",
+          "ArchiveUri": "http://192.168.0.101:8083/demo.png",
+          "CreateTime": "2018-07-06T09:23:15.527"
+        },
+        {
+          "Id": 10005,
+          "CommodityId": 10008,
+          "CategoryId": 1,
+          "ArchiveType": "1",
+          "ArchiveUri": "http://192.168.0.101:8083/demo.png",
+          "CreateTime": "2018-07-06T09:23:15.527"
+        },
+        {
+          "Id": 10006,
+          "CommodityId": 10008,
+          "CategoryId": 1,
+          "ArchiveType": "1",
+          "ArchiveUri": "http://192.168.0.101:8083/demo.png",
+          "CreateTime": "2018-07-06T09:23:15.527"
+        },
+        {
+          "Id": 10007,
+          "CommodityId": 10008,
+          "CategoryId": 1,
+          "ArchiveType": "1",
+          "ArchiveUri": "http://192.168.0.101:8083/demo.png",
+          "CreateTime": "2018-07-06T09:23:15.527"
+        },
+        {
+          "Id": 10008,
+          "CommodityId": 10008,
+          "CategoryId": 1,
+          "ArchiveType": "2",
+          "ArchiveUri": "http://192.168.0.101:8083/demo.png",
+          "CreateTime": "2018-07-06T09:23:15.527"
+        }
+      ],
+      "PhoneTestInfo": {
+        "TestInfoList": [
+          {
+            "Key": "CreateTime",
+            "Title": "生产日期",
+            "Value": "",
+            "Sortno": 1
+          },
+          {
+            "Key": "OS",
+            "Title": "操作系统",
+            "Value": "",
+            "Sortno": 2
+          },
+          {
+            "Key": "Battery",
+            "Title": "电池效率",
+            "Value": "",
+            "Sortno": 3
+          },
+          {
+            "Key": "Channel",
+            "Title": "版本",
+            "Value": "",
+            "Sortno": 4
+          },
+          {
+            "Key": "Facade",
+            "Title": "外观成色",
+            "Value": "",
+            "Sortno": 5
+          },
+          {
+            "Key": "RepairHis",
+            "Title": "维修记录",
+            "Value": "",
+            "Sortno": 6
+          }
+        ],
+        "OtherInfoList": [
+          {
+            "Key": "Touch",
+            "Title": "触摸",
+            "Value": "1",
+            "Sortno": 1
+          },
+          {
+            "Key": "Screen",
+            "Title": "屏幕显示",
+            "Value": "1",
+            "Sortno": 2
+          },
+          {
+            "Key": "Call",
+            "Title": "通话",
+            "Value": "1",
+            "Sortno": 3
+          },
+          {
+            "Key": "VolKey",
+            "Title": "音量键",
+            "Value": "1",
+            "Sortno": 4
+          },
+          {
+            "Key": "HomeKey",
+            "Title": "HOME键",
+            "Value": "1",
+            "Sortno": 5
+          },
+          {
+            "Key": "MuteKey",
+            "Title": "静音键",
+            "Value": "1",
+            "Sortno": 6
+          },
+          {
+            "Key": "TouchID",
+            "Title": "指纹识别",
+            "Value": "1",
+            "Sortno": 7
+          },
+          {
+            "Key": "FrontCamera",
+            "Title": "前置摄像头",
+            "Value": "1",
+            "Sortno": 8
+          },
+          {
+            "Key": "BackCamera",
+            "Title": "后置摄像头",
+            "Value": "1",
+            "Sortno": 9
+          },
+          {
+            "Key": "FlashLight",
+            "Title": "闪光灯",
+            "Value": "1",
+            "Sortno": 10
+          },
+          {
+            "Key": "WIFI",
+            "Title": "WIFI",
+            "Value": "1",
+            "Sortno": 11
+          },
+          {
+            "Key": "Bluetooth",
+            "Title": "蓝牙",
+            "Value": "",
+            "Sortno": 12
+          },
+          {
+            "Key": "GPS",
+            "Title": "GPS",
+            "Value": "1",
+            "Sortno": 13
+          },
+          {
+            "Key": "NFC",
+            "Title": "NFC",
+            "Value": "1",
+            "Sortno": 14
+          },
+          {
+            "Key": "SIM",
+            "Title": "SIM识别",
+            "Value": "1",
+            "Sortno": 15
+          },
+          {
+            "Key": "JLGN",
+            "Title": "距离感应",
+            "Value": "1",
+            "Sortno": 16
+          },
+          {
+            "Key": "Compass",
+            "Title": "指南针",
+            "Value": "1",
+            "Sortno": 17
+          },
+          {
+            "Key": "Gyroscope",
+            "Title": "陀螺仪",
+            "Value": "1",
+            "Sortno": 18
+          },
+          {
+            "Key": "Gravity",
+            "Title": "重力感应",
+            "Value": "1",
+            "Sortno": 19
+          },
+          {
+            "Key": "Speaker",
+            "Title": "扬声器",
+            "Value": "1",
+            "Sortno": 20
+          },
+          {
+            "Key": "VoiceTube",
+            "Title": "话筒",
+            "Value": "1",
+            "Sortno": 21
+          },
+          {
+            "Key": "HearTube",
+            "Title": "扬声器",
+            "Value": "1",
+            "Sortno": 22
+          },
+          {
+            "Key": "Headset",
+            "Title": "耳机",
+            "Value": "1",
+            "Sortno": 23
+          },
+          {
+            "Key": "USB",
+            "Title": "USB连接",
+            "Value": "1",
+            "Sortno": 24
+          },
+          {
+            "Key": "Charge",
+            "Title": "充电",
+            "Value": "1",
+            "Sortno": 25
+          }
+        ],
+        "Id": 1000000,
+        "CommodityId": 10008,
+        "TasterId": 1,
+        "Level": 1,
+        "MainInfo": "",
+        "OtherInfo": "",
+        "CreateTime": "2018-07-06T10:39:41.747"
+      }
+    }
+  }
+>>>>>>> b57e94d89f76b9d54320f8c0d78d9b6535965ccb
 }

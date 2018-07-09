@@ -15,7 +15,7 @@
             <i class="iconfont icon-dacong"></i>
           </div>
           <ul class="classify-shop-list">
-            <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(brandItem)">
+            <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(group.Id)">
               <div class="item-shop-picture">
                 <img :src="phone.Icon">
               </div>
@@ -57,7 +57,6 @@ export default {
   },
   created () {
     Http.request('http://localhost:3004/mall', (data) => {
-      console.log(data)
       this.groups = data
     })
   },
@@ -74,7 +73,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
-  @import './mall.scss';
+@import './mall.scss';
 </style>

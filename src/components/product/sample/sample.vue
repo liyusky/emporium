@@ -2,12 +2,10 @@
   <!-- s 实拍 -->
   <section class="sample">
     <h3 class="sample-title">真机实拍</h3>
-    <ul class="sample-photos">
+    <ul class="sample-photos" v-for="(item, index) in sample" :key="index">
       <li class="photos-item">
-        <img src="https://api.vtrois.com/image/702x525/bbbfc0">
-      </li>
-      <li class="photos-item">
-        <img src="https://api.vtrois.com/image/702x525/bbbfc0">
+        <img :src="item.ArchiveUri">
+        <!-- <img :src="https://api.vtrois.com/image/702x525/bbbfc0"> -->
       </li>
     </ul>
     <div class="sample-service">
@@ -53,7 +51,7 @@
           <p>官方微信客服：jtds1256</p>
           <p>关注有惊喜！有任何问题欢迎随时勾搭~~~</p>
         </div>
-        <button class="tip-copy-btn">复制</button>
+        <button class="tip-copy-btn" @click="openModal">分享</button>
       </div>
     </div>
   </section>
@@ -63,8 +61,14 @@
 <script>
 export default {
   name: 'Sample',
+  props: ['sample'],
   data () {
     return {}
+  },
+  methods: {
+    openModal (modal) {
+      this.$emit('OPEN_MODAL_EVENT', 'Share')
+    }
   }
 }
 </script>

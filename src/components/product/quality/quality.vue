@@ -21,134 +21,18 @@
         <div class="panel-message">
           <h4 class="message-title">质检信息</h4>
           <ul class="message-list">
-            <li class="list-item">
-              <p>生产日期</p>
-              <p>2015-08-22</p>
-            </li>
-            <li class="list-item">
-              <p>电池效率</p>
-              <p></p>
-            </li>
-            <li class="list-item">
-              <p>外观成色</p>
-              <p></p>
-            </li>
-            <li class="list-item">
-              <p>系统</p>
-              <p></p>
-            </li>
-            <li class="list-item">
-              <p>版本</p>
-              <p></p>
-            </li>
-            <li class="list-item">
-              <p>维修记录</p>
-              <p></p>
+            <li class="list-item" v-for="(item, index) in quality.TestInfoList" :key="index">
+              <p>{{item.Title}}</p>
+              <p>{{item.Value}}</p>
             </li>
           </ul>
         </div>
         <div class="panel-hardware">
           <h4 class="hardware-title">功能检测</h4>
           <ul class="hardware-list">
-            <li class="list-item">
-              <p>触摸</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>通话</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>HOME键</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>指纹识别</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>后置摄像头</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>WIFI</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>GPS</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>SIM卡识别</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>指南针</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>重力感应</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>话筒</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>耳机</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>充电</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>屏幕显示</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>音量键</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>静音键</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>前置摄像头</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>闪光灯</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>蓝牙</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>NFC</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>距离感应</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>陀螺仪</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>扬声器</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>听筒</p>
-              <i class="iconfont icon-dacong"></i>
-            </li>
-            <li class="list-item">
-              <p>USB连接</p>
-              <i class="iconfont icon-dacong"></i>
+            <li class="list-item" v-for="(item, index) in quality.OtherInfoList" :key="index">
+              <p>{{item.Title}}</p>
+              <i class="iconfont" :class="{'icon-dacong': item.Value == 1, 'icon-suan': item.Value != 1}"></i>
             </li>
           </ul>
         </div>
@@ -187,7 +71,7 @@
           </div>
         </li>
       </ul>
-      <img class="process-video" src="https://api.vtrois.com/image/702x390/bbbfc0">
+      <!-- <img class="process-video" src="https://api.vtrois.com/image/702x390/bbbfc0"> -->
       <!-- <video class="process-video" src="https://api.vtrois.com/image/702x390/bbbfc0"></video> -->
     </div>
   </section>
@@ -197,6 +81,7 @@
 <script>
 export default {
   name: 'Quality',
+  props: ['quality'],
   data () {
     return {}
   }

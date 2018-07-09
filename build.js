@@ -5,7 +5,7 @@ const unitSass = './dependencies/sass/_unit.scss'
 const btnSass = './dependencies/sass/_btn.scss'
 
 const FileType = ['vue', 'scss', 'js'];
-const exDir = ['common', 'components'];
+const exDir = ['common', 'components', 'modal'];
 
 const Template = {
   vue: fs.readFileSync('./dependencies/tempalte/tempalte.vue', 'utf8'),

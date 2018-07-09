@@ -1,25 +1,23 @@
 @import '../../../dependencies/sass/_unit.scss';
 @import '../../../dependencies/sass/_flex.scss';
-@mixin pxvw($style, $px) {
-  $style: $px / $unit * $symbol
-}
-
-.order {
+.order{
   width: 100vw;
   height: 100vh;
   padding: {
-    top: 207 / $unit * $symbol;
+    top: (129 + 84) / $unit * $symbol;
   }
   background: #f4f4f4;
+  overflow-y: auto;
   .order-tabbar {
     $param: (flex flex) (justifyContent space-around);
     @include flexSet($param);
     position: fixed;
     top: 129 / $unit * $symbol;
     left: 0;
+    right: 0;
+    z-index: 100;
     width: 100%;
-    height: 78 / $unit * $symbol;
-    @include pxvw(height, 83);
+    height: 84 / $unit * $symbol;
     padding: {
       left: 30 / $unit * $symbol;
       right: 30 / $unit * $symbol;
