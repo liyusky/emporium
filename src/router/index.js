@@ -7,6 +7,7 @@ import Feedback from '../components/feedback/feedback.vue'
 import AddressManage from '../components/address-manage/address-manage.vue'
 import AddAddress from '../components/add-address/add-address.vue'
 import Order from '../components/order/order.vue'
+import OrderDetail from '../components/order-detail/order-detail.vue'
 
 export default new Router({
   routes: [
@@ -55,6 +56,11 @@ export default new Router({
       path: '/order',
       name: 'order',
       component: Order
+    },
+    {
+      path: '/orderdetail/:id',
+      name: 'orderdetail',
+      component: OrderDetail
     }
   ]
 })

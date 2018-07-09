@@ -1,0 +1,144 @@
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_flex.scss';
+.order-content {
+  width: 100%;
+  .content-item {
+    width: 100%;
+    margin: {
+      bottom: 21 / $unit * $symbol;
+    }
+    .item-title {
+      $param: (flex flex) (alignItems center) (justifyContent space-between);
+      @include flexSet($param);
+      width: 100%;
+      height: 80 / $unit * $symbol;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      background: #fff;
+      .title-time {
+        font-size: 27 / $unit * $symbol;
+        color: #000000;
+      }
+      .title-sign {
+        font-size: 27 / $unit * $symbol;
+        color: #eb2828;
+      }
+    }
+    .item-detail {
+      $param: (flex flex) (alignItems center) (justifyContent flex-start);
+      @include flexSet($param);
+      width: 100%;
+      height: 180 / $unit * $symbol;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      .detail-img {
+        width: 130 / $unit * $symbol;
+        height: 130 / $unit * $symbol;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .detail-content {
+        flex: 1;
+        margin: {
+          left: 30 / $unit * $symbol;
+        }
+        .content-title {
+          line-height: 36 / $unit * $symbol;
+          font-size: 30 / $unit * $symbol;
+          color: #2a2a2a;
+        }
+        .content-price-number {
+          $param: (flex flex) (justifyContent space-between);
+          @include flexSet($param);
+          .content-price {
+            font-size: 30 / $unit * $symbol;
+            color: #eb2828;
+            font-weight: bold;
+          }
+          .content-number {
+            font-size: 24 / $unit * $symbol;
+            color: #999999;
+          }
+        }
+      }
+    }
+    .item-summary {
+      $param: (flex flex) (alignItems center) (justifyContent flex-end);
+      @include flexSet($param);
+      width: 100%;
+      height: 79 / $unit * $symbol;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      background: #fff;
+      border: {
+        bottom: 1px solid #f4f4f4;
+      }
+      p {
+        font-size: 27 / $unit * $symbol;
+        color: #8e8e8e;
+        .summary-price {
+          font-size: 27 / $unit * $symbol;
+          color: #2a2a2a;
+          font-weight: bold;
+        }
+      }
+    }
+    .item-button {
+      width: 100%;
+      height: 80 / $unit * $symbol;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      background: #fff;
+      .button-topay {
+        $param: (flex flex) (alignItems center) (justifyContent flex-end);
+        @include flexSet($param);
+        width: 100%;
+        height: 80 / $unit * $symbol;
+        button {
+          width: 160 / $unit * $symbol;
+          height: 60 / $unit * $symbol;
+          background: #eb2828;
+          font-size: 27 / $unit * $symbol;
+          color: #fff;
+          border-radius: 7 / $unit * $symbol;
+          outline: none;
+        }
+      }
+      .button-order {
+        $param: (flex flex) (alignItems center) (justifyContent flex-end);
+        @include flexSet($param);
+        width: 100%;
+        height: 80 / $unit * $symbol;
+        button {
+          width: 160 / $unit * $symbol;
+          height: 60 / $unit * $symbol;
+          margin: {
+            left: 19 / $unit * $symbol;
+          }
+          background: #fff;
+          font-size: 27 / $unit * $symbol;
+          border-radius: 7 / $unit * $symbol;
+          outline: none;
+        }
+        button:first-of-type {
+          border: 1px solid #818181;
+          color: #000000;
+        }
+        button:last-of-type {
+          border: 1px solid #eb2828;
+          color: #eb2828;
+        }
+      }
+    }
+  }
+}
