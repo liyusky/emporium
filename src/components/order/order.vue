@@ -9,7 +9,7 @@
       <div class="tabbar-item" :class="{active:checkPageName == 'orderEvaluate'}" @click="checkPage('orderEvaluate')">待评价</div>
     </section>
     <section class="order-classify">
-      <OrderList :orderList = orderList></OrderList>
+      <OrderList :orderList="orderList"></OrderList>
     </section>
   </section>
 </template>
