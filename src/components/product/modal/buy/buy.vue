@@ -34,7 +34,7 @@
         </div>
       </div> -->
     </div>
-    <button class="rightbuy-button">立即购买</button>
+    <button class="rightbuy-button" @click="gotoPage('order-comfirm')">立即购买</button>
   </section>
   <!-- e 购买 -->
 </template>
@@ -45,6 +45,14 @@ export default {
   methods: {
     closeModal () {
       this.$emit('CLOSE_MODAL_EVENT')
+    },
+    gotoPage (page) {
+      this.$router.push({
+        name: page,
+        params: {
+          phone: this.buy
+        }
+      })
     }
   }
 }

@@ -47,6 +47,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import './order.scss';
-
+@import './order.scss';
 </style>
