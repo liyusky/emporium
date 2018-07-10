@@ -34,7 +34,7 @@
         </div>
       </div> -->
     </div>
-    <button class="rightbuy-button" @click="gotoPage('order-comfirm')">立即购买</button>
+    <button class="rightbuy-button" @click="gotoPage('order-confirm')">立即购买</button>
   </section>
   <!-- e 购买 -->
 </template>
@@ -50,7 +50,7 @@ export default {
       this.$router.push({
         name: page,
         params: {
-          phone: this.buy
+          phone: JSON.stringify(this.buy)
         }
       })
     }

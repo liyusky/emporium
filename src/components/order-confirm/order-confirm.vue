@@ -7,7 +7,7 @@
           <img src="https://api.vtrois.com/image/750x7/e0e1e3">
         </div>
         <!-- 有地址 -->
-        <div class="address-exist" v-show="addressToggle === 'addressExist'">
+        <div class="address-exist" v-show="hasAddressDefault">
           <div class="exist-person-info">
             <p class="info-name-telphone">
               <i class="iconfont icon-suan"></i>
@@ -18,7 +18,7 @@
           <i class="iconfont icon-dacong"></i>
         </div>
         <!-- 无地址 -->
-        <div class="address-without" v-show="addressToggle === 'addressWithout'">
+        <div class="address-without" v-show="!hasAddressDefault">
             <p class="without-title">
               <i class="iconfont icon-suan"></i>
               <span>添加收货地址</span>
@@ -68,64 +68,79 @@
         <div class="way-title">
           <span>支付方式</span>
         </div>
-        <div class="way-item">
+        <div class="way-item" v-for="(item, index) in phone.PaymentTypeArr" :key="index" @click="select(item.name)">
           <div class="item-detail">
             <div class="detail-name">
-              <i class="iconfont icon-dacong"></i>
-              <span>借条大师支付</span>
+              <i class="iconfont" :class="'icon-' + item.icon"></i>
+              <span>{{item.name}}</span>
             </div>
           </div>
-          <i class="iconfont icon-dacong"></i>
-        </div>
-        <div class="way-item">
-          <div class="item-detail">
-            <div class="detail-name">
-              <i class="iconfont icon-dacong"></i>
-              <span>微信支付</span>
-            </div>
-          </div>
-          <i class="iconfont icon-dacong"></i>
-        </div>
-        <div class="way-item">
-          <div class="item-detail">
-            <div class="detail-name">
-              <i class="iconfont icon-dacong"></i>
-              <span>支付宝支付</span>
-            </div>
-          </div>
-          <i class="iconfont icon-dacong"></i>
+          <i class="iconfont" :class="{'icon-dacong': selected == item.name, 'icon-dacong': selected != item.name}"></i>
         </div>
       </div>
     </div>
     <div class="comfirm-submit">
       <p class="submit-total">
         <span>合计：</span>
-        <span>￥5949</span>
+        <span>￥{{phone.nowPrice}}</span>
       </p>
-      <button class="submit-button">提交订单</button>
+      <button class="submit-button" @click="confrim">提交订单</button>
     </div>
+    <Modal v-show="modal">
+      <Instalments :instalments="phone" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
+    </Modal>
   </section>
 </template>
 <script>
 import Theme from '../common/theme/theme.vue'
+import Modal from '../common/modal/modal.vue'
+import Instalments from './modal/instalments/instalments.vue'
 export default {
-  name: 'OrderComfirm',
-  props: ['phone'],
+  name: 'OrderConfirm',
+  components: {
+    Theme,
+    Modal,
+    Instalments
+  },
   data () {
     return {
       theme: {
         title: '订单信息确认'
       },
-      addressToggle: 'addressExist'
+      selected: null,
+      modal: false,
+      instalment: null,
+      hasAddressDefault: true,
+      phone: {}
     }
   },
+  mounted () {
+    this.phone = JSON.parse(this.$route.params.phone)
+  },
   methods: {
+    select (name) {
+      if (name === this.selected) {
+        this.selected = null
+        return
+      }
+      if (name === '大师分期') {
+        this.modal = true
+      } else {
+        this.selected = name
+      }
+    },
+    closeModal () {
+      this.modal = false
+    },
+    record (instalment) {
+      this.selected = '大师分期'
+      this.instalment = instalment
+      this.modal = false
+    },
+    confrim () {},
     gotoPage (page) {
       this.$router.push({name: page})
     }
-  },
-  components: {
-    Theme
   }
 }
 </script>

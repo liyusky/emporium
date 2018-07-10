@@ -32,7 +32,6 @@
 
 <script>
 // import Bus from '@/common/com/com.vue'
-import { mapMutations } from 'vuex'
 export default {
   name: 'Order',
   data () {
@@ -41,10 +40,7 @@ export default {
   methods: {
     gotoPage (page) {
       this.$router.push({name: 'order'})
-      // Bus.$emit('changePage', page)
-      this.changPage(page)
-    },
-    ...mapMutations(['changPage'])
+    }
   }
 }
 </script>

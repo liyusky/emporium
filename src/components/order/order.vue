@@ -9,18 +9,12 @@
       <div class="tabbar-item" :class="{active:checkPageName == 'orderEvaluate'}" @click="checkPage('orderEvaluate')">待评价</div>
     </section>
     <section class="order-classify">
-      <v-touch @swipeleft="onSwipeLeft()" @swiperight="onSwipeRight()">
-        <OrderList :orderList = orderList></OrderList>
-      </v-touch>
+      <OrderList :orderList="orderList"></OrderList>
     </section>
   </section>
 </template>
 
 <script>
-// import Bus from '@/common/com/com.vue'
-import axios from 'axios'
-import { mapState } from 'vuex'
-// import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import OrderList from './order-list/order-list.vue'
 export default {
@@ -35,18 +29,18 @@ export default {
     }
   },
   mounted () {
-    axios({
-      url: 'http://192.168.0.101:8082/order/OrderList',
-      method: 'post',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      params: {
-        custermerId: '10000',
-        status: '-1'
-      }
-    }).then(function (response) {
-      // this.orderList = response.data.data
-      console.log(response.data.data)
-    })
+    // axios({
+    //   url: 'http://192.168.0.101:8082/order/OrderList',
+    //   method: 'post',
+    //   headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    //   params: {
+    //     custermerId: '10000',
+    //     status: '-1'
+    //   }
+    // }).then(function (response) {
+    //   this.orderList = response.data.data
+    //   console.log(response.data.data)
+    // })
   },
   methods: {
     checkPage (orderListName) {
@@ -58,9 +52,6 @@ export default {
     onSwipeRight () {
       console.log(2)
     }
-  },
-  computed: {
-    ...mapState(['orderName'])
   },
   components: {
     Theme,

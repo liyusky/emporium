@@ -4,7 +4,13 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  watch: {
+    $route: (to, from) => {
+      console.log(to)
+      console.log(from)
+    }
+  }
 }
 </script>
 
