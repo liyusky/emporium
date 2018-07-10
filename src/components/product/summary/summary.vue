@@ -87,17 +87,28 @@ export default {
   name: 'Summary',
   props: ['summary', 'banner'],
   data () {
-    return {
-      swiper: null
-    }
+    return {}
   },
   mounted () {
-    this.swiper = new Swiper('.swiper-container', {
-      direction: 'vertical',
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination'
-      }
+    // 轮播图
+    this.$nextTick(function () {
+      var mySwiper = new Swiper('.swiper-container', {
+        autoplay: {
+          delay: 3000
+        },
+        freeMode: false,
+        loop: true,
+        speed: 1000,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          bulletElement: 'span',
+          longSwipesRatio: 0.3
+        },
+        observer: true,
+        observeParents: true
+      })
+      console.log(mySwiper)
     })
   },
   methods: {
@@ -109,6 +120,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  @import "../../../css/swiper-4.3.3.min.css";
   @import "./summary.scss";
 </style>

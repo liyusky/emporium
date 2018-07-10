@@ -34,13 +34,28 @@
 import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'AddressTips',
+  props: ['origin'],
   data () {
     return {}
   },
   methods: {
     gotoPage (index) {
-      this.$router.push({name: 'order-confirm'})
-      this.selectAddress(index)
+      console.log(this.origin)
+      switch (this.origin) {
+        case 'mine':
+          this.$router.push({
+            name: 'add-address',
+            params: {
+              title: '修改收货地址',
+              id: 0
+            }
+          })
+          break
+        case 'order-confrim':
+          this.$router.push({name: 'order-confirm'})
+          this.selectAddress(index)
+          break
+      }
     },
     ...mapMutations(['selectAddress'])
   },

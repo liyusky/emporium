@@ -140,7 +140,12 @@ export default {
     },
     confrim () {},
     gotoPage (page) {
-      this.$router.push({name: page})
+      this.$router.push({
+        name: page,
+        params: {
+          origin: 'order-confrim'
+        }
+      })
     }
   },
   computed: {

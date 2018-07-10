@@ -36,14 +36,16 @@ export default new Router({
       props: true
     },
     {
-      path: '/address-manage',
+      path: '/address-manage/:origin',
       name: 'address-manage',
-      component: AddressManage
+      component: AddressManage,
+      props: true
     },
     {
-      path: '/add-address',
+      path: '/add-address/:title',
       name: 'add-address',
-      component: AddAddress
+      component: AddAddress,
+      props: true
     },
     {
       path: '/feedback',
