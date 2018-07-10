@@ -1,13 +1,13 @@
 <template>
   <!-- s 地址标签 -->
   <ul class="address-tips">
-    <li class="tip">
+    <li class="tip" v-for="(item, index) in addressList" :key="index" @click="gotoPage(index)">
       <div class="tip-detail">
         <p class="detail-user">
-          <span>李虎</span>
-          <span>15581572466</span>
+          <span>{{item.name}}</span>
+          <span>{{item.telphone}}</span>
         </p>
-        <div class="detail-address">浙江省 杭州市 西湖区太湖新村 7单元2幢205</div>
+        <div class="detail-address">{{item.address}}</div>
       </div>
       <div class="tip-operation">
         <p class="operation-set-default">
@@ -31,10 +31,21 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'AddressTips',
   data () {
     return {}
+  },
+  methods: {
+    gotoPage (index) {
+      this.$router.push({name: 'order-confirm'})
+      this.selectAddress(index)
+    },
+    ...mapMutations(['selectAddress'])
+  },
+  computed: {
+    ...mapState(['addressList'])
   }
 }
 </script>

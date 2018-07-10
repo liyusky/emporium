@@ -185,7 +185,7 @@
     $param: (flex flex) (direction column) (justifyContent space-between);
     @include flexSet($param);
     width: 100%;
-    height: 834 / $unit * $symbol;
+    // height: 834 / $unit * $symbol;
     padding: {
       top: 36 / $unit * $symbol;
       left: 24 / $unit * $symbol;

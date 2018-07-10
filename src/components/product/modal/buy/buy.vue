@@ -39,6 +39,7 @@
   <!-- e 购买 -->
 </template>
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'Buy',
   props: ['buy'],
@@ -48,12 +49,14 @@ export default {
     },
     gotoPage (page) {
       this.$router.push({
-        name: page,
-        params: {
-          phone: JSON.stringify(this.buy)
-        }
+        name: page
+        // params: {
+        //   phone: JSON.stringify(this.buy)
+        // }
       })
-    }
+      this.SaveConfirmPhone(this.buy)
+    },
+    ...mapMutations(['SaveConfirmPhone'])
   }
 }
 </script>
