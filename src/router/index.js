@@ -57,10 +57,9 @@ export default new Router({
       props: true
     },
     {
-      path: '/order-confirm',
+      path: '/order-confirm/:phone',
       name: 'order-confirm',
-      component: OrderConfirm,
-      props: true
+      component: OrderConfirm
     }
     // {
     //   path: '/orderdetail/:id',

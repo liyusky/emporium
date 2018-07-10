@@ -7,7 +7,7 @@
     <div class="payment-way">
       <div class="way-jietiao">
         <div class="jietiao-installment">
-          <div class="installment-item" :class="{active: index == item.index}" @click="select">
+          <div class="installment-item" :class="{active: true}" @click="select(1, 2)">
             <p class="item-title">￥578x1期</p>
             <p class="item-tip">【含手续费】</p>
           </div>

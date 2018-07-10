@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   padding: {
-    top: 90 / $unit * $symbol;
+    top: 129 / $unit * $symbol;
     bottom: 100 / $unit * $symbol;
   }
   overflow-y: auto;
@@ -13,28 +13,39 @@
   .confirm-content {
     width: 100%;
     .content-address {
+      position: relative;
       width: 100%;
-      padding: {
-        left: 25 / $unit * $symbol;
-        right: 25 / $unit * $symbol;
-      }
       background: #fff;
-      .address-detail {
-        position: relative;
+      .address-process {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        width: 100%;
+        height: 7 / $unit * $symbol;
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+      }
+      .address-exist {
         $param: (flex flex) (justifyContent flex-start) (alignItems center);
         @include flexSet($param);
         width: 100%;
         padding: {
           top: 20 / $unit * $symbol;
           bottom: 20 / $unit * $symbol;
+          left: 25 / $unit * $symbol;
+          right: 25 / $unit * $symbol;
         }
-        .detail-arrow {
-          display: block;
-          width: 13 / $unit * $symbol;
-          height: 25 / $unit * $symbol;
-          background: #000;
+        i {
+          font-size: 15 / $unit * $symbol;
+          color: #a5a5a5;
         }
-        .detail-person-info {
+        .exist-person-info {
           flex: 1;
           .info-name-telphone {
             $param: (flex flex) (alignItems center) (justifyContent flex-start);
@@ -45,14 +56,11 @@
               font-weight: bold;
               color: #000000;
             }
-            .info-icon {
-              display: block;
-              width: 25 / $unit * $symbol;
-              height: 36 / $unit * $symbol;
+            i {
+              font-size: 30 / $unit * $symbol;
               margin: {
                 right: 15 / $unit * $symbol;
               }
-              background: #000;
             }
           }
           .info-receipt-place {
@@ -68,19 +76,36 @@
           }
         }
       }
-      .address-process {
+      .address-without {
+        $param: (flex flex) (justifyContent space-between) (alignItems center);
+        @include flexSet($param);
         width: 100%;
-        height: 7 / $unit * $symbol;
-        img {
-          display: block;
-          width: 100%;
-          height: 100%;
+        height: 105 / $unit * $symbol;
+        padding: {
+          left: 25 / $unit * $symbol;
+          right: 25 / $unit * $symbol;
+        }
+        i {
+          font-size: 15 / $unit * $symbol;
+          color: #a5a5a5;
+        }
+        .without-title {
+          i {
+            font-size: 30 / $unit * $symbol;
+            margin: {
+              right: 10 / $unit * $symbol;
+            }
+          }
+          span {
+            font-size: 30 / $unit * $symbol;
+            color: #333333;
+          }
         }
       }
     }
     .content-order-number {
       width: 100%;
-      height: 80;
+      height: 80 / $unit * $symbol;
       padding: {
         left: 25 / $unit * $symbol;
       }
@@ -261,11 +286,8 @@
             @include flexSet($param);
             height: 48 / $unit * $symbol;
             i {
-              display: block;
-              width: 48 / $unit * $symbol;
-              height: 48 / $unit * $symbol;
-              border-radius: 9 / $unit * $symbol;
-              background: red;
+              font-size: 48 / $unit * $symbol;
+              color: #666;
             }
             span {
               margin: {
@@ -283,11 +305,8 @@
           }
         }
         i {
-          display: block;
-          width: 42 / $unit * $symbol;
-          height: 42 / $unit * $symbol;
-          border-radius: 50%;
-          background: red;
+          font-size: 39 / $unit * $symbol;
+          color: red;
         }
       }
     }

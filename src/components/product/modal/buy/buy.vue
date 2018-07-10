@@ -50,7 +50,7 @@ export default {
       this.$router.push({
         name: page,
         params: {
-          phone: this.buy
+          phone: JSON.stringify(this.buy)
         }
       })
     }

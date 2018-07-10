@@ -1,4 +1,5 @@
 import axios from 'axios'
+// import { url } from 'inspector'
 export default class Http {
   callback = null
   static request (url, callback) {

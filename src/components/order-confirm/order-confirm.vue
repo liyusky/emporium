@@ -4,17 +4,26 @@
     <div class="confirm-content">
       <div class="content-address" @click="gotoPage('address-manage')">
         <div class="address-process">
-          <img src="">
+          <img src="https://api.vtrois.com/image/750x7/e0e1e3">
         </div>
-        <div class="address-detail">
-          <div class="detail-person-info">
+        <!-- 有地址 -->
+        <div class="address-exist" v-show="hasAddressDefault">
+          <div class="exist-person-info">
             <p class="info-name-telphone">
-              <i class="info-icon"></i>
+              <i class="iconfont icon-suan"></i>
               <span>李虎 1555753525</span>
             </p>
             <p class="info-receipt-place">安徽省 合肥市 高新区 创新产业园2期</p>
           </div>
-          <i class="detail-arrow"></i>
+          <i class="iconfont icon-dacong"></i>
+        </div>
+        <!-- 无地址 -->
+        <div class="address-without" v-show="!hasAddressDefault">
+            <p class="without-title">
+              <i class="iconfont icon-suan"></i>
+              <span>添加收货地址</span>
+            </p>
+          <i class="iconfont icon-dacong"></i>
         </div>
       </div>
       <div class="content-order-number">
@@ -78,7 +87,7 @@
       <button class="submit-button" @click="confrim">提交订单</button>
     </div>
     <Modal v-show="modal">
-      <Instalments :instalments="phone.instalments" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
+      <Instalments :instalments="phone" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
     </Modal>
   </section>
 </template>
@@ -88,7 +97,6 @@ import Modal from '../common/modal/modal.vue'
 import Instalments from './modal/instalments/instalments.vue'
 export default {
   name: 'OrderConfirm',
-  props: ['phone'],
   components: {
     Theme,
     Modal,
@@ -101,8 +109,13 @@ export default {
       },
       selected: null,
       modal: false,
-      instalment: null
+      instalment: null,
+      hasAddressDefault: true,
+      phone: {}
     }
+  },
+  mounted () {
+    this.phone = JSON.parse(this.$route.params.phone)
   },
   methods: {
     select (name) {
@@ -122,8 +135,12 @@ export default {
     record (instalment) {
       this.selected = '大师分期'
       this.instalment = instalment
+      this.modal = false
     },
-    confrim () {}
+    confrim () {},
+    gotoPage (page) {
+      this.$router.push({name: page})
+    }
   }
 }
 </script>
