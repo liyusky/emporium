@@ -10,7 +10,7 @@
         <p class="detail-price">{{buy.nowPrice}}</p>
         <p class="detail-advantage">{{buy.PaymentType}}</p>
       </div>
-      <i class="commodity-close" @click="closeModal"></i>
+      <i class="iconfont icon-dacong" @click="closeModal"></i>
     </div>
     <div class="rightbuy-property">
       <div class="property-item">
@@ -40,6 +40,7 @@
 </template>
 <script>
 import Http from '../../../../class/http.class.js'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Buy',
   props: ['buy'],
@@ -59,6 +60,7 @@ export default {
           OtherCost: 0
         }
       }).success((data) => {
+        this.SaveConfirmPhone(this.buy)
         this.$router.push({
           name: 'order-confirm',
           params: {
@@ -66,7 +68,8 @@ export default {
           }
         })
       })
-    }
+    },
+    ...mapMutations(['SaveConfirmPhone'])
   }
 }
 </script>

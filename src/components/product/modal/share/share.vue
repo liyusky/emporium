@@ -6,15 +6,21 @@
     </div>
     <div class="share-approach">
       <div class="approach-item">
-        <i class="iconfont icon-dacong"></i>
+        <div class="item-icon">
+          <i class="iconfont icon-dacong"></i>
+        </div>
         <p class="item-name">微信好友</p>
       </div>
       <div class="approach-item">
-        <i class="iconfont icon-dacong"></i>
+        <div class="item-icon">
+          <i class="iconfont icon-dacong"></i>
+        </div>
         <p class="item-name">朋友圈</p>
       </div>
       <div class="approach-item">
-        <i class="iconfont icon-dacong"></i>
+        <div class="item-icon">
+          <i class="iconfont icon-dacong"></i>
+        </div>
         <p class="item-name">复制链接</p>
       </div>
     </div>
