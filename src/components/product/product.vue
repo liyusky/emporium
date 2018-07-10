@@ -51,7 +51,7 @@ import PaymentMethod from './modal/payment-method/payment-method.vue'
 import Buy from './modal/buy/buy.vue'
 export default {
   name: 'Product',
-  props: ['id'],
+  props: ['id', 'title'],
   components: {
     Theme,
     Summary,
@@ -67,7 +67,7 @@ export default {
   data () {
     return {
       theme: {
-        title: 'iPhone 6S'
+        title: this.title
       },
       component: null,
       modal: false,
@@ -81,7 +81,13 @@ export default {
     }
   },
   created () {
-    Http.request('http://localhost:3004/product?id=10008', (data) => {
+    Http.send({
+      url: 'product',
+      params: {
+        id: this.id
+      }
+    }).success((data) => {
+      console.log(data)
       setPaymentTypeArr()
       this.summary = data.Phone
       this.sample = data.AttachmentList.filter((item) => {
@@ -93,7 +99,7 @@ export default {
       this.quality = data.PhoneTestInfo
       this.parameter = data.Phone.ParamList
       this.paymentMethod = {
-        list: [],
+        list: data.CommodityInstallmentList,
         methods: data.Phone.PaymentTypeArr
       }
       this.buy = data.Phone

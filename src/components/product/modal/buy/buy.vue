@@ -34,11 +34,12 @@
         </div>
       </div> -->
     </div>
-    <button class="rightbuy-button" @click="gotoPage('order-confirm')">立即购买</button>
+    <button class="rightbuy-button" @click="order">立即购买</button>
   </section>
   <!-- e 购买 -->
 </template>
 <script>
+import Http from '../../../../class/http.class.js'
 export default {
   name: 'Buy',
   props: ['buy'],
@@ -46,12 +47,24 @@ export default {
     closeModal () {
       this.$emit('CLOSE_MODAL_EVENT')
     },
-    gotoPage (page) {
-      this.$router.push({
-        name: page,
-        params: {
-          phone: JSON.stringify(this.buy)
+    order () {
+      Http.send({
+        url: 'buy',
+        data: {
+          CustermerId: '10000',
+          commodityId: this.buy.ProductId,
+          PayType: 0,
+          DeliverType: 0,
+          DeliverPrice: 0,
+          OtherCost: 0
         }
+      }).success((data) => {
+        this.$router.push({
+          name: 'order-confirm',
+          params: {
+            phone: JSON.stringify(this.buy)
+          }
+        })
       })
     }
   }

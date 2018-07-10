@@ -51,7 +51,6 @@ export default {
           })
           break
         case 'order-confrim':
-          this.$router.go(-1)
           break
       }
     }

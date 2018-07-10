@@ -15,7 +15,7 @@
             <i class="iconfont icon-dacong"></i>
           </div>
           <ul class="classify-shop-list">
-            <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(group.Id)">
+            <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(phone.Id, phone.ProductName)">
               <div class="item-shop-picture">
                 <img :src="phone.Icon">
               </div>
@@ -56,16 +56,24 @@ export default {
     }
   },
   created () {
-    Http.request('http://localhost:3004/mall', (data) => {
+    Http.send({
+      url: 'mall',
+      params: {
+        Pageindex: 2
+      }
+    }).success((data) => {
+      console.log(data)
       this.groups = data
     })
   },
   methods: {
-    gotoPage (id) {
+    gotoPage (id, title) {
+      console.log(id)
       this.$router.push({
         name: 'product',
         params: {
-          id: id
+          id: id,
+          title: title
         }
       })
     }

@@ -16,11 +16,6 @@ export default {
   },
   components: {
     Tab
-  },
-  methods: {
-    gotoPage (page) {
-      this.$router.push({name: page})
-    }
   }
 }
 </script>

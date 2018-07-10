@@ -27,10 +27,11 @@ export default new Router({
           name: 'mine',
           component: Mine
         }
-      ]
+      ],
+      redirect: '/mall'
     },
     {
-      path: '/product',
+      path: '/product/:id/:title',
       name: 'product',
       component: Product,
       props: true

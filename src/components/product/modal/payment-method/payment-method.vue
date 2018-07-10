@@ -10,32 +10,12 @@
           <i class="title-icon"></i>
           <p class="title-payname">大师分期</p>
         </div>
-        <div class="jietiao-installment">
-          <div class="installment-item">
-            <p class="item-title">￥578x1期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x2期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x3期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x4期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x5期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x6期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-        </div>
+        <ul class="jietiao-installment">
+          <li class="installment-item" v-for="(item, index) in paymentMethod.list" :key="index">
+            <p class="item-title">￥{{item.InstallmentAmount}}x{{item.InstallmentNum}}期</p>
+            <p class="item-tip">手续费: ￥{{item.InstallmentCost}}</p>
+          </li>
+        </ul>
       </div>
       <div class="way-alipay" v-for="(item, index) in paymentMethod.methods" :key="index">
         <i class="iconfont" :class="'icon-' + item.icon"></i>
@@ -43,7 +23,7 @@
       </div>
     </div>
     <div class="payment-button">
-      <button class="button-sure">确定</button>
+      <button class="button-sure" @click="closeModal">确定</button>
     </div>
   </section>
   <!-- e 支付 -->
