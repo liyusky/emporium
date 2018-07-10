@@ -2,7 +2,7 @@
   <!-- s 地址管理 -->
   <section class="address-manage">
     <Theme :theme="theme"></Theme>
-    <AddressTips></AddressTips>
+    <AddressTips :origin="origin"></AddressTips>
     <button class="manage-btn" @click="gotoPage('add-address')">新增收货地址</button>
   </section>
   <!-- e 地址管理 -->
@@ -13,6 +13,7 @@ import Theme from '../common/theme/theme.vue'
 import AddressTips from './address-tips/address-tips.vue'
 export default {
   name: 'AddressManage',
+  props: ['origin'],
   components: {
     Theme,
     AddressTips
@@ -26,7 +27,12 @@ export default {
   },
   methods: {
     gotoPage (page) {
-      this.$router.push({name: page})
+      this.$router.push({
+        name: page,
+        params: {
+          title: '新增收货地址'
+        }
+      })
     }
   }
 }

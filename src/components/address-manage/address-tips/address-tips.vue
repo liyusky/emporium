@@ -1,7 +1,7 @@
 <template>
   <!-- s 地址标签 -->
   <ul class="address-tips">
-    <li class="tip">
+    <li class="tip" @click="gotoPage">
       <div class="tip-detail">
         <p class="detail-user">
           <span>李虎</span>
@@ -33,8 +33,28 @@
 <script>
 export default {
   name: 'AddressTips',
+  props: ['origin'],
   data () {
     return {}
+  },
+  methods: {
+    gotoPage () {
+      console.log(this.origin)
+      switch (this.origin) {
+        case 'mine':
+          this.$router.push({
+            name: 'add-address',
+            params: {
+              title: '修改收货地址',
+              id: 0
+            }
+          })
+          break
+        case 'order-confrim':
+          this.$router.go(-1)
+          break
+      }
+    }
   }
 }
 </script>

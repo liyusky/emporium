@@ -36,7 +36,12 @@ export default {
   },
   methods: {
     gotoPage (page) {
-      this.$router.push({name: page})
+      this.$router.push({
+        name: page,
+        params: {
+          origin: 'mine'
+        }
+      })
     }
   }
 }

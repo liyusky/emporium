@@ -14,6 +14,7 @@ import InputList from './input-list/input-list.vue'
 import Btn from '../common/button/button.vue'
 export default {
   name: 'AddAddress',
+  props: ['title'],
   components: {
     Theme,
     InputList,
@@ -22,7 +23,7 @@ export default {
   data () {
     return {
       theme: {
-        title: '新增收货地址'
+        title: this.title ? this.title : '新增收货地址'
       }
     }
   }
