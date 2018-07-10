@@ -34,15 +34,12 @@
         margin: {
           bottom: 26 / $unit * $symbol;
         }
-        .title-icon {
-          display: block;
-          width: 28 / $unit * $symbol;
-          height: 28 / $unit * $symbol;
+        i {
           margin: {
             right: 18 / $unit * $symbol;
           }
-          border-radius: 50%;
-          background: red;
+          font-size: 21 / $unit * $symbol;
+          color: #333333;
         }
         .title-payname {
           font-size: 27 / $unit * $symbol;
@@ -89,14 +86,11 @@
         bottom: 1px solid #dddddd;
       }
       i {
-        display: block;
-        width: 28 / $unit * $symbol;
-        height: 28 / $unit * $symbol;
         margin: {
           right: 18 / $unit * $symbol;
         }
-        border-radius: 50%;
-        background: red;
+        font-size: 21 / $unit * $symbol;
+        color: #666;
       }
     }
   }

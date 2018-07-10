@@ -44,7 +44,7 @@ export default {
         status: '-1'
       }
     }).then(function (response) {
-      this.orderList = response.data.data
+      // this.orderList = response.data.data
       console.log(response.data.data)
     })
   },

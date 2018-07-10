@@ -53,14 +53,13 @@
         height: 90%;
       }
     }
-    .commodity-close {
+    i {
       position: absolute;
       top: 30 / $unit * $symbol;
       right: 30 / $unit * $symbol;
-      display: block;
-      width: 30 / $unit * $symbol;
-      height: 30 / $unit * $symbol;
-      background: red;
+      z-index: 9;
+      font-size: 21 / $unit * $symbol;
+      color: #b5b6b6;
     }
   }
   .rightbuy-property {

@@ -12,8 +12,6 @@ VueTouch.config.swipe = {
   direction: 'horizontal',
   threshold: 200
 }
-var bus = new Vue()
-Vue.use(bus)
 Vue.config.productionTip = false
 Vue.use(Router)
 /* eslint-disable no-new */
