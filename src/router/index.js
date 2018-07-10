@@ -8,6 +8,7 @@ import AddressManage from '../components/address-manage/address-manage.vue'
 import AddAddress from '../components/add-address/add-address.vue'
 import Order from '../components/order/order.vue'
 import OrderComfirm from '../components/order-comfirm/order-comfirm.vue'
+// import FmiliarQuestion from '../components/familiar-question/familiar-question.vue'
 // import OrderDetail from '../components/order-detail/order-detail.vue'
 
 export default new Router({

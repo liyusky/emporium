@@ -1,10 +1,11 @@
 import axios from 'axios'
+// import { url } from 'inspector'
 export default class Http {
   callback = null
-  static request (param, callback) {
+  static request (url, callback) {
     this.callback = callback
     let _self = this
-    axios.post(param.url, param.params)
+    axios.get(url)
       .then((response) => {
         _self.dispense(response.data)
       })
