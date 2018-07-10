@@ -7,7 +7,7 @@
     <div class="payment-way">
       <div class="way-jietiao">
         <div class="jietiao-title">
-          <i class="title-icon"></i>
+          <i class="iconfont icon-dacong"></i>
           <p class="title-payname">大师分期</p>
         </div>
         <div class="jietiao-installment">

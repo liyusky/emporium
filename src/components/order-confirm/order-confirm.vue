@@ -11,9 +11,9 @@
           <div class="exist-person-info">
             <p class="info-name-telphone">
               <i class="iconfont icon-suan"></i>
-              <span>李虎 1555753525</span>
+              <span>{{selectAddress.name}} {{selectAddress.telphone}}</span>
             </p>
-            <p class="info-receipt-place">安徽省 合肥市 高新区 创新产业园2期</p>
+            <p class="info-receipt-place">{{selectAddress.address}}</p>
           </div>
           <i class="iconfont icon-dacong"></i>
         </div>
@@ -34,9 +34,9 @@
           <img src="">
         </div>
         <div class="detail-content">
-          <p class="content-title">{{phone.Title}}</p>
+          <p class="content-title">{{confirmPhone.Title}}</p>
           <div class="content-price-number">
-            <p class="content-price">￥{{phone.nowPrice}}</p>
+            <p class="content-price">￥{{confirmPhone.nowPrice}}</p>
             <p class="content-number">x1</p>
           </div>
         </div>
@@ -61,14 +61,14 @@
       <div class="content-summary">
         <p>
           <span>共1件商品 合计</span>
-          <span class="summary-price">￥{{phone.nowPrice}}</span>
+          <span class="summary-price">￥{{confirmPhone.nowPrice}}</span>
         </p>
       </div>
       <div class="content-way">
         <div class="way-title">
           <span>支付方式</span>
         </div>
-        <div class="way-item" v-for="(item, index) in phone.PaymentTypeArr" :key="index" @click="select(item.name)">
+        <div class="way-item" v-for="(item, index) in confirmPhone.PaymentTypeArr" :key="index" @click="select(item.name)">
           <div class="item-detail">
             <div class="detail-name">
               <i class="iconfont" :class="'icon-' + item.icon"></i>
@@ -82,12 +82,12 @@
     <div class="comfirm-submit">
       <p class="submit-total">
         <span>合计：</span>
-        <span>￥{{phone.nowPrice}}</span>
+        <span>￥{{confirmPhone.nowPrice}}</span>
       </p>
       <button class="submit-button" @click="confrim">提交订单</button>
     </div>
     <Modal v-show="modal">
-      <Instalments :instalments="phone" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
+      <Instalments :instalments="confirmPhone" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
     </Modal>
   </section>
 </template>
@@ -95,6 +95,7 @@
 import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
 import Instalments from './modal/instalments/instalments.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'OrderConfirm',
   components: {
@@ -115,7 +116,7 @@ export default {
     }
   },
   mounted () {
-    this.phone = JSON.parse(this.$route.params.phone)
+    // this.phone = JSON.parse(this.$route.params.phone)
   },
   methods: {
     select (name) {
@@ -146,6 +147,9 @@ export default {
         }
       })
     }
+  },
+  computed: {
+    ...mapState(['selectAddress', 'confirmPhone'])
   }
 }
 </script>

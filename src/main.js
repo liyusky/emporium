@@ -3,12 +3,14 @@ import Router from 'vue-router'
 import App from './App.vue'
 import router from './router'
 import './main.scss'
-
+import store from './store/index'
+import './css/swiper-4.3.3.min.css'
 Vue.config.productionTip = false
 Vue.use(Router)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   render: f => f(App)
 })

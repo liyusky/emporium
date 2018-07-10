@@ -32,15 +32,17 @@
       $param: (flex flex) (direction column) (justifyContent flex-start) (alignItems center);
       @include flexSet($param);
       width: 188 / $unit * $symbol;
-      i {
+      .item-icon {
         $param: (flex flex) (justifyContent center) (alignItems center);
         @include flexSet($param);
-        display: block;
         width: 90 / $unit * $symbol;
         height: 90 / $unit * $symbol;
-        font-size: 54 / $unit * $symbol;
         background: #fff;
         border-radius: 50%;
+        i{
+          font-size: 30 / $unit * $symbol;
+          color: red;
+        }
       }
       .item-name {
         margin: {
