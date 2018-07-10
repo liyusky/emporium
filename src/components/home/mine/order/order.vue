@@ -9,19 +9,19 @@
       </p>
     </div>
     <nav class="order-menu">
-      <div class="menu-item">
+      <div class="menu-item" @click="gotoPage('orderPay')">
         <i class="iconfont icon-dacong"></i>
         <p>待付款</p>
       </div>
-      <div class="menu-item">
+      <div class="menu-item" @click="gotoPage('orderSend')">
         <i class="iconfont icon-dacong"></i>
         <p>待发货</p>
       </div>
-      <div class="menu-item">
+      <div class="menu-item" @click="gotoPage('orderReceipt')">
         <i class="iconfont icon-dacong"></i>
         <p>待收货</p>
       </div>
-      <div class="menu-item">
+      <div class="menu-item" @click="gotoPage('order')">
         <i class="iconfont icon-dacong"></i>
         <p>全部订单</p>
       </div>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+// import Bus from '@/common/com/com.vue'
 export default {
   name: 'Order',
   data () {
@@ -38,7 +39,7 @@ export default {
   },
   methods: {
     gotoPage (page) {
-      this.$router.push({name: page})
+      this.$router.push({name: 'order'})
     }
   }
 }

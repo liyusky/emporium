@@ -2,7 +2,7 @@
   <section class="order-comfirm">
     <Theme :theme="theme"></Theme>
     <div class="confirm-content">
-      <div class="content-address">
+      <div class="content-address" @click="gotoPage('address-manage')">
         <div class="address-process">
           <img src="">
         </div>
@@ -59,58 +59,71 @@
         <div class="way-title">
           <span>支付方式</span>
         </div>
-        <div class="way-item">
+        <div class="way-item" v-for="(item, index) in phone.PaymentTypeArr" :key="index" @click="select(item.name)">
           <div class="item-detail">
             <div class="detail-name">
-              <i class="iconfont icon-dacong"></i>
-              <span>借条大师支付</span>
+              <i class="iconfont" :class="'icon-' + item.icon"></i>
+              <span>{{item.name}}</span>
             </div>
           </div>
-          <i class="iconfont icon-dacong"></i>
-        </div>
-        <div class="way-item">
-          <div class="item-detail">
-            <div class="detail-name">
-              <i class="iconfont icon-dacong"></i>
-              <span>微信支付</span>
-            </div>
-          </div>
-          <i class="iconfont icon-dacong"></i>
-        </div>
-        <div class="way-item">
-          <div class="item-detail">
-            <div class="detail-name">
-              <i class="iconfont icon-dacong"></i>
-              <span>支付宝支付</span>
-            </div>
-          </div>
-          <i class="iconfont icon-dacong"></i>
+          <i class="iconfont" :class="{'icon-dacong': selected == item.name, 'icon-dacong': selected != item.name}"></i>
         </div>
       </div>
     </div>
     <div class="comfirm-submit">
       <p class="submit-total">
         <span>合计：</span>
-        <span>￥5949</span>
+        <span>￥{{phone.nowPrice}}</span>
       </p>
-      <button class="submit-button">提交订单</button>
+      <button class="submit-button" @click="confrim">提交订单</button>
     </div>
+    <Modal v-show="modal">
+      <Instalments :instalments="phone.instalments" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
+    </Modal>
   </section>
 </template>
 <script>
 import Theme from '../common/theme/theme.vue'
+import Modal from '../common/modal/modal.vue'
+import Instalments from './modal/instalments/instalments.vue'
 export default {
-  name: 'OrderComfirm',
+  name: 'OrderConfirm',
   props: ['phone'],
+  components: {
+    Theme,
+    Modal,
+    Instalments
+  },
   data () {
     return {
       theme: {
         title: '订单信息确认'
-      }
+      },
+      selected: null,
+      modal: false,
+      instalment: null
     }
   },
-  components: {
-    Theme
+  methods: {
+    select (name) {
+      if (name === this.selected) {
+        this.selected = null
+        return
+      }
+      if (name === '大师分期') {
+        this.modal = true
+      } else {
+        this.selected = name
+      }
+    },
+    closeModal () {
+      this.modal = false
+    },
+    record (instalment) {
+      this.selected = '大师分期'
+      this.instalment = instalment
+    },
+    confrim () {}
   }
 }
 </script>

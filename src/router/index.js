@@ -7,7 +7,7 @@ import Feedback from '../components/feedback/feedback.vue'
 import AddressManage from '../components/address-manage/address-manage.vue'
 import AddAddress from '../components/add-address/add-address.vue'
 import Order from '../components/order/order.vue'
-import OrderComfirm from '../components/order-comfirm/order-comfirm.vue'
+import OrderConfirm from '../components/order-confirm/order-confirm.vue'
 // import OrderDetail from '../components/order-detail/order-detail.vue'
 
 export default new Router({
@@ -53,12 +53,13 @@ export default new Router({
     {
       path: '/order',
       name: 'order',
-      component: Order
+      component: Order,
+      props: true
     },
     {
-      path: '/order-comfirm',
-      name: 'order-comfirm',
-      component: OrderComfirm,
+      path: '/order-confirm',
+      name: 'order-confirm',
+      component: OrderConfirm,
       props: true
     }
     // {
