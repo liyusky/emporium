@@ -1,10 +1,10 @@
 <template>
   <section class="order-item">
     <div class="item-title">
-      <p class="title-time">{{item.Status}}</p>
-      <p class="title-sign">{{item.StatusTitle}}</p>
+      <p class="title-time">{{titleTime}}</p>
+      <p class="title-sign">{{statusName[item.Status-1].statusTitle}}</p>
     </div>
-    <div class="item-detail">
+    <div class="item-detail" @click="gotoPage(item.OrderNo)">
       <div class="detail-img">
         <img :src="item.Icon">
       </div>
@@ -19,32 +19,65 @@
     <div class="item-summary">
       <p>共1件商品 合计:
         <span class="summary-price">{{item.rownum * item.CommodityPrice}}</span>
-        <span class="summary-fare"> (含运费￥0.00)</span>
+        <span class="summary-fare"> (含运费￥{{item.DeliverPrice}})</span>
       </p>
     </div>
     <div class="item-button">
-      <div class="button-topay" v-if="item.StatusName == 'orderPay'">
-        <button>{{item.buttonPayName}}</button>
+      <div class="button-topay" v-if="item.Status == 1">
+        <button>{{statusName[item.Status-1].buttonName}}</button>
       </div>
-      <div class="button-order" v-else-if="item.StatusName != 'orderPay'">
-        <button>{{item.buttonLeftName}}</button>
-        <button>{{item.buttonRightName}}</button>
+      <div class="button-order" v-else-if="item.Status != 1">
+        <button>{{statusName[item.Status-1].buttonLeftName}}</button>
+        <button>{{statusName[item.Status-1].buttonRightName}}</button>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import Time from '../../../class/time.class.js'
 export default {
   data () {
     return {
-      button: {
-        type: 'topay'
-      }
+      statusName: [
+        {
+          statusTitle: '待付款',
+          buttonName: '去支付'
+        },
+        {
+          statusTitle: '等待发货',
+          buttonLeftName: '取消订单',
+          buttonRightName: '催促发货'
+        },
+        {
+          statusTitle: '已发货',
+          buttonLeftName: '查看物流',
+          buttonRightName: '确认收货'
+        },
+        {
+          statusTitle: '交易成功',
+          buttonLeftName: '删除订单',
+          buttonRightName: '评价晒单'
+        }
+      ],
+      titleTime: null
     }
   },
   props: ['item'],
-  methods: {}
+  mounted () {
+    // 订单日期
+    this.titleTime = Time.change(Number(this.item.CreateTime.substring(6, 19)))
+  },
+  methods: {
+    gotoPage (orderNum) {
+      this.$router.push({
+        name: 'orderdetail',
+        params: {
+          orderNum: orderNum
+        }
+      })
+    }
+  }
 }
 </script>
 

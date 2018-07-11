@@ -12,6 +12,9 @@ const mutations = {
   },
   saveOrderNo (state, orderNum) {
     state.orderNum = orderNum
+  },
+  changeStatusNum (state, number) {
+    state.statusNum = number
   }
 }
 export default mutations

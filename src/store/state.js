@@ -3,6 +3,8 @@ const state = {
   address: null,
   phone: null,
   installments: null,
-  orderNum: null
+  orderNum: null,
+  // 传入order的参数
+  statusNum: null
 }
 export default state
