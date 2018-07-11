@@ -6,6 +6,10 @@ const mutations = {
   // 确认订单phone值
   SaveConfirmPhone (state, phone) {
     state.confirmPhone = phone
+  },
+  // 传入的order参数
+  changeStatusNum (state, number) {
+    state.statusNum = number
   }
 }
 export default mutations

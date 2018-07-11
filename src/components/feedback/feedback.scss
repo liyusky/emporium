@@ -5,7 +5,7 @@
   height: 100vh;
   overflow-y: auto;
   padding: {
-    top: 129 / $unit * $symbol;
+    top: (129+21) / $unit * $symbol;
     left: 30 / $unit * $symbol;
     right: 30 / $unit * $symbol;
   }
@@ -15,27 +15,40 @@
     height: 100%;
     .content-form {
       width: 100%;
-      margin: {
-        top: 21 / $unit * $symbol;
-      }
       .form-opinion {
+        position: relative;
         width: 100%;
         height: 420 / $unit * $symbol;
         background: #fff;
         border-radius: 9 / $unit * $symbol;
         .opinion-input {
           width: 100%;
-          height: 100%;
+          height: 360 / $unit * $symbol;
           padding: {
             top: 34 / $unit * $symbol;
             left: 30 / $unit * $symbol;
             right: 30 / $unit * $symbol;
           }
+          line-height: 40 / $unit * $symbol;
           border-radius: 9 / $unit * $symbol;
           font-size: 27 / $unit * $symbol;
           color: #333;
           resize: none;
           outline: none;
+        }
+        .input-number{
+          position: absolute;
+          bottom: 28 / $unit * $symbol;
+          z-index: 99;
+          $param: (flex flex) (justifyContent flex-end);
+          @include flexSet($param);
+          width: 100%;
+          padding: {
+            right: 28 / $unit * $symbol;
+          }
+          background: #fff;
+          font-size: 24 / $unit * $symbol;
+          color: #666666;
         }
       }
       .form-contact-way {
@@ -47,7 +60,6 @@
         background: #fff;
         border-radius: 9 / $unit * $symbol;
         .way-input {
-          position: relative;
           width: 100%;
           height: 100%;
           padding: {
@@ -57,13 +69,6 @@
           font-size: 27 / $unit * $symbol;
           color: #333;
           outline: none;
-          .input-number{
-            position: absolute;
-            right: 21 / $unit * $symbol;
-            bottom: 28 / $unit * $symbol;
-            font-size: 24 / $unit * $symbol;
-            color: #666666;
-          }
         }
       }
     }

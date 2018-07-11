@@ -60,6 +60,9 @@
           font-weight: bold;
         }
         .content-number {
+          margin: {
+            top: 5 / $unit * $symbol;
+          }
           font-size: 24 / $unit * $symbol;
           color: #999999;
         }
