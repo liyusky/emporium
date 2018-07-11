@@ -1,17 +1,17 @@
 <template>
   <!-- s 地址标签 -->
   <ul class="address-tips">
-    <li class="tip" v-for="(item, index) in addressList" :key="index" @click="gotoPage(index)">
+    <li class="tip" v-for="(item, index) in addressList" :key="index" @click="gotoPage(item)">
       <div class="tip-detail">
         <p class="detail-user">
-          <span>{{item.name}}</span>
-          <span>{{item.telphone}}</span>
+          <span>{{item.ReseverName}}</span>
+          <span>{{item.PhoneNo}}</span>
         </p>
-        <div class="detail-address">{{item.address}}</div>
+        <div class="detail-address">{{item.Address}}</div>
       </div>
       <div class="tip-operation">
         <p class="operation-set-default">
-          <i class="iconfont icon-dacong"></i>
+          <i class="iconfont" :class="{'icon-dacong': item.IsDefault}"></i>
           <span>设为默认地址</span>
         </p>
         <div class="operation-modify">
@@ -31,16 +31,31 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import Http from '../../../class/http.class.js'
+import { mapMutations } from 'vuex'
 export default {
   name: 'AddressTips',
   props: ['origin'],
   data () {
-    return {}
+    return {
+      addressList: [],
+      orderNum: null
+    }
+  },
+  created () {
+    Http.send({
+      url: 'GetPostAddress',
+      params: {
+        customerId: 10000
+      }
+    }).success((data) => {
+      this.addressList = data
+    })
+    this.orderNum = this.$store.state.orderNum
   },
   methods: {
-    gotoPage (index) {
-      console.log(this.origin)
+    gotoPage (item) {
+      console.log(item)
       switch (this.origin) {
         case 'mine':
           this.$router.push({
@@ -52,15 +67,22 @@ export default {
           })
           break
         case 'order-confrim':
-          this.$router.push({name: 'order-confirm'})
-          this.selectAddress(index)
+          Http.send({
+            url: 'ModifyResiver',
+            params: {
+              Orderno: this.orderNum,
+              Name: item.ReseverName,
+              Phone: item.PhoneNo,
+              Address: item.Address
+            }
+          }).success((data) => {
+            this.saveSelectedAddress(item)
+            this.$router.push({name: 'order-confirm'})
+          })
           break
       }
     },
-    ...mapMutations(['selectAddress'])
-  },
-  computed: {
-    ...mapState(['addressList'])
+    ...mapMutations(['saveSelectedAddress'])
   }
 }
 </script>

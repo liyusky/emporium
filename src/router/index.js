@@ -65,9 +65,10 @@ export default new Router({
       component: OrderConfirm
     },
     {
-      path: '/orderdetail/:id',
-      name: 'orderdetail',
-      component: OrderDetail
+      path: '/order-detail/:orderNum',
+      name: 'order-detail',
+      component: OrderDetail,
+      props: true
     }
   ]
 })

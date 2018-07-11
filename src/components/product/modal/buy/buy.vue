@@ -51,25 +51,29 @@ export default {
     order () {
       Http.send({
         url: 'buy',
-        data: {
-          CustermerId: '10000',
-          commodityId: this.buy.ProductId,
+        params: {
+          CustermerId: 1,
+          commodityId: this.buy.Id,
           PayType: 0,
           DeliverType: 0,
           DeliverPrice: 0,
-          OtherCost: 0
+          OtherCost: 0,
+          CommodityPrice: this.buy.nowPrice
         }
       }).success((data) => {
-        this.SaveConfirmPhone(this.buy)
+        console.log(data)
+        this.buy.OrderNo = data.OrderNo
+        this.savePhone(this.buy)
+        this.saveOrderNo(data.OrderNo)
         this.$router.push({
           name: 'order-confirm',
           params: {
-            phone: JSON.stringify(this.buy)
+            orderNum: data.OrderNo
           }
         })
       })
     },
-    ...mapMutations(['SaveConfirmPhone'])
+    ...mapMutations(['savePhone', 'saveOrderNo'])
   }
 }
 </script>

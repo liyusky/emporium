@@ -6,32 +6,12 @@
     </div>
     <div class="payment-way">
       <div class="way-jietiao">
-        <div class="jietiao-installment">
-          <div class="installment-item" :class="{active: true}" @click="select(1, 2)">
-            <p class="item-title">￥578x1期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x2期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x3期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x4期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x5期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-          <div class="installment-item">
-            <p class="item-title">￥578x6期</p>
-            <p class="item-tip">【含手续费】</p>
-          </div>
-        </div>
+        <ul class="jietiao-installment">
+          <li class="installment-item" :class="{active: sign == index}" v-for="(item, index) in instalments" :key="index" @click="select(item.InstallmentNum, index)">
+            <p class="item-title">￥{{item.InstallmentAmount}}x{{item.InstallmentNum}}期</p>
+            <p class="item-tip">手续费: ￥{{item.InstallmentCost}}</p>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="payment-button">
@@ -46,21 +26,24 @@ export default {
   props: ['instalments'],
   data () {
     return {
-      index: null,
+      sign: null,
       selected: null
     }
+  },
+  mounted () {
+    console.log(this.instalments)
   },
   methods: {
     closeModal () {
       this.$emit('CLOSE_MODAL_EVENT')
     },
-    select (index, item) {
-      this.index = index
-      this.selected = item
+    select (installmentNum, index) {
+      this.sign = index
+      this.selected = installmentNum
     },
     confrim () {
       this.$emit('SELECT_INSTALMENT_EVENT', this.selected)
-      this.index = null
+      this.sign = null
       this.selected = null
     }
   }

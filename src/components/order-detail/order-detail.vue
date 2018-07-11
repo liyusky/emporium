@@ -59,7 +59,6 @@
   </section>
 </template>
 <script>
-import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 export default {
   data () {
@@ -71,19 +70,13 @@ export default {
       orderDetail: null
     }
   },
-  mounted () {
-    this.id = this.$route.params.id
-    Http.request('http://localhost:3004/order', (data) => {
-      this.orderDetail = data[this.id]
-    })
-  },
+  props: ['orderNum'],
   components: {
     Theme
   }
 }
-
 </script>
-<style scoped lang="scss">
-  @import './order-detail.scss';
 
+<style scoped lang="scss">
+@import './order-detail.scss';
 </style>

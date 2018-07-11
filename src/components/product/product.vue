@@ -49,6 +49,7 @@ import Parameter from './modal/parameter/parameter.vue'
 import Share from './modal/share/share.vue'
 import PaymentMethod from './modal/payment-method/payment-method.vue'
 import Buy from './modal/buy/buy.vue'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Product',
   props: ['id', 'title'],
@@ -89,6 +90,7 @@ export default {
     }).success((data) => {
       console.log(data)
       setPaymentTypeArr()
+      setPaymentTypePartArr()
       this.summary = data.Phone
       this.sample = data.AttachmentList.filter((item) => {
         if (item.ArchiveType === '2') return item
@@ -100,22 +102,26 @@ export default {
       this.parameter = data.Phone.ParamList
       this.paymentMethod = {
         list: data.CommodityInstallmentList,
-        methods: data.Phone.PaymentTypeArr
+        methods: data.Phone.PaymentTypePartArr
       }
       this.buy = data.Phone
+      this.saveInstallments(data.CommodityInstallmentList)
       function setPaymentTypeArr () {
         let type = [
           {
             icon: 'dacong',
-            name: '支付宝'
+            name: '支付宝',
+            pay: 2
           },
           {
             icon: 'dacong',
-            name: '微信'
+            name: '微信',
+            pay: 1
           },
           {
             icon: 'dacong',
-            name: '大师分期'
+            name: '大师分期',
+            pay: 3
           }
         ]
         let allowArr = data.Phone.PaymentType.toString(2).split('').reverse()
@@ -124,6 +130,26 @@ export default {
           if (item * 1) content.push(type[index])
         })
         data.Phone.PaymentTypeArr = content
+      }
+      function setPaymentTypePartArr () {
+        let type = [
+          {
+            icon: 'dacong',
+            name: '支付宝',
+            pay: 2
+          },
+          {
+            icon: 'dacong',
+            name: '微信',
+            pay: 1
+          }
+        ]
+        let allowArr = data.Phone.PaymentType.toString(2).split('').reverse()
+        let content = []
+        allowArr.forEach((item, index) => {
+          if (item * 1 && type[index]) content.push(type[index])
+        })
+        data.Phone.PaymentTypePartArr = content
       }
     })
   },
@@ -140,7 +166,8 @@ export default {
     },
     closeModal () {
       this.modal = false
-    }
+    },
+    ...mapMutations(['saveInstallments'])
   }
 }
 </script>

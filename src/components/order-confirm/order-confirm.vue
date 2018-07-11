@@ -7,18 +7,18 @@
           <img src="https://api.vtrois.com/image/750x7/e0e1e3">
         </div>
         <!-- 有地址 -->
-        <div class="address-exist" v-show="hasAddressDefault">
+        <div class="address-exist" v-if="address">
           <div class="exist-person-info">
             <p class="info-name-telphone">
               <i class="iconfont icon-suan"></i>
-              <span>{{selectAddress.name}} {{selectAddress.telphone}}</span>
+              <span>{{address.ReseverName}} {{address.PhoneNo}}</span>
             </p>
-            <p class="info-receipt-place">{{selectAddress.address}}</p>
+            <p class="info-receipt-place">{{address.Address}}</p>
           </div>
           <i class="iconfont icon-dacong"></i>
         </div>
         <!-- 无地址 -->
-        <div class="address-without" v-show="!hasAddressDefault">
+        <div class="address-without" v-if="!address">
             <p class="without-title">
               <i class="iconfont icon-suan"></i>
               <span>添加收货地址</span>
@@ -27,16 +27,16 @@
         </div>
       </div>
       <div class="content-order-number">
-        <p class="title-time">产品详情</p>
+        <p class="title-time">{{phone.OrderNo}}</p>
       </div>
       <div class="content-detail">
         <div class="detail-img">
-          <img src="">
+          <img :src="phone.Icon">
         </div>
         <div class="detail-content">
-          <p class="content-title">{{confirmPhone.Title}}</p>
+          <p class="content-title">{{phone.Title}}</p>
           <div class="content-price-number">
-            <p class="content-price">￥{{confirmPhone.nowPrice}}</p>
+            <p class="content-price">￥{{phone.nowPrice}}</p>
             <p class="content-number">x1</p>
           </div>
         </div>
@@ -61,33 +61,33 @@
       <div class="content-summary">
         <p>
           <span>共1件商品 合计</span>
-          <span class="summary-price">￥{{confirmPhone.nowPrice}}</span>
+          <span class="summary-price">￥{{phone.nowPrice}}</span>
         </p>
       </div>
       <div class="content-way">
         <div class="way-title">
           <span>支付方式</span>
         </div>
-        <div class="way-item" v-for="(item, index) in confirmPhone.PaymentTypeArr" :key="index" @click="select(item.name)">
+        <div class="way-item" v-for="(item, index) in phone.PaymentTypeArr" :key="index" @click="select(item.pay)">
           <div class="item-detail">
             <div class="detail-name">
               <i class="iconfont" :class="'icon-' + item.icon"></i>
               <span>{{item.name}}</span>
             </div>
           </div>
-          <i class="iconfont" :class="{'icon-dacong': selected == item.name, 'icon-dacong': selected != item.name}"></i>
+          <i class="iconfont" :class="{'icon-dacong': selected == item.pay, 'icon-dacong': selected != item.pay}"></i>
         </div>
       </div>
     </div>
     <div class="comfirm-submit">
       <p class="submit-total">
         <span>合计：</span>
-        <span>￥{{confirmPhone.nowPrice}}</span>
+        <span>￥{{phone.nowPrice}}</span>
       </p>
       <button class="submit-button" @click="confrim">提交订单</button>
     </div>
     <Modal v-show="modal">
-      <Instalments :instalments="confirmPhone" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
+      <Instalments :instalments="installments" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
     </Modal>
   </section>
 </template>
@@ -95,6 +95,7 @@
 import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
 import Instalments from './modal/instalments/instalments.vue'
+import Http from '../../class/http.class.js'
 import { mapState } from 'vuex'
 export default {
   name: 'OrderConfirm',
@@ -110,46 +111,64 @@ export default {
       },
       selected: null,
       modal: false,
-      instalment: null,
-      hasAddressDefault: true,
-      phone: {}
+      installmentNum: 0,
+      hasAddressDefault: true
     }
   },
-  mounted () {
-    // this.phone = JSON.parse(this.$route.params.phone)
-  },
   methods: {
-    select (name) {
-      if (name === this.selected) {
+    select (pay) {
+      if (pay === this.selected) {
         this.selected = null
+        this.installmentNum = 0
         return
       }
-      if (name === '大师分期') {
+      if (pay === 3) {
         this.modal = true
       } else {
-        this.selected = name
+        this.selected = pay
+        this.installmentNum = 0
       }
     },
     closeModal () {
       this.modal = false
     },
-    record (instalment) {
-      this.selected = '大师分期'
-      this.instalment = instalment
+    record (installmentNum) {
+      this.selected = 3
+      this.installmentNum = installmentNum
       this.modal = false
     },
-    confrim () {},
     gotoPage (page) {
       this.$router.push({
         name: page,
         params: {
-          origin: 'order-confrim'
+          origin: 'order-confrim',
+          orderNum: this.phone.OrderNo
         }
+      })
+    },
+    confrim () {
+      if (this.selected && this.address) return
+      console.log(this.phone.OrderNo)
+      console.log(this.selected)
+      console.log(this.installmentNum)
+      Http.send({
+        url: 'orderSubmit',
+        params: {
+          Orderno: this.phone.OrderNo,
+          payType: this.selected,
+          num: this.installmentNum
+        }
+      }).success((data) => {
+        console.log(data)
+        this.gotoPage('order-detail')
       })
     }
   },
+  mounted () {
+    console.log(this.phone)
+  },
   computed: {
-    ...mapState(['selectAddress', 'confirmPhone'])
+    ...mapState(['phone', 'address', 'installments'])
   }
 }
 </script>

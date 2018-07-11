@@ -1,11 +1,17 @@
 const mutations = {
-  // 选择地址
-  selectAddress (state, index) {
-    state.selectAddress = state.addressList[index]
-  },
   // 确认订单phone值
-  SaveConfirmPhone (state, phone) {
-    state.confirmPhone = phone
+  savePhone (state, phone) {
+    state.phone = phone
+  },
+  // 保存选中的地址
+  saveSelectedAddress (state, address) {
+    state.address = address
+  },
+  saveInstallments (state, installments) {
+    state.installments = installments
+  },
+  saveOrderNo (state, orderNum) {
+    state.orderNum = orderNum
   }
 }
 export default mutations
