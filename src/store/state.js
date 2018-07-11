@@ -22,6 +22,8 @@ const state = {
     address: '安徽省 合肥市 高新区 创新产业园2期'
   },
   // 确认订单的phone值
-  confirmPhone: {}
+  confirmPhone: {},
+  // 传入order的参数
+  statusNum: null
 }
 export default state

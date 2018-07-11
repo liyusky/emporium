@@ -4,7 +4,7 @@
     <div class="feedback-content">
       <section class="content-form">
         <div class="form-opinion">
-          <textarea class="opinion-input" id="opinion-input" v-model="textareaNum" name="opinion-input" placeholder="欢迎您给我们提供宝贵的意见或建议"></textarea>
+          <textarea class="opinion-input" id="opinion-input" v-model="textareaNum" name="opinion-input" maxlength="200" placeholder="欢迎您给我们提供宝贵的意见或建议"></textarea>
           <div class="input-number">{{textareaNum.length}}/200</div>
         </div>
         <div class="form-contact-way">

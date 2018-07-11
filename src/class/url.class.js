@@ -2,5 +2,6 @@ export default class Url {
   static mall = '/home/CommodityPhoneList'
   static product = '/home/CommodityPhoneDetail'
   static buy = '/order/add'
-  static orderList = 'order/OrderList'
+  static orderList = '/order/OrderList'
+  static orderdetail = '/order/OrderDetail'
 }
