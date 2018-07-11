@@ -16,6 +16,14 @@ export default {
   },
   components: {
     Tab
+  },
+  mounted () {
+    this.$router.push({name: 'mall'})
+  },
+  methods: {
+    gotoPage (page) {
+      this.$router.push({name: page})
+    }
   }
 }
 </script>

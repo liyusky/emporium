@@ -12,7 +12,7 @@ export default class Http {
       params: args.params ? args.params : {},
       data: args.data ? args.data : {}
     }).then((response) => {
-      console.log(response)
+      // console.log(response)
       Http.dispense(response.data)
     }).catch((error) => {
       console.log(error)
