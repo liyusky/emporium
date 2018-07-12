@@ -71,7 +71,7 @@ export default {
   methods: {
     gotoPage (orderNum) {
       this.$router.push({
-        name: 'orderdetail',
+        name: 'order-detail',
         params: {
           orderNum: orderNum
         }
