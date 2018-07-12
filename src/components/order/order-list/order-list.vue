@@ -27,8 +27,8 @@
         <button>{{statusName[item.Status-1].buttonName}}</button>
       </div>
       <div class="button-order" v-else-if="item.Status != 1">
-        <button>{{statusName[item.Status-1].buttonLeftName}}</button>
-        <button>{{statusName[item.Status-1].buttonRightName}}</button>
+        <button v-if="statusName[item.Status-1].buttonLeftName">{{statusName[item.Status-1].buttonLeftName}}</button>
+        <button v-if="statusName[item.Status-1].buttonRightName">{{statusName[item.Status-1].buttonRightName}}</button>
       </div>
     </div>
   </section>
@@ -47,18 +47,18 @@ export default {
         {
           statusTitle: '等待发货',
           buttonLeftName: '取消订单',
-          buttonRightName: '催促发货'
+          buttonRightName: ''
         },
         {
           statusTitle: '已发货',
-          buttonLeftName: '查看物流',
+          buttonLeftName: '',
           buttonRightName: '确认收货'
-        },
-        {
-          statusTitle: '交易成功',
-          buttonLeftName: '删除订单',
-          buttonRightName: '评价晒单'
         }
+        // {
+        //   statusTitle: '交易成功',
+        //   buttonLeftName: '删除订单',
+        //   buttonRightName: '评价晒单'
+        // }
       ],
       titleTime: null
     }

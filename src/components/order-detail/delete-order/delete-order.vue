@@ -9,7 +9,13 @@
   </section>
 </template>
 <script>
-export default {}
+export default {
+  methods: {
+    closeModal () {
+      this.$emit('CLOSE_MODAL_EVENT')
+    }
+  }
+}
 </script>
 <style scoped lang="scss">
 @import './delete-order.scss';

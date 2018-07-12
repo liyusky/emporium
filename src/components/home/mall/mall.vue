@@ -2,17 +2,17 @@
   <section class="index">
     <div class="index-content">
       <header class="content-header">
-        <img src="https://api.vtrois.com/image/750x360/e0e1e3">
+        <img src="../../../assets/images/header.png">
       </header>
       <section class="content-advertising">
-        <img src="https://api.vtrois.com/image/699x123/e0e1e3">
+        <img src="../../../assets/images/advertising.png">
       </section>
       <ul class="content-brand">
         <li class="brand-classify" v-for="(group, index) in groups" :key="index">
           <div class="classify-title">
-            <i class="iconfont icon-dacong"></i>
+            <i class="iconfont icon-baozhang"></i>
             <p class="title-text">{{group.Key}}</p>
-            <i class="iconfont icon-dacong"></i>
+            <i class="iconfont icon-baozhang"></i>
           </div>
           <ul class="classify-shop-list">
             <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(phone.Id, phone.ProductName)">

@@ -30,6 +30,7 @@
       font-size: 27 / $unit * $symbol;
       font-weight: bold;
       color: #4b4b4b;
+      background: transparent;
     }
     .tabbar-item::after {
       position: absolute;

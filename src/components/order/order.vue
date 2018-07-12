@@ -2,11 +2,11 @@
   <section class="order">
     <Theme :theme="theme"></Theme>
     <section class="order-tabbar">
-      <div class="tabbar-item" :class="{active:checkPageNum == 0}" @click="checkPage(0)">全部</div>
-      <div class="tabbar-item" :class="{active:checkPageNum == 1}" @click="checkPage(1)">代付款</div>
-      <div class="tabbar-item" :class="{active:checkPageNum == 2}" @click="checkPage(2)">代发货</div>
-      <div class="tabbar-item" :class="{active:checkPageNum == 3}" @click="checkPage(3)">代收货</div>
-      <div class="tabbar-item" :class="{active:checkPageNum == 4}" @click="checkPage(4)">待评价</div>
+      <button class="tabbar-item" :class="{active:checkPageNum == 0}" type="button" :disabled = "disabledNum == 0" @click="checkPage(0)">全部</button>
+      <button class="tabbar-item" :class="{active:checkPageNum == 1}" type="button" :disabled = "disabledNum == 1" @click="checkPage(1)">代付款</button>
+      <button class="tabbar-item" :class="{active:checkPageNum == 2}" type="button" :disabled = "disabledNum == 2" @click="checkPage(2)">代发货</button>
+      <button class="tabbar-item" :class="{active:checkPageNum == 3}" type="button" :disabled = "disabledNum == 3" @click="checkPage(3)">代收货</button>
+      <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
     <section class="order-classify">
       <OrderList v-for="(item, index) in orderList" :key="index" :item = item></OrderList>
@@ -29,7 +29,9 @@ export default {
         title: '我的订单'
       },
       checkPageNum: 0,
-      orderList: []
+      disabledNum: null,
+      orderList: [],
+      isdisabled: false
     }
   },
   created () {
@@ -60,6 +62,7 @@ export default {
   methods: {
     checkPage (statusNum) {
       this.checkPageNum = statusNum
+      this.disabledNum = statusNum
       this.changeStatusNum(statusNum)
       Http.send({
         url: 'orderList',
@@ -68,6 +71,7 @@ export default {
           status: '-1'
         }
       }).success((data) => {
+        this.disabledNum = null
         this.orderList = []
         if (this.statusNum === 0) {
           data.forEach(element => {
