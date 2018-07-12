@@ -5,7 +5,7 @@
       <div class="content-order-information">
         <div class="information-person">
           <div class="person-number-status">
-            <p class="person-number">{{orderDetail.OrderNo}}</p>
+            <p class="person-number">{{orderNum}}</p>
             <p class="person-status">{{statusName[orderDetail.Status-1].statusTitle}}</p>
           </div>
           <div class="person-detail">
@@ -48,7 +48,7 @@
     </section>
     <footer class="detail-button">
       <div class="button-item" v-if="orderDetail.Status == 1">
-        <button class="item-right">{{statusName[orderDetail.Status-1].buttonLeftName}}</button>
+        <button class="item-right" @click="LeftButtonClick">{{statusName[orderDetail.Status-1].buttonLeftName}}</button>
         <button class="item-left">{{statusName[orderDetail.Status-1].buttonRightName}}</button>
       </div>
       <div class="button-item" v-else-if="orderDetail.Status != 1">
@@ -56,15 +56,18 @@
         <button class="item-left">{{statusName[orderDetail.Status-1].buttonRightName}}</button>
       </div>
     </footer>
-    <Modal></Modal>
-    <DeleteOrder></DeleteOrder>
+    <Modal v-show="modalShow"></Modal>
+    <DeleteOrder v-show="modalShow"></DeleteOrder>
   </section>
 </template>
 <script>
+import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
 import DeleteOrder from './delete-order/delete-order'
 export default {
+  // 订单参数
+  props: ['orderNum'],
   data () {
     return {
       theme: {
@@ -92,21 +95,24 @@ export default {
           buttonLeftName: '删除订单',
           buttonRightName: '评价晒单'
         }
-      ]
+      ],
+      modalShow: false
     }
   },
-  // 订单参数
-  props: ['orderNum'],
-  created () {
+  mounted () {
     Http.send({
-      url: 'orderdetail',
+      url: 'orderDetail',
       params: {
         Orderno: this.orderNum
       }
     }).success((data) => {
       this.orderDetail = data
-      console.log(this.orderDetail)
     })
+  },
+  methods: {
+    LeftButtonClick () {
+      if (this.orderDetail.Status === 1) this.modalShow = true
+    }
   },
   components: {
     Theme,
