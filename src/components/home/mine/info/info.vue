@@ -2,14 +2,14 @@
   <!-- s  -->
   <section class="mine-info">
     <div class="info-header">
-      <p>
+      <!-- <p>
         <i class="iconfont icon-dacong"></i>
         <span>消息</span>
       </p>
       <p>
         <i class="iconfont icon-dacong"></i>
         <span>设置</span>
-      </p>
+      </p> -->
     </div>
     <div class="info-detail">
       <div class="detail-portrait">

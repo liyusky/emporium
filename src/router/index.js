@@ -43,7 +43,7 @@ export default new Router({
       props: true
     },
     {
-      path: '/add-address/:title',
+      path: '/add-address',
       name: 'add-address',
       component: AddAddress,
       props: true

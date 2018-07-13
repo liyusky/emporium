@@ -28,10 +28,7 @@ export default {
   methods: {
     gotoPage (page) {
       this.$router.push({
-        name: page,
-        params: {
-          title: '新增收货地址'
-        }
+        name: page
       })
     }
   }
