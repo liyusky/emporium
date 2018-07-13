@@ -1,5 +1,6 @@
 <template>
   <!-- s 地址标签 -->
+<<<<<<< HEAD
   <ul class="address-tips">
     <li class="tip" v-for="(item, index) in addressList" :key="index" @click="gotoPage(item)">
       <div class="tip-detail">
@@ -26,11 +27,37 @@
               <use xlink:href="#icon-bianji"></use>
             </svg>
             <span>编辑</span>
+=======
+  <section class="address-list">
+    <ul class="list-tips">
+      <li class="tip" v-for="(item, index) in addressList" :key="index" @click="selectAddress(item)">
+        <div class="tip-detail">
+          <p class="detail-user">
+            <span>{{item.ReseverName}}</span>
+            <span>{{item.PhoneNo}}</span>
           </p>
+          <div class="detail-address">{{item.Address}}</div>
         </div>
-      </div>
-    </li>
-  </ul>
+        <div class="tip-operation">
+          <p class="operation-set-default" @click="setDefault(item.Id)">
+            <i class="iconfont" :class="{'icon-dacong': item.Id == defaultId}"></i>
+            <span>设为默认地址</span>
+>>>>>>> 93fb79476048c9c279a793d45fed64417f6c03cf
+          </p>
+          <div class="operation-modify">
+            <p @click="remove(item.Id, index)">
+              <i class="iconfont icon-dacong"></i>
+              <span>删除</span>
+            </p>
+            <p @click="modify(item)">
+              <i class="iconfont icon-dacong"></i>
+              <span>编辑</span>
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
   <!-- e 地址标签 -->
 </template>
 
@@ -43,7 +70,8 @@ export default {
   data () {
     return {
       addressList: [],
-      orderNum: null
+      orderNum: null,
+      defaultId: null
     }
   },
   created () {
@@ -54,37 +82,62 @@ export default {
       }
     }).success((data) => {
       this.addressList = data
+      data.forEach(item => {
+        if (item.IsDefault) {
+          this.defaultId = item.Id
+        }
+      })
     })
     this.orderNum = this.$store.state.orderNum
   },
   methods: {
-    gotoPage (item) {
-      console.log(item)
-      switch (this.origin) {
-        case 'mine':
-          this.$router.push({
-            name: 'add-address',
-            params: {
-              title: '修改收货地址',
-              id: 0
-            }
-          })
-          break
-        case 'order-confrim':
-          Http.send({
-            url: 'ModifyResiver',
-            params: {
-              Orderno: this.orderNum,
-              Name: item.ReseverName,
-              Phone: item.PhoneNo,
-              Address: item.Address
-            }
-          }).success((data) => {
-            this.saveSelectedAddress(item)
-            this.$router.push({name: 'order-confirm'})
-          })
-          break
+    selectAddress (item) {
+      if (this.origin === 'order-confrim') {
+        Http.send({
+          url: 'ModifyResiver',
+          params: {
+            Orderno: this.orderNum,
+            Name: item.ReseverName,
+            Phone: item.PhoneNo,
+            Address: item.Address
+          }
+        }).success((data) => {
+          this.saveSelectedAddress(item)
+          this.$router.push({name: 'order-confirm'})
+        })
       }
+    },
+    setDefault (postId) {
+      Http.send({
+        url: 'SetDefaultAddress',
+        params: {
+          customerId: 10000,
+          postId: postId
+        }
+      }).success((data) => {
+        console.log(data)
+        this.defaultId = postId
+      })
+    },
+    modify (item) {
+      this.$router.push({
+        name: 'add-address',
+        params: {
+          title: '修改收货地址',
+          tip: JSON.stringify(item)
+        }
+      })
+    },
+    remove (id, index) {
+      Http.send({
+        url: 'DeletePostAddress',
+        params: {
+          id: id
+        }
+      }).success((data) => {
+        console.log(1)
+        this.addressList.splice(index, 1)
+      })
     },
     ...mapMutations(['saveSelectedAddress'])
   }

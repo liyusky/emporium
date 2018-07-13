@@ -9,7 +9,7 @@
       <p>
         <i class="iconfont icon-08tishi"></i>
         <span>设置</span>
-      </p>
+      </p> -->
     </div>
     <div class="info-detail">
       <div class="detail-portrait">

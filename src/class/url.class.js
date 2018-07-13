@@ -5,6 +5,10 @@ export default class Url {
   static orderList = '/order/OrderList'
   static orderSubmit = '/order/Submit'
   static orderDetail = '/order/OrderDetail'
-  static GetPostAddress = '/order/GetPostAddress'
   static ModifyResiver = '/order/ModifyResiver'
+  static GetPostAddress = '/Customer/GetPostAddress'
+  static AddPostAddress = '/Customer/AddPostAddress'
+  static ModifyPostAddress = '/Customer/ModifyPostAddress'
+  static SetDefaultAddress = '/Customer/SetDefaultAddress'
+  static DeletePostAddress = '/Customer/DeletePostAddress'
 }
