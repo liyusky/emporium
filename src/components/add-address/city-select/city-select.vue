@@ -2,13 +2,6 @@
   <!-- s  -->
   <section class="city-select">
     <div class="select-title">
-<<<<<<< HEAD
-      <i></i>
-      <div class="title-name"></div>
-      <i></i>
-    </div>
-    <nav class="select-nav">
-=======
       <div>取消</div>
       <h3>选择地址</h3>
       <div @click="confrim">确认</div>
@@ -29,7 +22,6 @@
           <li class="list-item" :class="{active: area == item}" v-for="(item, index) in areaList" :key="index" @click="selectArea(item)">{{item}}</li>
         </ul>
       </div>
->>>>>>> 93fb79476048c9c279a793d45fed64417f6c03cf
     </nav>
   </section>
   <!-- e  -->

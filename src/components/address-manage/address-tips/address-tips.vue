@@ -1,33 +1,5 @@
 <template>
   <!-- s 地址标签 -->
-<<<<<<< HEAD
-  <ul class="address-tips">
-    <li class="tip" v-for="(item, index) in addressList" :key="index" @click="gotoPage(item)">
-      <div class="tip-detail">
-        <p class="detail-user">
-          <span>{{item.ReseverName}}</span>
-          <span>{{item.PhoneNo}}</span>
-        </p>
-        <div class="detail-address">{{item.Address}}</div>
-      </div>
-      <div class="tip-operation">
-        <p class="operation-set-default">
-          <i class="iconfont icon-dadaobiaozhun" :class="{'': item.IsDefault}"></i>
-          <span>设为默认地址</span>
-        </p>
-        <div class="operation-modify">
-          <p>
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-lajixiang"></use>
-            </svg>
-            <span>删除</span>
-          </p>
-          <p>
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-bianji"></use>
-            </svg>
-            <span>编辑</span>
-=======
   <section class="address-list">
     <ul class="list-tips">
       <li class="tip" v-for="(item, index) in addressList" :key="index" @click="selectAddress(item)">
@@ -40,17 +12,20 @@
         </div>
         <div class="tip-operation">
           <p class="operation-set-default" @click="setDefault(item.Id)">
-            <i class="iconfont" :class="{'icon-dacong': item.Id == defaultId}"></i>
+            <i class="iconfont icon-dadaobiaozhun" :class="{'icon-dacong': item.Id == defaultId}"></i>
             <span>设为默认地址</span>
->>>>>>> 93fb79476048c9c279a793d45fed64417f6c03cf
           </p>
           <div class="operation-modify">
             <p @click="remove(item.Id, index)">
-              <i class="iconfont icon-dacong"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-lajixiang"></use>
+              </svg>
               <span>删除</span>
             </p>
             <p @click="modify(item)">
-              <i class="iconfont icon-dacong"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-bianji"></use>
+              </svg>
               <span>编辑</span>
             </p>
           </div>

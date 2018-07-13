@@ -33,12 +33,8 @@
     .nav-area {
       width: (750 / 3) / $unit * $symbol;
       height: 100%;
-<<<<<<< HEAD
-      overflow: auto;
-=======
       overflow-x: hidden;
       overflow-y: scroll;
->>>>>>> 93fb79476048c9c279a793d45fed64417f6c03cf
       .area-list {
         width: 100%;
         height: auto;
@@ -47,13 +43,8 @@
           @include flexSet($param);
           width: 100%;
           height: 60 / $unit * $symbol;
-<<<<<<< HEAD
-          font-size: 21 / $unit * $symbol;
-          color: #666;
-=======
           font-size: 30 / $unit * $symbol;
           color: #aaaaaa;
->>>>>>> 93fb79476048c9c279a793d45fed64417f6c03cf
         }
         .active {
           font-weight: 600;
