@@ -16,7 +16,7 @@
           <input type="text" placeholder="请输入手机号">
         </div>
       </li>
-      <li class="list-item">
+      <li class="list-item"  @click="selectAddress">
         <b>所在地区</b>
         <div class="item-input">
           <input type="text" placeholder="请选择">
@@ -37,23 +37,42 @@
       <button disabled="disabled">保存</button>
     </section>
     <!-- e  -->
+    <!-- s 地址选择 -->
+    <SelectAddress v-show="selectAddressShow"></SelectAddress>
+    <!-- e 地址选择 -->
   </section>
   <!-- e 添加收货地址 -->
 </template>
 
 <script>
 import Theme from '../common/theme/theme.vue'
+import SelectAddress from './city-select/city-select.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'AddAddress',
   props: ['title'],
   components: {
-    Theme
+    Theme,
+    SelectAddress
   },
-  data() {
+  data () {
     return {
       theme: {
-        title: this.title ? this.title : '新增收货地址'
-      }
+        title: this.title ? this.title : '新增收货地址',
+        themeRight: false
+      },
+      selectAddressShow: false
+    }
+  },
+  mounted () {
+    console.log(this.title)
+  },
+  methods: {
+    selectAddress () {
+      this.selectAddressShow = true
+    },
+    computed: {
+      ...mapState(['address'])
     }
   }
 }

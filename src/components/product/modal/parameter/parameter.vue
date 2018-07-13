@@ -3,7 +3,7 @@
   <section class="parameter">
     <div class="parameter-title">
       <h4>详细参数</h4>
-      <i class="iconfont icon-dacong" @click="closeModal"></i>
+      <i class="iconfont icon-08tishi" @click="closeModal"></i>
     </div>
     <ul class="parameter-share-detail" >
       <li class="detail-item" v-for="(item, index) in parameter" :key="index">

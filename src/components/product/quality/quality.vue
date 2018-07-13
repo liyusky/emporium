@@ -15,7 +15,10 @@
             </div>
           </div>
           <div class="inspector-seal">
-            <img src="https://api.vtrois.com/image/129x129/bbbfc0">
+            <!-- <img src="https://api.vtrois.com/image/129x129/bbbfc0"> -->
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-hege"></use>
+            </svg>
           </div>
         </div>
         <div class="panel-message">
@@ -32,7 +35,7 @@
           <ul class="hardware-list">
             <li class="list-item" v-for="(item, index) in quality.OtherInfoList" :key="index">
               <p>{{item.Title}}</p>
-              <i class="iconfont" :class="{'icon-dacong': item.Value == 1, 'icon-suan': item.Value != 1}"></i>
+              <i class="iconfont icon-dadaobiaozhun" :class="{'iactive': item.Value == 1, 'iactiveno': item.Value != 1}"></i>
             </li>
           </ul>
         </div>
@@ -43,28 +46,36 @@
       <p class="process-tip">我们每一台机器，都经过严格的检验流程，才能上架，所以请用户放心购买我们的每一台机器！</p>
       <ul class="process-flow">
         <li class="flow-item">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-waiguanjiancepingji"></use>
+          </svg>
           <div class="item-tip">
             <div class="tip-sequence">1</div>
             <p>外观检测评级</p>
           </div>
         </li>
         <li class="flow-item">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-neibugongnengjiance"></use>
+          </svg>
           <div class="item-tip">
             <div class="tip-sequence">2</div>
             <p>内部功能检测</p>
           </div>
         </li>
         <li class="flow-item">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-yingjiangongnengjiancha"></use>
+          </svg>
           <div class="item-tip">
             <div class="tip-sequence">3</div>
             <p>硬件功能检查</p>
           </div>
         </li>
         <li class="flow-item">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-zhengjiqingjieshangjia"></use>
+          </svg>
           <div class="item-tip">
             <div class="tip-sequence">4</div>
             <p>整机清洁上架</p>

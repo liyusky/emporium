@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  $param: (flex flex) (justifyContent space-between);
+  $param: (flex flex) (justifyContent space-around) (alignItems center);
   @include flexSet($param);
   width: 100vw;
   height: 99 / $unit * $symbol;
@@ -14,14 +14,22 @@
   &-item {
     $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
     @include flexSet($param);
-    width: 50%;
     height: 100%;
-    i {
-      font-size: 54 / $unit * $symbol;
+    .icon {
+      font-size: 42 / $unit * $symbol;
     }
     .item-name {
-      font-size: 27 / $unit * $symbol;
-      color: #2d2d2d;
+      font-size: 24 / $unit * $symbol;
+      color: #999999;
+    }
+  }
+  .active {
+    height: 87 / $unit * $symbol;
+    width: 87 / $unit * $symbol;
+    border-radius: 50%;
+    background: #efeeec;
+    .icon {
+      font-size: 54 / $unit * $symbol;
     }
   }
 }

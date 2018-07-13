@@ -20,13 +20,14 @@ import { mapState, mapMutations } from 'vuex'
 import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import OrderList from './order-list/order-list.vue'
-import OrderWithout from './order-without/order-without'
+import OrderWithout from './order-without/order-without.vue'
 export default {
   name: 'Order',
   data () {
     return {
       theme: {
-        title: '我的订单'
+        title: '我的订单',
+        themeRight: false
       },
       checkPageNum: 0,
       disabledNum: null,
@@ -57,6 +58,7 @@ export default {
           }
         })
       }
+      console.log(this.orderList)
     })
   },
   methods: {

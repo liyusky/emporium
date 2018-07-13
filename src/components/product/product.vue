@@ -20,7 +20,9 @@
     <footer class="product-order">
       <div class="order-content">
         <div class="content-sign">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-kefu"></use>
+          </svg>
           <p>客服</p>
         </div>
         <div class="content-price">
@@ -68,7 +70,8 @@ export default {
   data () {
     return {
       theme: {
-        title: this.title
+        title: this.title,
+        themeRight: true
       },
       component: null,
       modal: false,

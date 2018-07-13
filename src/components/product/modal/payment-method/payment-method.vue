@@ -7,7 +7,9 @@
     <div class="payment-way">
       <div class="way-jietiao">
         <div class="jietiao-title">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-weixin"></use>
+          </svg>
           <p class="title-payname">大师分期</p>
         </div>
         <ul class="jietiao-installment">
@@ -18,7 +20,9 @@
         </ul>
       </div>
       <div class="way-alipay" v-for="(item, index) in paymentMethod.methods" :key="index">
-        <i class="iconfont" :class="'icon-' + item.icon"></i>
+        <svg class="icon" aria-hidden="true">
+          <use :xlink:href = item.icon></use>
+        </svg>
         <p class="alipay-title">{{item.name}}</p>
       </div>
     </div>

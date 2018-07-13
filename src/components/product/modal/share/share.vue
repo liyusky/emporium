@@ -7,19 +7,25 @@
     <div class="share-approach">
       <div class="approach-item">
         <div class="item-icon">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-weixinfenxiang"></use>
+          </svg>
         </div>
         <p class="item-name">微信好友</p>
       </div>
       <div class="approach-item">
         <div class="item-icon">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-pengyouquanfenxiang"></use>
+          </svg>
         </div>
         <p class="item-name">朋友圈</p>
       </div>
       <div class="approach-item">
         <div class="item-icon">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-lianjiefenxiang"></use>
+          </svg>
         </div>
         <p class="item-name">复制链接</p>
       </div>

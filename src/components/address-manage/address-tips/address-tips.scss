@@ -56,6 +56,10 @@
             left: 15 / $unit * $symbol;
           }
         }
+        i {
+          font-size: 30 / $unit * $symbol;
+          color: #eb2828;
+        }
       }
       .operation-modify {
         $param: (flex flex) (justifyContent space-between);
@@ -65,6 +69,9 @@
           margin: {
             left: 15 / $unit * $symbol;
           }
+        }
+        .icon {
+          font-size: 27 / $unit * $symbol;
         }
       }
     }

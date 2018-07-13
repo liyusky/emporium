@@ -11,16 +11,20 @@
       </div>
       <div class="tip-operation">
         <p class="operation-set-default">
-          <i class="iconfont" :class="{'icon-dacong': item.IsDefault}"></i>
+          <i class="iconfont icon-dadaobiaozhun" :class="{'': item.IsDefault}"></i>
           <span>设为默认地址</span>
         </p>
         <div class="operation-modify">
           <p>
-            <i class="iconfont icon-dacong"></i>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-lajixiang"></use>
+            </svg>
             <span>删除</span>
           </p>
           <p>
-            <i class="iconfont icon-dacong"></i>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-bianji"></use>
+            </svg>
             <span>编辑</span>
           </p>
         </div>

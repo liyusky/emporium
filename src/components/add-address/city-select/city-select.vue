@@ -1,13 +1,12 @@
 <template>
   <!-- s  -->
   <section class="city-select">
-    <div class="select-title"></div>
+    <div class="select-title">
+      <i></i>
+      <div class="title-name"></div>
+      <i></i>
+    </div>
     <nav class="select-nav">
-      <div class="nav-area">
-        <ul class="area-list">
-          <li class="list-item"></li>
-        </ul>
-      </div>
     </nav>
   </section>
   <!-- e  -->

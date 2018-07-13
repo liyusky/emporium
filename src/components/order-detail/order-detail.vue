@@ -68,14 +68,15 @@
 import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
-import DeleteOrder from './delete-order/delete-order'
+import DeleteOrder from './delete-order/delete-order.vue'
 export default {
   // 订单参数
   props: ['orderNum'],
   data () {
     return {
       theme: {
-        title: '订单详情'
+        title: '订单详情',
+        themeRight: false
       },
       orderDetail: {},
       status: [

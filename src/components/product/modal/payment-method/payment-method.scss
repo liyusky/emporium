@@ -34,11 +34,11 @@
         margin: {
           bottom: 26 / $unit * $symbol;
         }
-        i {
+        .icon {
           margin: {
             right: 18 / $unit * $symbol;
           }
-          font-size: 21 / $unit * $symbol;
+          font-size: 27 / $unit * $symbol;
           color: #333333;
         }
         .title-payname {
@@ -76,8 +76,7 @@
         }
       }
     }
-    .way-alipay,
-    .way-wechat {
+    .way-alipay {
       $param: (flex flex) (justifyContent flex-start) (alignItems center);
       @include flexSet($param);
       width: 100%;
@@ -85,11 +84,11 @@
       border: {
         bottom: 1px solid #dddddd;
       }
-      i {
+      .icon {
         margin: {
           right: 18 / $unit * $symbol;
         }
-        font-size: 21 / $unit * $symbol;
+        font-size: 27 / $unit * $symbol;
         color: #666;
       }
     }

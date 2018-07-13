@@ -6,7 +6,7 @@ import './main.scss'
 import store from './store/index'
 import './css/swiper-4.3.3.min.css'
 // import './assets/iconfont/iconfont.js'
-import './assets/iconfont/iconfont.css'
+import '../static/iconfont/iconfont.css'
 Vue.config.productionTip = false
 Vue.use(Router)
 /* eslint-disable no-new */

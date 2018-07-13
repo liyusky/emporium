@@ -3,11 +3,11 @@
   <section class="mine-info">
     <div class="info-header">
       <p>
-        <i class="iconfont icon-dacong"></i>
+        <i class="iconfont icon-08tishi"></i>
         <span>消息</span>
       </p>
       <p>
-        <i class="iconfont icon-dacong"></i>
+        <i class="iconfont icon-08tishi"></i>
         <span>设置</span>
       </p>
     </div>

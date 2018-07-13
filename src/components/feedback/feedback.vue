@@ -23,7 +23,8 @@ export default {
   data () {
     return {
       theme: {
-        title: '用户反馈'
+        title: '用户反馈',
+        themeRight: false
       },
       textareaNum: ''
     }

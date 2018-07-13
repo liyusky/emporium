@@ -10,9 +10,13 @@
       <ul class="content-brand">
         <li class="brand-classify" v-for="(group, index) in groups" :key="index">
           <div class="classify-title">
-            <i class="iconfont icon-baozhang"></i>
+            <svg class="icon" id="icon" aria-hidden="true">
+              <use xlink:href="#icon-kuaisushoukuan"></use>
+            </svg>
             <p class="title-text">{{group.Key}}</p>
-            <i class="iconfont icon-baozhang"></i>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-kuaisushoukuan"></use>
+            </svg>
           </div>
           <ul class="classify-shop-list">
             <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(phone.Id, phone.ProductName)">
@@ -47,6 +51,7 @@
 </template>
 
 <script>
+
 import Http from '../../../class/http.class.js'
 export default {
   name: 'Home',

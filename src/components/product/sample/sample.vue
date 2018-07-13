@@ -14,14 +14,18 @@
         <li class="project-group">
           <div class="group-item">
             <div class="item-name">
-              <i class="iconfont icon-dacong"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-zhuanyezhijianshirenzheng"></use>
+              </svg>
               <p>专业质检师认证</p>
             </div>
             <p class="item-introduction">每台机器均经过质检工程师质检认证，质量有保障</p>
           </div>
           <div class="group-item">
             <div class="item-name">
-              <i class="iconfont icon-dacong"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-tianwuliyoutuihuanhuo"></use>
+              </svg>
               <p>7天无理由退换货</p>
             </div>
             <p class="item-introduction">7天无理由退换服务，快速高效</p>
@@ -30,14 +34,18 @@
         <li class="project-group">
           <div class="group-item">
             <div class="item-name">
-              <i class="iconfont icon-dacong"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-tianzhibaofuwu"></use>
+              </svg>
               <p>365天质保服务</p>
             </div>
             <p class="item-introduction">365天内任何非人为功能性质量问题，均提供免费专业保修</p>
           </div>
           <div class="group-item">
             <div class="item-name">
-              <i class="iconfont icon-dacong"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-quanchangshunfengbaoyou"></use>
+              </svg>
               <p>全场顺丰包邮</p>
             </div>
             <p class="item-introduction">每天6点前下单当天发货，顺丰送达家门口</p>
