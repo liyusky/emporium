@@ -3,7 +3,6 @@
 .tab {
   position: fixed;
   left: 0;
-  right: 0;
   bottom: 0;
   $param: (flex flex) (justifyContent space-around) (alignItems center);
   @include flexSet($param);

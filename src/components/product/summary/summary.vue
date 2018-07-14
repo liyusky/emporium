@@ -67,14 +67,12 @@
               <span>请选择</span>
             </p>
           </div>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-tongzhi"></use>
-          </svg>
+          <i class="iconfont icon-shenglvehao"></i>
         </div>
         <ul class="method-selectable">
           <li class="selectable-item" v-for="(item, index) in summary.PaymentTypeArr" :key="index">
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-weixin"></use>
+              <use :xlink:href="item.icon"></use>
             </svg>
             <span>{{item.name}}</span>
           </li>
@@ -82,9 +80,7 @@
       </div>
       <div class="content-characteristic" @click="openModal('Parameter')">
         <span>产品参数</span>
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-tongzhi"></use>
-        </svg>
+        <i class="iconfont icon-shenglvehao"></i>
       </div>
     </div>
   </section>
@@ -100,6 +96,7 @@ export default {
     return {}
   },
   mounted () {
+    console.log(this.summary)
     // 轮播图
     this.$nextTick(function () {
       var mySwiper = new Swiper('.swiper-container', {

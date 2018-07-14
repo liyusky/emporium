@@ -82,6 +82,10 @@
         .icon {
           font-size: 27 / $unit * $symbol;
         }
+        i {
+          font-size: 27 / $unit * $symbol;
+          color: #CCCCCC;
+        }
       }
     }
   }

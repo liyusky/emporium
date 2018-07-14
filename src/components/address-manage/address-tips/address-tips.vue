@@ -23,9 +23,7 @@
               <span>删除</span>
             </p>
             <p @click="modify(item)">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-bianji"></use>
-              </svg>
+              <i class="iconfont icon-bianji"></i>
               <span>编辑</span>
             </p>
           </div>
@@ -90,7 +88,6 @@ export default {
           postId: postId
         }
       }).success((data) => {
-        console.log(data)
         this.defaultId = postId
       })
     },

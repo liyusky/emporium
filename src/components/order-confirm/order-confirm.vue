@@ -17,7 +17,7 @@
             </p>
             <p class="info-receipt-place">{{address.Address}}</p>
           </div>
-          <i class="iconfont icon-08tishi"></i>
+          <i class="iconfont icon-arrow-right"></i>
         </div>
         <!-- 无地址 -->
         <div class="address-without" v-if="!address">
@@ -27,7 +27,7 @@
               </svg>
               <span>添加收货地址</span>
             </p>
-          <i class="iconfont icon-08tishi"></i>
+          <i class="iconfont icon-arrow-right"></i>
         </div>
       </div>
       <div class="content-order-number">
@@ -82,7 +82,8 @@
               <span>{{item.name}}</span>
             </div>
           </div>
-          <i class="iconfont icon-dadaobiaozhun" :class="{'iconactive': selected == item.pay, 'iconactivefalse': selected != item.pay}"></i>
+          <i class="iconfont icon-dadaobiaozhun" v-if="selected == item.pay"></i>
+          <i class="iconfont icon-weixuanze" v-else-if="selected != item.pay"></i>
         </div>
       </div>
     </div>

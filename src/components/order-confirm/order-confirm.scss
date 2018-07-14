@@ -156,6 +156,9 @@
             font-weight: bold;
           }
           .content-number {
+            margin: {
+              top: 10 / $unit * $symbol;
+            }
             font-size: 24 / $unit * $symbol;
             color: #999999;
           }
@@ -304,14 +307,11 @@
             color: #9f9f9f;
           }
         }
-        .iconactive {
-          color: #eb2828;
-        }
-        .iconactivefalse {
-          color: #dddddd;
-        }
-        i {
+        .iocn {
           font-size: 39 / $unit * $symbol;
+        }
+        .icon-dadaobiaozhun {
+          color: #eb2828;
         }
       }
     }

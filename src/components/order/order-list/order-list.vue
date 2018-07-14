@@ -2,7 +2,7 @@
   <section class="order-item">
     <div class="item-title">
       <p class="title-time">{{titleTime}}</p>
-      <p class="title-sign">{{statusName[item.Status-1].statusTitle}}</p>
+      <p class="title-sign">{{statusList[item.Status].statusTitle}}</p>
     </div>
     <div class="item-detail" @click="gotoPage(item.OrderNo)">
       <div class="detail-img">
@@ -24,11 +24,11 @@
     </div>
     <div class="item-button">
       <div class="button-topay" v-if="item.Status == 1">
-        <button>{{statusName[item.Status-1].buttonName}}</button>
+        <button>{{statusList[item.Status].buttonName}}</button>
       </div>
       <div class="button-order" v-else-if="item.Status != 1">
-        <button v-if="statusName[item.Status-1].buttonLeftName">{{statusName[item.Status-1].buttonLeftName}}</button>
-        <button v-if="statusName[item.Status-1].buttonRightName">{{statusName[item.Status-1].buttonRightName}}</button>
+        <button v-if="statusList[item.Status].buttonLeftName">{{statusList[item.Status].buttonLeftName}}</button>
+        <button v-if="statusList[item.Status].buttonRightName">{{statusList[item.Status].buttonRightName}}</button>
       </div>
     </div>
   </section>
@@ -39,28 +39,32 @@ import Time from '../../../class/time.class.js'
 export default {
   data () {
     return {
-      statusName: [
-        {
+      statusList: {
+        '0': {
+          statusTitle: '待提交',
+          buttonLeftName: '取消订单',
+          buttonRightName: '提交订单'
+        },
+        '1': {
           statusTitle: '待付款',
           buttonName: '去支付'
         },
-        {
+        '2': {
           statusTitle: '等待发货',
           buttonLeftName: '取消订单',
           buttonRightName: ''
         },
-        {
+        '3': {
           statusTitle: '已发货',
           buttonLeftName: '',
           buttonRightName: '确认收货'
         }
-        // {
-        //   statusTitle: '交易成功',
-        //   buttonLeftName: '删除订单',
-        //   buttonRightName: '评价晒单'
-        // }
-      ],
-      titleTime: null
+      },
+      titleTime: null,
+      statusName: '',
+      statusButtonName: '',
+      statusButtonLeftName: '',
+      statusButtonRightName: ''
     }
   },
   props: ['item'],

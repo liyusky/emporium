@@ -181,8 +181,9 @@
         @include flexSet($param);
         width: 100%;
         height: 30 / $unit * $symbol;
-        .icon {
-          font-size: 27 / $unit * $symbol;
+        i {
+          font-size: 30 / $unit * $symbol;
+          color: #999;
         }
         .selected-tip {
           $param: (flex flex) (alignItems center) (justifyContent space-between);
@@ -232,8 +233,9 @@
         font-size: 24 / $unit * $symbol;
         color: #333333;
       }
-      .con {
+      i {
         font-size: 30 / $unit * $symbol;
+        color: #999;
       }
     }
   }

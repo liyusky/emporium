@@ -1,11 +1,11 @@
 <template>
   <!-- s 我的订单 -->
   <section class="order">
-    <div class="order-title" @click="gotoPage(0)">
+    <div class="order-title" @click="gotoPage(-1)">
       <h3>我的订单</h3>
       <p>
         <span>全部订单</span>
-        <i class="iconfont icon-08tishi"></i>
+        <i class="iconfont icon-arrow-right"></i>
       </p>
     </div>
     <nav class="order-menu">
@@ -27,7 +27,7 @@
         </svg>
         <p>待收货</p>
       </div>
-      <div class="menu-item" @click="gotoPage(0)">
+      <div class="menu-item" @click="gotoPage(-1)">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-quanbudingdan"></use>
         </svg>
@@ -46,11 +46,11 @@ export default {
     return {}
   },
   methods: {
-    gotoPage (number) {
+    gotoPage (status) {
       this.$router.push({
         name: 'order'
       })
-      this.changeStatusNum(number)
+      this.changeStatusNum(status)
     },
     ...mapMutations(['changeStatusNum'])
   }

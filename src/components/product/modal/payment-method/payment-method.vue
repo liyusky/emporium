@@ -5,14 +5,14 @@
       <p>支付方式</p>
     </div>
     <div class="payment-way">
-      <div class="way-jietiao">
-        <div class="jietiao-title">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-weixin"></use>
-          </svg>
+      <div class="way-master">
+        <div class="master-title">
+          <div class="title-img">
+            <img src="../../../../assets/images/master.png">
+          </div>
           <p class="title-payname">大师分期</p>
         </div>
-        <ul class="jietiao-installment">
+        <ul class="master-installment">
           <li class="installment-item" v-for="(item, index) in paymentMethod.list" :key="index">
             <p class="item-title">￥{{item.InstallmentAmount}}x{{item.InstallmentNum}}期</p>
             <p class="item-tip">手续费: ￥{{item.InstallmentCost}}</p>

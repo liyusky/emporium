@@ -61,14 +61,14 @@
       </div> -->
     </footer>
     <Modal v-show="modalShow"></Modal>
-    <DeleteOrder v-show="modalShow" @CLOSE_MODAL_EVENT = "closeModal"></DeleteOrder>
+    <ModalReminder v-show="modalShow" @CLOSE_MODAL_EVENT = "closeModal" :Title="Title"></ModalReminder>
   </section>
 </template>
 <script>
 import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
-import DeleteOrder from './delete-order/delete-order.vue'
+import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 export default {
   // 订单参数
   props: ['orderNum'],
@@ -77,6 +77,9 @@ export default {
       theme: {
         title: '订单详情',
         themeRight: false
+      },
+      Title: {
+        text: '取消后，机器可能会被人抢走哦~'
       },
       orderDetail: {},
       status: [
@@ -130,7 +133,7 @@ export default {
   },
   components: {
     Theme,
-    DeleteOrder,
+    ModalReminder,
     Modal
   }
 }

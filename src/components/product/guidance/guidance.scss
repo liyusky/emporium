@@ -1,3 +1,81 @@
 @import '../../../../dependencies/sass/_flex.scss';
 @import '../../../../dependencies/sass/_unit.scss';
 @import '../../../../dependencies/sass/_btn.scss';
+.guidance-content {
+  width: 100%;
+  background-color: #fff;
+  padding: {
+    left: 24 / $unit * $symbol;
+    right: 24 / $unit * $symbol;
+  }
+  .content-title {
+    $param: (flex flex) (alignItems center);
+    @include flexSet($param);
+    width: 100%;
+    height: 86 / $unit * $symbol;
+    margin: {
+      bottom: 20 / $unit * $symbol;
+    }
+    border: {
+      bottom: 1px solid #eeeeee;
+    }
+    .icon {
+      margin: {
+        right: 10 / $unit * $symbol;
+      }
+    }
+    p {
+      font-size: 30 / $unit * $symbol;
+      font-weight: bold;
+      color: #000000;
+    }
+  }
+  .content-item {
+    width: 100%;
+    $param: (flex flex) (justifyContent flex-start);
+    @include flexSet($param);
+    margin: {
+      bottom: 31 / $unit * $symbol;
+    }
+    padding: {
+      right: 20 / $unit * $symbol;
+    }
+    .icon {
+      margin: {
+        top: 11 / $unit * $symbol;
+        right: 20 / $unit * $symbol;
+      }
+    }
+    .item-text {
+      flex: 1;
+      .text-title {
+        margin: {
+          bottom: 10 / $unit * $symbol;
+        }
+        line-height: 48 / $unit * $symbol;
+        font-size: 27 / $unit * $symbol;
+        font-weight: bold;
+        color: #333333;
+      }
+    }
+    .text-item {
+      line-height: 38 / $unit * $symbol;
+      font-size: 24 / $unit * $symbol;
+      color: #999999;
+    }
+  }
+  .content-more {
+    $param: (flex flex) (justifyContent center) (alignItem center);
+    @include flexSet($param);
+    width: 100%;
+    height: 81 / $unit * $symbol;
+    border: {
+      top: 1px solid #eeeeee;
+    }
+    span {
+      line-height: 81 / $unit * $symbol;
+      font-size: 27 / $unit * $symbol;
+      color: #ff5555;
+    }
+  }
+}

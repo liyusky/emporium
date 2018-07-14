@@ -10,7 +10,7 @@
       </div>
       <div class="content-item">
         <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-changjianwenti"></use>
+          <use xlink:href="#icon-Q"></use>
         </svg>
         <div class="item-text">
           <p class="text-title">什么是二手手机</p>
@@ -55,6 +55,15 @@
           <p class="text-item">机器在回收时经过严格质检，原手机里的注册信息及私人数据都会清空并还原到出厂设置，可以绑定任意ID账号及导入个人数据。</p>
         </div>
       </div>
+      <div class="content-item">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-Q"></use>
+        </svg>
+        <div class="item-text">
+          <p class="text-title">收到的机器是否有ID或者会有数据残留？</p>
+          <p class="text-item">机器在回收时经过严格质检，原手机里的注册信息及私人数据都会清空并还原到出厂设置，可以绑定任意ID账号及导入个人数据。</p>
+        </div>
+      </div>
     </section>
   </section>
 </template>
@@ -64,7 +73,7 @@ export default {
   data () {
     return {
       theme: {
-        title: '我的订单',
+        title: '常见问题',
         themeRight: false
       }
     }

@@ -26,6 +26,9 @@ export default {
       }
     }
   },
+  mounted () {
+    console.log(this.origin)
+  },
   methods: {
     gotoPage (page) {
       this.$router.push({

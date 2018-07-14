@@ -24,34 +24,39 @@
   }
   .payment-way {
     width: 100%;
-    .way-jietiao {
+    .way-master {
       width: 100%;
-      .jietiao-title {
+      .master-title {
         $param: (flex flex) (justifyContent flex-start) (alignItems center);
         @include flexSet($param);
         width: 100%;
-        height: 36 / $unit * $symbol;
-        margin: {
-          bottom: 26 / $unit * $symbol;
-        }
-        .icon {
+        height: 98 / $unit * $symbol;
+        .title-img {
+          width: 28 / $unit * $symbol;
+          height: 28 / $unit * $symbol;
           margin: {
             right: 18 / $unit * $symbol;
           }
-          font-size: 27 / $unit * $symbol;
-          color: #333333;
+          img{
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
         }
         .title-payname {
           font-size: 27 / $unit * $symbol;
           color: #333333;
         }
       }
-      .jietiao-installment {
+      .master-installment {
         $param: (flex flex) (flexWrap wrap);
         @include flexSet($param);
         width: 100%;
         border: {
           bottom: 1px solid #dddddd;
+        }
+        margin: {
+          top: 26 / $unit * $symbol;
         }
         .installment-item {
           width: 50%;

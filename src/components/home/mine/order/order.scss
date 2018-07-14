@@ -24,6 +24,10 @@
     p {
       font-size: 24 / $unit * $symbol;
       color: #999999;
+      i{
+        font-size: 18 / $unit * $symbol;
+        color: #999999;
+      }
     }
   }
   &-menu {

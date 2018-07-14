@@ -1,8 +1,8 @@
 <template>
-  <section class="delete-order">
-    <p class="order-tip">提示</p>
-    <p class="order-title">取消后，机器可能会被人抢走哦~</p>
-    <div class="order-button">
+  <section class="reminder">
+    <p class="reminder-tip">提示</p>
+    <p class="reminder-title">{{Title.text}}</p>
+    <div class="reminder-button">
       <button class="button-cancel" @click="closeModal">取消</button>
       <button class="button-sure">确认</button>
     </div>
@@ -10,6 +10,7 @@
 </template>
 <script>
 export default {
+  props: ['Title'],
   methods: {
     closeModal () {
       this.$emit('CLOSE_MODAL_EVENT')
@@ -18,5 +19,5 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import './delete-order.scss';
+@import './modal-reminder.scss';
 </style>
