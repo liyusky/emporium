@@ -3,24 +3,26 @@
   <section class="product">
     <Theme :theme="theme"></Theme>
     <nav class="product-nav">
-      <div class="nav-item">
-        <a href="">商品</a>
+      <div class="nav-item" :class="{active: rollSite == 'summary'}" @click="gotoRollSite('summary')">
+        <a href="#summary">商品</a>
       </div>
-      <div class="nav-item">
-        <a href="">质检</a>
+      <div class="nav-item" :class="{active: rollSite == 'quality'}" @click="gotoRollSite('quality')">
+        <a href="#quality">质检</a>
       </div>
-      <div class="nav-item">
-        <a href="">实拍</a>
+      <div class="nav-item" :class="{active: rollSite == 'sample'}" @click="gotoRollSite('sample')">
+        <a href="#sample">实拍</a>
       </div>
     </nav>
-    <Summary :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
-    <Quality :quality="quality"></Quality>
-    <Sample :sample="sample" @OPEN_MODAL_EVENT="openModal"></Sample>
+    <Summary id="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
+    <Quality id="quality" :quality="quality"></Quality>
+    <Sample id="sample" :sample="sample" @OPEN_MODAL_EVENT="openModal"></Sample>
     <Guidance></Guidance>
     <footer class="product-order">
       <div class="order-content">
         <div class="content-sign">
-          <i class="iconfont icon-dacong"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-kefu"></use>
+          </svg>
           <p>客服</p>
         </div>
         <div class="content-price">
@@ -30,9 +32,9 @@
       </div>
       <button class="order-btn" @click="openModal('Buy')">立即购买</button>
     </footer>
-    <Modal v-show="modal">
-      <component :is="component" :parameter="parameter" :paymentMethod="paymentMethod" :buy="buy" @CLOSE_MODAL_EVENT="closeModal"></component>
-    </Modal>
+      <Modal v-show="modal">
+        <component v-show="modal" :is="component" :parameter="parameter" :paymentMethod="paymentMethod" :buy="buy" @CLOSE_MODAL_EVENT="closeModal"></component>
+      </Modal>
   </section>
   <!-- e 产品详情 -->
 </template>
@@ -68,8 +70,10 @@ export default {
   data () {
     return {
       theme: {
-        title: this.title
+        title: this.title,
+        themeRight: true
       },
+      animationShow: false,
       component: null,
       modal: false,
       summary: {},
@@ -78,7 +82,8 @@ export default {
       quality: {},
       parameter: [],
       paymentMethod: {},
-      buy: {}
+      buy: {},
+      rollSite: 'summary'
     }
   },
   created () {
@@ -166,6 +171,9 @@ export default {
     },
     closeModal () {
       this.modal = false
+    },
+    gotoRollSite (site) {
+      this.rollSite = site
     },
     ...mapMutations(['saveInstallments'])
   }

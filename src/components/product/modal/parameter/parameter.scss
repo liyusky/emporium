@@ -25,6 +25,8 @@
       position: absolute;
       right: 27 / $unit * $symbol;
       z-index: 9;
+      font-size: 42 / $unit * $symbol;
+      color: #b5b6b6
     }
   }
   .parameter-share-detail {

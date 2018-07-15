@@ -5,14 +5,14 @@
       <div class="content-order-information">
         <div class="information-person">
           <div class="person-number-status">
-            <p class="person-number">{{orderNum}}</p>
-            <p class="person-status">{{statusName[orderDetail.Status-1].statusTitle}}</p>
+            <p class="person-number">{{orderDetail.OrderNo}}</p>
+            <p class="person-status">{{statusName}}</p>
           </div>
           <div class="person-detail">
             <i class="iconfont icon-suan"></i>
             <div class="detail-name-address">
-              <h3 class="detail-name">{{orderDetail.orderName}} {{orderDetail.telphone}}</h3>
-              <p class="detail-address">{{orderDetail.orderAddress}}</p>
+              <h3 class="detail-name">{{orderDetail.ReciverName}} {{orderDetail.ReciverPhone}}</h3>
+              <p class="detail-address">{{orderDetail.ReciverAddress}}</p>
             </div>
           </div>
         </div>
@@ -47,34 +47,42 @@
       </div>
     </section>
     <footer class="detail-button">
-      <div class="button-item" v-if="orderDetail.Status == 1">
-        <button class="item-right" @click="LeftButtonClick">{{statusName[orderDetail.Status-1].buttonLeftName}}</button>
-        <button class="item-left">{{statusName[orderDetail.Status-1].buttonRightName}}</button>
+      <div class="button-item">
+        <button class="item-right" @click="LeftButtonClick" v-if="statusLeftBtnName">{{statusLeftBtnName}}</button>
+        <button class="item-left" v-if="statusRightBtnName">{{statusRightBtnName}}</button>
+      </div>
+      <!-- <div class="button-item" v-if="orderDetail.Status == 1">
+        <button class="item-right" @click="LeftButtonClick">{{statusLeftBtnName}}</button>
+        <button class="item-left">{{statusRightBtnName}}</button>
       </div>
       <div class="button-item" v-else-if="orderDetail.Status != 1">
-        <button class="item-right">{{statusName[orderDetail.Status-1].buttonLeftName}}</button>
-        <button class="item-left">{{statusName[orderDetail.Status-1].buttonRightName}}</button>
-      </div>
+        <button class="item-right">{{statusLeftBtnName}}</button>
+        <button class="item-left">{{statusRightBtnName}}</button>
+      </div> -->
     </footer>
     <Modal v-show="modalShow"></Modal>
-    <DeleteOrder v-show="modalShow"></DeleteOrder>
+    <ModalReminder v-show="modalShow" @CLOSE_MODAL_EVENT = "closeModal" :Title="Title"></ModalReminder>
   </section>
 </template>
 <script>
 import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
-import DeleteOrder from './delete-order/delete-order'
+import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 export default {
   // 订单参数
   props: ['orderNum'],
   data () {
     return {
       theme: {
-        title: '订单详情'
+        title: '订单详情',
+        themeRight: false
       },
-      orderDetail: null,
-      statusName: [
+      Title: {
+        text: '取消后，机器可能会被人抢走哦~'
+      },
+      orderDetail: {},
+      status: [
         {
           statusTitle: '待付款',
           buttonLeftName: '取消订单',
@@ -83,19 +91,22 @@ export default {
         {
           statusTitle: '等待发货',
           buttonLeftName: '取消订单',
-          buttonRightName: '催促发货'
+          buttonRightName: ''
         },
         {
           statusTitle: '已发货',
-          buttonLeftName: '查看物流',
+          buttonLeftName: '',
           buttonRightName: '确认收货'
-        },
-        {
-          statusTitle: '交易成功',
-          buttonLeftName: '删除订单',
-          buttonRightName: '评价晒单'
         }
+        // {
+        //   statusTitle: '交易成功',
+        //   buttonLeftName: '删除订单',
+        //   buttonRightName: '评价晒单'
+        // }
       ],
+      statusName: '',
+      statusLeftBtnName: '',
+      statusRightBtnName: '',
       modalShow: false
     }
   },
@@ -107,16 +118,22 @@ export default {
       }
     }).success((data) => {
       this.orderDetail = data
+      this.statusName = this.status[data.Status - 1].statusTitle
+      this.statusLeftBtnName = this.status[data.Status - 1].buttonLeftName
+      this.statusRightBtnName = this.status[data.Status - 1].buttonRightName
     })
   },
   methods: {
     LeftButtonClick () {
-      if (this.orderDetail.Status === 1) this.modalShow = true
+      if (this.statusLeftBtnName === '取消订单') this.modalShow = true
+    },
+    closeModal () {
+      this.modalShow = false
     }
   },
   components: {
     Theme,
-    DeleteOrder,
+    ModalReminder,
     Modal
   }
 }

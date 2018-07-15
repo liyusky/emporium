@@ -20,17 +20,33 @@
     width: 100%;
     height: 99 / $unit * $symbol;
     padding: {
-      left: 33 / $unit * $symbol;
-      right: 33 / $unit * $symbol;
+      left: 133 / $unit * $symbol;
+      right: 133 / $unit * $symbol;
     }
     background-color: #fff;
     .nav-item {
+      position: relative;
       $param: (flex flex) (alignItems center) (justifyContent center);
       @include flexSet($param);
-      width: 228 / $unit * $symbol;
       height: 100%;
       font-size: 30 / $unit * $symbol;
+      font-weight: bold;
       color: #333333;
+      &::after {
+        position: absolute;
+        bottom: 3 / $unit * $symbol;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        content: '';
+        width: 100%;
+        height: 5 / $unit * $symbol;
+        border-radius: 3 / $unit * $symbol;
+        background-color: fff;
+      }
+    }
+    .active::after {
+      background-color: red;
     }
   }
   &-order {
@@ -62,7 +78,7 @@
         }
         font-size: 24 / $unit * $symbol;
         color: #363636;
-        i {
+        .icon {
           font-size: 36 / $unit * $symbol;
         }
       }

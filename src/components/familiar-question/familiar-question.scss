@@ -5,7 +5,7 @@
   height: 100vh;
   overflow-y: auto;
   padding: {
-    top: 90 / $unit * $symbol;
+    top: 129 / $unit * $symbol;
   }
   background: #ffffff;
   .question-content{
@@ -26,14 +26,10 @@
       border: {
         bottom:  1px solid #eeeeee;
       }
-      i{
-        display: block;
-        width: 36 / $unit * $symbol;
-        height: 36 / $unit * $symbol;
+      .icon {
         margin: {
           right: 10 / $unit * $symbol;
         }
-        background: red;
       }
       p{
         font-size: 30 / $unit * $symbol;
@@ -48,11 +44,7 @@
       margin: {
         bottom: 31 / $unit * $symbol;
       }
-      i{
-        display: block;
-        width: 30 / $unit * $symbol;
-        height: 30 / $unit * $symbol;
-        background: red;
+      .icon {
         margin: {
           top: 11 / $unit * $symbol;
           right: 20 / $unit * $symbol;

@@ -4,26 +4,30 @@
     <div class="confirm-content">
       <div class="content-address" @click="gotoPage('address-manage')">
         <div class="address-process">
-          <img src="https://api.vtrois.com/image/750x7/e0e1e3">
+          <img src="../../assets/images/process-bar.png">
         </div>
         <!-- 有地址 -->
         <div class="address-exist" v-if="address">
           <div class="exist-person-info">
             <p class="info-name-telphone">
-              <i class="iconfont icon-suan"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-didian"></use>
+              </svg>
               <span>{{address.ReseverName}} {{address.PhoneNo}}</span>
             </p>
             <p class="info-receipt-place">{{address.Address}}</p>
           </div>
-          <i class="iconfont icon-dacong"></i>
+          <i class="iconfont icon-arrow-right"></i>
         </div>
         <!-- 无地址 -->
         <div class="address-without" v-if="!address">
             <p class="without-title">
-              <i class="iconfont icon-suan"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-didian"></use>
+              </svg>
               <span>添加收货地址</span>
             </p>
-          <i class="iconfont icon-dacong"></i>
+          <i class="iconfont icon-arrow-right"></i>
         </div>
       </div>
       <div class="content-order-number">
@@ -71,11 +75,15 @@
         <div class="way-item" v-for="(item, index) in phone.PaymentTypeArr" :key="index" @click="select(item.pay)">
           <div class="item-detail">
             <div class="detail-name">
-              <i class="iconfont" :class="'icon-' + item.icon"></i>
+              <svg class="icon" aria-hidden="true">
+                <use :xlink:href = item.icon></use>
+              </svg>
+              <!-- <i class="iconfont" :class="'icon-' + item.icon"></i> -->
               <span>{{item.name}}</span>
             </div>
           </div>
-          <i class="iconfont" :class="{'icon-dacong': selected == item.pay, 'icon-dacong': selected != item.pay}"></i>
+          <i class="iconfont icon-dadaobiaozhun" v-if="selected == item.pay"></i>
+          <i class="iconfont icon-weixuanze" v-else-if="selected != item.pay"></i>
         </div>
       </div>
     </div>
@@ -107,12 +115,14 @@ export default {
   data () {
     return {
       theme: {
-        title: '订单信息确认'
+        title: '订单信息确认',
+        themeRight: false
       },
       selected: null,
       modal: false,
       installmentNum: 0,
-      hasAddressDefault: true
+      hasAddressDefault: true,
+      icons: '#icon-dadaobiaozhun'
     }
   },
   methods: {

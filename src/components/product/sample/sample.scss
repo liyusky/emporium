@@ -67,7 +67,7 @@
             @include flexSet($param);
             width: 100%;
             height: 51 / $unit * $symbol;
-            i {
+            .icon {
               margin: {
                 right: 21 / $unit * $symbol;
               }

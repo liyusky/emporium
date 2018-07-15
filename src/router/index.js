@@ -3,12 +3,13 @@ import Home from '../components/home/home.vue'
 import Mine from '../components/home/mine/mine.vue'
 import Mall from '../components/home/mall/mall.vue'
 import Product from '../components/product/product.vue'
-import Feedback from '../components/feedback/feedback.vue'
+// import Feedback from '../components/feedback/feedback.vue'
 import AddressManage from '../components/address-manage/address-manage.vue'
 import AddAddress from '../components/add-address/add-address.vue'
 import Order from '../components/order/order.vue'
 import OrderConfirm from '../components/order-confirm/order-confirm.vue'
 import OrderDetail from '../components/order-detail/order-detail.vue'
+import FamiliarQuestion from '../components/familiar-question/familiar-question.vue'
 
 export default new Router({
   routes: [
@@ -48,11 +49,11 @@ export default new Router({
       component: AddAddress,
       props: true
     },
-    {
-      path: '/feedback',
-      name: 'feedback',
-      component: Feedback
-    },
+    // {
+    //   path: '/feedback',
+    //   name: 'feedback',
+    //   component: Feedback
+    // },
     {
       path: '/order',
       name: 'order',
@@ -69,6 +70,11 @@ export default new Router({
       name: 'order-detail',
       component: OrderDetail,
       props: true
+    },
+    {
+      path: '/familiar-question',
+      name: 'familiar-question',
+      component: FamiliarQuestion
     }
   ]
 })

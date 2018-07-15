@@ -22,6 +22,10 @@
       font-size: 30 / $unit * $symbol;
       color: #222222;
     }
+    i {
+      font-size: 27 / $unit * $symbol;
+      color: #a5a5a5;
+    }
     div {
       .item-tip {
         display: inline-block;

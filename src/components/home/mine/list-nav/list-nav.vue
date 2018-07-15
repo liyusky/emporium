@@ -14,7 +14,7 @@
     </div> -->
     <div class="nav-item" @click="gotoPage('address-manage')">
       <p class="item-title">地址管理</p>
-      <i class="iconfont icon-dacong"></i>
+      <i class="iconfont icon-arrow-right"></i>
     </div>
     <!-- <div class="nav-item" @click="gotoPage('feedback')">
       <p class="item-title">用户反馈</p>

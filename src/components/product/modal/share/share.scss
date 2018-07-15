@@ -39,8 +39,8 @@
         height: 90 / $unit * $symbol;
         background: #fff;
         border-radius: 50%;
-        i{
-          font-size: 30 / $unit * $symbol;
+        .icon{
+          font-size: 39 / $unit * $symbol;
           color: red;
         }
       }

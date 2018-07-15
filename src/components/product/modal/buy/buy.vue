@@ -10,7 +10,7 @@
         <p class="detail-price">{{buy.nowPrice}}</p>
         <p class="detail-advantage">{{buy.PaymentType}}</p>
       </div>
-      <i class="iconfont icon-dacong" @click="closeModal"></i>
+      <i class="iconfont icon-close" @click="closeModal"></i>
     </div>
     <div class="rightbuy-property">
       <div class="property-item">

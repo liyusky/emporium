@@ -12,16 +12,18 @@
         </div>
         <div class="tip-operation">
           <p class="operation-set-default" @click="setDefault(item.Id)">
-            <i class="iconfont" :class="{'icon-dacong': item.Id == defaultId}"></i>
+            <i class="iconfont icon-dadaobiaozhun" :class="{'icon-dacong': item.Id == defaultId}"></i>
             <span>设为默认地址</span>
           </p>
           <div class="operation-modify">
             <p @click="remove(item.Id, index)">
-              <i class="iconfont icon-dacong"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-lajixiang"></use>
+              </svg>
               <span>删除</span>
             </p>
             <p @click="modify(item)">
-              <i class="iconfont icon-dacong"></i>
+              <i class="iconfont icon-bianji"></i>
               <span>编辑</span>
             </p>
           </div>
@@ -86,7 +88,6 @@ export default {
           postId: postId
         }
       }).success((data) => {
-        console.log(data)
         this.defaultId = postId
       })
     },

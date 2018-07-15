@@ -56,7 +56,7 @@
               font-weight: bold;
               color: #000000;
             }
-            i {
+            .icon {
               font-size: 30 / $unit * $symbol;
               margin: {
                 right: 15 / $unit * $symbol;
@@ -156,6 +156,9 @@
             font-weight: bold;
           }
           .content-number {
+            margin: {
+              top: 10 / $unit * $symbol;
+            }
             font-size: 24 / $unit * $symbol;
             color: #999999;
           }
@@ -285,7 +288,7 @@
             $param: (flex flex) (alignItems center) (justifyContent flex-start);
             @include flexSet($param);
             height: 48 / $unit * $symbol;
-            i {
+            .icon {
               font-size: 48 / $unit * $symbol;
               color: #666;
             }
@@ -304,9 +307,11 @@
             color: #9f9f9f;
           }
         }
-        i {
+        .iocn {
           font-size: 39 / $unit * $symbol;
-          color: red;
+        }
+        .icon-dadaobiaozhun {
+          color: #eb2828;
         }
       }
     }

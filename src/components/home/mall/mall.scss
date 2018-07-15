@@ -6,192 +6,189 @@
   height: 100%;
   background-color: #fff;
   overflow-y: auto;
-  .index-content {
+  &-header {
     width: 100%;
-    .content-header {
+    height: 360 / $unit * $symbol;
+    img {
       width: 100%;
-      height: 360 / $unit * $symbol;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+      height: 100%;
     }
-    .content-advertising {
-      $param: (flex flex) (direction column) (alignItems center);
-      @include flexSet($param);
+  }
+  &-advertising {
+    $param: (flex flex) (direction column) (alignItems center);
+    @include flexSet($param);
+    width: 100%;
+    height: 162 / $unit * $symbol;
+    padding: {
+      top: 21 / $unit * $symbol;
+      bottom: 21 / $unit * $symbol;
+    }
+    img {
+      width: 699 / $unit * $symbol;
+      height: 123 / $unit * $symbol;
+    }
+  }
+  &-brand {
+    width: 100vw;
+    padding: {
+      left: 25 / $unit * $symbol;
+    }
+    .brand-classify {
       width: 100%;
-      height: 162 / $unit * $symbol;
-      padding: {
-        top: 21 / $unit * $symbol;
-        bottom: 21 / $unit * $symbol;
-      }
-      img {
-        width: 699 / $unit * $symbol;
-        height: 123 / $unit * $symbol;
-      }
-    }
-    .content-brand {
-      width: 100vw;
-      padding: {
-        left: 25 / $unit * $symbol;
-      }
-      .brand-classify {
+      .classify-title {
+        $param: (flex flex) (alignItems center) (justifyContent flex-start);
+        @include flexSet($param);
         width: 100%;
-        .classify-title {
-          $param: (flex flex) (alignItems center) (justifyContent flex-start);
-          @include flexSet($param);
-          width: 100%;
-          height: 76 / $unit * $symbol;
-          margin: {
-            bottom: 24 / $unit * $symbol;
-          }
-          i{
-            padding: {
-              left: 12 / $unit * $symbol;
-              right: 12 / $unit * $symbol;
-              top: 12 / $unit * $symbol;
-            }
-            font-size: 18 / $unit * $symbol;
-            color: #ff0000;
-          }
-          .title-text {
-            font-size: 36 / $unit * $symbol;
-            color: #353535;
-            font-weight: bold;
-          }
+        height: 76 / $unit * $symbol;
+        margin: {
+          bottom: 24 / $unit * $symbol;
         }
-        .classify-shop-list {
-          $param: (flex flex) (flexWrap wrap);
-          @include flexSet($param);
-          width: 100%;
+        .icon {
           margin: {
-            bottom: 15 / $unit * $symbol;
+            left: 12 / $unit * $symbol;
+            right: 12 / $unit * $symbol;
           }
-          .list-item {
-            position: relative;
-            display: block;
-            $param: (flex flex) (direction column) (alignItems center);
-            @include flexSet($param);
-            width: 345 / $unit * $symbol;
-            height: 472 / $unit * $symbol;
-            border: 1px solid #ededed;
-            padding: {
-              top: 42 / $unit * $symbol;
+          font-size: 18 / $unit * $symbol;
+        }
+        .title-text {
+          font-size: 36 / $unit * $symbol;
+          color: #353535;
+          font-weight: bold;
+        }
+      }
+      .classify-shop-list {
+        $param: (flex flex) (flexWrap wrap);
+        @include flexSet($param);
+        width: 100%;
+        margin: {
+          bottom: 15 / $unit * $symbol;
+        }
+        .list-item {
+          position: relative;
+          display: block;
+          $param: (flex flex) (direction column) (alignItems center);
+          @include flexSet($param);
+          width: 345 / $unit * $symbol;
+          height: 472 / $unit * $symbol;
+          border: 1px solid #ededed;
+          padding: {
+            top: 42 / $unit * $symbol;
+          }
+          margin: {
+            right: 11 / $unit * $symbol;
+            bottom: 10 / $unit * $symbol;
+          }
+          border-radius: 3 / $unit * $symbol;
+          background: #fff;
+          box-shadow: 0 0 (30 / $unit * $symbol) (6 / $unit * $symbol) #efeeec;
+          .item-shop-picture {
+            width: 172 / $unit * $symbol;
+            height: 199 / $unit * $symbol;
+            img {
+              width: 100%;
+              height: 100%;
             }
+          }
+          .item-title {
+            height: 49 / $unit * $symbol;
             margin: {
-              right: 11 / $unit * $symbol;
-              bottom: 10 / $unit * $symbol;
+              top: 14 / $unit * $symbol
             }
-            border-radius: 3 / $unit * $symbol;
-            background: #fff; 
-            box-shadow: 0 0 (30 / $unit * $symbol) (6 / $unit * $symbol) #efeeec;
-            .item-shop-picture {
-              width: 172 / $unit * $symbol;
-              height: 199 / $unit * $symbol;
-              img {
-                width: 100%;
-                height: 100%;
-              }
-            }
-            .item-title {
-              height: 49 / $unit * $symbol;
+            line-height: 49 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            font-weight: bold;
+            color: #353535;
+          }
+          .item-parameter {
+            $param: (flex flex) (justifyContent center);
+            @include flexSet($param);
+            .parameter-item {
+              width: 88 / $unit * $symbol;
+              height: 36 / $unit * $symbol;
+              line-height: 39 / $unit * $symbol;
+              text-align: center;
               margin: {
-                top: 14 / $unit * $symbol
+                left: 5 / $unit * $symbol;
+                right: 5 / $unit * $symbol;
               }
-              line-height: 49 / $unit * $symbol;
-              font-size: 24 / $unit * $symbol;
-              font-weight: bold;
+              background: #ffe0da;
+              border-radius: 4px;
+              font-size: 21 / $unit * $symbol;
               color: #353535;
             }
-            .item-parameter {
-              $param: (flex flex) (justifyContent center);
-              @include flexSet($param);
-              .parameter-item {
-                width: 88 / $unit * $symbol;
-                height: 35 / $unit * $symbol;
-                line-height: 35 / $unit * $symbol;
-                text-align: center;
-                margin: {
-                  left: 5 / $unit * $symbol;
-                  right: 5 / $unit * $symbol;
-                }
-                background: #ffe0da;
-                border-radius: 4px;
-                font-size: 18 / $unit * $symbol;
-                color: #353535;
-              }
+          }
+          .item-price {
+            $param: (flex flex) (alignItems center);
+            @include flexSet($param);
+            height: 59 / $unit * $symbol;
+            width: 100%;
+            padding: {
+              left: 21 / $unit * $symbol;
             }
-            .item-price {
-              $param: (flex flex) (alignItems center);
-              @include flexSet($param);
-              height: 59 / $unit * $symbol;
-              width: 100%;
+            .price-now {
+              font-size: 27 / $unit * $symbol;
+              color: #eb2828;
+              font-weight: bold;
+            }
+            .price-installment {
               padding: {
-                left: 21 / $unit * $symbol;
+                left: 9 / $unit * $symbol;
               }
-              .price-now {
-                font-size: 27 / $unit * $symbol;
-                color: #eb2828;
-                font-weight: bold;
-              }
-              .price-installment {
-                padding: {
-                  left: 8 / $unit * $symbol;
-                }
-                font-size: 21 / $unit * $symbol;
-                color: #666666;
-              }
-              .price-old {
-                padding: {
-                  left: 19 / $unit * $symbol;
-                }
-                font-size: 21 / $unit * $symbol;
-                color: #666666;
-                text-decoration: line-through;
-              }
+              font-size: 21 / $unit * $symbol;
+              color: #666666;
             }
-            .item-economize {
-              $param: (flex flex) (alignItems center);
-              @include flexSet($param);
-              width: 124 / $unit * $symbol;
-              height: 34 / $unit * $symbol;
-              margin: {
-                top: 7 / $unit * $symbol;
+            .price-old {
+              padding: {
+                left: 18 / $unit * $symbol;
               }
-              border: 2/$unit*$symbol solid #eb2828;
-              border-radius: 4px;
-              .economize-notice {
-                display: block;
-                width: 34 / $unit * $symbol;
-                height: 34 / $unit * $symbol;
-                text-align: center;
-                background: #eb2828;
-                color: #fff;
-                font-size: 21 / $unit * $symbol;
-                border-top-left-radius: 4px;
-                border-bottom-left-radius: 4px;
-              }
-              .economize-price {
-                display: block;
-                flex: 1;
-                text-align: center;
-                color: #393939;
-                font-size: 15 / $unit * $symbol;
-              }
+              font-size: 21 / $unit * $symbol;
+              color: #666666;
+              text-decoration: line-through;
             }
-            .item-badge {
-              position: absolute;
-              top: 0;
-              left: 0;
-              $param: (flex flex) (alignItems center) (justifyContent center);
-              @include flexSet($param);
-              width: 79 / $unit * $symbol;
-              height: 35 / $unit * $symbol;
-              background: #fe5649;
-              span {
-                font-size: 21 / $unit * $symbol;
-                color: #fff;
-              }
+          }
+          .item-economize {
+            $param: (flex flex) (alignItems center);
+            @include flexSet($param);
+            width: 124 / $unit * $symbol;
+            height: 34 / $unit * $symbol;
+            margin: {
+              top: 7 / $unit * $symbol;
+            }
+            border: (2 / $unit * $symbol) solid #eb2828;
+            border-radius: 4 / $unit * $symbol;
+            .economize-notice {
+              display: block;
+              width: 30 / $unit * $symbol;
+              height: 30 / $unit * $symbol;
+              line-height: 30 / $unit * $symbol;
+              text-align: center;
+              background: #eb2828;
+              color: #fff;
+              font-size: 21 / $unit * $symbol; // border-top-left-radius: 4 / $unit * $symbol;
+              // border-bottom-left-radius: 4 / $unit * $symbol;
+            }
+            .economize-price {
+              display: block;
+              flex: 1;
+              width: 100%;
+              line-height: 30 / $unit * $symbol;
+              text-align: center;
+              color: #393939;
+              font-size: 15 / $unit * $symbol;
+            }
+          }
+          .item-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            $param: (flex flex) (alignItems center) (justifyContent center);
+            @include flexSet($param);
+            width: 79 / $unit * $symbol;
+            height: 35 / $unit * $symbol;
+            background: #fe5649;
+            span {
+              font-size: 21 / $unit * $symbol;
+              color: #fff;
             }
           }
         }

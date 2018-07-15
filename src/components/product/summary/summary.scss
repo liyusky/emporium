@@ -57,7 +57,7 @@
         .bill-amount {
           $param: (flex flex) (justifyContent space-between);
           @include flexSet($param);
-          width: 378 / $unit * $symbol;
+          // width: 378 / $unit * $symbol;
           .amount-current {
             $param: (flex flex) (alignItems flex-end);
             @include flexSet($param);
@@ -67,11 +67,15 @@
             }
             span:last-of-type {
               font-size: 51 / $unit * $symbol;
+              font-weight: bold;
             }
           }
           .amount-original {
             $param: (flex flex) (alignItems flex-end);
             @include flexSet($param);
+            margin: {
+              left: 27 / $unit * $symbol;
+            }
             color: #666666;
             font-size: 24 / $unit * $symbol;
             span:last-of-type {
@@ -83,25 +87,26 @@
           $param: (flex flex) (alignItems center) (justifyContent space-between);
           @include flexSet($param);
           width: 111 / $unit * $symbol;
-          height: 36 / $unit * $symbol;
+          height: 34 / $unit * $symbol;
           padding: {
             right: 3 / $unit * $symbol;
           }
           background-color: #eb2828;
-          border-radius: 6 / $unit * $symbol;
+          border-radius: 4 / $unit * $symbol;
           font-size: 21 / $unit * $symbol;
           div:first-of-type {
-            $param: (flex flex) (alignItems center) (justifyContent center);
-            @include flexSet($param);
-            width: 30 / $unit * $symbol;
-            height: 100%;
+            width: 33 / $unit * $symbol;
+            height: 30 / $unit * $symbol;
+            line-height: 30 / $unit * $symbol;
+            text-align: center;
+            font-size: 21 / $unit * $symbol;
             color: #fff;
           }
           div:last-of-type {
-            $param: (flex flex) (alignItems center) (justifyContent center);
-            @include flexSet($param);
             width: 78 / $unit * $symbol;
             height: 30 / $unit * $symbol;
+            line-height: 30 / $unit * $symbol;
+            font-size: 21 / $unit * $symbol;
             color: #393939;
             background-color: #fff;
           }
@@ -152,10 +157,11 @@
       background-color: #fff2f2;
       font-size: 24 / $unit * $symbol;
       color: #ff5555;
-      i {
+      .icon {
         margin: {
           right: 9 / $unit * $symbol;
         }
+        font-size: 30 / $unit * $symbol;
       }
     }
     .content-pay-method {
@@ -175,6 +181,10 @@
         @include flexSet($param);
         width: 100%;
         height: 30 / $unit * $symbol;
+        i {
+          font-size: 30 / $unit * $symbol;
+          color: #999;
+        }
         .selected-tip {
           $param: (flex flex) (alignItems center) (justifyContent space-between);
           @include flexSet($param);
@@ -186,6 +196,9 @@
           }
           .tip-sign {
             color: #999999;
+            .icon {
+              font-size: 30 / $unit * $symbol;
+            }
           }
         }
       }
@@ -198,10 +211,11 @@
           margin: {
             right: 30 / $unit * $symbol;
           }
-          i {
+          .icon {
             margin: {
               right: 6 / $unit * $symbol;
             }
+            font-size: 27 / $unit * $symbol;
           }
           span {
             font-size: 24 / $unit * $symbol;
@@ -218,6 +232,10 @@
       span {
         font-size: 24 / $unit * $symbol;
         color: #333333;
+      }
+      i {
+        font-size: 30 / $unit * $symbol;
+        color: #999;
       }
     }
   }

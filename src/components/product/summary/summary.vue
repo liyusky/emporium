@@ -51,7 +51,9 @@
         <p>国产苹果充电套装（充电头+数据线）</p>
       </div> -->
       <div class="content-tip">
-        <i class="iconfont icon-dacong"></i>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-baozhang"></use>
+        </svg>
         <span>{{summary.Guarantee}}</span>
       </div>
       <div class="content-pay-method">
@@ -59,22 +61,26 @@
           <div class="selected-tip">
             <b>支付方式</b>
             <p class="tip-sign">
-              <i class="iconfont icon-dacong"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-tongzhi"></use>
+              </svg>
               <span>请选择</span>
             </p>
           </div>
-          <i class="iconfont icon-dacong"></i>
+          <i class="iconfont icon-shenglvehao"></i>
         </div>
         <ul class="method-selectable">
           <li class="selectable-item" v-for="(item, index) in summary.PaymentTypeArr" :key="index">
-            <i class="iconfont icon-dacong"></i>
+            <svg class="icon" aria-hidden="true">
+              <use :xlink:href="item.icon"></use>
+            </svg>
             <span>{{item.name}}</span>
           </li>
         </ul>
       </div>
       <div class="content-characteristic" @click="openModal('Parameter')">
         <span>产品参数</span>
-        <i class="iconfont icon-dacong"></i>
+        <i class="iconfont icon-shenglvehao"></i>
       </div>
     </div>
   </section>
@@ -90,6 +96,7 @@ export default {
     return {}
   },
   mounted () {
+    console.log(this.summary)
     // 轮播图
     this.$nextTick(function () {
       var mySwiper = new Swiper('.swiper-container', {

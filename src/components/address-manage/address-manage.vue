@@ -21,9 +21,13 @@ export default {
   data () {
     return {
       theme: {
-        title: '地址管理'
+        title: '地址管理',
+        themeRight: false
       }
     }
+  },
+  mounted () {
+    console.log(this.origin)
   },
   methods: {
     gotoPage (page) {
