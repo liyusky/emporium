@@ -13,7 +13,6 @@ import Theme from '../common/theme/theme.vue'
 import AddressTips from './address-tips/address-tips.vue'
 export default {
   name: 'AddressManage',
-  props: ['origin'],
   components: {
     Theme,
     AddressTips
@@ -23,11 +22,12 @@ export default {
       theme: {
         title: '地址管理',
         themeRight: false
-      }
+      },
+      origin: null
     }
   },
-  mounted () {
-    console.log(this.origin)
+  created () {
+    this.origin = this.$store.state.origin
   },
   methods: {
     gotoPage (page) {

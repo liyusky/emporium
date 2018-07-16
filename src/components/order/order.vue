@@ -8,9 +8,11 @@
       <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3)">代收货</button>
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
-    <section class="order-classify">
-      <OrderList v-show="tips" v-for="(item, index) in tips" :key="index" :item="item"></OrderList>
-      <OrderWithout v-show="!tips"></OrderWithout>
+    <section class="order-classify" ref="orders">
+      <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+        <OrderList v-show="tips" v-for="(item, index) in tips" :key="index" :item="item"></OrderList>
+        <OrderWithout v-show="!tips"></OrderWithout>
+      </PullRefresh>
     </section>
   </section>
 </template>
@@ -21,6 +23,7 @@ import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import OrderList from './order-list/order-list.vue'
 import OrderWithout from './order-without/order-without.vue'
+import PullRefresh from '../common/pull-refresh/pull-refresh.vue'
 export default {
   name: 'Order',
   data () {
@@ -30,7 +33,8 @@ export default {
         themeRight: false
       },
       status: -1,
-      tips: null
+      tips: null,
+      page: 1
     }
   },
   created () {
@@ -52,10 +56,23 @@ export default {
         params: {
           custermerId: 10000,
           status: status
+          // pageCurrent: this.page
         }
       }).success((data) => {
         if (status === this.status) this.tips = data
-        console.log(this.tips)
+        console.log(data)
+      })
+    },
+    loadMore () {
+      Http.send({
+        url: 'orderList',
+        params: {
+          custermerId: 10000,
+          status: this.status,
+          pageCurrent: ++this.page
+        }
+      }).success((data) => {
+        this.tips = this.tips.concat(data)
       })
     },
     ...mapMutations(['changeStatusNum'])
@@ -63,6 +80,7 @@ export default {
   components: {
     Theme,
     OrderList,
+    PullRefresh,
     OrderWithout
   }
 }

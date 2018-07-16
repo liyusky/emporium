@@ -5,6 +5,7 @@ const state = {
   installments: null,
   orderNum: null,
   // 传入order的参数
-  statusNum: null
+  statusNum: null,
+  origin: null
 }
 export default state

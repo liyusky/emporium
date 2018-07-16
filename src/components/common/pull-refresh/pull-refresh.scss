@@ -1,0 +1,28 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_btn.scss';
+.pull-refresh {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  .refresh-list {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+  }
+  .refresh-tip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    font-size: 33 / $unit * $symbol;
+    color: #333333;
+  }
+  .tip-bottom {
+    bottom: 0;
+  }
+}

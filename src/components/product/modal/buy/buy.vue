@@ -52,7 +52,7 @@ export default {
       Http.send({
         url: 'buy',
         params: {
-          CustermerId: 1,
+          CustermerId: 10000,
           commodityId: this.buy.Id,
           PayType: 0,
           DeliverType: 0,

@@ -15,6 +15,9 @@ const mutations = {
   },
   changeStatusNum (state, number) {
     state.statusNum = number
+  },
+  saveOrigin (state, origin) {
+    state.origin = origin
   }
 }
 export default mutations

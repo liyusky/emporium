@@ -1,6 +1,6 @@
 <template>
   <section class="order-detail">
-    <Theme :theme="theme"></Theme>
+    <Theme :theme="theme" :previous="origin" :current="'order-detail'"></Theme>
     <section class="order-detail-content">
       <div class="content-order-information">
         <div class="information-person">
@@ -69,6 +69,7 @@ import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
+import { mapState } from 'vuex'
 export default {
   // 订单参数
   props: ['orderNum'],
@@ -111,12 +112,14 @@ export default {
     }
   },
   mounted () {
+    console.log(this.origin)
     Http.send({
       url: 'orderDetail',
       params: {
         Orderno: this.orderNum
       }
     }).success((data) => {
+      console.log(data)
       this.orderDetail = data
       this.statusName = this.status[data.Status - 1].statusTitle
       this.statusLeftBtnName = this.status[data.Status - 1].buttonLeftName
@@ -130,6 +133,9 @@ export default {
     closeModal () {
       this.modalShow = false
     }
+  },
+  computed: {
+    ...mapState(['origin'])
   },
   components: {
     Theme,

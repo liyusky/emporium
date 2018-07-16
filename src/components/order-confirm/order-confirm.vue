@@ -104,7 +104,7 @@ import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
 import Instalments from './modal/instalments/instalments.vue'
 import Http from '../../class/http.class.js'
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'OrderConfirm',
   components: {
@@ -157,10 +157,14 @@ export default {
       })
     },
     confrim () {
-      if (this.selected && this.address) return
-      console.log(this.phone.OrderNo)
-      console.log(this.selected)
-      console.log(this.installmentNum)
+      if (!this.address) {
+        alert('请选择地址')
+        return
+      }
+      if (!this.selected) {
+        alert('请选择支付方式')
+        return
+      }
       Http.send({
         url: 'orderSubmit',
         params: {
@@ -169,13 +173,13 @@ export default {
           num: this.installmentNum
         }
       }).success((data) => {
-        console.log(data)
         this.gotoPage('order-detail')
       })
-    }
+    },
+    ...mapMutations(['saveOrigin'])
   },
   mounted () {
-    console.log(this.phone)
+    this.saveOrigin('order-confrim')
   },
   computed: {
     ...mapState(['phone', 'address', 'installments'])

@@ -23,10 +23,8 @@ export default class Http {
     if (response.code === 200) {
       if (this.successCallback) this.successCallback(response.data)
     } else {
-      switch (response.code) {
-        case 401:
-          break
-      }
+      alert(response.message)
+      alert(response.description)
       if (this.failCallback) this.failCallback(response)
     }
   }
