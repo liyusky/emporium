@@ -29,8 +29,7 @@ export default {
   data () {
     return {
       theme: {
-        title: '我的订单',
-        themeRight: false
+        title: '我的订单'
       },
       status: -1,
       tips: null,

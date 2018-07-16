@@ -37,10 +37,10 @@
       font-weight: bold;
     }
   }
-  &-right {
-    position: absolute;
-    right: 30 / $unit * $symbol;
-    z-index: 100;
-    font-size: 36 / $unit * $symbol;
-  }
+  // &-right {
+  //   position: absolute;
+  //   right: 30 / $unit * $symbol;
+  //   z-index: 100;
+  //   font-size: 36 / $unit * $symbol;
+  // }
 }

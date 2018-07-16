@@ -73,8 +73,7 @@ export default {
   data () {
     return {
       theme: {
-        title: '常见问题',
-        themeRight: false
+        title: '常见问题'
       }
     }
   },
