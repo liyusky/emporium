@@ -16,13 +16,13 @@
             <span>设为默认地址</span>
           </p>
           <div class="operation-modify">
-            <p @click="remove(item.Id, index)">
+            <p @click.stop="remove(item.Id, index)">
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-lajixiang"></use>
               </svg>
               <span>删除</span>
             </p>
-            <p @click="modify(item)">
+            <p @click.stop="modify(item)">
               <i class="iconfont icon-bianji"></i>
               <span>编辑</span>
             </p>
@@ -30,12 +30,14 @@
         </div>
       </li>
     </ul>
+    <ModalReminder :Title="Title" v-show="reminderShow" @CLOSE_MODAL_EVENT="closeModalReminder" @SENF_REQUEST_EVENT="sendRequest"></ModalReminder>
   </section>
   <!-- e 地址标签 -->
 </template>
 
 <script>
 import Http from '../../../class/http.class.js'
+import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
 import { mapMutations } from 'vuex'
 export default {
   name: 'AddressTips',
@@ -44,8 +46,16 @@ export default {
     return {
       addressList: [],
       orderNum: null,
-      defaultId: null
+      defaultId: null,
+      Title: {
+        text: ''
+      },
+      reminderShow: false,
+      deleteParams: {}
     }
+  },
+  components: {
+    ModalReminder
   },
   created () {
     Http.send({
@@ -101,15 +111,24 @@ export default {
       })
     },
     remove (id, index) {
+      this.Title.text = '您确定要删除地址'
+      this.reminderShow = true
+      this.deleteParams.id = id
+      this.deleteParams.index = index
+    },
+    sendRequest () {
+      this.reminderShow = false
       Http.send({
         url: 'DeletePostAddress',
         params: {
-          id: id
+          id: this.deleteParams.id
         }
       }).success((data) => {
-        console.log(1)
-        this.addressList.splice(index, 1)
+        this.addressList.splice(this.deleteParams.index, 1)
       })
+    },
+    closeModalReminder () {
+      this.reminderShow = false
     },
     ...mapMutations(['saveSelectedAddress'])
   }

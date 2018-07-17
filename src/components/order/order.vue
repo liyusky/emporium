@@ -10,7 +10,7 @@
     </section>
     <section class="order-classify" ref="orders">
       <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-        <OrderList v-show="tips" v-for="(item, index) in tips" :key="index" :item="item"></OrderList>
+        <OrderList v-show="tips" v-for="(item, index) in tips" :key="index" :item="item" :index="index" @REMOVE_TIPS_EVENT="cancel"></OrderList>
         <OrderWithout v-show="!tips"></OrderWithout>
       </PullRefresh>
     </section>
@@ -29,8 +29,7 @@ export default {
   data () {
     return {
       theme: {
-        title: '我的订单',
-        themeRight: false
+        title: '我的订单'
       },
       status: -1,
       tips: null,
@@ -74,6 +73,9 @@ export default {
       }).success((data) => {
         this.tips = this.tips.concat(data)
       })
+    },
+    cancel (index) {
+      this.tips.splice(index, 1)
     },
     ...mapMutations(['changeStatusNum'])
   },

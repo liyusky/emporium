@@ -28,7 +28,7 @@
         <button>{{statusList[item.Status].buttonName}}</button>
       </div>
       <div class="button-order" v-else-if="item.Status != 1">
-        <button v-if="statusList[item.Status].buttonLeftName">{{statusList[item.Status].buttonLeftName}}</button>
+        <button v-if="statusList[item.Status].buttonLeftName" @click="cancel(item)">{{statusList[item.Status].buttonLeftName}}</button>
         <button v-if="statusList[item.Status].buttonRightName">{{statusList[item.Status].buttonRightName}}</button>
       </div>
     </div>
@@ -37,6 +37,7 @@
 
 <script>
 import Time from '../../../class/time.class.js'
+import Http from '../../../class/http.class.js'
 import { mapMutations } from 'vuex'
 export default {
   data () {
@@ -49,6 +50,7 @@ export default {
         },
         '1': {
           statusTitle: '待付款',
+          buttonLeftName: '取消订单',
           buttonName: '去支付'
         },
         '2': {
@@ -58,7 +60,6 @@ export default {
         },
         '3': {
           statusTitle: '已发货',
-          buttonLeftName: '',
           buttonRightName: '确认收货'
         }
       },
@@ -69,7 +70,7 @@ export default {
       statusButtonRightName: ''
     }
   },
-  props: ['item'],
+  props: ['item', 'index'],
   mounted () {
     // 订单日期
     this.titleTime = Time.change(Number(this.item.CreateTime.substring(6, 19)))
@@ -93,6 +94,16 @@ export default {
           }
         })
       }
+    },
+    cancel (item) {
+      Http.send({
+        url: 'Cancel',
+        params: {
+          orderno: item.OrderNo
+        }
+      }).success(data => {
+        this.$emit('REMOVE_TIPS_EVENT', this.index)
+      })
     },
     ...mapMutations(['saveOrigin'])
   }

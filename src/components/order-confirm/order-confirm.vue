@@ -1,6 +1,6 @@
 <template>
   <section class="order-comfirm">
-    <Theme :theme="theme"></Theme>
+    <Theme :theme="theme" :goal="'order-confirm'"></Theme>
     <div class="confirm-content">
       <div class="content-address" @click="gotoPage('address-manage')">
         <div class="address-process">
@@ -60,7 +60,7 @@
         <p class="distribution-express">顺风快递</p>
       </div>
       <div class="content-leave-message">
-        <textarea class="leave-message" id="leave-message" name="leave-message" maxlength="50" rows="1" placeholder="给商家留言 (最多50字)"></textarea>
+        <input class="leave-message" id="leave-message" name="leave-message" maxlength="50" rows="1" placeholder="给商家留言 (最多50字)">
       </div>
       <div class="content-summary">
         <p>

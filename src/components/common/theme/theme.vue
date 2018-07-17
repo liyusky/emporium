@@ -5,9 +5,9 @@
     <div class="theme-left" @click="goback">
       <i class="iconfont icon-arrow-left"></i>
     </div>
-    <div class="theme-right" v-show="theme.themeRight">
+    <!-- <div class="theme-right" v-show="theme.themeRight">
       <i class="iconfont icon-fenxiang"></i>
-    </div>
+    </div> -->
   </header>
   <!-- e 公共头部 -->
 </template>

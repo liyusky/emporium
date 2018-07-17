@@ -48,7 +48,7 @@
     </section>
     <footer class="detail-button">
       <div class="button-item">
-        <button class="item-right" @click="LeftButtonClick" v-if="statusLeftBtnName">{{statusLeftBtnName}}</button>
+        <button class="item-right" @click="LeftButtonClick(orderDetail)" v-if="statusLeftBtnName">{{statusLeftBtnName}}</button>
         <button class="item-left" v-if="statusRightBtnName">{{statusRightBtnName}}</button>
       </div>
       <!-- <div class="button-item" v-if="orderDetail.Status == 1">
@@ -76,8 +76,7 @@ export default {
   data () {
     return {
       theme: {
-        title: '订单详情',
-        themeRight: false
+        title: '订单详情'
       },
       Title: {
         text: '取消后，机器可能会被人抢走哦~'
@@ -121,8 +120,18 @@ export default {
     })
   },
   methods: {
-    LeftButtonClick () {
-      if (this.statusLeftBtnName === '取消订单') this.modalShow = true
+    LeftButtonClick (orderDetail) {
+      if (this.statusLeftBtnName === '取消订单') {
+        this.modalShow = true
+        Http.send({
+          url: 'Cancel',
+          params: {
+            orderno: orderDetail.OrderNo
+          }
+        }).success(data => {
+          this.$router.push({ name: 'order' })
+        })
+      }
     },
     closeModal () {
       this.modalShow = false

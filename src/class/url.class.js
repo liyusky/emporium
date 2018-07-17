@@ -11,4 +11,5 @@ export default class Url {
   static ModifyPostAddress = '/Customer/ModifyPostAddress'
   static SetDefaultAddress = '/Customer/SetDefaultAddress'
   static DeletePostAddress = '/Customer/DeletePostAddress'
+  static Cancel = '/order/Cancel'
 }

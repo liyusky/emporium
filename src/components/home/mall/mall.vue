@@ -45,22 +45,29 @@
         </li>
       </ul>
     </PullRefresh>
+    <ModalHint v-show="HintShow" :Title="Title"></ModalHint>
   </section>
 </template>
 
 <script>
 import PullRefresh from '../../common/pull-refresh/pull-refresh.vue'
+import ModalHint from '../../common/alert-modal/modal-hint/modal-hint.vue'
 import Http from '../../../class/http.class.js'
 export default {
   name: 'Home',
   data () {
     return {
       page: 1,
-      groups: null
+      groups: null,
+      Title: {
+        text: ''
+      },
+      HintShow: false
     }
   },
   components: {
-    PullRefresh
+    PullRefresh,
+    ModalHint
   },
   created () {
     Http.send({
@@ -89,6 +96,14 @@ export default {
           Pageindex: ++this.page
         }
       }).success(data => {
+        if (!data.length) {
+          this.Title.text = '没有更多数据了'
+          this.HintShow = true
+          setTimeout(() => {
+            this.HintShow = false
+          }, 500)
+          return false
+        }
         this.groups = this.groups.concat(data)
       })
     }
