@@ -71,9 +71,10 @@
         </div>
         <ul class="method-selectable">
           <li class="selectable-item" v-for="(item, index) in summary.PaymentTypeArr" :key="index">
-            <svg class="icon" aria-hidden="true">
+            <svg class="icon" aria-hidden="true" v-if="item.icon">
               <use :xlink:href="item.icon"></use>
             </svg>
+            <img v-else-if="!item.icon" src="../../../assets/images/master.png">
             <span>{{item.name}}</span>
           </li>
         </ul>
@@ -101,7 +102,7 @@ export default {
     this.$nextTick(function () {
       var mySwiper = new Swiper('.swiper-container', {
         autoplay: {
-          delay: 3000
+          delay: 2000
         },
         freeMode: false,
         loop: true,
@@ -110,7 +111,8 @@ export default {
           el: '.swiper-pagination',
           clickable: true,
           bulletElement: 'span',
-          longSwipesRatio: 0.3
+          longSwipesRatio: 0.3,
+          type: 'fraction'
         },
         observer: true,
         observeParents: true

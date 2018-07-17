@@ -94,9 +94,8 @@
               }
             }
             .content-title {
-              height: 49 / $unit * $symbol;
               margin: {
-                top: 14 / $unit * $symbol
+                top: 14 / $unit * $symbol;
               }
               line-height: 49 / $unit * $symbol;
               font-size: 27 / $unit * $symbol;
@@ -153,7 +152,7 @@
             .content-economize {
               $param: (flex flex) (alignItems center);
               @include flexSet($param);
-              width: 124 / $unit * $symbol;
+              width: auto;
               height: 34 / $unit * $symbol;
               margin: {
                 top: 7 / $unit * $symbol;
@@ -168,15 +167,16 @@
                 text-align: center;
                 background: #eb2828;
                 color: #fff;
-                font-size: 21 / $unit * $symbol; // border-top-left-radius: 4 / $unit * $symbol;
+                font-size: 24 / $unit * $symbol; // border-top-left-radius: 4 / $unit * $symbol;
                 // border-bottom-left-radius: 4 / $unit * $symbol;
               }
               .economize-price {
                 display: block;
-                flex: 1;
-                width: 100%;
+                padding: {
+                  left: 6 / $unit * $symbol;
+                  right: 6 / $unit * $symbol;
+                }
                 line-height: 30 / $unit * $symbol;
-                text-align: center;
                 color: #393939;
                 font-size: 15 / $unit * $symbol;
               }
@@ -185,12 +185,15 @@
               position: absolute;
               top: 0;
               left: 0;
-              $param: (flex flex) (alignItems center) (justifyContent center);
-              @include flexSet($param);
-              width: 79 / $unit * $symbol;
-              height: 35 / $unit * $symbol;
+              width: 78 / $unit * $symbol;
+              height: 36 / $unit * $symbol;
               background: #fe5649;
               span {
+                display: block;
+                width: 78 / $unit * $symbol;
+                height: 36 / $unit * $symbol;
+                $param: (flex flex) (alignItems center) (justifyContent center);
+                @include flexSet($param);
                 font-size: 21 / $unit * $symbol;
                 color: #fff;
               }

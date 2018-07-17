@@ -12,7 +12,7 @@
         </div>
         <div class="tip-operation">
           <p class="operation-set-default" @click="setDefault(item.Id)">
-            <i class="iconfont icon-dadaobiaozhun" :class="{'icon-dacong': item.Id == defaultId}"></i>
+            <i class="iconfont icon-dadaobiaozhun" :class="{'icon-default': item.Id == defaultId}"></i>
             <span>设为默认地址</span>
           </p>
           <div class="operation-modify">

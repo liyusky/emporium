@@ -14,7 +14,7 @@
     top: 50%;
     left: 50%;
     z-index: 999;
-    $param: (flex flex) (alignItems center) (justifyContent center);
+    $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
     @include flexSet($param);
     width: 270 / $unit * $symbol;
     height: 230 / $unit * $symbol;
@@ -24,10 +24,17 @@
     background-color: rgba($color: #000000, $alpha: .5);
     border-radius: 20 / $unit * $symbol;
     transform: translateX(-50%) translateY(-50%);
+    i {
+      font-size: 102 / $unit * $symbol;
+      color: #fff;
+    }
     .content-title {
       width: 100%;
-      height: 120 / $unit * $symbol;
-      line-height: 120 / $unit * $symbol;
+      height: 54 / $unit * $symbol;
+      margin: {
+        top: 9 / $unit * $symbol;
+      }
+      line-height: 54 / $unit * $symbol;
       text-align: center;
       font-size: 30 / $unit * $symbol;
       color: #fff;

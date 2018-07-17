@@ -114,17 +114,17 @@ export default {
       function setPaymentTypeArr () {
         let type = [
           {
-            icon: 'dacong',
+            icon: '#icon-zhifubao',
             name: '支付宝',
             pay: 2
           },
           {
-            icon: 'dacong',
+            icon: '#icon-weixin',
             name: '微信',
             pay: 1
           },
           {
-            icon: 'dacong',
+            icon: '',
             name: '大师分期',
             pay: 3
           }
@@ -139,12 +139,12 @@ export default {
       function setPaymentTypePartArr () {
         let type = [
           {
-            icon: 'dacong',
+            icon: '#icon-zhifubao',
             name: '支付宝',
             pay: 2
           },
           {
-            icon: 'dacong',
+            icon: '#icon-weixin',
             name: '微信',
             pay: 1
           }

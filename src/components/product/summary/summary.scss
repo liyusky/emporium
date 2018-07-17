@@ -20,8 +20,9 @@
         }
       }
     }
-    span.swiper-pagination-bullet-active {
-      background: #000;
+    .swiper-pagination-fraction {
+      font-size: 24 / $unit * $symbol;
+      color: #fff;
     }
   }
   .summary-content {
@@ -84,31 +85,32 @@
           }
         }
         .bill-reduce {
-          $param: (flex flex) (alignItems center) (justifyContent space-between);
+          $param: (flex flex) (alignItems center);
           @include flexSet($param);
-          width: 111 / $unit * $symbol;
+          width: auto;
           height: 34 / $unit * $symbol;
-          padding: {
-            right: 3 / $unit * $symbol;
+          margin: {
+            right: 6 / $unit * $symbol;
           }
-          background-color: #eb2828;
+          border: (2 / $unit * $symbol) solid #eb2828;
           border-radius: 4 / $unit * $symbol;
-          font-size: 21 / $unit * $symbol;
           div:first-of-type {
-            width: 33 / $unit * $symbol;
+            width: 30 / $unit * $symbol;
             height: 30 / $unit * $symbol;
             line-height: 30 / $unit * $symbol;
             text-align: center;
-            font-size: 21 / $unit * $symbol;
+            background: #eb2828;
             color: #fff;
+            font-size: 24 / $unit * $symbol;
           }
           div:last-of-type {
-            width: 78 / $unit * $symbol;
-            height: 30 / $unit * $symbol;
+            padding: {
+              left: 6 / $unit * $symbol;
+              right: 6 / $unit * $symbol;
+            }
             line-height: 30 / $unit * $symbol;
-            font-size: 21 / $unit * $symbol;
             color: #393939;
-            background-color: #fff;
+            font-size: 21 / $unit * $symbol;
           }
         }
       }
@@ -216,6 +218,14 @@
               right: 6 / $unit * $symbol;
             }
             font-size: 27 / $unit * $symbol;
+          }
+          img {
+            margin: {
+              right: 6 / $unit * $symbol;
+            }
+            vertical-align: middle;
+            width: 27 / $unit * $symbol;
+            height: 27 / $unit * $symbol;
           }
           span {
             font-size: 24 / $unit * $symbol;

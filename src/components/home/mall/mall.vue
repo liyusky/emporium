@@ -11,11 +11,11 @@
         <li class="brand-classify" v-for="(group, index) in groups" :key="index">
           <div class="classify-title">
             <svg class="icon" id="icon" aria-hidden="true">
-              <use xlink:href="#icon-kuaisushoukuan"></use>
+              <use xlink:href="#icon-dianzhuixiaotu"></use>
             </svg>
             <p class="title-text">{{group.Key}}</p>
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-kuaisushoukuan"></use>
+              <use xlink:href="#icon-dianzhuixiaotu"></use>
             </svg>
           </div>
           <ul class="classify-shop-list">
@@ -54,6 +54,7 @@
 <script>
 import PullRefresh from '../../common/pull-refresh/pull-refresh.vue'
 import ModalHint from '../../common/alert-modal/modal-hint/modal-hint.vue'
+import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
 import Http from '../../../class/http.class.js'
 export default {
   name: 'Home',
@@ -69,7 +70,8 @@ export default {
   },
   components: {
     PullRefresh,
-    ModalHint
+    ModalHint,
+    ModalReminder
   },
   created () {
     Http.send({
@@ -108,6 +110,8 @@ export default {
           return false
         }
         this.groups = this.groups.concat(data)
+      }).fail(data => {
+        console.log(data)
       })
     },
     stateChange (state) {
