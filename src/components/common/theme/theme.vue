@@ -15,14 +15,17 @@
 <script>
 export default {
   name: 'Theme',
-  props: ['theme', 'current', 'previous'],
+  props: ['theme'],
   mounted () {
     console.log(this.theme.title)
   },
   methods: {
     goback () {
-      if (this.current === 'order-detail' && this.previous === 'order-confrim') {
-        this.$router.push({name: 'index'})
+      if (this.theme.goal) {
+        this.$router.push({
+          name: this.theme.goal,
+          params: this.theme.params
+        })
       } else {
         this.$router.back(-1)
       }

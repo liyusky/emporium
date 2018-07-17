@@ -21,13 +21,14 @@ export default {
     return {
       theme: {
         title: '地址管理',
-        themeRight: false
+        goal: null
       },
       origin: null
     }
   },
   created () {
-    this.origin = this.$store.state.origin
+    this.theme.goal = this.$store.state.origin2
+    this.origin = this.$store.state.origin2
   },
   methods: {
     gotoPage (page) {

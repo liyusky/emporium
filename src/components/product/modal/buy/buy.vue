@@ -61,19 +61,17 @@ export default {
           CommodityPrice: this.buy.nowPrice
         }
       }).success((data) => {
-        console.log(data)
-        this.buy.OrderNo = data.OrderNo
-        this.savePhone(this.buy)
-        this.saveOrderNo(data.OrderNo)
+        this.saveOrigin('product')
         this.$router.push({
           name: 'order-confirm',
           params: {
-            orderNum: data.OrderNo
+            id: this.buy.Id,
+            OrderNo: data.OrderNo
           }
         })
       })
     },
-    ...mapMutations(['savePhone', 'saveOrderNo'])
+    ...mapMutations(['saveOrigin'])
   }
 }
 </script>

@@ -4,7 +4,7 @@
       <p class="title-time">{{titleTime}}</p>
       <p class="title-sign">{{statusList[item.Status].statusTitle}}</p>
     </div>
-    <div class="item-detail" @click="gotoPage(item.OrderNo)">
+    <div class="item-detail" @click="gotoPage(item)">
       <div class="detail-img">
         <img :src="item.Icon">
       </div>
@@ -17,7 +17,8 @@
       </div>
     </div>
     <div class="item-summary">
-      <p>共1件商品 合计:
+      <p>
+        <span>共1件商品 合计:</span>
         <span class="summary-price">{{item.rownum * item.CommodityPrice}}</span>
         <span class="summary-fare"> (含运费￥{{item.DeliverPrice}})</span>
       </p>
@@ -36,6 +37,7 @@
 
 <script>
 import Time from '../../../class/time.class.js'
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -73,19 +75,30 @@ export default {
     this.titleTime = Time.change(Number(this.item.CreateTime.substring(6, 19)))
   },
   methods: {
-    gotoPage (orderNum) {
-      this.$router.push({
-        name: 'order-detail',
-        params: {
-          orderNum: orderNum
-        }
-      })
-    }
+    gotoPage (item) {
+      if (item.Status > 0) {
+        this.$router.push({
+          name: 'order-detail',
+          params: {
+            orderNum: item.OrderNo
+          }
+        })
+      } else {
+        this.saveOrigin('order')
+        this.$router.push({
+          name: 'order-confirm',
+          params: {
+            id: item.CommodityId,
+            OrderNo: item.OrderNo
+          }
+        })
+      }
+    },
+    ...mapMutations(['saveOrigin'])
   }
 }
 </script>
 
 <style scoped lang="scss">
-  @import './order-list.scss'
-
+@import './order-list.scss'
 </style>

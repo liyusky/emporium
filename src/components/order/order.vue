@@ -55,8 +55,8 @@ export default {
         url: 'orderList',
         params: {
           custermerId: 10000,
-          status: status
-          // pageCurrent: this.page
+          status: status,
+          pageCurrent: this.page
         }
       }).success((data) => {
         if (status === this.status) this.tips = data

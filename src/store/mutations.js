@@ -18,6 +18,9 @@ const mutations = {
   },
   saveOrigin (state, origin) {
     state.origin = origin
+  },
+  saveOrigin2 (state, origin2) {
+    state.origin2 = origin2
   }
 }
 export default mutations

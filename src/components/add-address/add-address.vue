@@ -89,9 +89,7 @@ export default {
   methods: {
     submit () {
       if (!this.hasEmpty()) return
-      console.log(1)
       if (!this.checkPhone()) return
-      console.log(2)
       if (this.title) {
         Http.send({
           url: 'ModifyPostAddress',
@@ -128,6 +126,9 @@ export default {
       this.modal = false
     },
     hasEmpty () {
+      this.name = this.name.replace(/\s+/g, '')
+      this.phone = this.phone.replace(/\s+/g, '')
+      this.county = this.county.replace(/\s+/g, '')
       if (!this.name) {
         alert('请输入姓名')
         return false
@@ -142,7 +143,6 @@ export default {
         alert('请选择地区')
         return false
       }
-
       if (!this.county) {
         alert('请填写详细地址')
         return false

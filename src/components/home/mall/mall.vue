@@ -19,11 +19,11 @@
             </svg>
           </div>
           <ul class="classify-shop-list">
-            <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(phone.Id, phone.ProductName)">
+            <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(phone.Id)">
               <div class="item-shop-picture">
                 <img :src="phone.Icon">
               </div>
-              <p class="item-title">{{phone.Title}} {{phone.ModelNo}}</p>
+              <p class="item-title">{{phone.Title}}</p>
               <div class="item-parameter">
                 <div class="parameter-item">{{phone.Memory}}</div>
                 <div class="parameter-item">{{phone.Degree == '100' ? '全' : phone.Degree + '成'}}新</div>
@@ -78,8 +78,7 @@ export default {
       this.$router.push({
         name: 'product',
         params: {
-          id: id,
-          title: title
+          id: id
         }
       })
     },
@@ -92,15 +91,6 @@ export default {
       }).success(data => {
         this.groups = this.groups.concat(data)
       })
-    },
-    stateChange (state) {
-      if (state === 'pull' || state === 'trigger') {
-        this.iconLink = '#icon-arrow-bottom'
-      } else if (state === 'loading') {
-        this.iconLink = '#icon-loading'
-      } else if (state === 'loaded-done') {
-        this.iconLink = '#icon-finish'
-      }
     }
   }
 }

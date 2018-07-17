@@ -83,47 +83,41 @@ export default {
         text: '取消后，机器可能会被人抢走哦~'
       },
       orderDetail: {},
-      status: [
-        {
+      status: new Map([
+        [1, {
           statusTitle: '待付款',
           buttonLeftName: '取消订单',
           buttonRightName: '去支付'
-        },
-        {
+        }],
+        [2, {
           statusTitle: '等待发货',
           buttonLeftName: '取消订单',
           buttonRightName: ''
-        },
-        {
+        }],
+        [3, {
           statusTitle: '已发货',
           buttonLeftName: '',
           buttonRightName: '确认收货'
-        }
-        // {
-        //   statusTitle: '交易成功',
-        //   buttonLeftName: '删除订单',
-        //   buttonRightName: '评价晒单'
-        // }
-      ],
+        }]
+      ]),
       statusName: '',
       statusLeftBtnName: '',
       statusRightBtnName: '',
       modalShow: false
     }
   },
-  mounted () {
-    console.log(this.origin)
+  created () {
     Http.send({
       url: 'orderDetail',
       params: {
         Orderno: this.orderNum
       }
     }).success((data) => {
-      console.log(data)
+      let status = this.status.get(data.Status)
       this.orderDetail = data
-      this.statusName = this.status[data.Status - 1].statusTitle
-      this.statusLeftBtnName = this.status[data.Status - 1].buttonLeftName
-      this.statusRightBtnName = this.status[data.Status - 1].buttonRightName
+      this.statusName = status.statusTitle
+      this.statusLeftBtnName = status.buttonLeftName
+      this.statusRightBtnName = status.buttonRightName
     })
   },
   methods: {
