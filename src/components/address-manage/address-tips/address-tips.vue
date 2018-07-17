@@ -30,7 +30,8 @@
         </div>
       </li>
     </ul>
-    <ModalReminder :Title="Title" v-show="reminderShow" @CLOSE_MODAL_EVENT="closeModalReminder" @SENF_REQUEST_EVENT="sendRequest"></ModalReminder>
+    <ModalReminder :Title="Title" v-show="reminderShow" @CLOSE_MODAL_EVENT="closeModal" @SENF_REQUEST_EVENT="sendRequest"></ModalReminder>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
   <!-- e 地址标签 -->
 </template>
@@ -38,6 +39,7 @@
 <script>
 import Http from '../../../class/http.class.js'
 import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
+import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import { mapMutations } from 'vuex'
 export default {
   name: 'AddressTips',
@@ -51,11 +53,13 @@ export default {
         text: ''
       },
       reminderShow: false,
+      dialogShow: false,
       deleteParams: {}
     }
   },
   components: {
-    ModalReminder
+    ModalReminder,
+    ModalDialog
   },
   created () {
     Http.send({
@@ -70,6 +74,9 @@ export default {
           this.defaultId = item.Id
         }
       })
+    }).fail((data) => {
+      this.Title.text = data.message
+      this.dialogShow = true
     })
     this.orderNum = this.$store.state.orderNum
   },
@@ -87,6 +94,9 @@ export default {
         }).success((data) => {
           this.saveSelectedAddress(item)
           this.$router.push({name: 'order-confirm'})
+        }).fail((data) => {
+          this.Title.text = data.message
+          this.dialogShow = true
         })
       }
     },
@@ -99,6 +109,9 @@ export default {
         }
       }).success((data) => {
         this.defaultId = postId
+      }).fail((data) => {
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
     modify (item) {
@@ -125,10 +138,14 @@ export default {
         }
       }).success((data) => {
         this.addressList.splice(this.deleteParams.index, 1)
+      }).fail((data) => {
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
-    closeModalReminder () {
+    closeModal () {
       this.reminderShow = false
+      this.dialogShow = false
     },
     ...mapMutations(['saveSelectedAddress'])
   }

@@ -48,7 +48,7 @@
     </section>
     <footer class="detail-button">
       <div class="button-item">
-        <button class="item-right" @click="LeftButtonClick(orderDetail)" v-if="statusLeftBtnName">{{statusLeftBtnName}}</button>
+        <button class="item-right" @click="LeftButtonClick()" v-if="statusLeftBtnName">{{statusLeftBtnName}}</button>
         <button class="item-left" v-if="statusRightBtnName">{{statusRightBtnName}}</button>
       </div>
       <!-- <div class="button-item" v-if="orderDetail.Status == 1">
@@ -60,15 +60,15 @@
         <button class="item-left">{{statusRightBtnName}}</button>
       </div> -->
     </footer>
-    <Modal v-show="modalShow"></Modal>
-    <ModalReminder v-show="modalShow" @CLOSE_MODAL_EVENT = "closeModal" :Title="Title"></ModalReminder>
+    <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
 </template>
 <script>
 import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
-import Modal from '../common/modal/modal.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 import { mapState } from 'vuex'
 export default {
   // 订单参数
@@ -79,7 +79,7 @@ export default {
         title: '订单详情'
       },
       Title: {
-        text: '取消后，机器可能会被人抢走哦~'
+        text: ''
       },
       orderDetail: {},
       status: new Map([
@@ -102,7 +102,8 @@ export default {
       statusName: '',
       statusLeftBtnName: '',
       statusRightBtnName: '',
-      modalShow: false
+      reminderShow: false,
+      dialogShow: false
     }
   },
   created () {
@@ -117,24 +118,35 @@ export default {
       this.statusName = status.statusTitle
       this.statusLeftBtnName = status.buttonLeftName
       this.statusRightBtnName = status.buttonRightName
+    }).fail((data) => {
+      this.Title.text = data.message
+      this.dialogShow = true
     })
   },
   methods: {
     LeftButtonClick (orderDetail) {
       if (this.statusLeftBtnName === '取消订单') {
-        this.modalShow = true
-        Http.send({
-          url: 'Cancel',
-          params: {
-            orderno: orderDetail.OrderNo
-          }
-        }).success(data => {
-          this.$router.push({ name: 'order' })
-        })
+        this.reminderShow = true
+        this.Title.text = '取消后，机器可能会被人抢走哦~'
       }
     },
+    sendRequest () {
+      this.reminderShow = false
+      Http.send({
+        url: 'Cancel',
+        params: {
+          orderno: this.orderDetail.OrderNo
+        }
+      }).success(data => {
+        this.$router.push({ name: 'order' })
+      }).fail((data) => {
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
     closeModal () {
-      this.modalShow = false
+      this.reminderShow = false
+      this.dialogShow = false
     }
   },
   computed: {
@@ -143,7 +155,7 @@ export default {
   components: {
     Theme,
     ModalReminder,
-    Modal
+    ModalDialog
   }
 }
 </script>
