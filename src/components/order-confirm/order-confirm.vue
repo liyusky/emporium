@@ -97,6 +97,7 @@
     <Modal v-show="modal">
       <Instalments :instalments="installments" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
     </Modal>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
 </template>
 <script>
@@ -104,6 +105,7 @@ import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
 import Instalments from './modal/instalments/instalments.vue'
 import Http from '../../class/http.class.js'
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'OrderConfirm',
@@ -111,7 +113,8 @@ export default {
   components: {
     Theme,
     Modal,
-    Instalments
+    Instalments,
+    ModalDialog
   },
   data () {
     return {
@@ -122,14 +125,33 @@ export default {
           id: this.id
         }
       },
+      Title: {
+        text: ''
+      },
       phone: {},
       installments: [],
       selected: null,
       modal: false,
       installmentNum: 0,
       hasAddressDefault: true,
-      icons: '#icon-dadaobiaozhun'
+      icons: '#icon-dadaobiaozhun',
+      dialogShow: false
     }
+  },
+  created () {
+    this.theme.goal = this.$store.state.origin
+    Http.send({
+      url: 'product',
+      params: {
+        id: this.id
+      }
+    }).success(data => {
+      this.phone = data.Phone
+      this.installments = data.CommodityInstallmentList
+    }).fail((data) => {
+      this.Title.text = data.message
+      this.dialogShow = true
+    })
   },
   methods: {
     select (pay) {
@@ -147,6 +169,7 @@ export default {
     },
     closeModal () {
       this.modal = false
+      this.dialogShow = false
     },
     record (installmentNum) {
       this.selected = 3
@@ -164,16 +187,18 @@ export default {
     },
     confrim () {
       if (!this.address) {
-        alert('请选择地址')
+        this.Title.text = '请选择地址'
+        this.dialogShow = true
         return
       }
       if (!this.selected) {
-        alert('请选择支付方式')
+        this.Title.text = '请选择支付方式'
+        this.dialogShow = true
         return
       }
-      alert(this.address)
-      alert(this.selected)
-      alert(this.installmentNum)
+      // alert(this.address)
+      // alert(this.selected)
+      // alert(this.installmentNum)
       Http.send({
         url: 'orderSubmit',
         params: {
@@ -183,21 +208,12 @@ export default {
         }
       }).success((data) => {
         this.gotoPage('order-detail')
+      }).fail((data) => {
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
     ...mapMutations(['saveOrigin2'])
-  },
-  created () {
-    this.theme.goal = this.$store.state.origin
-    Http.send({
-      url: 'product',
-      params: {
-        id: this.id
-      }
-    }).success(data => {
-      this.phone = data.Phone
-      this.installments = data.CommodityInstallmentList
-    })
   },
   computed: {
     ...mapState(['address'])

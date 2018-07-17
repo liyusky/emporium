@@ -35,6 +35,7 @@
     <Modal v-show="modal">
       <component v-show="modal" :is="component" :parameter="parameter" :paymentMethod="paymentMethod" :buy="buy" @CLOSE_MODAL_EVENT="closeModal"></component>
     </Modal>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
   <!-- e 产品详情 -->
 </template>
@@ -51,6 +52,7 @@ import Parameter from './modal/parameter/parameter.vue'
 import Share from './modal/share/share.vue'
 import PaymentMethod from './modal/payment-method/payment-method.vue'
 import Buy from './modal/buy/buy.vue'
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 export default {
   name: 'Product',
   props: ['id', 'title'],
@@ -64,12 +66,16 @@ export default {
     Parameter,
     Share,
     PaymentMethod,
-    Buy
+    Buy,
+    ModalDialog
   },
   data () {
     return {
       theme: {
         title: null
+      },
+      Title: {
+        text: ''
       },
       animationShow: false,
       component: null,
@@ -82,7 +88,8 @@ export default {
       paymentMethod: {},
       buy: {},
       rollSite: 'summary',
-      params: {}
+      params: {},
+      dialogShow: false
     }
   },
   created () {
@@ -112,17 +119,17 @@ export default {
       function setPaymentTypeArr () {
         let type = [
           {
-            icon: 'dacong',
+            icon: '#icon-zhifubao',
             name: '支付宝',
             pay: 2
           },
           {
-            icon: 'dacong',
+            icon: '#icon-weixin',
             name: '微信',
             pay: 1
           },
           {
-            icon: 'dacong',
+            icon: '',
             name: '大师分期',
             pay: 3
           }
@@ -137,12 +144,12 @@ export default {
       function setPaymentTypePartArr () {
         let type = [
           {
-            icon: 'dacong',
+            icon: '#icon-zhifubao',
             name: '支付宝',
             pay: 2
           },
           {
-            icon: 'dacong',
+            icon: '#icon-weixin',
             name: '微信',
             pay: 1
           }
@@ -154,6 +161,9 @@ export default {
         })
         data.Phone.PaymentTypePartArr = content
       }
+    }).fail((data) => {
+      this.Title.text = data.message
+      this.dialogShow = true
     })
     this.params.id = this.id
     this.params.title = this.title
@@ -172,6 +182,7 @@ export default {
     },
     closeModal () {
       this.modal = false
+      this.dialogShow = false
     },
     gotoRollSite (site) {
       this.rollSite = site

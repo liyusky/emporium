@@ -1,6 +1,7 @@
 <template>
   <section class="hint">
     <div class="hint-content">
+      <i class="iconfont icon-jinggao"></i>
       <p class="content-title">{{Title.text}}</p>
     </div>
   </section>

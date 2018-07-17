@@ -11,11 +11,11 @@
         <li class="brand-classify" v-for="(group, index) in groups" :key="index">
           <div class="classify-title">
             <svg class="icon" id="icon" aria-hidden="true">
-              <use xlink:href="#icon-kuaisushoukuan"></use>
+              <use xlink:href="#icon-dianzhuixiaotu"></use>
             </svg>
             <p class="title-text">{{group.Key}}</p>
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-kuaisushoukuan"></use>
+              <use xlink:href="#icon-dianzhuixiaotu"></use>
             </svg>
           </div>
           <ul class="classify-shop-list">
@@ -45,13 +45,14 @@
         </li>
       </ul>
     </PullRefresh>
-    <ModalHint v-show="HintShow" :Title="Title"></ModalHint>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
 </template>
 
 <script>
 import PullRefresh from '../../common/pull-refresh/pull-refresh.vue'
-import ModalHint from '../../common/alert-modal/modal-hint/modal-hint.vue'
+// import ModalHint from '../../common/alert-modal/modal-hint/modal-hint.vue'
+import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import Http from '../../../class/http.class.js'
 export default {
   name: 'Home',
@@ -62,12 +63,13 @@ export default {
       Title: {
         text: ''
       },
-      HintShow: false
+      dialogShow: false
     }
   },
   components: {
     PullRefresh,
-    ModalHint
+    // ModalHint,
+    ModalDialog
   },
   created () {
     Http.send({
@@ -77,17 +79,22 @@ export default {
       }
     }).success((data) => {
       this.groups = data
+    }).fail((data) => {
+      this.Title.text = data.message
+      this.dialogShow = true
     })
   },
   methods: {
     gotoPage (id, title) {
-      console.log(id)
       this.$router.push({
         name: 'product',
         params: {
           id: id
         }
       })
+    },
+    closeModal () {
+      this.dialogShow = false
     },
     loadMore () {
       Http.send({
@@ -97,14 +104,17 @@ export default {
         }
       }).success(data => {
         if (!data.length) {
-          this.Title.text = '没有更多数据了'
-          this.HintShow = true
-          setTimeout(() => {
-            this.HintShow = false
-          }, 500)
+          // this.Title.text = '没有更多数据了'
+          // this.HintShow = true
+          // setTimeout(() => {
+          //   this.HintShow = false
+          // }, 500)
           return false
         }
         this.groups = this.groups.concat(data)
+      }).fail((data) => {
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     }
   }
