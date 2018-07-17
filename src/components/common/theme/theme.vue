@@ -15,24 +15,19 @@
 <script>
 export default {
   name: 'Theme',
-  props: ['theme', 'current', 'previous', 'goal'],
+  props: ['theme'],
+  mounted () {
+    console.log(this.theme.title)
+  },
   methods: {
     goback () {
-      if (this.current === 'order-detail' && this.previous === 'order-confirm') {
-        this.$router.push({name: 'index'})
-      } else if (this.goal === 'order-confirm') {
+      if (this.theme.goal) {
         this.$router.push({
-          name: 'product',
-          params: {
-            id: this.$store.state.params.id,
-            title: this.$store.state.params.title
-          }
+          name: this.theme.goal,
+          params: this.theme.params
         })
-      } else if (this.goal === 'product') {
-        this.$router.push({name: 'index'})
       } else {
         this.$router.back(-1)
-        // window.history.go(-1)
       }
     }
   }

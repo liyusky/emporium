@@ -10,7 +10,7 @@
     </section>
     <section class="order-classify" ref="orders">
       <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-        <OrderList v-show="tips" v-for="(item, index) in tips" :key="index" :item="item"></OrderList>
+        <OrderList v-show="tips" v-for="(item, index) in tips" :key="index" :item="item" :index="index" @REMOVE_TIPS_EVENT="cancel"></OrderList>
         <OrderWithout v-show="!tips"></OrderWithout>
       </PullRefresh>
     </section>
@@ -54,8 +54,8 @@ export default {
         url: 'orderList',
         params: {
           custermerId: 10000,
-          status: status
-          // pageCurrent: this.page
+          status: status,
+          pageCurrent: this.page
         }
       }).success((data) => {
         if (status === this.status) this.tips = data
@@ -73,6 +73,9 @@ export default {
       }).success((data) => {
         this.tips = this.tips.concat(data)
       })
+    },
+    cancel (index) {
+      this.tips.splice(index, 1)
     },
     ...mapMutations(['changeStatusNum'])
   },

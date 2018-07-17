@@ -7,6 +7,6 @@ const state = {
   // 传入order的参数
   statusNum: null,
   origin: null,
-  params: null
+  origin2: null
 }
 export default state

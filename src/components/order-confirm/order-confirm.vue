@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="content-order-number">
-        <p class="title-time">{{phone.OrderNo}}</p>
+        <p class="title-time">{{OrderNo}}</p>
       </div>
       <div class="content-detail">
         <div class="detail-img">
@@ -107,6 +107,7 @@ import Http from '../../class/http.class.js'
 import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'OrderConfirm',
+  props: ['id', 'OrderNo'],
   components: {
     Theme,
     Modal,
@@ -115,8 +116,14 @@ export default {
   data () {
     return {
       theme: {
-        title: '订单信息确认'
+        title: '订单信息确认',
+        goal: null,
+        params: {
+          id: this.id
+        }
       },
+      phone: {},
+      installments: [],
       selected: null,
       modal: false,
       installmentNum: 0,
@@ -147,10 +154,10 @@ export default {
       this.modal = false
     },
     gotoPage (page) {
+      this.saveOrigin2('order-confrim')
       this.$router.push({
         name: page,
         params: {
-          origin: 'order-confrim',
           orderNum: this.phone.OrderNo
         }
       })
@@ -164,6 +171,9 @@ export default {
         alert('请选择支付方式')
         return
       }
+      alert(this.address)
+      alert(this.selected)
+      alert(this.installmentNum)
       Http.send({
         url: 'orderSubmit',
         params: {
@@ -175,13 +185,22 @@ export default {
         this.gotoPage('order-detail')
       })
     },
-    ...mapMutations(['saveOrigin'])
+    ...mapMutations(['saveOrigin2'])
   },
-  mounted () {
-    this.saveOrigin('order-confrim')
+  created () {
+    this.theme.goal = this.$store.state.origin
+    Http.send({
+      url: 'product',
+      params: {
+        id: this.id
+      }
+    }).success(data => {
+      this.phone = data.Phone
+      this.installments = data.CommodityInstallmentList
+    })
   },
   computed: {
-    ...mapState(['phone', 'address', 'installments'])
+    ...mapState(['address'])
   }
 }
 </script>

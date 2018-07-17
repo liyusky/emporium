@@ -177,10 +177,10 @@
     }
     background: #fff;
     .button-item {
-      width: 100%;
-      height: 100%;
       $param: (flex flex) (alignItems center) (justifyContent flex-end);
       @include flexSet($param);
+      width: 100%;
+      height: 100%;
       .item-left {
         width: 160 / $unit * $symbol;
         height: 60 / $unit * $symbol;

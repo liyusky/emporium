@@ -102,6 +102,7 @@ export default {
   methods: {
     submit () {
       if (!this.hasEmpty()) return
+      if (!this.checkPhone()) return
       if (this.title) {
         Http.send({
           url: 'ModifyPostAddress',
@@ -148,6 +149,9 @@ export default {
       this.modal = false
     },
     hasEmpty () {
+      this.name = this.name.replace(/\s+/g, '')
+      this.phone = this.phone.replace(/\s+/g, '')
+      this.county = this.county.replace(/\s+/g, '')
       if (!this.name) {
         this.Title.text = '请输入姓名'
         this.DialogShow = true
@@ -167,7 +171,6 @@ export default {
         this.DialogShow = true
         return false
       }
-
       if (!this.county) {
         this.Title.text = '请填写详细地址'
         this.DialogShow = true
