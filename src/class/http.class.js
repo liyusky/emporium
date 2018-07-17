@@ -23,8 +23,8 @@ export default class Http {
     if (response.code === 200) {
       if (this.successCallback) this.successCallback(response.data)
     } else {
-      alert(response.message)
-      alert(response.description)
+      // alert(response.message)
+      // alert(response.description)
       if (this.failCallback) this.failCallback(response)
     }
   }

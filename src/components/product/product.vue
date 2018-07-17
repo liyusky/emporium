@@ -1,7 +1,7 @@
 <template>
   <!-- s 产品详情 -->
   <section class="product">
-    <Theme :theme="theme"></Theme>
+    <Theme :theme="theme" :goal="'product'"></Theme>
     <nav class="product-nav">
       <div class="nav-item" :class="{active: rollSite == 'summary'}" @click="gotoRollSite('summary')">
         <a href="#summary">商品</a>
@@ -70,8 +70,7 @@ export default {
   data () {
     return {
       theme: {
-        title: this.title,
-        themeRight: true
+        title: this.title
       },
       animationShow: false,
       component: null,
@@ -83,7 +82,8 @@ export default {
       parameter: [],
       paymentMethod: {},
       buy: {},
-      rollSite: 'summary'
+      rollSite: 'summary',
+      params: {}
     }
   },
   created () {
@@ -157,6 +157,9 @@ export default {
         data.Phone.PaymentTypePartArr = content
       }
     })
+    this.params.id = this.id
+    this.params.title = this.title
+    this.saveParams(this.params)
   },
   methods: {
     openModal (component) {
@@ -175,7 +178,7 @@ export default {
     gotoRollSite (site) {
       this.rollSite = site
     },
-    ...mapMutations(['saveInstallments'])
+    ...mapMutations(['saveInstallments', 'saveParams'])
   }
 }
 </script>

@@ -20,47 +20,56 @@
           </div>
           <ul class="classify-shop-list">
             <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index" @click="gotoPage(phone.Id, phone.ProductName)">
-              <div class="item-shop-picture">
-                <img :src="phone.Icon">
-              </div>
-              <p class="item-title">{{phone.Title}} {{phone.ModelNo}}</p>
-              <div class="item-parameter">
-                <div class="parameter-item">{{phone.Memory}}</div>
-                <div class="parameter-item">{{phone.Degree == '100' ? '全' : phone.Degree + '成'}}新</div>
-              </div>
-              <div class="item-price">
-                <span class="price-now">￥{{phone.InstallmentNum}}</span>
-                <span class="price-installment">x{{phone.InstallmentAmount}}期</span>
-                <span class="price-old">市场价{{phone.Degree}}</span>
-              </div>
-              <div class="item-economize">
-                <span class="economize-notice">省</span>
-                <span class="economize-price">￥{{phone.originalPrice - phone.nowPrice}}</span>
-              </div>
-              <div class="item-badge" v-if="phone.IsTested">
-                <span>已检测</span>
+              <div class="item-content">
+                <div class="content-shop-picture">
+                  <img :src="phone.Icon">
+                </div>
+                <p class="content-title">{{phone.Title}} {{phone.ModelNo}}</p>
+                <div class="content-parameter">
+                  <div class="parameter-item">{{phone.Memory}}</div>
+                  <div class="parameter-item">{{phone.Degree == '100' ? '全' : phone.Degree + '成'}}新</div>
+                </div>
+                <div class="content-price">
+                  <span class="price-now">￥{{phone.InstallmentNum}}</span>
+                  <span class="price-installment">x{{phone.InstallmentAmount}}期</span>
+                  <span class="price-old">市场价{{phone.Degree}}</span>
+                </div>
+                <div class="content-economize">
+                  <span class="economize-notice">省</span>
+                  <span class="economize-price">￥{{phone.originalPrice - phone.nowPrice}}</span>
+                </div>
+                <div class="content-badge" v-if="phone.IsTested">
+                  <span>已检测</span>
+                </div>
               </div>
             </li>
           </ul>
         </li>
       </ul>
     </PullRefresh>
+    <ModalHint v-show="HintShow" :Title="Title"></ModalHint>
   </section>
 </template>
 
 <script>
 import PullRefresh from '../../common/pull-refresh/pull-refresh.vue'
+import ModalHint from '../../common/alert-modal/modal-hint/modal-hint.vue'
 import Http from '../../../class/http.class.js'
 export default {
   name: 'Home',
   data () {
     return {
       page: 1,
-      groups: null
+      groups: null,
+      Title: {
+        text: ''
+      },
+      HintShow: false
     }
   },
   components: {
-    PullRefresh
+    PullRefresh,
+    ModalHint
   },
   created () {
     Http.send({
@@ -90,6 +99,14 @@ export default {
           Pageindex: ++this.page
         }
       }).success(data => {
+        if (!data.length) {
+          this.Title.text = '没有更多数据了'
+          this.HintShow = true
+          setTimeout(() => {
+            this.HintShow = false
+          }, 500)
+          return false
+        }
         this.groups = this.groups.concat(data)
       })
     },

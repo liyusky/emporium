@@ -36,8 +36,12 @@
     </section>
     <!-- e 按钮 -->
     <Modal v-show="modal">
-      <CitySelect :provinceList="provinceList" :cities="cities" @SELECT_AREA_EVENT="getArea"></CitySelect>
+      <CitySelect :provinceList = "provinceList" :cities="cities" @SELECT_AREA_EVENT = "getArea"></CitySelect>
     </Modal>
+    <!-- s 弹出框 -->
+    <ModalDialog v-show = "DialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "closeDialog"></ModalDialog>
+    <ModalHint v-show = "HintShow" :Title="Title"></ModalHint>
+    <!-- e 弹出框 -->
   </section>
   <!-- e 添加收货地址 -->
 </template>
@@ -47,6 +51,8 @@ import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import Modal from '../common/modal/modal.vue'
 import CitySelect from './city-select/city-select.vue'
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
+import ModalHint from '../common/alert-modal/modal-hint/modal-hint.vue'
 import { provinces as provinceList, cities } from '../../data/cities.js'
 export default {
   name: 'AddAddress',
@@ -54,7 +60,9 @@ export default {
   components: {
     Theme,
     Modal,
-    CitySelect
+    CitySelect,
+    ModalDialog,
+    ModalHint
   },
   created () {
     if (this.tip) {
@@ -74,6 +82,11 @@ export default {
       theme: {
         title: this.title ? this.title : '新增收货地址'
       },
+      Title: {
+        text: ''
+      },
+      DialogShow: false,
+      HintShow: false,
       btn: this.title ? '修改' : '保存',
       id: null,
       name: null,
@@ -89,9 +102,6 @@ export default {
   methods: {
     submit () {
       if (!this.hasEmpty()) return
-      console.log(1)
-      if (!this.checkPhone()) return
-      console.log(2)
       if (this.title) {
         Http.send({
           url: 'ModifyPostAddress',
@@ -103,7 +113,12 @@ export default {
             isDefault: this.isDefault
           }
         }).success((data) => {
-          this.$router.go(-1)
+          this.Title.text = '修改成功'
+          this.HintShow = true
+          setTimeout(() => {
+            this.HintShow = false
+            this.$router.go(-1)
+          }, 500)
         })
       } else {
         Http.send({
@@ -116,7 +131,12 @@ export default {
             isDefault: false
           }
         }).success((data) => {
-          this.$router.go(-1)
+          this.Title.text = '添加成功'
+          this.HintShow = true
+          setTimeout(() => {
+            this.HintShow = false
+            this.$router.go(-1)
+          }, 500)
         })
       }
     },
@@ -129,40 +149,49 @@ export default {
     },
     hasEmpty () {
       if (!this.name) {
-        alert('请输入姓名')
+        this.Title.text = '请输入姓名'
+        this.DialogShow = true
         return false
       }
 
       if (!this.phone) {
-        alert('请输入手机号')
+        this.Title.text = '请输入手机号'
+        this.DialogShow = true
         return false
       }
-
-      if (!this.area) {
-        alert('请选择地区')
+      if (!this.checkPhone()) {
+        return false
+      }
+      if (this.area === '请选择' || this.area === '') {
+        this.Title.text = '请选择地区'
+        this.DialogShow = true
         return false
       }
 
       if (!this.county) {
-        alert('请填写详细地址')
+        this.Title.text = '请填写详细地址'
+        this.DialogShow = true
         return false
       }
       return true
     },
     checkPhone () {
       if (this.phone.length < 11) {
-        console.log('手机号长度不足11位')
-        alert('手机号长度不足11位')
+        this.Title.text = '手机号长度不足11位'
+        this.DialogShow = true
         return false
       } else {
         var pat = new RegExp('^(?:13|14|15|17|18)[0-9]{9}$', 'i')
         if (!pat.test(this.phone)) {
-          console.log('手机号格式错误')
-          alert('手机号格式错误')
+          this.Title.text = '手机号格式错误'
+          this.DialogShow = true
           return false
         }
         return true
       }
+    },
+    closeDialog () {
+      this.DialogShow = false
     }
   }
 }

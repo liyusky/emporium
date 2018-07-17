@@ -35,15 +35,28 @@
       </div> -->
     </div>
     <button class="rightbuy-button" @click="order">立即购买</button>
+    <ModalReminder v-show="DialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "close"></ModalReminder>
   </section>
   <!-- e 购买 -->
 </template>
 <script>
 import Http from '../../../../class/http.class.js'
+import ModalReminder from '../../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import { mapMutations } from 'vuex'
 export default {
   name: 'Buy',
   props: ['buy'],
+  data () {
+    return {
+      Title: {
+        text: ''
+      },
+      DialogShow: false
+    }
+  },
+  components: {
+    ModalReminder
+  },
   methods: {
     closeModal () {
       this.$emit('CLOSE_MODAL_EVENT')
@@ -71,7 +84,14 @@ export default {
             orderNum: data.OrderNo
           }
         })
+      }).fail((data) => {
+        this.Title.text = data.message + ' 请返回'
+        this.DialogShow = true
       })
+    },
+    close () {
+      this.DialogShow = false
+      this.closeModal()
     },
     ...mapMutations(['savePhone', 'saveOrderNo'])
   }

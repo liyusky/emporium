@@ -76,8 +76,7 @@ export default {
   data () {
     return {
       theme: {
-        title: '订单详情',
-        themeRight: false
+        title: '订单详情'
       },
       Title: {
         text: '取消后，机器可能会被人抢走哦~'

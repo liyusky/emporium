@@ -18,6 +18,10 @@ const mutations = {
   },
   saveOrigin (state, origin) {
     state.origin = origin
+  },
+  // 保存product路由参数
+  saveParams (state, params) {
+    state.params = params
   }
 }
 export default mutations
