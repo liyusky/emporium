@@ -24,7 +24,16 @@
       </p>
     </div>
     <div class="item-button">
-      <button v-for="(buttonItem, index) in buttonType" :key="index" v-if="buttonItem.buttonName" :class="buttonItem.buttonClass" @click="cancel(item)">{{buttonItem.buttonName}}</button>
+      <button class="" v-if="judge('cancel', item.Status)" @click="cancel(item)">删除订单</button>
+      <button class="" v-if="judgePay(item.Status)" @click="pay(item)">去支付</button>
+      <button class="" v-if="judge('confrim', item.Status)" @click="confrim(item)">确认收货</button>
+      <button class="" v-if="judge('submit', item.Status)" @click="submit(item)">提价订单</button>
+      <button v-for="(buttonItem, index) in buttonType" :key="index" v-if="buttonItem.buttonName" :class="buttonItem.buttonClass"
+        @click="cancel(item)">{{buttonItem.buttonName}}</button>
+      <button v-for="(buttonItem, index) in buttonType" :key="index" v-if="buttonItem.buttonName" :class="buttonItem.buttonClass"
+        @click="cancel(item)">{{buttonItem.buttonName}}</button>
+      <button v-for="(buttonItem, index) in buttonType" :key="index" v-if="buttonItem.buttonName" :class="buttonItem.buttonClass"
+        @click="cancel(item)">{{buttonItem.buttonName}}</button>
     </div>
     <ModalReminder :Title="Title" v-show="reminderShow" @CLOSE_MODAL_EVENT="closeModal" @SENF_REQUEST_EVENT="sendRequest"></ModalReminder>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
@@ -32,176 +41,203 @@
 </template>
 
 <script>
-import Time from '../../../class/time.class.js'
-import Http from '../../../class/http.class.js'
-import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
-import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
-import { mapMutations } from 'vuex'
-export default {
-  data () {
-    return {
-      titleTime: null,
-      Title: {
-        text: ''
-      },
-      dialogShow: false,
-      reminderShow: false,
-      statusTitle: '',
-      buttonType: []
-    }
-  },
-  components: {
-    ModalDialog,
-    ModalReminder
-  },
-  props: ['item', 'index'],
-  mounted () {
-    // 订单日期
-    this.titleTime = Time.change(Number(this.item.CreateTime.substring(6, 19)))
-    this.statusType()
-  },
-  methods: {
-    gotoPage (item) {
-      if (item.Status > 0) {
-        this.saveOrigin2('order')
-        this.$router.push({
-          name: 'order-detail',
-          params: {
-            OrderNo: item.OrderNo
-          }
-        })
-      } else {
-        this.saveOrigin('order')
-        this.$router.push({
-          name: 'order-confirm',
-          params: {
-            id: item.CommodityId,
-            OrderNo: item.OrderNo
-          }
-        })
+  import Time from '../../../class/time.class.js'
+  import Http from '../../../class/http.class.js'
+  import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
+  import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
+  import {
+    mapMutations
+  } from 'vuex'
+  export default {
+    data() {
+      return {
+        titleTime: null,
+        Title: {
+          text: ''
+        },
+        dialogShow: false,
+        reminderShow: false,
+        statusTitle: '',
+        buttonType: []
       }
     },
-    statusType () {
-      if (this.item.Status === 0) {
-        this.statusTitle = '待提交'
-        this.buttonType = [
-          {
-            buttonClass: 'left-button',
-            buttonName: '取消订单'
-          },
-          {
-            buttonClass: 'right-button',
-            buttonName: '提交订单'
-          },
-          {
-            buttonName: ''
-          }
-        ]
-      }
-      if (this.item.Status === 1) {
-        this.statusTitle = '待付款'
-        this.buttonType = [
-          {
-            buttonClass: 'left-button',
-            buttonName: '取消订单'
-          },
-          {
-            buttonClass: 'button-topay',
-            buttonName: '去支付'
-          },
-          {
-            buttonName: ''
-          }
-        ]
-      }
-      if (this.item.Status === 2) {
-        this.statusTitle = '等待发货'
-        this.buttonType = [
-          {
-            buttonClass: 'left-button',
-            buttonName: '取消订单'
-          },
-          {
-            buttonName: ''
-          },
-          {
-            buttonName: ''
-          }
-        ]
-      }
-      if (this.item.Status === 3) {
-        this.statusTitle = '已发货'
-        this.buttonType = [
-          {
-            buttonClass: 'left-button',
-            buttonName: '确认收货'
-          },
-          {
-            buttonName: ''
-          },
-          {
-            buttonName: ''
-          }
-        ]
-      }
-      if (this.item.Status === 3) {
-        this.statusTitle = '已发货'
-        this.buttonType = [
-          {
-            buttonClass: 'left-button',
-            buttonName: '确认收货'
-          },
-          {
-            buttonName: ''
-          },
-          {
-            buttonName: ''
-          }
-        ]
-      }
-      if (this.item.Status === 9) {
-        this.statusTitle = '已取消订单'
-        this.buttonType = [
-          {
-            buttonClass: 'left-button',
-            buttonName: '查看订单'
-          },
-          {
-            buttonName: ''
-          },
-          {
-            buttonName: ''
-          }
-        ]
-      }
+    components: {
+      ModalDialog,
+      ModalReminder
     },
-    cancel (item) {
-      this.Title.text = '您确认要删除订单'
-      this.reminderShow = true
+    props: ['item', 'index'],
+    mounted() {
+      // 订单日期
+      this.titleTime = Time.change(Number(this.item.CreateTime.substring(6, 19)))
+      this.statusType()
     },
-    sendRequest () {
-      Http.send({
-        url: 'Cancel',
-        params: {
-          orderno: this.item.OrderNo
+    methods: {
+      gotoPage(item) {
+        if (item.Status > 0) {
+          this.saveOrigin2('order')
+          this.$router.push({
+            name: 'order-detail',
+            params: {
+              OrderNo: item.OrderNo
+            }
+          })
+        } else {
+          this.saveOrigin('order')
+          this.$router.push({
+            name: 'order-confirm',
+            params: {
+              id: item.CommodityId,
+              OrderNo: item.OrderNo
+            }
+          })
         }
-      }).success(data => {
-        console.log(data)
-        this.$emit('REMOVE_TIPS_EVENT', this.index)
-      }).fail((data) => {
-        this.Title.text = data.message
-        this.dialogShow = true
-      })
-    },
-    closeModal () {
-      this.dialogShow = false
-      this.reminderShow = false
-    },
-    ...mapMutations(['saveOrigin', 'saveOrigin2'])
+      },
+      judgePay (status) {
+        let result = false
+        switch (status) {
+          case 4:
+            result = true
+            break;
+
+            case 4:
+            result = true
+            break;
+        }
+        return result
+      },
+      statusType() {
+        switch (this.item.Status) {
+          case 0:
+
+            break
+          case 1:
+
+            break
+          case 2:
+
+            break
+          case 3:
+
+            break
+          case 9:
+
+            break
+        }
+        return false
+        if (this.item.Status === 0) {
+          this.statusTitle = '待提交'
+          this.buttonType = [{
+              buttonClass: 'left-button',
+              buttonName: '取消订单'
+            },
+            {
+              buttonClass: 'right-button',
+              buttonName: '提交订单'
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        }
+        if (this.item.Status === 1) {
+          this.statusTitle = '待付款'
+          this.buttonType = [{
+              buttonClass: 'left-button',
+              buttonName: '取消订单'
+            },
+            {
+              buttonClass: 'button-topay',
+              buttonName: '去支付'
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        }
+        if (this.item.Status === 2) {
+          this.statusTitle = '等待发货'
+          this.buttonType = [{
+              buttonClass: 'left-button',
+              buttonName: '取消订单'
+            },
+            {
+              buttonName: ''
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        }
+        if (this.item.Status === 3) {
+          this.statusTitle = '已发货'
+          this.buttonType = [{
+              buttonClass: 'left-button',
+              buttonName: '确认收货'
+            },
+            {
+              buttonName: ''
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        }
+        if (this.item.Status === 3) {
+          this.statusTitle = '已发货'
+          this.buttonType = [{
+              buttonClass: 'left-button',
+              buttonName: '确认收货'
+            },
+            {
+              buttonName: ''
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        }
+        if (this.item.Status === 9) {
+          this.statusTitle = '已取消订单'
+          this.buttonType = [{
+              buttonClass: 'left-button',
+              buttonName: '查看订单'
+            },
+            {
+              buttonName: ''
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        }
+      },
+      cancel(item) {
+        this.Title.text = '您确认要删除订单'
+        this.reminderShow = true
+      },
+      sendRequest() {
+        Http.send({
+          url: 'Cancel',
+          params: {
+            orderno: this.item.OrderNo
+          }
+        }).success(data => {
+          console.log(data)
+          this.$emit('REMOVE_TIPS_EVENT', this.index)
+        }).fail((data) => {
+          this.Title.text = data.message
+          this.dialogShow = true
+        })
+      },
+      closeModal() {
+        this.dialogShow = false
+        this.reminderShow = false
+      },
+      ...mapMutations(['saveOrigin', 'saveOrigin2'])
+    }
   }
-}
 </script>
 
 <style scoped lang="scss">
-@import './order-list.scss'
+  @import './order-list.scss'
 </style>
