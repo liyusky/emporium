@@ -85,7 +85,7 @@ export default {
           }
         })
       }).fail((data) => {
-        this.Title.text = data.message + ' 请返回'
+        this.Title.text = data.message
         this.DialogShow = true
       })
     },

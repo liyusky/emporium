@@ -75,9 +75,10 @@
         <div class="way-item" v-for="(item, index) in phone.PaymentTypeArr" :key="index" @click="select(item.pay)">
           <div class="item-detail">
             <div class="detail-name">
-              <svg class="icon" aria-hidden="true">
+              <svg class="icon" aria-hidden="true" v-if="item.icon">
                 <use :xlink:href = item.icon></use>
               </svg>
+              <img v-if="!item.icon" src="../../assets/images/master.png">
               <!-- <i class="iconfont" :class="'icon-' + item.icon"></i> -->
               <span>{{item.name}}</span>
             </div>
@@ -140,7 +141,6 @@ export default {
   },
   created () {
     this.theme.goal = this.$store.state.origin
-    alert(this.theme.goal)
     Http.send({
       url: 'product',
       params: {
@@ -210,7 +210,7 @@ export default {
       }).success((data) => {
         this.gotoPage('order-detail')
       }).fail((data) => {
-        this.Title.text = data.message
+        this.Title.text = data.message ? data.message : data
         this.dialogShow = true
       })
     },

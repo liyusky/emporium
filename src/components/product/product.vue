@@ -163,7 +163,7 @@ export default {
         data.Phone.PaymentTypePartArr = content
       }
     }).fail(data => {
-      this.Title.text = data.message
+      this.Title.text = data.message ? data.message : data
       this.dialogShow = true
     })
     this.params.id = this.id
