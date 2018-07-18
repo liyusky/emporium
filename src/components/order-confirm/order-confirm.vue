@@ -75,9 +75,10 @@
         <div class="way-item" v-for="(item, index) in phone.PaymentTypeArr" :key="index" @click="select(item.pay)">
           <div class="item-detail">
             <div class="detail-name">
-              <svg class="icon" aria-hidden="true">
+              <svg class="icon" aria-hidden="true" v-if="item.icon">
                 <use :xlink:href = item.icon></use>
               </svg>
+              <img v-if="!item.icon" src="../../assets/images/master.png">
               <!-- <i class="iconfont" :class="'icon-' + item.icon"></i> -->
               <span>{{item.name}}</span>
             </div>

@@ -11,7 +11,7 @@
           <div class="detail-address">{{item.Address}}</div>
         </div>
         <div class="tip-operation">
-          <p class="operation-set-default" @click="setDefault(item.Id)">
+          <p class="operation-set-default" @click.stop="setDefault(item.Id)">
             <i class="iconfont icon-dadaobiaozhun" :class="{'icon-default': item.Id == defaultId}"></i>
             <span>设为默认地址</span>
           </p>
@@ -92,9 +92,13 @@ export default {
             Address: item.Address
           }
         }).success((data) => {
+          console.log(data)
           this.saveSelectedAddress(item)
-          this.$router.push({name: 'order-confirm'})
+          this.$router.push({
+            name: 'order-confirm'
+          })
         }).fail((data) => {
+          console.log(data)
           this.Title.text = data.message
           this.dialogShow = true
         })

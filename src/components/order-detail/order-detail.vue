@@ -87,6 +87,11 @@ export default {
       },
       orderDetail: {},
       status: new Map([
+        [0, {
+          statusTitle: '待提交',
+          buttonLeftName: '取消订单',
+          buttonRightName: '提交订单'
+        }],
         [1, {
           statusTitle: '待付款',
           buttonLeftName: '取消订单',
@@ -101,6 +106,11 @@ export default {
           statusTitle: '已发货',
           buttonLeftName: '',
           buttonRightName: '确认收货'
+        }],
+        [9, {
+          statusTitle: '已取消订单',
+          buttonLeftName: '',
+          buttonRightName: '查看订单'
         }]
       ]),
       OrderNo: null,
