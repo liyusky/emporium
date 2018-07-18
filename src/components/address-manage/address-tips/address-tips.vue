@@ -47,7 +47,7 @@ export default {
   data () {
     return {
       addressList: [],
-      orderNum: null,
+      OrderNo: null,
       defaultId: null,
       Title: {
         text: ''
@@ -78,7 +78,7 @@ export default {
       this.Title.text = data.message
       this.dialogShow = true
     })
-    this.orderNum = this.$store.state.orderNum
+    this.OrderNo = this.$store.state.OrderNo
   },
   methods: {
     selectAddress (item) {
@@ -86,7 +86,7 @@ export default {
         Http.send({
           url: 'ModifyResiver',
           params: {
-            Orderno: this.orderNum,
+            Orderno: this.OrderNo,
             Name: item.ReseverName,
             Phone: item.PhoneNo,
             Address: item.Address

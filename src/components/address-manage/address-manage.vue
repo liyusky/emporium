@@ -28,8 +28,8 @@ export default {
     }
   },
   created () {
-    this.theme.goal = this.$store.state.origin2
     this.origin = this.$store.state.origin2
+    this.theme.goal = this.$store.state.origin2
     this.saveOrigin3('address-manage')
   },
   methods: {

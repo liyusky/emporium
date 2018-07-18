@@ -72,9 +72,9 @@ import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
+import { mapState } from 'vuex'
 export default {
   // 订单参数
-  props: ['OrderNo'],
   data () {
     return {
       theme: {
@@ -113,6 +113,7 @@ export default {
           buttonRightName: '查看订单'
         }]
       ]),
+      OrderNo: null,
       statusName: '',
       statusLeftBtnName: '',
       statusRightBtnName: '',
@@ -121,6 +122,7 @@ export default {
     }
   },
   created () {
+    this.OrderNo = this.$store.state.OrderNo
     Http.send({
       url: 'orderDetail',
       params: {
@@ -136,8 +138,14 @@ export default {
       this.Title.text = data.message
       this.dialogShow = true
     })
-    this.theme.goal = this.$store.state.origin2
-    alert(this.theme.goal)
+    switch (this.$store.state.origin2) {
+      case 'order-confrim':
+        this.theme.goal = 'mall'
+        break
+      case 'order':
+        this.theme.goal = 'order'
+        break
+    }
     if (this.$store.state.productId) this.theme.params.id = this.$store.state.productId
   },
   methods: {
@@ -155,7 +163,18 @@ export default {
           orderno: this.orderDetail.OrderNo
         }
       }).success(data => {
-        this.$router.push({ name: 'order' })
+        let page = this.theme.goal
+        if (page === 'mall') {
+          page = 'product'
+          this.$router.push({
+            name: page,
+            params: {
+              id: this.productId
+            }
+          })
+        } else {
+          this.$router.push({ name: page })
+        }
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
@@ -170,6 +189,9 @@ export default {
     Theme,
     ModalReminder,
     ModalDialog
+  },
+  computed: {
+    ...mapState(['productId'])
   }
 }
 </script>

@@ -144,6 +144,9 @@ export default {
         }
       }).success(data => {
         if (status === this.status) this.tips = data
+      }).fail(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
     loadMore () {

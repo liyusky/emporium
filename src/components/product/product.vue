@@ -53,7 +53,6 @@ import Share from './modal/share/share.vue'
 import PaymentMethod from './modal/payment-method/payment-method.vue'
 import Buy from './modal/buy/buy.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
-import { mapMutations } from 'vuex'
 export default {
   name: 'Product',
   props: ['id', 'title'],
@@ -73,7 +72,8 @@ export default {
   data () {
     return {
       theme: {
-        title: null
+        title: null,
+        goal: 'mall'
       },
       Title: {
         text: ''
@@ -163,14 +163,9 @@ export default {
         data.Phone.PaymentTypePartArr = content
       }
     }).fail(data => {
-      this.Title.text = data.message ? data.message : data
+      this.Title.text = data.message
       this.dialogShow = true
     })
-    this.params.id = this.id
-    this.params.title = this.title
-    this.saveParams(this.params)
-    this.saveOrigin3(null)
-    this.saveProductId(null)
   },
   methods: {
     openModal (component) {
@@ -189,8 +184,7 @@ export default {
     },
     gotoRollSite (site) {
       this.rollSite = site
-    },
-    ...mapMutations(['saveOrigin3', 'saveProductId'])
+    }
   }
 }
 </script>

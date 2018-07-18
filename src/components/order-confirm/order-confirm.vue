@@ -110,7 +110,7 @@ import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'OrderConfirm',
-  props: ['id', 'OrderNo'],
+  // props: ['id', 'OrderNo'],
   components: {
     Theme,
     Modal,
@@ -129,6 +129,8 @@ export default {
       Title: {
         text: ''
       },
+      id: null,
+      OrderNo: null,
       phone: {},
       installments: [],
       selected: null,
@@ -141,15 +143,44 @@ export default {
   },
   created () {
     this.theme.goal = this.$store.state.origin
+    this.id = this.$store.state.productId
+    this.OrderNo = this.$store.state.OrderNo
     Http.send({
       url: 'product',
       params: {
         id: this.id
       }
     }).success(data => {
+      setPaymentTypeArr()
       this.phone = data.Phone
+      console.log(data)
       this.installments = data.CommodityInstallmentList
-    }).fail((data) => {
+      function setPaymentTypeArr () {
+        let type = [
+          {
+            icon: '#icon-zhifubao',
+            name: '支付宝',
+            pay: 2
+          },
+          {
+            icon: '#icon-weixin',
+            name: '微信',
+            pay: 1
+          },
+          {
+            icon: '',
+            name: '大师分期',
+            pay: 3
+          }
+        ]
+        let allowArr = data.Phone.PaymentType.toString(2).split('').reverse()
+        let content = []
+        allowArr.forEach((item, index) => {
+          if (item * 1) content.push(type[index])
+        })
+        data.Phone.PaymentTypeArr = content
+      }
+    }).fail(data => {
       this.Title.text = data.message
       this.dialogShow = true
     })
@@ -179,12 +210,7 @@ export default {
     },
     gotoPage (page) {
       this.saveOrigin2('order-confrim')
-      this.$router.push({
-        name: page,
-        params: {
-          OrderNo: this.phone.OrderNo
-        }
-      })
+      this.$router.push({ name: page })
     },
     confrim () {
       if (!this.address) {
@@ -197,20 +223,17 @@ export default {
         this.dialogShow = true
         return
       }
-      // alert(this.address)
-      // alert(this.selected)
-      // alert(this.installmentNum)
       Http.send({
         url: 'orderSubmit',
         params: {
-          Orderno: this.phone.OrderNo,
+          Orderno: this.OrderNo,
           payType: this.selected,
           num: this.installmentNum
         }
-      }).success((data) => {
+      }).success(data => {
         this.gotoPage('order-detail')
-      }).fail((data) => {
-        this.Title.text = data.message ? data.message : data
+      }).fail(data => {
+        this.Title.text = data.message
         this.dialogShow = true
       })
     },

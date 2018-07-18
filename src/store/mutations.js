@@ -10,8 +10,8 @@ const mutations = {
   saveInstallments (state, installments) {
     state.installments = installments
   },
-  saveOrderNo (state, orderNum) {
-    state.orderNum = orderNum
+  saveOrderNo (state, OrderNo) {
+    state.OrderNo = OrderNo
   },
   changeStatusNum (state, number) {
     state.statusNum = number

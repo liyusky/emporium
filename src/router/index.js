@@ -61,16 +61,16 @@ export default new Router({
       props: true
     },
     {
-      path: '/order-confirm/:id&OrderNo',
+      path: '/order-confirm',
       name: 'order-confirm',
       component: OrderConfirm,
       props: true
     },
     {
-      path: '/order-detail/:OrderNo',
+      path: '/order-detail',
       name: 'order-detail',
-      component: OrderDetail,
-      props: true
+      component: OrderDetail
+      // props: true
     },
     {
       path: '/familiar-question',

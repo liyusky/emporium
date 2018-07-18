@@ -1,0 +1,110 @@
+@import '../../../dependencies/sass/_flex.scss';
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_btn.scss';
+.default-login {
+  width: 100vw;
+  height: 100vh;
+  .login-header {
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: 129 / $unit * $symbol;
+    padding: {
+      top: 36 / $unit * $symbol;
+      left: 30 / $unit * $symbol;
+      right: 30 / $unit * $symbol;
+    }
+    .header-item {
+      $param: (flex flex) (alignItems center) (justifyContent center);
+      @include flexSet($param);
+      width: auto;
+      height: 100%;
+      padding: {
+        left: 12 / $unit * $symbol;
+        right: 12 / $unit * $symbol;
+      }
+    }
+  }
+  .login-logo {
+    $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    height: 660 / $unit * $symbol;
+    .logo-flag {
+      width: 162 / $unit * $symbol;
+      height: 162 / $unit * $symbol;
+    }
+    .logo-title {
+      $param: (flex flex) (alignItems center) (justifyContent center);
+      @include flexSet($param);
+      height: 102 / $unit * $symbol;
+      font-size: 39 / $unit * $symbol;
+      color: #333333;
+    }
+  }
+  .login-input-list {
+    width: 100%;
+    padding: {
+      left: 63 / $unit * $symbol;
+      right: 63 / $unit * $symbol;
+    }
+    .list-item {
+      width: 100%;
+      height: 99 / $unit * $symbol;
+      padding: {
+        left: 15 / $unit * $symbol;
+        right: 15 / $unit * $symbol;
+      }
+      input {
+        $param: (flex flex) (alignItems center);
+        @include flexSet($param);
+        width: 100%;
+        height: 100%;
+        font-size: 36 / $unit * $symbol;
+        color: #000;
+      }
+    }
+  }
+  .login-btn {
+    $param: (flex flex) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    width: 100%;
+    height: 90 / $unit * $symbol;
+    margin: {
+      top: 60 / $unit * $symbol;
+    }
+    padding: {
+      left: 63 / $unit * $symbol;
+      right: 63 / $unit * $symbol;
+    }
+    button {
+      $param: (flex flex) (alignItems center) (justifyContent center);
+      @include flexSet($param);
+      width: 100%;
+      height: 90 / $unit * $symbol;
+    }
+  }
+  .login-operation {
+    width: 100%;
+    height: 60 / $unit * $symbol;
+    margin: {
+      top: 24 / $unit * $symbol;
+    }
+    padding: {
+      left: 63 / $unit * $symbol;
+      right: 63 / $unit * $symbol;
+    }
+    .operation-item {
+      height: 100%;
+      padding: {
+        left: 15 / $unit * $symbol;
+        right: 15 / $unit * $symbol;
+      }
+      font-size: 27 / $unit * $symbol;
+      color: #999999;
+    }
+    .operation-item:first-of-type {
+      color: #333333;
+    }
+  }
+}

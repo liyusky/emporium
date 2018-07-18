@@ -82,7 +82,6 @@ export default {
       }
     },
     cancel (buttonName, number) {
-      console.log(number)
       this.orderIndex = number
       if (buttonName === '取消订单' || buttonName === '删除订单') {
         this.Title.text = '您确认要删除订单'
@@ -101,6 +100,9 @@ export default {
       }).success(data => {
         this.tips.splice(this.orderIndex, 1)
         this.reminderShow = false
+      }).fail(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
     closeModal () {
