@@ -38,7 +38,7 @@ export default new Router({
       props: true
     },
     {
-      path: '/address-manage/:origin',
+      path: '/address-manage',
       name: 'address-manage',
       component: AddressManage,
       props: true
