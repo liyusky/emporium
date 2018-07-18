@@ -125,6 +125,7 @@ export default {
           },
           {
             icon: '',
+            img: '',
             name: '大师分期',
             pay: 3
           }

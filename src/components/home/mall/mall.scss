@@ -102,6 +102,8 @@
               font-weight: bold;
               color: #353535;
             }
+
+            
             .content-parameter {
               $param: (flex flex) (justifyContent center);
               @include flexSet($param);

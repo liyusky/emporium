@@ -19,7 +19,7 @@
     <div class="item-summary">
       <p>共1件商品 合计:
         <span class="summary-price">{{item.rownum * item.CommodityPrice}}</span>
-        <span class="summary-fare"> (含运费￥{{item.DeliverPrice}})</span>
+        <span class="summary-fare"> (    含运费￥{{item.DeliverPrice}})</span>
       </p>
     </div>
     <div class="item-button">

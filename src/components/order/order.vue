@@ -59,7 +59,6 @@ export default {
         }
       }).success((data) => {
         if (status === this.status) this.tips = data
-        console.log(data)
       })
     },
     loadMore () {
