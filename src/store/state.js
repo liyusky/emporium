@@ -3,7 +3,7 @@ const state = {
   address: null,
   phone: null,
   installments: null,
-  orderNum: null,
+  OrderNo: null,
   // 传入order的参数
   statusNum: null,
   // order-confrim origin

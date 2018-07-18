@@ -73,16 +73,13 @@ export default {
           OtherCost: 0,
           CommodityPrice: this.buy.nowPrice
         }
-      }).success((data) => {
+      }).success(data => {
         this.saveOrigin('product')
         this.saveOrigin3('product')
+        this.saveOrderNo(data.OrderNo)
         this.saveProductId(this.buy.Id)
         this.$router.push({
-          name: 'order-confirm',
-          params: {
-            id: this.buy.Id,
-            OrderNo: data.OrderNo
-          }
+          name: 'order-confirm'
         })
       }).fail((data) => {
         this.Title.text = data.message + ' 请返回'
@@ -93,7 +90,7 @@ export default {
       this.DialogShow = false
       this.closeModal()
     },
-    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveProductId'])
+    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveProductId', 'saveOrderNo'])
   }
 }
 </script>
