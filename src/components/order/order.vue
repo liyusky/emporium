@@ -3,14 +3,14 @@
     <Theme :theme="theme"></Theme>
     <section class="order-tabbar">
       <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1)">全部</button>
-      <button class="tabbar-item" :class="{active:status == 1}" @click="switchTips(1)">代付款</button>
-      <button class="tabbar-item" :class="{active:status == 2}" @click="switchTips(2)">代发货</button>
-      <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3)">代收货</button>
+      <button class="tabbar-item" :class="{active:status == 1}" @click="switchTips(1)">待付款</button>
+      <button class="tabbar-item" :class="{active:status == 2}" @click="switchTips(2)">待发货</button>
+      <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3)">待收货</button>
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
     <section class="order-classify" ref="orders">
       <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-        <OrderList v-show="tips" v-for="(item, index) in tips" :key="index" :item="item" :index="index" @REMOVE_TIPS_EVENT="cancel"></OrderList>
+        <OrderList v-show="tips"  :tips="tips" :statusList="statusList"></OrderList>
         <OrderWithout v-show="!tips"></OrderWithout>
       </PullRefresh>
     </section>
@@ -40,20 +40,99 @@ export default {
       status: -1,
       tips: null,
       page: 1,
-      dialogShow: false
+      dialogShow: false,
+      statusList: {
+        '0': {
+          statusTitle: '待提交',
+          buttonType: [
+            {
+              buttonClass: 'left-button',
+              buttonName: '取消订单'
+            },
+            {
+              buttonClass: 'right-button',
+              buttonName: '提交订单'
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        },
+        '1': {
+          statusTitle: '待付款',
+          buttonType: [
+            {
+              buttonClass: 'left-button',
+              buttonName: '取消订单'
+            },
+            {
+              buttonClass: 'button-topay',
+              buttonName: '去支付'
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        },
+        '2': {
+          statusTitle: '等待发货',
+          buttonType: [
+            {
+              buttonClass: 'left-button',
+              buttonName: '取消订单'
+            },
+            {
+              buttonName: ''
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        },
+        '3': {
+          statusTitle: '已发货',
+          buttonType: [
+            {
+              buttonClass: 'left-button',
+              buttonName: '确认收货'
+            },
+            {
+              buttonName: ''
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        },
+        '9': {
+          statusTitle: '已取消订单',
+          buttonType: [
+            {
+              buttonClass: 'left-button',
+              buttonName: '删除订单'
+            },
+            {
+              buttonName: ''
+            },
+            {
+              buttonName: ''
+            }
+          ]
+        }
+      }
     }
   },
   created () {
     let defaultStatus = this.$store.state.statusNum
     if (typeof defaultStatus === 'number') this.status = defaultStatus
-    this.getData(defaultStatus)
+    this.getData(this.status)
   },
   methods: {
     switchTips (status) {
       this.changeStatusNum(status)
       if (this.status !== status) {
         this.status = status
-        this.getData(status)
+        this.getData(this.status)
       }
     },
     getData (status) {
@@ -61,20 +140,18 @@ export default {
         url: 'orderList',
         params: {
           custermerId: 10000,
-          status: status,
-          pageCurrent: this.page
+          status: status
         }
       }).success(data => {
         if (status === this.status) this.tips = data
-        console.log(data)
-      }).fail((data) => {
+      }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
       })
     },
     loadMore () {
       Http.send({
-        url: 'orderListx',
+        url: 'orderList',
         params: {
           custermerId: 10000,
           status: this.status,
@@ -82,13 +159,7 @@ export default {
         }
       }).success((data) => {
         this.tips = this.tips.concat(data)
-      }).fail((data) => {
-        this.Title.text = data.message
-        this.dialogShow = true
       })
-    },
-    cancel (index) {
-      this.tips.splice(index, 1)
     },
     closeModal () {
       this.dialogShow = false

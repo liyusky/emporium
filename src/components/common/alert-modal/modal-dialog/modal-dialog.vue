@@ -1,7 +1,9 @@
 <template>
   <section class="dialog">
     <div class="dialog-content">
-      <p class="content-title">{{Title.text}}</p>
+      <div class="content-title">
+        <p class="title-text">{{Title.text}}</p>
+      </div>
       <button class="content-button" @click="close">确认</button>
     </div>
   </section>

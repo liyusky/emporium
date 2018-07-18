@@ -12,6 +12,7 @@ export default class Http {
       params: args.params ? args.params : {},
       data: args.data ? args.data : {}
     }).then((response) => {
+      console.log(args.url)
       console.log(response)
       Http.dispense(response.data)
     }).catch((error) => {
@@ -23,8 +24,6 @@ export default class Http {
     if (response.code === 200) {
       if (this.successCallback) this.successCallback(response.data)
     } else {
-      // alert(response.message)
-      // alert(response.description)
       if (this.failCallback) this.failCallback(response)
     }
   }

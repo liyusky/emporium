@@ -1,39 +1,35 @@
 <template>
-  <section class="order-item">
-    <div class="item-title">
-      <p class="title-time">{{titleTime}}</p>
-      <p class="title-sign">{{statusTitle}}</p>
-    </div>
-    <div class="item-detail" @click="gotoPage(item)">
-      <div class="detail-img">
-        <img :src="item.Icon">
+  <section class="order-list">
+    <div class="list-item" v-for="(item, index) in tips" :key="index">
+      <div class="item-title">
+        <p class="title-time"></p>
+        <p class="title-sign">{{statusList[item.Status].statusTitle}}</p>
       </div>
-      <div class="detail-content">
-        <p class="content-title">{{item.Title}}</p>
-        <div class="content-price-number">
-          <p class="content-price">{{item.CommodityPrice}}</p>
-          <p class="content-number">x{{item.rownum}}</p>
+      <div class="item-detail" @click="gotoPage(item)">
+        <div class="detail-img">
+          <img :src="item.Icon">
+        </div>
+        <div class="detail-content">
+          <p class="content-title">{{item.Title}}</p>
+          <div class="content-price-number">
+            <p class="content-price">{{item.CommodityPrice}}</p>
+            <p class="content-number">x{{item.rownum}}</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="item-summary">
-      <p>
-        <span>共1件商品 合计:</span>
-        <span class="summary-price">{{item.rownum * item.CommodityPrice}}</span>
-        <span class="summary-fare"> (含运费￥{{item.DeliverPrice}})</span>
-      </p>
-    </div>
-    <div class="item-button">
-      <button class="" v-if="judge('cancel', item.Status)" @click="cancel(item)">删除订单</button>
-      <button class="" v-if="judgePay(item.Status)" @click="pay(item)">去支付</button>
-      <button class="" v-if="judge('confrim', item.Status)" @click="confrim(item)">确认收货</button>
-      <button class="" v-if="judge('submit', item.Status)" @click="submit(item)">提价订单</button>
-      <button v-for="(buttonItem, index) in buttonType" :key="index" v-if="buttonItem.buttonName" :class="buttonItem.buttonClass"
-        @click="cancel(item)">{{buttonItem.buttonName}}</button>
-      <button v-for="(buttonItem, index) in buttonType" :key="index" v-if="buttonItem.buttonName" :class="buttonItem.buttonClass"
-        @click="cancel(item)">{{buttonItem.buttonName}}</button>
-      <button v-for="(buttonItem, index) in buttonType" :key="index" v-if="buttonItem.buttonName" :class="buttonItem.buttonClass"
-        @click="cancel(item)">{{buttonItem.buttonName}}</button>
+      <div class="item-summary">
+        <p>
+          <span>共1件商品 合计:</span>
+          <span class="summary-price">{{item.rownum * item.CommodityPrice}}</span>
+          <span class="summary-fare"> (含运费￥{{item.DeliverPrice}})</span>
+        </p>
+      </div>
+      <div class="item-button">
+        <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">取消订单</button>
+        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.OrderNo)">去支付</button>
+        <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">提交订单</button>
+        <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim">确认收货</button>
+      </div>
     </div>
     <ModalReminder :Title="Title" v-show="reminderShow" @CLOSE_MODAL_EVENT="closeModal" @SENF_REQUEST_EVENT="sendRequest"></ModalReminder>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
@@ -41,203 +37,107 @@
 </template>
 
 <script>
-  import Time from '../../../class/time.class.js'
-  import Http from '../../../class/http.class.js'
-  import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
-  import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
-  import {
-    mapMutations
-  } from 'vuex'
-  export default {
-    data() {
-      return {
-        titleTime: null,
-        Title: {
-          text: ''
-        },
-        dialogShow: false,
-        reminderShow: false,
-        statusTitle: '',
-        buttonType: []
+// import Time from '../../../class/time.class.js'
+import Http from '../../../class/http.class.js'
+import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
+import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
+import {
+  mapMutations
+} from 'vuex'
+export default {
+  data () {
+    return {
+      titleTime: null,
+      Title: {
+        text: ''
+      },
+      dialogShow: false,
+      reminderShow: false,
+      index: null
+    }
+  },
+  props: ['tips', 'statusList'],
+  components: {
+    ModalDialog,
+    ModalReminder
+  },
+  mounted () {
+    // 订单日期
+    // this.titleTime = Time.change(Number(this.item.CreateTime.substring(6, 19)))
+  },
+  methods: {
+    gotoPage (item) {
+      if (item.Status > 0) {
+        this.saveOrigin2('order')
+        this.$router.push({
+          name: 'order-detail',
+          params: {
+            OrderNo: item.OrderNo
+          }
+        })
+      } else {
+        this.saveOrigin('order')
+        this.$router.push({
+          name: 'order-confirm',
+          params: {
+            id: item.CommodityId,
+            OrderNo: item.OrderNo
+          }
+        })
       }
     },
-    components: {
-      ModalDialog,
-      ModalReminder
+    judgeCancel (status) {
+      let result = true
+      if (status === 3 || status === 9) result = false
+      return result
     },
-    props: ['item', 'index'],
-    mounted() {
-      // 订单日期
-      this.titleTime = Time.change(Number(this.item.CreateTime.substring(6, 19)))
-      this.statusType()
+    judgePay (status) {
+      let result = false
+      if (status === 1) result = true
+      return result
     },
-    methods: {
-      gotoPage(item) {
-        if (item.Status > 0) {
-          this.saveOrigin2('order')
-          this.$router.push({
-            name: 'order-detail',
-            params: {
-              OrderNo: item.OrderNo
-            }
-          })
-        } else {
-          this.saveOrigin('order')
-          this.$router.push({
-            name: 'order-confirm',
-            params: {
-              id: item.CommodityId,
-              OrderNo: item.OrderNo
-            }
-          })
-        }
-      },
-      judgePay (status) {
-        let result = false
-        switch (status) {
-          case 4:
-            result = true
-            break;
+    judgeSubmit (status) {
+      let result = false
+      if (status === 0) result = true
+      return result
+    },
+    judgeConfrim (status) {
+      let result = false
+      if (status === 3) result = true
+      return result
+    },
+    cancel (index) {
+      this.index = index
+      this.Title.text = '您确认要删除订单'
+      this.reminderShow = true
+    },
+    pay () {},
+    confrim () {
 
-            case 4:
-            result = true
-            break;
+    },
+    sendRequest () {
+      Http.send({
+        url: 'Cancel',
+        params: {
+          orderno: this.tips[this.index].OrderNo
         }
-        return result
-      },
-      statusType() {
-        switch (this.item.Status) {
-          case 0:
-
-            break
-          case 1:
-
-            break
-          case 2:
-
-            break
-          case 3:
-
-            break
-          case 9:
-
-            break
-        }
-        return false
-        if (this.item.Status === 0) {
-          this.statusTitle = '待提交'
-          this.buttonType = [{
-              buttonClass: 'left-button',
-              buttonName: '取消订单'
-            },
-            {
-              buttonClass: 'right-button',
-              buttonName: '提交订单'
-            },
-            {
-              buttonName: ''
-            }
-          ]
-        }
-        if (this.item.Status === 1) {
-          this.statusTitle = '待付款'
-          this.buttonType = [{
-              buttonClass: 'left-button',
-              buttonName: '取消订单'
-            },
-            {
-              buttonClass: 'button-topay',
-              buttonName: '去支付'
-            },
-            {
-              buttonName: ''
-            }
-          ]
-        }
-        if (this.item.Status === 2) {
-          this.statusTitle = '等待发货'
-          this.buttonType = [{
-              buttonClass: 'left-button',
-              buttonName: '取消订单'
-            },
-            {
-              buttonName: ''
-            },
-            {
-              buttonName: ''
-            }
-          ]
-        }
-        if (this.item.Status === 3) {
-          this.statusTitle = '已发货'
-          this.buttonType = [{
-              buttonClass: 'left-button',
-              buttonName: '确认收货'
-            },
-            {
-              buttonName: ''
-            },
-            {
-              buttonName: ''
-            }
-          ]
-        }
-        if (this.item.Status === 3) {
-          this.statusTitle = '已发货'
-          this.buttonType = [{
-              buttonClass: 'left-button',
-              buttonName: '确认收货'
-            },
-            {
-              buttonName: ''
-            },
-            {
-              buttonName: ''
-            }
-          ]
-        }
-        if (this.item.Status === 9) {
-          this.statusTitle = '已取消订单'
-          this.buttonType = [{
-              buttonClass: 'left-button',
-              buttonName: '查看订单'
-            },
-            {
-              buttonName: ''
-            },
-            {
-              buttonName: ''
-            }
-          ]
-        }
-      },
-      cancel(item) {
-        this.Title.text = '您确认要删除订单'
-        this.reminderShow = true
-      },
-      sendRequest() {
-        Http.send({
-          url: 'Cancel',
-          params: {
-            orderno: this.item.OrderNo
-          }
-        }).success(data => {
-          console.log(data)
-          this.$emit('REMOVE_TIPS_EVENT', this.index)
-        }).fail((data) => {
-          this.Title.text = data.message
-          this.dialogShow = true
-        })
-      },
-      closeModal() {
-        this.dialogShow = false
+      }).success(data => {
+        this.tips.splice(this.index, 1)
         this.reminderShow = false
-      },
-      ...mapMutations(['saveOrigin', 'saveOrigin2'])
-    }
+      }).fail(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
+    closeModal () {
+      this.dialogShow = false
+      this.reminderShow = false
+    },
+    ...mapMutations(['saveOrigin', 'saveOrigin2'])
   }
+}
 </script>
 
 <style scoped lang="scss">
-  @import './order-list.scss'
+  @import './order-list.scss';
 </style>
