@@ -93,6 +93,8 @@
     }
   }
   .item-button {
+    $param: (flex flex) (alignItems center) (justifyContent flex-end);
+    @include flexSet($param);
     width: 100%;
     height: 80 / $unit * $symbol;
     padding: {
@@ -100,45 +102,33 @@
       right: 30 / $unit * $symbol;
     }
     background: #fff;
-    .button-topay {
-      $param: (flex flex) (alignItems center) (justifyContent flex-end);
-      @include flexSet($param);
-      width: 100%;
-      height: 80 / $unit * $symbol;
-      button {
-        width: 160 / $unit * $symbol;
-        height: 60 / $unit * $symbol;
-        background: #eb2828;
-        font-size: 27 / $unit * $symbol;
-        color: #fff;
-        border-radius: 7 / $unit * $symbol;
-        outline: none;
+    button {
+      width: 160 / $unit * $symbol;
+      height: 60 / $unit * $symbol;
+      font-size: 27 / $unit * $symbol;
+      border-radius: 7 / $unit * $symbol;
+      outline: none;
+      margin: {
+        left: 19 / $unit * $symbol;
       }
+      border-style: solid;
+      border-width: 1px;
+      border-color: #fff;
     }
-    .button-order {
-      $param: (flex flex) (alignItems center) (justifyContent flex-end);
-      @include flexSet($param);
-      width: 100%;
-      height: 80 / $unit * $symbol;
-      button {
-        width: 160 / $unit * $symbol;
-        height: 60 / $unit * $symbol;
-        margin: {
-          left: 19 / $unit * $symbol;
-        }
-        background: #fff;
-        font-size: 27 / $unit * $symbol;
-        border-radius: 7 / $unit * $symbol;
-        outline: none;
-      }
-      button:first-of-type {
-        border: 1px solid #818181;
-        color: #000000;
-      }
-      button:last-of-type {
-        border: 1px solid #eb2828;
-        color: #eb2828;
-      }
+    .button-topay {
+      border-color: #eb2828;
+      background-color: #eb2828;
+      color: #fff;
+    }
+    .left-button {
+      border-color: #818181;
+      background-color: #fff;
+      color: #000000;
+    }
+    .right-button {
+      border-color: #eb2828;
+      background-color: #fff;
+      color: #eb2828;
     }
   }
 }
