@@ -14,6 +14,7 @@
         <OrderWithout v-show="!tips"></OrderWithout>
       </PullRefresh>
     </section>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
 </template>
 
@@ -24,6 +25,7 @@ import Theme from '../common/theme/theme.vue'
 import OrderList from './order-list/order-list.vue'
 import OrderWithout from './order-without/order-without.vue'
 import PullRefresh from '../common/pull-refresh/pull-refresh.vue'
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 export default {
   name: 'Order',
   data () {
@@ -32,9 +34,13 @@ export default {
         title: '我的订单',
         goal: 'mine'
       },
+      Title: {
+        text: ''
+      },
       status: -1,
       tips: null,
-      page: 1
+      page: 1,
+      dialogShow: false
     }
   },
   created () {
@@ -59,13 +65,16 @@ export default {
           pageCurrent: this.page
         }
       }).success(data => {
-        console.log(data)
         if (status === this.status) this.tips = data
+        console.log(data)
+      }).fail((data) => {
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
     loadMore () {
       Http.send({
-        url: 'orderList',
+        url: 'orderListx',
         params: {
           custermerId: 10000,
           status: this.status,
@@ -73,10 +82,16 @@ export default {
         }
       }).success((data) => {
         this.tips = this.tips.concat(data)
+      }).fail((data) => {
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
     cancel (index) {
       this.tips.splice(index, 1)
+    },
+    closeModal () {
+      this.dialogShow = false
     },
     ...mapMutations(['changeStatusNum'])
   },
@@ -84,7 +99,8 @@ export default {
     Theme,
     OrderList,
     PullRefresh,
-    OrderWithout
+    OrderWithout,
+    ModalDialog
   }
 }
 </script>

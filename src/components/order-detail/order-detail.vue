@@ -10,7 +10,10 @@
           </div>
           <div class="person-detail">
             <i class="iconfont icon-suan"></i>
-            <div class="detail-name-address">
+            <div class="detail-name-address" v-if="!orderDetail.ReciverAddress">
+              <h3 class="detail-name">未填写地址</h3>
+            </div>
+            <div class="detail-name-address" v-if="orderDetail.ReciverAddress">
               <h3 class="detail-name">{{orderDetail.ReciverName}} {{orderDetail.ReciverPhone}}</h3>
               <p class="detail-address">{{orderDetail.ReciverAddress}}</p>
             </div>
@@ -40,7 +43,7 @@
             </li>
             <li class="list-item">
               <p class="item-title">支付方式</p>
-              <p class="item-value">{{orderDetail.PayType}}</p>
+              <p class="item-value">{{orderDetail.PayType ? orderDetail.PayType : '未选择'}}</p>
             </li>
           </ul>
         </div>

@@ -39,7 +39,7 @@
       <CitySelect :provinceList = "provinceList" :cities="cities" @SELECT_AREA_EVENT = "getArea"></CitySelect>
     </Modal>
     <!-- s 弹出框 -->
-    <ModalDialog v-show = "DialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "closeDialog"></ModalDialog>
+    <ModalDialog v-show = "dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "closeModal"></ModalDialog>
     <ModalHint v-show = "HintShow" :Title="Title"></ModalHint>
     <!-- e 弹出框 -->
   </section>
@@ -85,7 +85,7 @@ export default {
       Title: {
         text: ''
       },
-      DialogShow: false,
+      dialogShow: false,
       HintShow: false,
       btn: this.title ? '修改' : '保存',
       id: null,
@@ -120,6 +120,9 @@ export default {
             this.HintShow = false
             this.$router.go(-1)
           }, 500)
+        }).fail((data) => {
+          this.Title.text = data.message
+          this.dialogShow = true
         })
       } else {
         Http.send({
@@ -138,6 +141,9 @@ export default {
             this.HintShow = false
             this.$router.go(-1)
           }, 500)
+        }).fail((data) => {
+          this.Title.text = data.message
+          this.dialogShow = true
         })
       }
     },
@@ -154,13 +160,13 @@ export default {
       this.county = this.county.replace(/\s+/g, '')
       if (!this.name) {
         this.Title.text = '请输入姓名'
-        this.DialogShow = true
+        this.dialogShow = true
         return false
       }
 
       if (!this.phone) {
         this.Title.text = '请输入手机号'
-        this.DialogShow = true
+        this.dialogShow = true
         return false
       }
       if (!this.checkPhone()) {
@@ -168,12 +174,12 @@ export default {
       }
       if (this.area === '请选择' || this.area === '') {
         this.Title.text = '请选择地区'
-        this.DialogShow = true
+        this.dialogShow = true
         return false
       }
       if (!this.county) {
         this.Title.text = '请填写详细地址'
-        this.DialogShow = true
+        this.dialogShow = true
         return false
       }
       return true
@@ -181,20 +187,20 @@ export default {
     checkPhone () {
       if (this.phone.length < 11) {
         this.Title.text = '手机号长度不足11位'
-        this.DialogShow = true
+        this.dialogShow = true
         return false
       } else {
         var pat = new RegExp('^(?:13|14|15|17|18)[0-9]{9}$', 'i')
         if (!pat.test(this.phone)) {
           this.Title.text = '手机号格式错误'
-          this.DialogShow = true
+          this.dialogShow = true
           return false
         }
         return true
       }
     },
-    closeDialog () {
-      this.DialogShow = false
+    closeModal () {
+      this.dialogShow = false
     }
   }
 }
