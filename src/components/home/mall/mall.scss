@@ -31,8 +31,8 @@
   &-brand {
     width: 100vw;
     padding: {
-      left: 21 / $unit * $symbol;
-      right: 21 / $unit * $symbol;
+      left: 18 / $unit * $symbol;
+      right: 18 / $unit * $symbol;
     }
     .brand-classify {
       width: 100%;
@@ -77,14 +77,14 @@
             $param: (flex flex) (direction column) (alignItems center);
             @include flexSet($param);
             width: 345 / $unit * $symbol;
-            height: 470 / $unit * $symbol;
+            height: 472 / $unit * $symbol;
             border: 1px solid #ededed;
             padding: {
               top: 42 / $unit * $symbol;
             }
             border-radius: 3 / $unit * $symbol;
             background: #fff;
-            box-shadow: 0 0 (30 / $unit * $symbol) (6 / $unit * $symbol) #ededed;
+            box-shadow: 0 0 (30 / $unit * $symbol) (6 / $unit * $symbol) #efeeec;
             .content-shop-picture {
               width: 172 / $unit * $symbol;
               height: 199 / $unit * $symbol;
@@ -94,16 +94,15 @@
               }
             }
             .content-title {
+              height: 49 / $unit * $symbol;
               margin: {
-                top: 14 / $unit * $symbol;
+                top: 14 / $unit * $symbol
               }
               line-height: 49 / $unit * $symbol;
               font-size: 27 / $unit * $symbol;
               font-weight: bold;
               color: #353535;
             }
-
-            
             .content-parameter {
               $param: (flex flex) (justifyContent center);
               @include flexSet($param);
@@ -137,7 +136,7 @@
               }
               .price-installment {
                 padding: {
-                  left: 9 / $unit * $symbol;
+                  left: 18 / $unit * $symbol;
                 }
                 font-size: 21 / $unit * $symbol;
                 color: #666666;
@@ -161,8 +160,7 @@
               }
               border: (2 / $unit * $symbol) solid #eb2828;
               border-radius: 4 / $unit * $symbol;
-              .economize-notice {
-                display: block;
+              div:first-of-type {
                 width: 30 / $unit * $symbol;
                 height: 30 / $unit * $symbol;
                 line-height: 30 / $unit * $symbol;
@@ -172,11 +170,10 @@
                 font-size: 24 / $unit * $symbol; // border-top-left-radius: 4 / $unit * $symbol;
                 // border-bottom-left-radius: 4 / $unit * $symbol;
               }
-              .economize-price {
-                display: block;
+              div:last-of-type {
                 padding: {
-                  left: 6 / $unit * $symbol;
-                  right: 6 / $unit * $symbol;
+                  left: 9 / $unit * $symbol;
+                  right: 9 / $unit * $symbol;
                 }
                 line-height: 30 / $unit * $symbol;
                 color: #393939;
@@ -187,15 +184,12 @@
               position: absolute;
               top: 0;
               left: 0;
-              width: 78 / $unit * $symbol;
-              height: 36 / $unit * $symbol;
+              $param: (flex flex) (alignItems center) (justifyContent center);
+              @include flexSet($param);
+              width: 79 / $unit * $symbol;
+              height: 35 / $unit * $symbol;
               background: #fe5649;
               span {
-                display: block;
-                width: 78 / $unit * $symbol;
-                height: 36 / $unit * $symbol;
-                $param: (flex flex) (alignItems center) (justifyContent center);
-                @include flexSet($param);
                 font-size: 21 / $unit * $symbol;
                 color: #fff;
               }

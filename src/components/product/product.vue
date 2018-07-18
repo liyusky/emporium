@@ -1,7 +1,7 @@
 <template>
   <!-- s 产品详情 -->
   <section class="product">
-    <Theme :theme="theme" :goal="'product'"></Theme>
+    <Theme :theme="theme"></Theme>
     <nav class="product-nav">
       <div class="nav-item" :class="{active: rollSite == 'summary'}" @click="gotoRollSite('summary')">
         <a href="#summary">商品</a>
@@ -32,9 +32,10 @@
       </div>
       <button class="order-btn" @click="openModal('Buy')">立即购买</button>
     </footer>
-      <Modal v-show="modal">
-        <component v-show="modal" :is="component" :parameter="parameter" :paymentMethod="paymentMethod" :buy="buy" @CLOSE_MODAL_EVENT="closeModal"></component>
-      </Modal>
+    <Modal v-show="modal">
+      <component v-show="modal" :is="component" :parameter="parameter" :paymentMethod="paymentMethod" :buy="buy" @CLOSE_MODAL_EVENT="closeModal"></component>
+    </Modal>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
   <!-- e 产品详情 -->
 </template>
@@ -51,7 +52,7 @@ import Parameter from './modal/parameter/parameter.vue'
 import Share from './modal/share/share.vue'
 import PaymentMethod from './modal/payment-method/payment-method.vue'
 import Buy from './modal/buy/buy.vue'
-import { mapMutations } from 'vuex'
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 export default {
   name: 'Product',
   props: ['id', 'title'],
@@ -65,12 +66,16 @@ export default {
     Parameter,
     Share,
     PaymentMethod,
-    Buy
+    Buy,
+    ModalDialog
   },
   data () {
     return {
       theme: {
-        title: this.title
+        title: null
+      },
+      Title: {
+        text: ''
       },
       animationShow: false,
       component: null,
@@ -83,7 +88,8 @@ export default {
       paymentMethod: {},
       buy: {},
       rollSite: 'summary',
-      params: {}
+      params: {},
+      dialogShow: false
     }
   },
   created () {
@@ -93,10 +99,10 @@ export default {
         id: this.id
       }
     }).success((data) => {
-      console.log(data)
       setPaymentTypeArr()
       setPaymentTypePartArr()
       this.summary = data.Phone
+      this.theme.title = data.Phone.Title
       this.sample = data.AttachmentList.filter((item) => {
         if (item.ArchiveType === '2') return item
       })
@@ -110,7 +116,6 @@ export default {
         methods: data.Phone.PaymentTypePartArr
       }
       this.buy = data.Phone
-      this.saveInstallments(data.CommodityInstallmentList)
       function setPaymentTypeArr () {
         let type = [
           {
@@ -125,7 +130,6 @@ export default {
           },
           {
             icon: '',
-            img: '',
             name: '大师分期',
             pay: 3
           }
@@ -157,6 +161,9 @@ export default {
         })
         data.Phone.PaymentTypePartArr = content
       }
+    }).fail((data) => {
+      this.Title.text = data.message
+      this.dialogShow = true
     })
     this.params.id = this.id
     this.params.title = this.title
@@ -175,11 +182,11 @@ export default {
     },
     closeModal () {
       this.modal = false
+      this.dialogShow = false
     },
     gotoRollSite (site) {
       this.rollSite = site
-    },
-    ...mapMutations(['saveInstallments', 'saveParams'])
+    }
   }
 }
 </script>

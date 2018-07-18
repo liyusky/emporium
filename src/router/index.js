@@ -32,13 +32,13 @@ export default new Router({
       redirect: '/mall'
     },
     {
-      path: '/product/:id/:title',
+      path: '/product/:id',
       name: 'product',
       component: Product,
       props: true
     },
     {
-      path: '/address-manage/:origin',
+      path: '/address-manage',
       name: 'address-manage',
       component: AddressManage,
       props: true
@@ -61,9 +61,10 @@ export default new Router({
       props: true
     },
     {
-      path: '/order-confirm',
+      path: '/order-confirm/:id&OrderNo',
       name: 'order-confirm',
-      component: OrderConfirm
+      component: OrderConfirm,
+      props: true
     },
     {
       path: '/order-detail/:orderNum',

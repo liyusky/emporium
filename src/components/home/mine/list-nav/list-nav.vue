@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'ListNav',
   data () {
@@ -36,13 +37,12 @@ export default {
   },
   methods: {
     gotoPage (page) {
+      this.saveOrigin2('mine')
       this.$router.push({
-        name: page,
-        params: {
-          origin: 'mine'
-        }
+        name: page
       })
-    }
+    },
+    ...mapMutations(['saveOrigin2'])
   }
 }
 </script>
