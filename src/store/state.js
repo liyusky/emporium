@@ -6,7 +6,12 @@ const state = {
   orderNum: null,
   // 传入order的参数
   statusNum: null,
+  // order-confrim origin
   origin: null,
-  origin2: null
+  // order-detail origin
+  origin2: null,
+  // address-manger origin
+  origin3: null,
+  productId: null
 }
 export default state

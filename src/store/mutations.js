@@ -21,6 +21,12 @@ const mutations = {
   },
   saveOrigin2 (state, origin2) {
     state.origin2 = origin2
+  },
+  saveOrigin3 (state, origin3) {
+    state.origin3 = origin3
+  },
+  saveProductId (state, id) {
+    state.productId = id
   }
 }
 export default mutations

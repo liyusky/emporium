@@ -31,7 +31,8 @@ export default {
   data () {
     return {
       theme: {
-        title: '我的订单'
+        title: '我的订单',
+        goal: 'mine'
       },
       Title: {
         text: ''
@@ -63,7 +64,7 @@ export default {
           status: status,
           pageCurrent: this.page
         }
-      }).success((data) => {
+      }).success(data => {
         if (status === this.status) this.tips = data
         console.log(data)
       }).fail((data) => {
@@ -73,7 +74,7 @@ export default {
     },
     loadMore () {
       Http.send({
-        url: 'orderList',
+        url: 'orderListx',
         params: {
           custermerId: 10000,
           status: this.status,

@@ -140,6 +140,7 @@ export default {
   },
   created () {
     this.theme.goal = this.$store.state.origin
+    alert(this.theme.goal)
     Http.send({
       url: 'product',
       params: {
@@ -181,7 +182,7 @@ export default {
       this.$router.push({
         name: page,
         params: {
-          orderNum: this.phone.OrderNo
+          OrderNo: this.phone.OrderNo
         }
       })
     },
