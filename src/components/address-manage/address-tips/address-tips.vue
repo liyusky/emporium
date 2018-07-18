@@ -92,9 +92,13 @@ export default {
             Address: item.Address
           }
         }).success((data) => {
+          console.log(data)
           this.saveSelectedAddress(item)
-          this.$router.push({name: 'order-confirm'})
+          this.$router.push({
+            name: 'order-confirm'
+          })
         }).fail((data) => {
+          console.log(data)
           this.Title.text = data.message
           this.dialogShow = true
         })
