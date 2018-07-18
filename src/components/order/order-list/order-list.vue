@@ -78,10 +78,11 @@ export default {
   methods: {
     gotoPage (item) {
       if (item.Status > 0) {
+        this.saveOrigin2('order')
         this.$router.push({
           name: 'order-detail',
           params: {
-            orderNum: item.OrderNo
+            OrderNo: item.OrderNo
           }
         })
       } else {
@@ -102,10 +103,11 @@ export default {
           orderno: item.OrderNo
         }
       }).success(data => {
+        console.log(data)
         this.$emit('REMOVE_TIPS_EVENT', this.index)
       })
     },
-    ...mapMutations(['saveOrigin'])
+    ...mapMutations(['saveOrigin', 'saveOrigin2'])
   }
 }
 </script>

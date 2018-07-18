@@ -29,7 +29,8 @@ export default {
   data () {
     return {
       theme: {
-        title: '我的订单'
+        title: '我的订单',
+        goal: 'mine'
       },
       status: -1,
       tips: null,
@@ -57,9 +58,9 @@ export default {
           status: status,
           pageCurrent: this.page
         }
-      }).success((data) => {
-        if (status === this.status) this.tips = data
+      }).success(data => {
         console.log(data)
+        if (status === this.status) this.tips = data
       })
     },
     loadMore () {

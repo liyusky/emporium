@@ -1,6 +1,6 @@
 <template>
   <section class="order-detail">
-    <Theme :theme="theme" :previous="origin" :current="'order-detail'"></Theme>
+    <Theme :theme="theme"></Theme>
     <section class="order-detail-content">
       <div class="content-order-information">
         <div class="information-person">
@@ -69,14 +69,15 @@ import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
-import { mapState } from 'vuex'
 export default {
   // 订单参数
-  props: ['orderNum'],
+  props: ['OrderNo'],
   data () {
     return {
       theme: {
-        title: '订单详情'
+        title: '订单详情',
+        goal: null,
+        params: {}
       },
       Title: {
         text: ''
@@ -110,18 +111,21 @@ export default {
     Http.send({
       url: 'orderDetail',
       params: {
-        Orderno: this.orderNum
+        Orderno: this.OrderNo
       }
-    }).success((data) => {
+    }).success(data => {
       let status = this.status.get(data.Status)
       this.orderDetail = data
       this.statusName = status.statusTitle
       this.statusLeftBtnName = status.buttonLeftName
       this.statusRightBtnName = status.buttonRightName
-    }).fail((data) => {
+    }).fail(data => {
       this.Title.text = data.message
       this.dialogShow = true
     })
+    this.theme.goal = this.$store.state.origin2
+    alert(this.theme.goal)
+    if (this.$store.state.productId) this.theme.params.id = this.$store.state.productId
   },
   methods: {
     LeftButtonClick (orderDetail) {
@@ -139,7 +143,7 @@ export default {
         }
       }).success(data => {
         this.$router.push({ name: 'order' })
-      }).fail((data) => {
+      }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
       })
@@ -148,9 +152,6 @@ export default {
       this.reminderShow = false
       this.dialogShow = false
     }
-  },
-  computed: {
-    ...mapState(['origin'])
   },
   components: {
     Theme,
