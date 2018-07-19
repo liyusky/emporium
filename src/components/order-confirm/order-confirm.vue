@@ -211,7 +211,7 @@ export default {
       this.selected = null
     },
     gotoPage (page) {
-      this.saveOrigin2('order-confrim')
+      this.saveOrigin2('order-confirm')
       this.$router.push({ name: page })
     },
     confrim () {
