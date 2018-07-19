@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     selectAddress (item) {
-      if (this.origin === 'order-confrim') {
+      if (this.origin === 'order-confirm') {
         Http.send({
           url: 'ModifyResiver',
           params: {

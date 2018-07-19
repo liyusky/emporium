@@ -155,9 +155,9 @@ export default {
       this.modal = false
     },
     hasEmpty () {
-      this.name = this.name.replace(/\s+/g, '')
-      this.phone = this.phone.replace(/\s+/g, '')
-      this.county = this.county.replace(/\s+/g, '')
+      this.name = this.name ? this.name.replace(/\s+/g, '') : this.name
+      this.phone = this.phone ? this.phone.replace(/\s+/g, '') : this.phone
+      this.county = this.county ? this.county.replace(/\s+/g, '') : this.county
       if (!this.name) {
         this.Title.text = '请输入姓名'
         this.dialogShow = true

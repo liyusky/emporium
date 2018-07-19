@@ -139,8 +139,8 @@ export default {
       this.Title.text = fail.message
       this.dialogShow = true
     })
-    switch (this.$store.state.origin2) {
-      case 'order-confrim':
+    switch (this.$store.state.origin3) {
+      case 'order-confirm':
         this.theme.goal = 'mall'
         break
       case 'order':

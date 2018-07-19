@@ -68,7 +68,7 @@ export default {
   methods: {
     gotoPage (item) {
       if (item.Status > 0) {
-        this.saveOrigin2('order')
+        this.saveOrigin3('order')
         this.saveOrderNo(item.OrderNo)
         this.$router.push({ name: 'order-detail' })
       } else {
@@ -125,7 +125,7 @@ export default {
       this.dialogShow = false
       this.reminderShow = false
     },
-    ...mapMutations(['saveOrigin', 'saveOrigin2', 'saveOrderNo', 'saveProductId'])
+    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrderNo', 'saveProductId'])
   }
 }
 </script>

@@ -12,19 +12,12 @@
 import Info from './info/info.vue'
 import Order from './order/order.vue'
 import ListNav from './list-nav/list-nav.vue'
-import { mapMutations } from 'vuex'
 export default {
   name: 'Mine',
   components: {
     Info,
     Order,
     ListNav
-  },
-  mounted () {
-    this.saveOrigin('mine')
-  },
-  methods: {
-    ...mapMutations(['saveOrigin'])
   }
 }
 </script>
