@@ -13,6 +13,7 @@ import FamiliarQuestion from '../components/familiar-question/familiar-question.
 import Empower from '../components/empower/empower.vue'
 import ForgetPassword from '../components/forget-password/forget-password.vue'
 import Register from '../components/register/register.vue'
+import VerificationCode from '../components/verification-code/verification-code.vue'
 
 export default new Router({
   routes: [
@@ -88,6 +89,11 @@ export default new Router({
       path: '/',
       name: 'empower',
       component: Empower
+    },
+    {
+      path: '/VerificationCode',
+      name: 'VerificationCode',
+      component: VerificationCode
     }
   ]
 })
