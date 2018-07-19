@@ -69,21 +69,13 @@ export default {
     gotoPage (item) {
       if (item.Status > 0) {
         this.saveOrigin2('order')
-        this.$router.push({
-          name: 'order-detail',
-          params: {
-            OrderNo: item.OrderNo
-          }
-        })
+        this.saveOrderNo(item.OrderNo)
+        this.$router.push({ name: 'order-detail' })
       } else {
         this.saveOrigin('order')
-        this.$router.push({
-          name: 'order-confirm',
-          params: {
-            id: item.CommodityId,
-            OrderNo: item.OrderNo
-          }
-        })
+        this.saveProductId(item.CommodityId)
+        this.saveOrderNo(item.OrderNo)
+        this.$router.push({ name: 'order-confirm' })
       }
     },
     judgeCancel (status) {
@@ -133,7 +125,7 @@ export default {
       this.dialogShow = false
       this.reminderShow = false
     },
-    ...mapMutations(['saveOrigin', 'saveOrigin2'])
+    ...mapMutations(['saveOrigin', 'saveOrigin2', 'saveOrderNo', 'saveProductId'])
   }
 }
 </script>

@@ -109,7 +109,6 @@ import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'OrderConfirm',
-  // props: ['id', 'OrderNo'],
   components: {
     Theme,
     Modal,
