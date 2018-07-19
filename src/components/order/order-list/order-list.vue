@@ -26,7 +26,7 @@
       </div>
       <div class="item-button">
         <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">取消订单</button>
-        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.OrderNo)">去支付</button>
+        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.PayId)">去支付</button>
         <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">提交订单</button>
         <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim">确认收货</button>
       </div>
@@ -103,7 +103,19 @@ export default {
       this.Title.text = '您确认要删除订单'
       this.reminderShow = true
     },
-    pay () {},
+    pay (payId) {
+      try {
+        if (typeof (appJsInterface) !== 'undefined') {
+          appJsInterface.payWeChat(JSON.stringify({
+            prepayId: payId
+          }))
+        }
+      } catch (error) {
+        this.Title.text = '支付失败'
+        this.reminderShow = true
+        console.log(error)
+      }
+    },
     confrim () {
 
     },

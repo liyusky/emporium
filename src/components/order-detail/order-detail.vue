@@ -51,6 +51,9 @@
     </section>
     <footer class="detail-button">
       <div class="button-item">
+        <button class="" v-if="judgeCancel()" @click="cancel">取消订单</button>
+        <button class="" v-if="judgePay()" @click="pay">去支付</button>
+        <button class="" v-if="judgeConfrim()" @click="confrim">确认收货</button>
         <button class="item-right" @click="LeftButtonClick()" v-if="statusLeftBtnName">{{statusLeftBtnName}}</button>
         <button class="item-left" v-if="statusRightBtnName">{{statusRightBtnName}}</button>
       </div>
@@ -110,10 +113,12 @@ export default {
         [9, {
           statusTitle: '已取消订单',
           buttonLeftName: '',
-          buttonRightName: '查看订单'
+          buttonRightName: ''
         }]
       ]),
+      state: null,
       OrderNo: null,
+      payId: null,
       statusName: '',
       statusLeftBtnName: '',
       statusRightBtnName: '',
@@ -129,6 +134,8 @@ export default {
         Orderno: this.OrderNo
       }
     }).success(data => {
+      this.state = data.Status
+      this.payId = data.PayId
       let status = this.status.get(data.Status)
       this.orderDetail = data
       this.statusName = status.statusTitle
@@ -150,11 +157,28 @@ export default {
     if (this.$store.state.productId) this.theme.params.id = this.$store.state.productId
   },
   methods: {
-    LeftButtonClick (orderDetail) {
-      if (this.statusLeftBtnName === '取消订单') {
-        this.reminderShow = true
-        this.Title.text = '取消后，机器可能会被人抢走哦~'
-      }
+    closeModal () {
+      this.reminderShow = false
+      this.dialogShow = false
+    },
+    judgeCancel () {
+      let result = true
+      if (this.state === 3 || this.state === 9) result = false
+      return result
+    },
+    judgePay () {
+      let result = false
+      if (this.state === 1) result = true
+      return result
+    },
+    judgeConfrim () {
+      let result = false
+      if (this.state === 3) result = true
+      return result
+    },
+    cancel (index) {
+      this.Title.text = '取消后，机器可能会被人抢走哦~'
+      this.reminderShow = true
     },
     sendRequest () {
       this.reminderShow = false
@@ -181,9 +205,20 @@ export default {
         this.dialogShow = true
       })
     },
-    closeModal () {
-      this.reminderShow = false
-      this.dialogShow = false
+    pay () {
+      try {
+        if (typeof (appJsInterface) !== 'undefined') {
+          appJsInterface.payWeChat(JSON.stringify({
+            prepayId: this.payId
+          }))
+        }
+      } catch (error) {
+        this.Title.text = '支付失败'
+        this.reminderShow = true
+        console.log(error)
+      }
+    },
+    confrim () {
     }
   },
   components: {
