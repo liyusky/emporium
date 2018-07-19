@@ -43,81 +43,19 @@ export default {
       dialogShow: false,
       statusList: {
         '0': {
-          statusTitle: '待提交',
-          buttonType: [
-            {
-              buttonClass: 'left-button',
-              buttonName: '取消订单'
-            },
-            {
-              buttonClass: 'right-button',
-              buttonName: '提交订单'
-            },
-            {
-              buttonName: ''
-            }
-          ]
+          statusTitle: '待提交'
         },
         '1': {
-          statusTitle: '待付款',
-          buttonType: [
-            {
-              buttonClass: 'left-button',
-              buttonName: '取消订单'
-            },
-            {
-              buttonClass: 'button-topay',
-              buttonName: '去支付'
-            },
-            {
-              buttonName: ''
-            }
-          ]
+          statusTitle: '待付款'
         },
         '2': {
-          statusTitle: '等待发货',
-          buttonType: [
-            {
-              buttonClass: 'left-button',
-              buttonName: '取消订单'
-            },
-            {
-              buttonName: ''
-            },
-            {
-              buttonName: ''
-            }
-          ]
+          statusTitle: '等待发货'
         },
         '3': {
-          statusTitle: '已发货',
-          buttonType: [
-            {
-              buttonClass: 'left-button',
-              buttonName: '确认收货'
-            },
-            {
-              buttonName: ''
-            },
-            {
-              buttonName: ''
-            }
-          ]
+          statusTitle: '已发货'
         },
         '9': {
-          statusTitle: '已取消订单',
-          buttonType: [
-            {
-              buttonClass: 'left-button',
-              buttonName: '删除订单'
-            },
-            {
-              buttonName: ''
-            },
-            {
-              buttonName: ''
-            }
-          ]
+          statusTitle: '已取消订单'
         }
       }
     }
