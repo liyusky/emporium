@@ -15,7 +15,7 @@
     </nav>
     <Summary id="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
     <Quality id="quality" :quality="quality"></Quality>
-    <Sample id="sample" :sample="sample" @OPEN_MODAL_EVENT="openModal"></Sample>
+    <Sample id="sample" :sample="sample" :link="shareLink" @OPEN_MODAL_EVENT="openModal"></Sample>
     <Guidance></Guidance>
     <footer class="product-order">
       <div class="order-content">
@@ -90,24 +90,26 @@ export default {
       buy: {},
       rollSite: 'summary',
       params: {},
+      shareLink: null,
       dialogShow: false
     }
   },
   created () {
+    this.shareLink = window.location.href
     Http.send({
       url: 'product',
       params: {
         id: this.id
       }
-    }).success((data) => {
+    }).success(data => {
       setPaymentTypeArr()
       setPaymentTypePartArr()
       this.summary = data.Phone
       this.theme.title = data.Phone.Title
-      this.sample = data.AttachmentList.filter((item) => {
+      this.sample = data.AttachmentList.filter(item => {
         if (item.ArchiveType === '2') return item
       })
-      this.banner = data.AttachmentList.filter((item) => {
+      this.banner = data.AttachmentList.filter(item => {
         if (item.ArchiveType === '1') return item
       })
       this.quality = data.PhoneTestInfo
@@ -187,6 +189,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="sass" scoped>
