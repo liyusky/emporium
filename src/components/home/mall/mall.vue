@@ -32,7 +32,7 @@
                 <div class="content-price">
                   <span class="price-now">￥{{phone.InstallmentNum}}</span>
                   <span class="price-installment">x{{phone.InstallmentAmount}}期</span>
-                  <span class="price-old">      市场价{{phone.Degree}}</span>
+                  <span class="price-old">市场价{{phone.originalPrice}}</span>
                 </div>
                 <div class="content-economize">
                   <div>省</div>

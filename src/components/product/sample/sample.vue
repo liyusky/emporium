@@ -59,7 +59,7 @@
           <p>官方微信客服：jtds1256</p>
           <p>关注有惊喜！有任何问题欢迎随时勾搭~~~</p>
         </div>
-        <button class="tip-copy-btn" @click="openModal">分享</button>
+        <button class="tip-copy-btn" @click="share">分享</button>
       </div>
     </div>
   </section>
@@ -69,13 +69,32 @@
 <script>
 export default {
   name: 'Sample',
-  props: ['sample'],
+  props: ['sample', 'link'],
   data () {
     return {}
   },
   methods: {
     openModal (modal) {
       this.$emit('OPEN_MODAL_EVENT', 'Share')
+    },
+    share () {
+      let jsonStr = {
+        id: this.id,
+        title: '分期手机等你拿',
+        message: '高品手机分期拿，快来试试吧!',
+        url: this.link
+      }
+      // popShareUI 约定好的方法名
+      try {
+        if (typeof (appJsInterface) !== 'undefined') {
+          appJsInterface.Share(JSON.stringify(jsonStr))
+        }
+        // else {
+        //   // window.webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
+        // }
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }
