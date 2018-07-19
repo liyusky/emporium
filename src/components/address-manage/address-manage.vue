@@ -11,7 +11,6 @@
 <script>
 import Theme from '../common/theme/theme.vue'
 import AddressTips from './address-tips/address-tips.vue'
-import { mapMutations } from 'vuex'
 export default {
   name: 'AddressManage',
   components: {
@@ -30,15 +29,13 @@ export default {
   created () {
     this.origin = this.$store.state.origin2
     this.theme.goal = this.$store.state.origin2
-    this.saveOrigin3('address-manage')
   },
   methods: {
     gotoPage (page) {
       this.$router.push({
         name: page
       })
-    },
-    ...mapMutations(['saveOrigin3'])
+    }
   }
 }
 </script>

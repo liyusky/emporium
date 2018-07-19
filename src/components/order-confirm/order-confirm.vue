@@ -121,7 +121,7 @@ export default {
         title: '订单信息确认',
         goal: null,
         params: {
-          id: this.id
+          id: null
         }
       },
       Title: {
@@ -141,6 +141,7 @@ export default {
   },
   created () {
     this.theme.goal = this.$store.state.origin
+    this.theme.params.id = this.$store.state.productId
     this.id = this.$store.state.productId
     this.OrderNo = this.$store.state.OrderNo
     Http.send({
@@ -215,6 +216,7 @@ export default {
       this.$router.push({ name: page })
     },
     confrim () {
+      alert(this.address)
       if (!this.address) {
         this.Title.text = '请选择地址'
         this.dialogShow = true
@@ -233,13 +235,14 @@ export default {
           num: this.installmentNum
         }
       }).success(data => {
+        this.saveOrigin3('order-confirm')
         this.gotoPage('order-detail')
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
       })
     },
-    ...mapMutations(['saveOrigin2'])
+    ...mapMutations(['saveOrigin2', 'saveOrigin3'])
   },
   computed: {
     ...mapState(['address'])

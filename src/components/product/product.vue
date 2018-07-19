@@ -55,7 +55,7 @@ import Buy from './modal/buy/buy.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 export default {
   name: 'Product',
-  props: ['id', 'title'],
+  props: ['id'],
   components: {
     Theme,
     Summary,

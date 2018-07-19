@@ -5,7 +5,7 @@ export default class Http {
     axios({
       url: Url[args.url],
       method: 'post',
-      baseURL: 'http://192.168.0.101:8082',
+      baseURL: 'http://api2.jietiaodashi.com',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
