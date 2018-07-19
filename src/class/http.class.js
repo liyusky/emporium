@@ -15,8 +15,10 @@ export default class Http {
       console.log(args.url)
       console.log(response)
       Http.dispense(response.data)
+      if (this.defaultCallback) this.defaultCallback()
     }).catch((error) => {
       console.log(error)
+      if (this.defaultCallback) this.defaultCallback()
     })
     return this
   }
@@ -35,6 +37,11 @@ export default class Http {
 
   static fail (callback) {
     this.failCallback = callback
+    return this
+  }
+
+  static default (callback) {
+    this.defaultCallback = callback
     return this
   }
 }
