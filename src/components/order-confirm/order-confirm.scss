@@ -292,6 +292,10 @@
               font-size: 48 / $unit * $symbol;
               color: #666;
             }
+            img {
+              width: 48 / $unit * $symbol;
+              height: 48 / $unit * $symbol;
+            }
             span {
               margin: {
                 left: 12 / $unit * $symbol;

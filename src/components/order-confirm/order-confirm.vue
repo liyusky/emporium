@@ -79,7 +79,6 @@
                 <use :xlink:href = item.icon></use>
               </svg>
               <img v-if="!item.icon" src="../../assets/images/master.png">
-              <!-- <i class="iconfont" :class="'icon-' + item.icon"></i> -->
               <span>{{item.name}}</span>
             </div>
           </div>
@@ -96,7 +95,7 @@
       <button class="submit-button" @click="confrim">提交订单</button>
     </div>
     <Modal v-show="modal">
-      <Instalments :instalments="installments" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
+      <Instalments :instalments="installments" @CLOSE_INSTALMENT_EVENT="closeInstallments" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>
     </Modal>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
@@ -152,7 +151,7 @@ export default {
     }).success(data => {
       setPaymentTypeArr()
       this.phone = data.Phone
-      console.log(data)
+      console.log(this.phone.PaymentTypeArr)
       this.installments = data.CommodityInstallmentList
       function setPaymentTypeArr () {
         let type = [
@@ -206,6 +205,10 @@ export default {
       this.selected = 3
       this.installmentNum = installmentNum
       this.modal = false
+    },
+    closeInstallments () {
+      this.modal = false
+      this.selected = null
     },
     gotoPage (page) {
       this.saveOrigin2('order-confrim')

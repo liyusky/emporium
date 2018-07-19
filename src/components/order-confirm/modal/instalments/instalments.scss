@@ -57,6 +57,8 @@
           bottom: 1px solid #dddddd;
         }
         .installment-item {
+          $param: (flex flex) (direction column) (justifyContent center) (alignItems center);
+          @include flexSet($param);
           width: 50%;
           margin: {
             bottom: 28 / $unit * $symbol;
@@ -64,21 +66,40 @@
           padding: {
             left: 10 / $unit * $symbol;
           }
-          .item-title {
-            height: 35 / $unit * $symbol;
-            line-height: 35 / $unit * $symbol;
-            font-size: 27 / $unit * $symbol;
-            color: #333333;
+          .item-content {
+            width: 70%;
+            padding: {
+              top: 21 / $unit * $symbol;
+              bottom: 21 / $unit * $symbol;
+              left: 36 / $unit * $symbol;
+            }
+            border-radius: 9 / $unit * $symbol;
+            border: 1px solid #ccc;
+            .content-title {
+              height: 38 / $unit * $symbol;
+              line-height: 38 / $unit * $symbol;
+              font-size: 27 / $unit * $symbol;
+              color: #333333;
+            }
+            .content-tip {
+              height: 38 / $unit * $symbol;
+              line-height: 38 / $unit * $symbol;
+              padding: {
+                left: 12 / $unit * $symbol;
+              }
+              font-size: 24 / $unit * $symbol;
+              color: #999999;
+            }
           }
-          .item-tip {
-            height: 35 / $unit * $symbol;
-            line-height: 33 / $unit * $symbol;
-            font-size: 24 / $unit * $symbol;
-            color: #999999;
+          .active {
+            border: 1px solid red;
+            .content-title {
+              color: red;
+            }
+            .content-tip {
+              color: #333;
+            }
           }
-        }
-        .active {
-          border: 1px solid red;
         }
       }
     }
