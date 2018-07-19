@@ -34,9 +34,6 @@ export default {
     console.log(this.instalments)
   },
   methods: {
-    closeModal () {
-      this.$emit('CLOSE_MODAL_EVENT')
-    },
     select (installmentNum, index) {
       this.sign = index
       this.selected = installmentNum
