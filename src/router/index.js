@@ -10,6 +10,7 @@ import Order from '../components/order/order.vue'
 import OrderConfirm from '../components/order-confirm/order-confirm.vue'
 import OrderDetail from '../components/order-detail/order-detail.vue'
 import FamiliarQuestion from '../components/familiar-question/familiar-question.vue'
+// import Empower from '../components/empower/empower.vue'
 
 export default new Router({
   routes: [
@@ -49,11 +50,6 @@ export default new Router({
       component: AddAddress,
       props: true
     },
-    // {
-    //   path: '/feedback',
-    //   name: 'feedback',
-    //   component: Feedback
-    // },
     {
       path: '/order',
       name: 'order',
@@ -70,12 +66,17 @@ export default new Router({
       path: '/order-detail',
       name: 'order-detail',
       component: OrderDetail
-      // props: true
     },
     {
       path: '/familiar-question',
       name: 'familiar-question',
       component: FamiliarQuestion
     }
+    // ,
+    // {
+    //   path: '/empower',
+    //   name: 'empower',
+    //   component: Empower
+    // }
   ]
 })

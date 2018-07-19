@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'Empower',
   data () {
     return {}
   }
@@ -42,5 +42,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import ".";
+@import "./empower.scss";
 </style>
