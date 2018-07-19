@@ -10,12 +10,15 @@ import Order from '../components/order/order.vue'
 import OrderConfirm from '../components/order-confirm/order-confirm.vue'
 import OrderDetail from '../components/order-detail/order-detail.vue'
 import FamiliarQuestion from '../components/familiar-question/familiar-question.vue'
-// import Empower from '../components/empower/empower.vue'
+import Empower from '../components/empower/empower.vue'
+import ForgetPassword from '../components/forget-password/forget-password.vue'
+import Register from '../components/register/register.vue'
+import VerificationCode from '../components/verification-code/verification-code.vue'
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/index',
       name: 'index',
       component: Home,
       children: [
@@ -71,12 +74,26 @@ export default new Router({
       path: '/familiar-question',
       name: 'familiar-question',
       component: FamiliarQuestion
+    },
+    {
+      path: '/forget-password',
+      name: 'forget-password',
+      component: ForgetPassword
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
+    {
+      path: '/',
+      name: 'empower',
+      component: Empower
+    },
+    {
+      path: '/VerificationCode',
+      name: 'VerificationCode',
+      component: VerificationCode
     }
-    // ,
-    // {
-    //   path: '/empower',
-    //   name: 'empower',
-    //   component: Empower
-    // }
   ]
 })
