@@ -18,7 +18,7 @@ import VerificationCode from '../components/verification-code/verification-code.
 export default new Router({
   routes: [
     {
-      path: '/index',
+      path: '/',
       name: 'index',
       component: Home,
       children: [
@@ -86,7 +86,7 @@ export default new Router({
       component: Register
     },
     {
-      path: '/',
+      path: '/empower',
       name: 'empower',
       component: Empower
     },
