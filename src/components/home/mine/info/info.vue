@@ -13,7 +13,7 @@
     </div>
     <div class="info-detail">
       <div class="detail-portrait">
-        <img src="https://api.vtrois.com/image/111/fff7db/e62991?text=头像">
+        <img src="../../../../assets/images/master.png">
       </div>
       <div class="detail-user">
         <p class="user-name">清风使者</p>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="info-bg">
-      <img src="https://api.vtrois.com/image/750x282/fe6155">
+      <img src="../../../../assets/images/mine.png">
     </div>
   </section>
   <!-- e  -->

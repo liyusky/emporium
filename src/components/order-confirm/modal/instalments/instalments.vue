@@ -55,7 +55,7 @@ export default {
     },
     confrim () {
       if (this.selected === null) {
-        this.Title.text = '请选择支付方式'
+        this.Title.text = '请选择分期方式'
         this.dialogShow = true
         return
       }

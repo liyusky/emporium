@@ -133,6 +133,9 @@
                 font-size: 27 / $unit * $symbol;
                 color: #eb2828;
                 font-weight: bold;
+                span {
+                  font-size: 21 / $unit * $symbol;
+                }
               }
               .price-installment {
                 padding: {

@@ -37,9 +37,13 @@
       margin: {
         right: 21 / $unit * $symbol;
       }
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background: #fff;
       img {
-        width: 111 / $unit * $symbol;
-        height: 111 / $unit * $symbol;
+        display: block;
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
       }
     }
@@ -69,6 +73,7 @@
     z-index: -1;
     width: 100%;
     height: 100%;
+    background: #fff;
     img {
       width: 100%;
       height: 100%;
