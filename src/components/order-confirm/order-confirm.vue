@@ -152,7 +152,6 @@ export default {
     }).success(data => {
       setPaymentTypeArr()
       this.phone = data.Phone
-      console.log(this.phone.PaymentTypeArr)
       this.installments = data.CommodityInstallmentList
       function setPaymentTypeArr () {
         let type = [
@@ -216,7 +215,6 @@ export default {
       this.$router.push({ name: page })
     },
     confrim () {
-      alert(this.address)
       if (!this.address) {
         this.Title.text = '请选择地址'
         this.dialogShow = true

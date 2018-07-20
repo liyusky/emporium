@@ -28,7 +28,7 @@
         <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">取消订单</button>
         <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.PayId)">去支付</button>
         <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">提交订单</button>
-        <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim">确认收货</button>
+        <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item)">确认收货</button>
       </div>
     </div>
     <ModalReminder :Title="Title" v-show="reminderShow" @CLOSE_MODAL_EVENT="closeModal" @SENF_REQUEST_EVENT="sendRequest"></ModalReminder>
@@ -116,8 +116,18 @@ export default {
         console.log(error)
       }
     },
-    confrim () {
-
+    confrim (item) {
+      Http.send({
+        url: 'Receipt',
+        params: {
+          Orderno: this.OrderNo
+        }
+      }).success(data => {
+        item.Status = 4
+      }).fail(fail => {
+        this.Title.text = fail.message
+        this.dialogShow = true
+      })
     },
     sendRequest () {
       Http.send({

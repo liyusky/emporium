@@ -219,6 +219,18 @@ export default {
       }
     },
     confrim () {
+      Http.send({
+        url: 'Receipt',
+        params: {
+          Orderno: this.OrderNo
+        }
+      }).success(data => {
+        this.state = 4
+      }).fail(fail => {
+        this.Title.text = fail.message
+        this.dialogShow = true
+      })
+      this.OrderNo
     }
   },
   components: {

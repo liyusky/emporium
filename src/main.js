@@ -10,7 +10,7 @@ import '../static/iconfont/iconfont.css'
 Vue.config.productionTip = false
 Vue.use(Router)
 /* eslint-disable no-new */
-new Vue({
+window.vueModule = new Vue({
   el: '#app',
   router,
   store,
