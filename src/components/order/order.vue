@@ -10,8 +10,8 @@
     </section>
     <section class="order-classify" ref="orders">
       <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+         <OrderWithout v-show="!tips"></OrderWithout>
         <OrderList v-show="tips"  :tips="tips" :statusList="statusList"></OrderList>
-        <OrderWithout v-show="!tips"></OrderWithout>
       </PullRefresh>
     </section>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>

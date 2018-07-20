@@ -206,6 +206,7 @@ export default {
       })
     },
     pay () {
+      alert(this.payId)
       try {
         if (typeof (appJsInterface) !== 'undefined') {
           appJsInterface.payWeChat(JSON.stringify({
@@ -230,7 +231,6 @@ export default {
         this.Title.text = fail.message
         this.dialogShow = true
       })
-      this.OrderNo
     }
   },
   components: {
