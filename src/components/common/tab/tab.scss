@@ -13,6 +13,7 @@
   &-item {
     $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
     @include flexSet($param);
+    width: 87 / $unit * $symbol;
     height: 100%;
     .icon {
       font-size: 42 / $unit * $symbol;

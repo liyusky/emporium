@@ -2,7 +2,7 @@
   <section class="order-list">
     <div class="list-item" v-for="(item, index) in tips" :key="index">
       <div class="item-title">
-        <p class="title-time"></p>
+        <p class="title-time">{{timeArr[index]}}</p>
         <p class="title-sign">{{statusList[item.Status].statusTitle}}</p>
       </div>
       <div class="item-detail" @click="gotoPage(item)">
@@ -56,7 +56,7 @@ export default {
       index: null
     }
   },
-  props: ['tips', 'statusList'],
+  props: ['tips', 'statusList', 'timeArr'],
   components: {
     ModalDialog,
     ModalReminder

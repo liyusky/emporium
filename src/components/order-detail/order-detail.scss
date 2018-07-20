@@ -181,29 +181,38 @@
       @include flexSet($param);
       width: 100%;
       height: 100%;
-      .item-left {
+      button {
         width: 160 / $unit * $symbol;
         height: 60 / $unit * $symbol;
-        line-height: 65 / $unit * $symbol;
-        background: #eb2828;
         font-size: 27 / $unit * $symbol;
-        color: #fff;
         border-radius: 7 / $unit * $symbol;
         outline: none;
-      }
-      .item-right {
-        width: 158 / $unit * $symbol;
-        height: 60 / $unit * $symbol;
         margin: {
-          right: 20 / $unit * $symbol;
+          left: 19 / $unit * $symbol;
         }
-        line-height: 60 / $unit * $symbol;
-        background: #fff;
-        font-size: 27 / $unit * $symbol;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #fff;
+      }
+      .item-pay {
+        border-color: #eb2828;
+        background-color: #eb2828;
+        color: #fff;
+      }
+      .item-cancel {
+        border-color: #818181;
+        background-color: #fff;
         color: #000000;
-        border: 1px solid #818181;
-        border-radius: 7 / $unit * $symbol;
-        outline: none;
+      }
+      .item-submit {
+        border-color: #eb2828;
+        background-color: #fff;
+        color: #eb2828;
+      }
+      .item-confrim {
+        border-color: #eb2828;
+        background-color: #fff;
+        color: #eb2828;
       }
     }
   }

@@ -11,7 +11,7 @@
     <section class="order-classify" ref="orders">
       <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
          <OrderWithout v-show="!tips"></OrderWithout>
-        <OrderList v-show="tips"  :tips="tips" :statusList="statusList"></OrderList>
+        <OrderList v-show="tips"  :tips="tips" :statusList="statusList" :timeArr="timeArr"></OrderList>
       </PullRefresh>
     </section>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
@@ -21,6 +21,7 @@
 <script>
 import { mapMutations } from 'vuex'
 import Http from '../../class/http.class.js'
+import Time from '../../class/time.class.js'
 import Theme from '../common/theme/theme.vue'
 import OrderList from './order-list/order-list.vue'
 import OrderWithout from './order-without/order-without.vue'
@@ -41,6 +42,7 @@ export default {
       tips: null,
       page: 1,
       dialogShow: false,
+      timeArr: [],
       statusList: {
         '0': {
           statusTitle: '待提交'
@@ -82,6 +84,9 @@ export default {
         }
       }).success(data => {
         if (status === this.status) this.tips = data
+        this.tips.forEach(ele => {
+          this.timeArr.push(Time.change(Number(ele.CreateTime.substring(6, 19))))
+        })
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true

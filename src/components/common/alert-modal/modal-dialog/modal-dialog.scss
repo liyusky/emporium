@@ -14,7 +14,7 @@
     top: 50%;
     left: 50%;
     z-index: 999;
-    width: 540 / $unit * $symbol; // height: 230 / $unit * $symbol;
+    width: 480 / $unit * $symbol; // height: 230 / $unit * $symbol;
     padding: {
       top: 15 / $unit * $symbol;
     }
@@ -25,13 +25,14 @@
       width: 100%;
       padding: {
         left: 25 / $unit * $symbol;
-        left: 25 / $unit * $symbol;
+        right: 25 / $unit * $symbol;
         top: 30 / $unit * $symbol;
         bottom: 30 / $unit * $symbol;
       }
-      max-height: 200 / $unit * $symbol;
+      max-height: 300 / $unit * $symbol;
       overflow-y: auto;
       .title-text{
+        width: 100%;
         line-height: 60 / $unit * $symbol;
         text-align: center;
         font-size: 30 / $unit * $symbol;

@@ -45,8 +45,8 @@
       <li class="list-item" v-if="forgetPasswordShow || loginShow || registerShow">
         <input class="item-input" :type="passwordType" :placeholder="placeholderName" v-model="password">
         <div class="item-password-switch" @click="switchPasswordType">
-          <i class="iconfont icon-shezhi" v-if="!passworShow"></i>
-          <i class="iconfont icon-xiaoxi" v-if="passworShow"></i>
+          <i class="iconfont icon-close-eye" v-if="!passworShow"></i>
+          <i class="iconfont icon-zhengyan" v-if="passworShow"></i>
         </div>
       </li>
     </ul>
