@@ -51,20 +51,10 @@
     </section>
     <footer class="detail-button">
       <div class="button-item">
-        <button class="" v-if="judgeCancel()" @click="cancel">取消订单</button>
-        <button class="" v-if="judgePay()" @click="pay">去支付</button>
-        <button class="" v-if="judgeConfrim()" @click="confrim">确认收货</button>
-        <button class="item-right" @click="LeftButtonClick()" v-if="statusLeftBtnName">{{statusLeftBtnName}}</button>
-        <button class="item-left" v-if="statusRightBtnName">{{statusRightBtnName}}</button>
+        <button class="item-cancel" v-if="judgeCancel()" @click="cancel">取消订单</button>
+        <button class="item-pay" v-if="judgePay()" @click="pay">去支付</button>
+        <button class="item-confrim" v-if="judgeConfrim()" @click="confrim">确认收货</button>
       </div>
-      <!-- <div class="button-item" v-if="orderDetail.Status == 1">
-        <button class="item-right" @click="LeftButtonClick">{{statusLeftBtnName}}</button>
-        <button class="item-left">{{statusRightBtnName}}</button>
-      </div>
-      <div class="button-item" v-else-if="orderDetail.Status != 1">
-        <button class="item-right">{{statusLeftBtnName}}</button>
-        <button class="item-left">{{statusRightBtnName}}</button>
-      </div> -->
     </footer>
     <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
@@ -91,29 +81,19 @@ export default {
       orderDetail: {},
       status: new Map([
         [0, {
-          statusTitle: '待提交',
-          buttonLeftName: '取消订单',
-          buttonRightName: '提交订单'
+          statusTitle: '待提交'
         }],
         [1, {
-          statusTitle: '待付款',
-          buttonLeftName: '取消订单',
-          buttonRightName: '去支付'
+          statusTitle: '待付款'
         }],
         [2, {
-          statusTitle: '等待发货',
-          buttonLeftName: '取消订单',
-          buttonRightName: ''
+          statusTitle: '等待发货'
         }],
         [3, {
-          statusTitle: '已发货',
-          buttonLeftName: '',
-          buttonRightName: '确认收货'
+          statusTitle: '已发货'
         }],
         [9, {
-          statusTitle: '已取消订单',
-          buttonLeftName: '',
-          buttonRightName: ''
+          statusTitle: '已取消订单'
         }]
       ]),
       state: null,
@@ -142,7 +122,6 @@ export default {
       this.statusLeftBtnName = status.buttonLeftName
       this.statusRightBtnName = status.buttonRightName
     }).fail(fail => {
-      console.log(fail)
       this.Title.text = fail.message
       this.dialogShow = true
     })
