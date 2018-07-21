@@ -2,7 +2,7 @@
   <section class="order-list">
     <div class="list-item" v-for="(item, index) in tips" :key="index">
       <div class="item-title">
-        <p class="title-time"></p>
+        <p class="title-time">{{timeArr[index]}}</p>
         <p class="title-sign">{{statusList[item.Status].statusTitle}}</p>
       </div>
       <div class="item-detail" @click="gotoPage(item)">
@@ -26,7 +26,7 @@
       </div>
       <div class="item-button">
         <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">取消订单</button>
-        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.PayId)">去支付</button>
+        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.PayId, item.noncestr)">去支付</button>
         <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">提交订单</button>
         <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item)">确认收货</button>
       </div>
@@ -56,7 +56,7 @@ export default {
       index: null
     }
   },
-  props: ['tips', 'statusList'],
+  props: ['tips', 'statusList', 'timeArr'],
   components: {
     ModalDialog,
     ModalReminder
@@ -103,11 +103,16 @@ export default {
       this.Title.text = '您确认要删除订单'
       this.reminderShow = true
     },
-    pay (payId) {
+    pay (payId, noncestr) {
+      alert('payid  == ' + payId)
+      alert('noncestr  == ' + noncestr)
       try {
+        alert('appJsInterface !== undefined ' + typeof (appJsInterface) !== 'undefined')
         if (typeof (appJsInterface) !== 'undefined') {
+          alert(2)
           appJsInterface.payWeChat(JSON.stringify({
-            prepayId: payId
+            prepayId: payId,
+            noncestr: noncestr
           }))
         }
       } catch (error) {
