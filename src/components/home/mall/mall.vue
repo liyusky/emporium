@@ -30,16 +30,15 @@
                   <div class="parameter-item">{{phone.Degree == '100' ? '全' : phone.Degree + '成'}}新</div>
                 </div>
                 <div class="content-price">
-                  <p class="price-now"><span>¥</span>{{phone.InstallmentNum}}</p>
-                  <span class="price-installment">x{{phone.InstallmentAmount}}期</span>
-                  <span class="price-old">市场价{{phone.originalPrice}}</span>
+                  <p><span>¥</span><span>{{phone.nowPrice}}</span></p>
+                  <p>市场价{{phone.originalPrice}}</p>
                 </div>
                 <div class="content-economize">
                   <div>省</div>
                   <div>￥{{phone.originalPrice - phone.nowPrice}}</div>
                 </div>
                 <div class="content-badge" v-if="phone.IsTested">
-                  <span>已检测</span>
+                  <p>已检测</p>
                 </div>
               </div>
             </li>

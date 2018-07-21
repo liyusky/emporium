@@ -55,13 +55,5 @@
       top: 15 / $unit * $symbol;
     }
     overflow-y: auto;
-    .pull-refresh {
-      width: 100%;
-      height: 100%;
-      .refresh-list {
-        height: 100%;
-        width: 100%;
-      }
-    }
   }
 }

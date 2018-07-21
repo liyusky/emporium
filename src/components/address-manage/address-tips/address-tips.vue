@@ -8,7 +8,7 @@
             <span>{{item.ReseverName}}</span>
             <span>{{item.PhoneNo}}</span>
           </p>
-          <div class="detail-address">{{item.Address}}</div>
+          <p class="detail-address">{{item.Address}}</p>
         </div>
         <div class="tip-operation">
           <p class="operation-set-default" @click.stop="setDefault(item.Id)">

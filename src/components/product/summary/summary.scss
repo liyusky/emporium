@@ -8,13 +8,13 @@
     width: 100%;
     height: 480 / $unit * $symbol;
     background: #cccccc;
-    .swiper-wrapper{
+    .swiper-wrapper {
       width: 100%;
       height: 100%;
-      .swiper-slide{
+      .swiper-slide {
         width: 100%;
         height: 100%;
-        img{
+        img {
           width: 100%;
           height: 100%;
         }
@@ -57,8 +57,7 @@
         width: 100%;
         .bill-amount {
           $param: (flex flex) (justifyContent space-between);
-          @include flexSet($param);
-          // width: 378 / $unit * $symbol;
+          @include flexSet($param); // width: 378 / $unit * $symbol;
           .amount-current {
             $param: (flex flex) (alignItems flex-end);
             @include flexSet($param);
@@ -88,29 +87,31 @@
           $param: (flex flex) (alignItems center);
           @include flexSet($param);
           width: auto;
-          height: 34 / $unit * $symbol;
-          margin: {
-            right: 6 / $unit * $symbol;
-          }
-          border: (2 / $unit * $symbol) solid #eb2828;
+          height: 38 / $unit * $symbol;
+          border: 1px solid #eb2828;
           border-radius: 4 / $unit * $symbol;
           div:first-of-type {
-            width: 30 / $unit * $symbol;
-            height: 30 / $unit * $symbol;
-            line-height: 30 / $unit * $symbol;
+            width: 39 / $unit * $symbol;
+            height: 38 / $unit * $symbol;
+            line-height: 36 / $unit * $symbol;
+            padding: {
+              right: 1px;
+            }
             text-align: center;
             background: #eb2828;
             color: #fff;
-            font-size: 24 / $unit * $symbol;
+            font-size: 21 / $unit * $symbol;
+            font-weight: bold;
           }
           div:last-of-type {
             padding: {
-              left: 6 / $unit * $symbol;
-              right: 6 / $unit * $symbol;
+              left: 9 / $unit * $symbol;
+              right: 9 / $unit * $symbol;
             }
-            line-height: 30 / $unit * $symbol;
+            line-height: 36 / $unit * $symbol;
             color: #393939;
             font-size: 21 / $unit * $symbol;
+            font-weight: bold;
           }
         }
       }

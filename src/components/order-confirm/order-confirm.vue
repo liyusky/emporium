@@ -152,7 +152,6 @@ export default {
     }).success(data => {
       setPaymentTypeArr()
       this.phone = data.Phone
-      console.log(this.phone.PaymentTypeArr)
       this.installments = data.CommodityInstallmentList
       function setPaymentTypeArr () {
         let type = [
@@ -242,7 +241,10 @@ export default {
         this.dialogShow = true
       })
     },
-    ...mapMutations(['saveOrigin2', 'saveOrigin3'])
+    ...mapMutations(['saveOrigin2', 'saveOrigin3', 'saveSelectedAddress'])
+  },
+  destroyed () {
+    this.saveSelectedAddress(null)
   },
   computed: {
     ...mapState(['address'])

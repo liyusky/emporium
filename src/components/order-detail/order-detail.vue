@@ -9,7 +9,9 @@
             <p class="person-status">{{statusName}}</p>
           </div>
           <div class="person-detail">
-            <i class="iconfont icon-suan"></i>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-didian"></use>
+            </svg>
             <div class="detail-name-address" v-if="!orderDetail.ReciverAddress">
               <h3 class="detail-name">未填写地址</h3>
             </div>
