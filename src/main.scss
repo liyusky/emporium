@@ -12,13 +12,13 @@ html {
       fill: currentColor;
       overflow: hidden;
     }
-    @font-face {
-      font-family: 'PingFangRegular';
-      src: url(./assets/PingFang/PingFangRegular.otf);
-      font-weight: normal;
-      font-style: normal;
-    }
-    font-family: 'PingFangRegular';
+    // @font-face {
+    //   font-family: 'PingFangRegular';
+    //   src: url(./assets/PingFang/PingFangRegular.otf);
+    //   font-weight: normal;
+    //   font-style: normal;
+    // }
+    // font-family: 'PingFangRegular';
     .fade-enter-active,.fade-leave-active{
       transition: all .3s;
     }
