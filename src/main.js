@@ -16,3 +16,11 @@ new Vue({
   store,
   render: f => f(App)
 })
+
+window.goback = () => {
+  try {
+    document.getElementById('back-btn').click()
+  } catch (error) {
+    console.log('该页面没有标题栏或者返回按钮没有获取到！')
+  }
+}

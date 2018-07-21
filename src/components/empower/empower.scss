@@ -34,7 +34,11 @@
     $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
     @include flexSet($param);
     width: 100%;
-    height: 600 / $unit * $symbol;
+    height: 390 / $unit * $symbol;
+    padding: {
+      top: 60 / $unit * $symbol;
+      bottom: 60 / $unit * $symbol;
+    }
     .logo-flag {
       width: 162 / $unit * $symbol;
       height: 162 / $unit * $symbol;
@@ -167,7 +171,7 @@
       border-radius: 7 / $unit * $symbol;
     }
   }
-  .btnActive {
+  .far-away {
     margin: {
       top: 20 / $unit * $symbol;
     }
@@ -178,13 +182,15 @@
     width: 100%;
     height: 60 / $unit * $symbol;
     margin: {
-      top: 42 / $unit * $symbol;
+      top: 21 / $unit * $symbol;
     }
     padding: {
       left: 63 / $unit * $symbol;
       right: 63 / $unit * $symbol;
     }
     .operation-item {
+      $param: (flex flex) (alignItems center);
+      @include flexSet($param);
       height: 100%;
       font-size: 27 / $unit * $symbol;
       color: #999999;

@@ -15,8 +15,8 @@ import Empower from '../components/empower/empower.vue'
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'index',
+      path: '/home',
+      name: 'home',
       component: Home,
       children: [
         {
@@ -73,7 +73,7 @@ export default new Router({
       component: FamiliarQuestion
     },
     {
-      path: '/empower',
+      path: '/',
       name: 'empower',
       component: Empower
     }

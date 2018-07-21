@@ -12,4 +12,7 @@ export default class Url {
   static SetDefaultAddress = '/Customer/SetDefaultAddress'
   static DeletePostAddress = '/Customer/DeletePostAddress'
   static Cancel = '/order/Cancel'
+  static Receipt = '/Order/Receipt'
+  static LoginCustomer = '/Customer/LoginCustomer'
+  static RegistCustomer = '/Customer/RegistCustomer'
 }

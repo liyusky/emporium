@@ -101,6 +101,7 @@ export default {
       state: null,
       OrderNo: null,
       payId: null,
+      noncestr: null,
       statusName: '',
       statusLeftBtnName: '',
       statusRightBtnName: '',
@@ -118,6 +119,7 @@ export default {
     }).success(data => {
       this.state = data.Status
       this.payId = data.PayId
+      this.noncestr = data.noncestr
       let status = this.status.get(data.Status)
       this.orderDetail = data
       this.statusName = status.statusTitle
@@ -187,10 +189,15 @@ export default {
       })
     },
     pay () {
+      alert('payid  == ' + this.payId)
+      alert('noncestr  == ' + this.noncestr)
       try {
+        alert('appJsInterface !== undefined ' + typeof (appJsInterface) !== 'undefined')
         if (typeof (appJsInterface) !== 'undefined') {
+          alert(1)
           appJsInterface.payWeChat(JSON.stringify({
-            prepayId: this.payId
+            prepayId: this.payId,
+            noncestr: this.noncestr
           }))
         }
       } catch (error) {
@@ -200,6 +207,17 @@ export default {
       }
     },
     confrim () {
+      Http.send({
+        url: 'Receipt',
+        params: {
+          Orderno: this.OrderNo
+        }
+      }).success(data => {
+        this.state = 4
+      }).fail(fail => {
+        this.Title.text = fail.message
+        this.dialogShow = true
+      })
     }
   },
   components: {

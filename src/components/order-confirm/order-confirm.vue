@@ -215,7 +215,6 @@ export default {
       this.$router.push({ name: page })
     },
     confrim () {
-      // alert(this.address)
       if (!this.address) {
         this.Title.text = '请选择地址'
         this.dialogShow = true
