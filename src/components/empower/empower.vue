@@ -8,7 +8,7 @@
       </div>
       <p class="header-item" v-show="!state.show.theme" @click="toggleState(null)">{{state.text.title}}</p>
       <p class="header-title" v-show="state.show.theme">{{state.text.title}}</p>
-      <div class="header-right">
+      <div class="header-right" @click="goback">
         <i class="iconfont icon-close"></i>
       </div>
     </header>
@@ -74,6 +74,8 @@ export default {
       Title: {
         text: ''
       },
+      id: null,
+      origin: null,
       phone: null,
       code: null,
       password: null,
@@ -168,6 +170,8 @@ export default {
     ModalDialog
   },
   created () {
+    this.origin = this.$store.state.origin4
+    this.id = this.$store.state.productId
     this.state = this.status.get(this.type)
     this.submit = this.loginByPwd
   },
@@ -373,6 +377,20 @@ export default {
     },
     closeModal () {
       this.dialogShow = false
+    },
+    goback () {
+      if (this.origin === 'product') {
+        this.$router.push({
+          name: 'product',
+          params: {
+            id: this.id
+          }
+        })
+      } else {
+        this.$router.push({
+          name: this.origin
+        })
+      }
     }
   }
 }

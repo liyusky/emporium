@@ -75,6 +75,7 @@ export default {
         }
       }).success(data => {
         this.saveOrigin('product')
+        this.saveOrigin4('product')
         this.saveOrderNo(data.OrderNo)
         this.saveProductId(this.buy.Id)
         this.$router.push({
@@ -89,7 +90,7 @@ export default {
       this.DialogShow = false
       this.closeModal()
     },
-    ...mapMutations(['saveOrigin', 'saveProductId', 'saveOrderNo'])
+    ...mapMutations(['saveOrigin', 'saveProductId', 'saveOrderNo', 'saveOrigin4'])
   }
 }
 </script>

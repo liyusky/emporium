@@ -25,6 +25,9 @@ const mutations = {
   saveOrigin3 (state, origin3) {
     state.origin3 = origin3
   },
+  saveOrigin4 (state, origin4) {
+    state.origin4 = origin4
+  },
   saveProductId (state, id) {
     state.productId = id
   }
