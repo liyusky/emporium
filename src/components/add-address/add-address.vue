@@ -128,7 +128,7 @@ export default {
         Http.send({
           url: 'AddPostAddress',
           params: {
-            customerId: 10000,
+            customerId: window.id,
             name: this.name,
             phone: this.phone,
             address: [this.area, this.county].join(' '),

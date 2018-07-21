@@ -12,6 +12,8 @@ const state = {
   origin2: null,
   // order-detail origin
   origin3: null,
+  // empower origin
+  origin4: null,
   productId: null
 }
 export default state
