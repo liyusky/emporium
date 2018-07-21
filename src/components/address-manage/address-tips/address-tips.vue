@@ -65,7 +65,7 @@ export default {
     Http.send({
       url: 'GetPostAddress',
       params: {
-        customerId: 10000
+        customerId: window.id
       }
     }).success((data) => {
       this.addressList = data
@@ -108,7 +108,7 @@ export default {
       Http.send({
         url: 'SetDefaultAddress',
         params: {
-          customerId: 10000,
+          customerId: window.id,
           postId: postId
         }
       }).success((data) => {

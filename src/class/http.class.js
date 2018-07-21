@@ -8,7 +8,8 @@ export default class Http {
       baseURL: 'http://api2.jietiaodashi.com',
       // baseURL: 'http://192.168.0.101:8082',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'access_token': window.token
       },
       params: args.params ? args.params : {},
       data: args.data ? args.data : {}

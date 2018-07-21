@@ -24,3 +24,6 @@ window.goback = () => {
     console.log('该页面没有标题栏或者返回按钮没有获取到！')
   }
 }
+
+window.token = null
+window.id = null

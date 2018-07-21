@@ -3,11 +3,13 @@
   <section class="empower">
     <!-- s header -->
     <header class="empower-header">
-      <p class="header-item" v-show="!state.show.theme" @click="toggleState(null)">{{state.text.title}}</p>
-      <i class="iconfont icon-close" v-show="!state.show.theme"></i>
-      <p class="header-title" v-show="state.show.theme">{{state.text.title}}</p>
-      <div id="back-btn" class="header-left" v-show="state.show.theme" @click="toggleState('login-by-password')">
+      <div class="header-left" v-show="state.show.theme" @click="toggleState('login-by-password')">
         <i class="iconfont icon-arrow-left"></i>
+      </div>
+      <p class="header-item" v-show="!state.show.theme" @click="toggleState(null)">{{state.text.title}}</p>
+      <p class="header-title" v-show="state.show.theme">{{state.text.title}}</p>
+      <div class="header-right">
+        <i class="iconfont icon-close"></i>
       </div>
     </header>
     <!-- s logo -->
@@ -86,7 +88,6 @@ export default {
           type: 'login-by-password',
           tip: {
             exist: true,
-            code: false,
             login: true
           },
           text: {
@@ -98,10 +99,7 @@ export default {
           show: {
             logo: true,
             login: true,
-            theme: false,
-            forget: false,
-            password: true,
-            register: false
+            password: true
           },
           operation: 'loginByPwd'
         }],
@@ -128,11 +126,7 @@ export default {
         }],
         ['register', {
           type: 'register',
-          tip: {
-            exist: false,
-            code: false,
-            login: false
-          },
+          tip: {},
           text: {
             title: '已有账号登录',
             placeholder: '请输入密码',
@@ -143,8 +137,6 @@ export default {
             code: true,
             logo: true,
             login: true,
-            theme: false,
-            forget: false,
             password: true,
             register: true
           },
@@ -152,11 +144,7 @@ export default {
         }],
         ['forget-password', {
           type: 'forget-password',
-          tip: {
-            exist: false,
-            code: false,
-            login: false
-          },
+          tip: {},
           text: {
             title: '修改登录密码',
             placeholder: '设置6-18位新密码',
@@ -164,12 +152,10 @@ export default {
           },
           show: {
             code: true,
-            logo: false,
             login: true,
             theme: true,
             forget: true,
-            password: true,
-            register: false
+            password: true
           },
           operation: 'forgetPassword'
         }]
@@ -269,7 +255,8 @@ export default {
           loginPwd: this.password
         }
       }).success(data => {
-        console.log(data)
+        window.token = data.access_token
+        window.id = data.customerId
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
