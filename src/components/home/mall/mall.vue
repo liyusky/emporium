@@ -79,7 +79,8 @@ export default {
       params: {
         Pageindex: this.page
       }
-    }).success((data) => {
+    }).success(data => {
+      console.log(data)
       this.groups = data
     }).fail((data) => {
       this.Title.text = data.message

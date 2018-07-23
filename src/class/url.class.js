@@ -15,4 +15,6 @@ export default class Url {
   static Receipt = '/Order/Receipt'
   static LoginCustomer = '/Customer/LoginCustomer'
   static RegistCustomer = '/Customer/RegistCustomer'
+  static ModifyCustomerPwd = '/Customer/ModifyCustomerPwd'
+  static SendSMS = '/Customer/SendSMS'
 }

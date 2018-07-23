@@ -10,20 +10,12 @@ import '../static/iconfont/iconfont.css'
 Vue.config.productionTip = false
 Vue.use(Router)
 /* eslint-disable no-new */
-new Vue({
+window.vueModule = new Vue({
   el: '#app',
   router,
   store,
   render: f => f(App)
 })
-
-window.goback = () => {
-  try {
-    document.getElementById('back-btn').click()
-  } catch (error) {
-    console.log('该页面没有标题栏或者返回按钮没有获取到！')
-  }
-}
 
 window.token = null
 window.id = null

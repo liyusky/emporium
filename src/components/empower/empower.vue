@@ -26,17 +26,17 @@
     <!-- s 登录 -->
     <ul class="empower-input-list" :class="{active: state.show.forget}">
       <li class="list-item">
-        <input type="text" placeholder="请输入手机号" v-model="phone">
+        <input type="text" placeholder="请输入手机号" maxlength="11" v-model="phone" @change="checkInput('phone')">
       </li>
       <li class="list-item" v-show="state.show.code">
-        <input class="item-input" type="text" placeholder="请输入短信验证码" v-model="code">
+        <input class="item-input" type="number" placeholder="请输入短信验证码" maxlength="6" v-model="code" @change="checkInput('code')">
         <div class="item-code-gain">
-          <button class="gain-btn" :disabled="codeDisabled" @click="getCode">获取验证码</button>
+          <button class="gain-btn" :disabled="codeDisabled" @click="getCode">{{state.text.code}}</button>
           <!-- <button class="gain-countdown">60秒</button> -->
         </div>
       </li>
       <li class="list-item" v-show="state.show.password">
-        <input class="item-input" :type="secrecy ? 'password' : 'text'" :placeholder="state.text.placeholder" v-model="password">
+        <input class="item-input" :type="secrecy ? 'password' : 'text'" :placeholder="state.text.placeholder" maxlength="16" v-model="password" @change="checkInput('password')">
         <div class="item-password-switch" @click="toggleSecrecy">
           <i class="iconfont" :class="{'icon-close-eye': secrecy, 'icon-zhengyan': !secrecy}"></i>
         </div>
@@ -55,7 +55,7 @@
     </div>
     <!-- e 按钮 -->
     <div class="empower-operation" v-show="state.tip.exist">
-      <p class="operation-item" v-show="state.tip.login" @click="toggleState('login-by-code')">验证码登录</p>
+      <!-- <p class="operation-item" v-show="state.tip.login" @click="toggleState('login-by-code')">验证码登录</p> -->
       <p class="operation-item" v-show="state.tip.code" @click="toggleState('login-by-password')">密码登录</p>
       <p class="operation-item" v-show="state.tip.login" @click="toggleState('forget-password')">忘记密码</p>
     </div>
@@ -83,6 +83,7 @@ export default {
       submitDisabled: false,
       dialogShow: false,
       type: 'login-by-password',
+      SMSType: null,
       previous: null,
       secrecy: true,
       status: new Map([
@@ -103,6 +104,7 @@ export default {
             login: true,
             password: true
           },
+          SMSType: null,
           operation: 'loginByPwd'
         }],
         ['login-by-code', {
@@ -115,15 +117,14 @@ export default {
             title: '注册',
             placeholder: '请输入密码',
             advertisement: '欢迎来到闲趣优品',
-            btn: '确认'
+            btn: '确认',
+            code: '获取验证码'
           },
           show: {
             code: true,
             logo: true,
-            login: true,
-            password: true
+            login: true
           },
-          class: true,
           operation: 'loginByCode'
         }],
         ['register', {
@@ -133,7 +134,8 @@ export default {
             title: '已有账号登录',
             placeholder: '请输入密码',
             advertisement: '注册闲趣优品',
-            btn: '确认'
+            btn: '确认',
+            code: '获取验证码'
           },
           show: {
             code: true,
@@ -142,6 +144,8 @@ export default {
             password: true,
             register: true
           },
+          class: true,
+          SMSType: 1,
           operation: 'register'
         }],
         ['forget-password', {
@@ -150,7 +154,8 @@ export default {
           text: {
             title: '修改登录密码',
             placeholder: '设置6-18位新密码',
-            btn: '重设密码'
+            btn: '重设密码',
+            code: '获取验证码'
           },
           show: {
             code: true,
@@ -159,9 +164,11 @@ export default {
             forget: true,
             password: true
           },
+          SMSType: 2,
           operation: 'forgetPassword'
         }]
       ]),
+      aaaaa: 0,
       state: null,
       passwordType: 'password'
     }
@@ -177,18 +184,37 @@ export default {
   },
   methods: {
     getCode () {
+      console.log(++this.aaaaa)
       this.codeDisabled = true
+      this.state.text.code = '剩余60秒'
+      this.waitOneMinute()
       if (!this.checkPhone()) return
       Http.send({
-        url: '',
-        params: {}
+        url: 'SendSMS',
+        params: {
+          phone: this.phone,
+          type: this.SMSType
+        }
       }).success(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
-      }).default(() => {
-        this.codeDisabled = false
       })
+    },
+    waitOneMinute () {
+      let time = 60
+      let animation = setInterval(() => {
+        time--
+        if (time > 0) {
+          this.state.text.code = `剩余${time}秒`
+        } else {
+          this.state.text.code = `获取验证码`
+          clearInterval(animation)
+          this.codeDisabled = true
+        }
+      }, 1000)
     },
     toggleState (type) {
       if (type) {
@@ -199,56 +225,12 @@ export default {
       } else {
         this.type = this.previous
       }
+      console.log(this.type)
       this.state = this.status.get(this.type)
+      this.SMSType = this.state.SMSType
       this.submit = this[this.state.operation]
-      // switch (type) {
-      //   case 'login-by-password':
-      //     break
-      //   case 1:
-      //     if (!this.checkCode()) return
-      //     if (!this.checkPassword()) return
-      //     this.submitDisabled = true
-      //     break
-      //   // 验证码登录 2
-      //   case 2:
-      //     if (!this.checkCode()) return
-      //     this.submitDisabled = true
-      //     break
-      //   // 忘记密码 3
-      //   case 3:
-      //     if (!this.checkCode()) return
-      //     if (!this.checkPassword()) return
-      //     this.submitDisabled = true
-      //     break
-      // }
     },
-    submit () {
-      if (!this.checkPhone()) return
-      if (!this.checkPassword()) return
-      this.submitDisabled = true
-      switch (this.empowerType) {
-        // 登录 0
-        case 0:
-          break
-        // 注册 1
-        case 1:
-          if (!this.checkCode()) return
-          if (!this.checkPassword()) return
-          this.submitDisabled = true
-          break
-        // 验证码登录 2
-        case 2:
-          if (!this.checkCode()) return
-          this.submitDisabled = true
-          break
-        // 忘记密码 3
-        case 3:
-          if (!this.checkCode()) return
-          if (!this.checkPassword()) return
-          this.submitDisabled = true
-          break
-      }
-    },
+    submit () {},
     loginByPwd () {
       if (!this.checkPhone() || !this.checkPassword()) return
       this.submitDisabled = true
@@ -261,6 +243,7 @@ export default {
       }).success(data => {
         window.token = data.access_token
         window.id = data.customerId
+        this.goback()
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
@@ -268,25 +251,23 @@ export default {
         this.submitDisabled = false
       })
     },
-    loginByCode () {
-      if (!this.checkPhone() || !this.checkCode()) return
+    loginByCode () {},
+    register () {
+      if (!this.checkPhone() || !this.checkCode() || !this.checkPassword()) return
       this.submitDisabled = true
       Http.send({
-        url: 'LoginCustomer',
-        params: {}
-      }).success(data => {
-      }).fail(data => {
-        this.Title.text = data.message
-        this.dialogShow = true
-      }).default(() => {
-        this.submitDisabled = false
-      })
-    },
-    register () {
-      Http.send({
         url: 'RegistCustomer',
-        params: {}
+        params: {
+          trueName: '',
+          PhoneNo: this.phone,
+          loginPwd: this.password,
+          ConfirmPwd: this.password,
+          validateCode: this.code
+        }
       }).success(data => {
+        this.Title.text = '注册成功'
+        this.dialogShow = true
+        this.toggleState('login-by-password')
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
@@ -295,23 +276,19 @@ export default {
       })
     },
     forgetPassword () {
+      if (!this.checkPhone() || !this.checkCode() || !this.checkPassword()) return
+      this.submitDisabled = true
       Http.send({
-        url: 'RegistCustomer',
+        url: 'ModifyCustomerPwd',
         params: {
+          'phoneNo': this.phone,
+          'newPwd': this.password,
+          'validateCode': this.code
         }
       }).success(data => {
-      }).fail(data => {
-        this.Title.text = data.message
+        this.Title.text = '修改成功'
         this.dialogShow = true
-      }).default(() => {
-        this.submitDisabled = false
-      })
-    },
-    sendRequest (url, params) {
-      Http.send({
-        url: url,
-        params: {}
-      }).success(data => {
+        this.toggleState('login-by-password')
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
@@ -371,6 +348,27 @@ export default {
         }
       }
       return true
+    },
+    checkInput (type) {
+      let numberPat = new RegExp(/^[0-9]$/)
+      let passwordPat = new RegExp(/^[a-zA-Z0-9]$/)
+      switch (type) {
+        case 'phone':
+          if (!numberPat.test(this.phone)) {
+            this.phone.substr(0, this.phone.length - 1)
+          }
+          break
+        case 'code':
+          if (!numberPat.test(this.code)) {
+            this.code.substr(0, this.code.length - 1)
+          }
+          break
+        case 'password':
+          if (!passwordPat.test(this.password)) {
+            this.password.substr(0, this.password.length - 1)
+          }
+          break
+      }
     },
     toggleSecrecy () {
       this.secrecy = !this.secrecy
