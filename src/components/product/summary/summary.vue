@@ -101,16 +101,15 @@ export default {
     // 轮播图
     this.$nextTick(function () {
       var mySwiper = new Swiper('.swiper-container', {
+        loop: true,
         autoplay: {
-          delay: 2000
+          delay: 2000,
+          disableOnInteraction: false
         },
         freeMode: false,
-        loop: true,
         speed: 1000,
         pagination: {
           el: '.swiper-pagination',
-          clickable: true,
-          bulletElement: 'span',
           longSwipesRatio: 0.3,
           type: 'fraction'
         },

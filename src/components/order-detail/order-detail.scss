@@ -59,7 +59,7 @@
             top: 27 / $unit * $symbol;
             bottom: 27 / $unit * $symbol;
           }
-          i {
+          .icon {
             margin: {
               right: 15 / $unit * $symbol;
               top: 6 / $unit * $symbol;
@@ -68,7 +68,7 @@
           .detail-name-address {
             flex: 1;
             .detail-name {
-              font-size: 33 / $unit * $symbol;
+              font-size: 30 / $unit * $symbol;
               color: #000000;
             }
             .detail-address {

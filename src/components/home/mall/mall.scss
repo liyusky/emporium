@@ -15,14 +15,10 @@
     }
   }
   &-advertising {
-    $param: (flex flex) (direction column) (alignItems center);
+    $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
     @include flexSet($param);
     width: 100%;
-    height: 162 / $unit * $symbol;
-    padding: {
-      top: 21 / $unit * $symbol;
-      bottom: 21 / $unit * $symbol;
-    }
+    height: 159 / $unit * $symbol;
     img {
       width: 699 / $unit * $symbol;
       height: 123 / $unit * $symbol;
@@ -40,7 +36,7 @@
         $param: (flex flex) (alignItems center) (justifyContent flex-start);
         @include flexSet($param);
         width: 100%;
-        height: 76 / $unit * $symbol;
+        height: 78 / $unit * $symbol;
         margin: {
           bottom: 24 / $unit * $symbol;
         }
@@ -94,11 +90,12 @@
               }
             }
             .content-title {
-              height: 49 / $unit * $symbol;
+              $param: (flex flex) (alignItems center) (justifyContent center);
+              @include flexSet($param);
+              height: 48 / $unit * $symbol;
               margin: {
-                top: 14 / $unit * $symbol
+                top: 15 / $unit * $symbol
               }
-              line-height: 49 / $unit * $symbol;
               font-size: 27 / $unit * $symbol;
               font-weight: bold;
               color: #353535;
@@ -107,43 +104,43 @@
               $param: (flex flex) (justifyContent center);
               @include flexSet($param);
               .parameter-item {
-                width: 88 / $unit * $symbol;
+                $param: (flex flex) (justifyContent center) (alignItems center);
+                @include flexSet($param);
+                width: 90 / $unit * $symbol;
                 height: 36 / $unit * $symbol;
-                line-height: 39 / $unit * $symbol;
-                text-align: center;
                 margin: {
                   left: 5 / $unit * $symbol;
                   right: 5 / $unit * $symbol;
                 }
                 background: #ffe0da;
-                border-radius: 4px;
+                border-radius: 4 / $unit * $symbol;
                 font-size: 21 / $unit * $symbol;
                 color: #353535;
               }
             }
             .content-price {
-              $param: (flex flex) (alignItems center);
+              $param: (flex flex) (alignItems center) (justifyContent center);
               @include flexSet($param);
-              height: 59 / $unit * $symbol;
+              height: 66 / $unit * $symbol;
               width: 100%;
               padding: {
                 left: 21 / $unit * $symbol;
+                right: 21 / $unit * $symbol;
               }
-              .price-now {
+              p:first-of-type {
+                padding: {
+                  right: 12 / $unit * $symbol;
+                }
                 font-size: 27 / $unit * $symbol;
                 color: #eb2828;
                 font-weight: bold;
-              }
-              .price-installment {
-                padding: {
-                  left: 18 / $unit * $symbol;
+                span:first-of-type {
+                  font-size: 21 / $unit * $symbol;
                 }
-                font-size: 21 / $unit * $symbol;
-                color: #666666;
               }
-              .price-old {
+              p:last-of-type {
                 padding: {
-                  left: 18 / $unit * $symbol;
+                  left: 12 / $unit * $symbol;
                 }
                 font-size: 21 / $unit * $symbol;
                 color: #666666;
@@ -154,42 +151,44 @@
               $param: (flex flex) (alignItems center);
               @include flexSet($param);
               width: auto;
-              height: 34 / $unit * $symbol;
-              margin: {
-                top: 7 / $unit * $symbol;
-              }
-              border: (2 / $unit * $symbol) solid #eb2828;
+              height: 38 / $unit * $symbol;
+              border: 1px solid #eb2828;
               border-radius: 4 / $unit * $symbol;
               div:first-of-type {
-                width: 30 / $unit * $symbol;
-                height: 30 / $unit * $symbol;
-                line-height: 30 / $unit * $symbol;
+                width: 39 / $unit * $symbol;
+                height: 38 / $unit * $symbol;
+                line-height: 36 / $unit * $symbol;
+                padding: {
+                  right: 1px;
+                }
                 text-align: center;
                 background: #eb2828;
                 color: #fff;
-                font-size: 24 / $unit * $symbol; // border-top-left-radius: 4 / $unit * $symbol;
-                // border-bottom-left-radius: 4 / $unit * $symbol;
+                font-size: 21 / $unit * $symbol;
               }
               div:last-of-type {
                 padding: {
                   left: 9 / $unit * $symbol;
                   right: 9 / $unit * $symbol;
                 }
-                line-height: 30 / $unit * $symbol;
+                line-height: 38 / $unit * $symbol;
                 color: #393939;
-                font-size: 15 / $unit * $symbol;
+                font-size: 21 / $unit * $symbol;
+                font-weight: bold;
               }
             }
             .content-badge {
               position: absolute;
               top: 0;
               left: 0;
-              $param: (flex flex) (alignItems center) (justifyContent center);
-              @include flexSet($param);
               width: 81 / $unit * $symbol;
               height: 36 / $unit * $symbol;
               background: #fe5649;
-              span {
+              p {
+                $param: (flex flex) (alignItems center) (justifyContent center);
+                @include flexSet($param);
+                height: 100%;
+                width: 100%;
                 font-size: 21 / $unit * $symbol;
                 color: #fff;
               }
