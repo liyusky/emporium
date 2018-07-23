@@ -10,5 +10,14 @@
 
 <body>
   <section id="app"></section>
+  <script>
+    window.goback = function () {
+      try {
+        document.getElementById('back-btn').click()
+      } catch (error) {
+        console.log('该页面没有标题栏或者返回按钮没有获取到！')
+      }
+    }
+  </script>
 </body>
 </html>

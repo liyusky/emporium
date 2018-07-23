@@ -66,6 +66,7 @@ export default {
     let defaultStatus = this.$store.state.statusNum
     if (typeof defaultStatus === 'number') this.status = defaultStatus
     this.getData(this.status)
+    this.saveOrigin4('order')
   },
   methods: {
     switchTips (status) {
@@ -107,7 +108,7 @@ export default {
     closeModal () {
       this.dialogShow = false
     },
-    ...mapMutations(['changeStatusNum'])
+    ...mapMutations(['changeStatusNum', 'saveOrigin4'])
   },
   components: {
     Theme,

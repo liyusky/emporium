@@ -1,16 +1,22 @@
-import axios from 'axios'
+import axios from '../../node_modules/axios/index'
 import Url from './url.class.js'
 export default class Http {
   static send (args) {
+    let headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'access_token': window.token
+    }
+    let needTokenArr = ['SendSMS', 'RegistCustomer', 'LoginCustomer', 'mall', 'product']
+    if (needTokenArr.includes(args.url)) {
+      delete headers.access_token
+    }
     axios({
       url: Url[args.url],
+      // url: 'http://192.168.0.101:8082/Order/Home',
       method: 'post',
       baseURL: 'http://api2.jietiaodashi.com',
       // baseURL: 'http://192.168.0.101:8082',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'access_token': window.token
-      },
+      headers: headers,
       params: args.params ? args.params : {},
       data: args.data ? args.data : {}
     }).then((response) => {
@@ -18,17 +24,30 @@ export default class Http {
       console.log(response)
       Http.dispense(response.data)
       if (this.defaultCallback) this.defaultCallback()
-    }).catch((error) => {
-      console.log(error)
+    }).catch(error => {
+      console.log(error.request)
+      console.log(error.config)
+      console.log(error.response)
+      console.log(error.general)
+      console.log(error.code)
+      // window.vueModule
       if (this.defaultCallback) this.defaultCallback()
     })
     return this
   }
   static dispense (response) {
     if (response.code === 200) {
-      if (this.successCallback) this.successCallback(response.data)
-    } else {
-      if (this.failCallback) this.failCallback(response)
+      return
+    }
+    switch (response.code) {
+      case 200:
+        if (this.successCallback) this.successCallback(response.data)
+        break
+      case 401:
+        window.vueModule.$router.push({ name: 'empower' })
+        break
+      default:
+        if (this.failCallback) this.failCallback(response)
     }
   }
 
