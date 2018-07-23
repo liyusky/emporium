@@ -64,7 +64,6 @@ export default {
     }
   },
   mounted () {
-    console.log()
     this.parentDom = this.$parent.$refs[this.parent]
   }
 }
