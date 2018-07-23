@@ -1,0 +1,37 @@
+@import '../../../../../dependencies/sass/_flex.scss';
+@import '../../../../../dependencies/sass/_unit.scss';
+.warn {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  &-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+    @include flexSet($param);
+    min-width: 270 / $unit * $symbol;
+    min-height: 150 / $unit * $symbol;
+    padding: {
+      top: 15 / $unit * $symbol;
+      bottom: 15 / $unit * $symbol;
+      left: 15 / $unit * $symbol;
+      right: 15 / $unit * $symbol;
+    }
+    background-color: rgba($color: #000000, $alpha: .4);
+    border-radius: 20 / $unit * $symbol;
+    transform: translateX(-50%) translateY(-50%);
+    .content-title {
+      line-height: 54 / $unit * $symbol;
+      text-align: center;
+      font-size: 30 / $unit * $symbol;
+      color: #f1f1f1;
+    }
+  }
+}

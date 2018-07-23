@@ -7,10 +7,10 @@
         <div class="panel-inspector">
           <div class="inspector-information">
             <div class="information-portrait">
-              <img src="https://api.vtrois.com/image/114x114/bbbfc0">
+              <img src="../../../assets/images/qulity.png">
             </div>
             <div class="information-resume">
-              <p>张全蛋</p>
+              <p>王群</p>
               <p>高级质检师</p>
             </div>
           </div>

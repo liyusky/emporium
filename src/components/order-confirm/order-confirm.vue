@@ -240,7 +240,10 @@ export default {
         this.dialogShow = true
       })
     },
-    ...mapMutations(['saveOrigin2', 'saveOrigin3'])
+    ...mapMutations(['saveOrigin2', 'saveOrigin3', 'saveSelectedAddress'])
+  },
+  destroyed () {
+    this.saveSelectedAddress(null)
   },
   computed: {
     ...mapState(['address'])

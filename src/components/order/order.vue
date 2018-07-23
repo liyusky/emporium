@@ -9,9 +9,9 @@
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
     <section class="order-classify" ref="orders">
-      <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-         <OrderWithout v-show="!tips"></OrderWithout>
-        <OrderList v-show="tips"  :tips="tips" :statusList="statusList" :timeArr="timeArr"></OrderList>
+      <OrderWithout v-show="!tips.length"></OrderWithout>
+      <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+        <OrderList :tips="tips" :statusList="statusList" :timeArr="timeArr"></OrderList>
       </PullRefresh>
     </section>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
@@ -39,7 +39,7 @@ export default {
         text: ''
       },
       status: -1,
-      tips: null,
+      tips: [],
       page: 1,
       dialogShow: false,
       timeArr: [],
