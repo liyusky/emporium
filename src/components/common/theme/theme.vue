@@ -16,9 +16,6 @@
 export default {
   name: 'Theme',
   props: ['theme'],
-  mounted () {
-    console.log(window.vueModule)
-  },
   methods: {
     goback () {
       if (this.theme.goal) {

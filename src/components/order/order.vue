@@ -80,7 +80,7 @@ export default {
       Http.send({
         url: 'orderList',
         params: {
-          custermerId: 10000,
+          custermerId: window.id,
           status: status
         }
       }).success(data => {
@@ -97,7 +97,7 @@ export default {
       Http.send({
         url: 'orderList',
         params: {
-          custermerId: 10000,
+          custermerId: window.id,
           status: this.status,
           pageCurrent: ++this.page
         }
