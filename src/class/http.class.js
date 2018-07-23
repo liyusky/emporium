@@ -1,4 +1,4 @@
-import axios from '../../node_modules/axios/index'
+import axios from 'axios'
 import Url from './url.class.js'
 export default class Http {
   static send (args) {
@@ -12,33 +12,25 @@ export default class Http {
     }
     axios({
       url: Url[args.url],
-      // url: 'http://192.168.0.101:8082/Order/Home',
       method: 'post',
-      baseURL: 'http://api2.jietiaodashi.com',
-      // baseURL: 'http://192.168.0.101:8082',
+      // baseURL: 'http://api2.jietiaodashi.com',
+      baseURL: 'http://192.168.0.101:8082',
       headers: headers,
       params: args.params ? args.params : {},
       data: args.data ? args.data : {}
-    }).then((response) => {
+    }).then(response => {
       console.log(args.url)
       console.log(response)
       Http.dispense(response.data)
       if (this.defaultCallback) this.defaultCallback()
     }).catch(error => {
-      console.log(error.request)
-      console.log(error.config)
-      console.log(error.response)
-      console.log(error.general)
-      console.log(error.code)
+      console.log(error)
       // window.vueModule
       if (this.defaultCallback) this.defaultCallback()
     })
     return this
   }
   static dispense (response) {
-    if (response.code === 200) {
-      return
-    }
     switch (response.code) {
       case 200:
         if (this.successCallback) this.successCallback(response.data)

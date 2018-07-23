@@ -384,9 +384,13 @@ export default {
             id: this.id
           }
         })
-      } else {
+      } else if (window.token) {
         this.$router.push({
           name: this.origin
+        })
+      } else {
+        this.$router.push({
+          name: 'mine'
         })
       }
     }

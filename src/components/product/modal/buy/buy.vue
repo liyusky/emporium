@@ -65,7 +65,7 @@ export default {
       Http.send({
         url: 'buy',
         params: {
-          CustermerId: 10000,
+          CustermerId: window.id,
           commodityId: this.buy.Id,
           PayType: 0,
           DeliverType: 0,
@@ -81,7 +81,7 @@ export default {
         this.$router.push({
           name: 'order-confirm'
         })
-      }).fail((data) => {
+      }).fail(data => {
         this.Title.text = data.message
         this.DialogShow = true
       })
