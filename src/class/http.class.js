@@ -13,8 +13,8 @@ export default class Http {
     axios({
       url: Url[args.url],
       method: 'post',
-      // baseURL: 'http://api2.jietiaodashi.com',
-      baseURL: 'http://192.168.0.101:8082',
+      baseURL: 'http://api2.jietiaodashi.com',
+      // baseURL: 'http://192.168.0.101:8082',
       headers: headers,
       params: args.params ? args.params : {},
       data: args.data ? args.data : {}

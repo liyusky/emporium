@@ -133,7 +133,6 @@ export default {
             phone: this.phone,
             address: [this.area, this.county].join(' '),
             isDefault: false
-            
           }
         }).success((data) => {
           this.Title.text = '添加成功'

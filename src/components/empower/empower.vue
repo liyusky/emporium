@@ -185,10 +185,10 @@ export default {
   methods: {
     getCode () {
       console.log(++this.aaaaa)
+      if (!this.checkPhone()) return
       this.codeDisabled = true
       this.state.text.code = '剩余60秒'
       this.waitOneMinute()
-      if (!this.checkPhone()) return
       Http.send({
         url: 'SendSMS',
         params: {
@@ -212,7 +212,7 @@ export default {
         } else {
           this.state.text.code = `获取验证码`
           clearInterval(animation)
-          this.codeDisabled = true
+          this.codeDisabled = false
         }
       }, 1000)
     },

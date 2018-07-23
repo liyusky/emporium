@@ -84,6 +84,7 @@ export default {
       }).fail(data => {
         this.Title.text = data.message
         this.DialogShow = true
+        window.vueModule.$router.push({name: 'empower'})
       })
     },
     close () {
