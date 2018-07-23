@@ -47,7 +47,7 @@ export default {
           this.tipHeight = 45
         }
       }
-      event.preventDefault()
+      // event.preventDefault()
     },
     handleTouchEnd () {
       this.$emit('LOAD_MORE_EVENT')
