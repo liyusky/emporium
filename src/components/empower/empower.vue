@@ -31,7 +31,7 @@
       <li class="list-item" v-show="state.show.code">
         <input class="item-input" type="number" placeholder="请输入短信验证码" maxlength="6" v-model="code" @change="checkInput('code')">
         <div class="item-code-gain">
-          <button class="gain-btn" :disabled="codeDisabled" @click="getCode">{{state.text.code}}</button>
+          <button class="gain-btn" :disabled="codeDisabled" :class="{'code-active':codeDisabled}" @click="getCode">{{state.text.code}}</button>
           <!-- <button class="gain-countdown">60秒</button> -->
         </div>
       </li>
