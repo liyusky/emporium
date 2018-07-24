@@ -20,7 +20,7 @@
       <div class="item-summary">
         <p>
           <span>共1件商品 合计:</span>
-          <span class="summary-price">{{item.rownum * item.CommodityPrice}}</span>
+          <span class="summary-price">{{parseFloat (item.rownum * item.CommodityPrice)}}</span>
           <span class="summary-fare"> (含运费￥{{item.DeliverPrice}})</span>
         </p>
       </div>

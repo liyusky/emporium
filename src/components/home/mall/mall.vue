@@ -35,7 +35,7 @@
                 </div>
                 <div class="content-economize">
                   <div>省</div>
-                  <div>￥{{phone.originalPrice - phone.nowPrice}}</div>
+                  <div>￥{{parseFloat (phone.originalPrice - phone.nowPrice)}}</div>
                 </div>
                 <div class="content-badge" v-if="phone.IsTested">
                   <p>已检测</p>

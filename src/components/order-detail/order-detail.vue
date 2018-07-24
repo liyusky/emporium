@@ -37,7 +37,7 @@
           <ul class="phone-list">
             <li class="list-item">
               <p class="item-title">商品总价</p>
-              <p class="item-value">￥{{orderDetail.CommodityPrice * orderDetail.rownum}}</p>
+              <p class="item-value">￥{{parseFloat (orderDetail.CommodityPrice * orderDetail.rownum)}}</p>
             </li>
             <li class="list-item">
               <p class="item-title">运费</p>
