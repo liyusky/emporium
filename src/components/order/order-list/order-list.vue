@@ -124,7 +124,7 @@ export default {
     confrim (item) {
       Http.send({
         url: 'Receipt',
-        params: {
+        data: {
           Orderno: this.OrderNo
         }
       }).success(data => {
@@ -137,7 +137,7 @@ export default {
     sendRequest () {
       Http.send({
         url: 'Cancel',
-        params: {
+        data: {
           orderno: this.tips[this.index].OrderNo
         }
       }).success(data => {

@@ -64,10 +64,10 @@ export default {
   created () {
     Http.send({
       url: 'GetPostAddress',
-      params: {
+      data: {
         customerId: window.id
       }
-    }).success((data) => {
+    }).success(data => {
       this.addressList = data
       data.forEach(item => {
         if (item.IsDefault) {
@@ -85,14 +85,13 @@ export default {
       if (this.origin === 'order-confirm') {
         Http.send({
           url: 'ModifyResiver',
-          params: {
+          data: {
             Orderno: this.OrderNo,
             Name: item.ReseverName,
             Phone: item.PhoneNo,
             Address: item.Address
           }
-        }).success((data) => {
-          console.log(data)
+        }).success(data => {
           this.saveSelectedAddress(item)
           this.$router.push({
             name: 'order-confirm'
@@ -107,11 +106,11 @@ export default {
     setDefault (postId) {
       Http.send({
         url: 'SetDefaultAddress',
-        params: {
+        data: {
           customerId: window.id,
           postId: postId
         }
-      }).success((data) => {
+      }).success(data => {
         this.defaultId = postId
       }).fail((data) => {
         this.Title.text = data.message
@@ -137,10 +136,10 @@ export default {
       this.reminderShow = false
       Http.send({
         url: 'DeletePostAddress',
-        params: {
+        data: {
           id: this.deleteParams.id
         }
-      }).success((data) => {
+      }).success(data => {
         this.addressList.splice(this.deleteParams.index, 1)
       }).fail((data) => {
         this.Title.text = data.message

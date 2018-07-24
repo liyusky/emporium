@@ -1,6 +1,10 @@
 // @import "./assets/iconfont/iconfont.css";
 @import "../dependencies/sass/_reset.scss";
 @import "../dependencies/sass/_flex.scss";
+@font-face {
+  font-family: 'pingfang';
+  src: url('./assets/font/PingFangMedium.otf');
+}
 html {
   width: 100%;
   body {

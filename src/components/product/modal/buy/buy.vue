@@ -67,7 +67,7 @@ export default {
       this.saveProductId(this.buy.Id)
       Http.send({
         url: 'buy',
-        params: {
+        data: {
           CustermerId: window.id,
           commodityId: this.buy.Id,
           PayType: 0,

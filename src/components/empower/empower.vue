@@ -190,7 +190,7 @@ export default {
       this.waitOneMinute()
       Http.send({
         url: 'SendSMS',
-        params: {
+        data: {
           phone: this.phone,
           type: this.SMSType
         }
@@ -235,7 +235,7 @@ export default {
       this.submitDisabled = true
       Http.send({
         url: 'LoginCustomer',
-        params: {
+        data: {
           phoneNo: this.phone,
           loginPwd: this.password
         }
@@ -256,7 +256,7 @@ export default {
       this.submitDisabled = true
       Http.send({
         url: 'RegistCustomer',
-        params: {
+        data: {
           trueName: '',
           PhoneNo: this.phone,
           loginPwd: this.password,
@@ -279,7 +279,7 @@ export default {
       this.submitDisabled = true
       Http.send({
         url: 'ModifyCustomerPwd',
-        params: {
+        data: {
           'phoneNo': this.phone,
           'newPwd': this.password,
           'validateCode': this.code

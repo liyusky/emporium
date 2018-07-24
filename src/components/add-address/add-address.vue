@@ -106,14 +106,14 @@ export default {
       if (this.title) {
         Http.send({
           url: 'ModifyPostAddress',
-          params: {
+          data: {
             Id: this.id,
             name: this.name,
             phone: this.phone,
             address: [this.area, this.county].join(' '),
             isDefault: this.isDefault
           }
-        }).success((data) => {
+        }).success(data => {
           this.Title.text = '修改成功'
           this.HintShow = true
           setTimeout(() => {
@@ -127,14 +127,14 @@ export default {
       } else {
         Http.send({
           url: 'AddPostAddress',
-          params: {
+          data: {
             customerId: window.id,
             name: this.name,
             phone: this.phone,
             address: [this.area, this.county].join(' '),
             isDefault: false
           }
-        }).success((data) => {
+        }).success(data => {
           this.Title.text = '添加成功'
           this.HintShow = true
           setTimeout(() => {

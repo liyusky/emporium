@@ -5,10 +5,10 @@ export default class Http {
     let headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
-    args.params = args.params ? args.params : {}
+    args.data = args.data ? args.data : {}
     let needTokenArr = ['SendSMS', 'RegistCustomer', 'LoginCustomer', 'mall', 'product', 'ModifyCustomerPwd']
     if (!needTokenArr.includes(args.url)) {
-      args.params.access_token = window.token
+      args.data.access_token = window.token
     }
     axios({
       url: Url[args.url],
@@ -16,7 +16,7 @@ export default class Http {
       baseURL: 'http://api2.jietiaodashi.com',
       // baseURL: 'http://192.168.0.101:8082',
       headers: headers,
-      params: args.params
+      params: args.data
     }).then(response => {
       console.log(args.url)
       console.log(response)

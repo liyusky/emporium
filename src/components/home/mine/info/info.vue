@@ -16,8 +16,8 @@
         <img src="../../../../assets/images/master.png">
       </div>
       <div class="detail-user">
-        <p class="user-name">清风使者</p>
-        <p class="user-account">158****5481</p>
+        <!-- <p class="user-name">清风使者</p> -->
+        <p class="user-account">{{phone ? phone : '未登录'}}</p>
       </div>
     </div>
     <div class="info-bg">
@@ -31,7 +31,9 @@
 export default {
   name: '',
   data () {
-    return {}
+    return {
+      phone: window.id
+    }
   }
 }
 </script>

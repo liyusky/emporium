@@ -146,7 +146,7 @@ export default {
     this.OrderNo = this.$store.state.OrderNo
     Http.send({
       url: 'product',
-      params: {
+      data: {
         id: this.id
       }
     }).success(data => {
@@ -225,15 +225,15 @@ export default {
         this.dialogShow = true
         return
       }
+      this.saveOrigin3('order-confirm')
       Http.send({
         url: 'orderSubmit',
-        params: {
+        data: {
           Orderno: this.OrderNo,
           payType: this.selected,
           num: this.installmentNum
         }
       }).success(data => {
-        this.saveOrigin3('order-confirm')
         this.gotoPage('order-detail')
       }).fail(data => {
         this.Title.text = data.message

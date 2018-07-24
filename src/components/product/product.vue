@@ -98,7 +98,7 @@ export default {
     this.shareLink = window.location.href
     Http.send({
       url: 'product',
-      params: {
+      data: {
         id: this.id
       }
     }).success(data => {

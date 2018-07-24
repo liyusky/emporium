@@ -75,13 +75,12 @@ export default {
   created () {
     Http.send({
       url: 'mall',
-      params: {
+      data: {
         Pageindex: this.page
       }
     }).success(data => {
-      console.log(data)
       this.groups = data
-    }).fail((data) => {
+    }).fail(data => {
       this.Title.text = data.message
       this.dialogShow = true
     })
@@ -101,7 +100,7 @@ export default {
     loadMore () {
       Http.send({
         url: 'mall',
-        params: {
+        data: {
           Pageindex: ++this.page
         }
       }).success(data => {
