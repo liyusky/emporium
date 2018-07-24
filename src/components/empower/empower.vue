@@ -184,7 +184,6 @@ export default {
   },
   methods: {
     getCode () {
-      console.log(++this.aaaaa)
       if (!this.checkPhone()) return
       this.codeDisabled = true
       this.state.text.code = '剩余60秒'
@@ -377,6 +376,7 @@ export default {
       this.dialogShow = false
     },
     goback () {
+      console.log(this.origin)
       if (this.origin === 'product') {
         this.$router.push({
           name: 'product',

@@ -3,12 +3,12 @@ import Url from './url.class.js'
 export default class Http {
   static send (args) {
     let headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'access_token': window.token
+      'Content-Type': 'application/x-www-form-urlencoded'
     }
-    let needTokenArr = ['SendSMS', 'RegistCustomer', 'LoginCustomer', 'mall', 'product']
-    if (needTokenArr.includes(args.url)) {
-      delete headers.access_token
+    args.params = args.params ? args.params : {}
+    let needTokenArr = ['SendSMS', 'RegistCustomer', 'LoginCustomer', 'mall', 'product', 'ModifyCustomerPwd']
+    if (!needTokenArr.includes(args.url)) {
+      args.params.access_token = window.token
     }
     axios({
       url: Url[args.url],
@@ -16,15 +16,14 @@ export default class Http {
       baseURL: 'http://api2.jietiaodashi.com',
       // baseURL: 'http://192.168.0.101:8082',
       headers: headers,
-      params: args.params ? args.params : {},
-      data: args.data ? args.data : {}
+      params: args.params
     }).then(response => {
       console.log(args.url)
       console.log(response)
       Http.dispense(response.data)
       if (this.defaultCallback) this.defaultCallback()
     }).catch(error => {
-      console.log(error)
+      console.log(error.response)
       // window.vueModule
       if (this.defaultCallback) this.defaultCallback()
     })
