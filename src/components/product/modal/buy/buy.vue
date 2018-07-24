@@ -62,6 +62,9 @@ export default {
       this.$emit('CLOSE_MODAL_EVENT')
     },
     order () {
+      this.saveOrigin('product')
+      this.saveOrigin4('product')
+      this.saveProductId(this.buy.Id)
       Http.send({
         url: 'buy',
         params: {
@@ -74,10 +77,7 @@ export default {
           CommodityPrice: this.buy.nowPrice
         }
       }).success(data => {
-        this.saveOrigin('product')
-        this.saveOrigin4('product')
         this.saveOrderNo(data.OrderNo)
-        this.saveProductId(this.buy.Id)
         this.$router.push({
           name: 'order-confirm'
         })

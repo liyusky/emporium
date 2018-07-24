@@ -24,7 +24,7 @@ export default {
           params: this.theme.params
         })
       } else {
-        // this.$router.back(-1)
+        this.$router.back(-1)
       }
     }
   }
