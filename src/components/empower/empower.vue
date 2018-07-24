@@ -184,7 +184,6 @@ export default {
   },
   methods: {
     getCode () {
-      console.log(++this.aaaaa)
       this.codeDisabled = true
       this.state.text.code = '剩余60秒'
       this.waitOneMinute()

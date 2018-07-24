@@ -225,6 +225,7 @@ export default {
         this.dialogShow = true
         return
       }
+      this.saveOrigin3('order-confirm')
       Http.send({
         url: 'orderSubmit',
         data: {
@@ -233,7 +234,6 @@ export default {
           num: this.installmentNum
         }
       }).success(data => {
-        this.saveOrigin3('order-confirm')
         this.gotoPage('order-detail')
       }).fail(data => {
         this.Title.text = data.message

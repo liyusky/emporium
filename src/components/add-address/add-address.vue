@@ -113,7 +113,7 @@ export default {
             address: [this.area, this.county].join(' '),
             isDefault: this.isDefault
           }
-        }).success((data) => {
+        }).success(data => {
           this.Title.text = '修改成功'
           this.HintShow = true
           setTimeout(() => {
@@ -134,7 +134,7 @@ export default {
             address: [this.area, this.county].join(' '),
             isDefault: false
           }
-        }).success((data) => {
+        }).success(data => {
           this.Title.text = '添加成功'
           this.HintShow = true
           setTimeout(() => {

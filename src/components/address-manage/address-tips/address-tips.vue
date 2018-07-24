@@ -67,7 +67,7 @@ export default {
       data: {
         customerId: window.id
       }
-    }).success((data) => {
+    }).success(data => {
       this.addressList = data
       data.forEach(item => {
         if (item.IsDefault) {
@@ -91,8 +91,7 @@ export default {
             Phone: item.PhoneNo,
             Address: item.Address
           }
-        }).success((data) => {
-          console.log(data)
+        }).success(data => {
           this.saveSelectedAddress(item)
           this.$router.push({
             name: 'order-confirm'
@@ -111,7 +110,7 @@ export default {
           customerId: window.id,
           postId: postId
         }
-      }).success((data) => {
+      }).success(data => {
         this.defaultId = postId
       }).fail((data) => {
         this.Title.text = data.message
@@ -140,7 +139,7 @@ export default {
         data: {
           id: this.deleteParams.id
         }
-      }).success((data) => {
+      }).success(data => {
         this.addressList.splice(this.deleteParams.index, 1)
       }).fail((data) => {
         this.Title.text = data.message
