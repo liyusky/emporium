@@ -104,6 +104,7 @@ export default {
     }).success(data => {
       setPaymentTypeArr()
       setPaymentTypePartArr()
+      setGuaranteeArr()
       this.summary = data.Phone
       this.theme.title = data.Phone.Title
       this.sample = data.AttachmentList.filter(item => {
@@ -163,6 +164,15 @@ export default {
           if (item * 1 && type[index]) content.push(type[index])
         })
         data.Phone.PaymentTypePartArr = content
+      }
+      function setGuaranteeArr () {
+        let type = ['原装正品', '一年保修', '七天包退', '官当自营']
+        let allowArr = data.Phone.Guarantee.toString(2).split('')
+        let content = []
+        allowArr.forEach((item, index) => {
+          if (item * 1) content.push(type[index])
+        })
+        data.Phone.Guarantee = content.join('/')
       }
     }).fail(data => {
       this.Title.text = data.message

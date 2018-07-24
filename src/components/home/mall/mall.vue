@@ -55,6 +55,7 @@ import PullRefresh from '../../common/pull-refresh/pull-refresh.vue'
 // import ModalHint from '../../common/alert-modal/modal-hint/modal-hint.vue'
 import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import Http from '../../../class/http.class.js'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Home',
   data () {
@@ -87,6 +88,7 @@ export default {
   },
   methods: {
     gotoPage (id, title) {
+      this.saveProductId(id)
       this.$router.push({
         name: 'product',
         params: {
@@ -117,7 +119,8 @@ export default {
         this.Title.text = data.message
         this.dialogShow = true
       })
-    }
+    },
+    ...mapMutations(['saveProductId'])
   }
 }
 </script>
