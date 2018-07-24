@@ -103,8 +103,6 @@ export default {
       payId: null,
       noncestr: null,
       statusName: '',
-      statusLeftBtnName: '',
-      statusRightBtnName: '',
       reminderShow: false,
       dialogShow: false
     }
@@ -123,8 +121,6 @@ export default {
       let status = this.status.get(data.Status)
       this.orderDetail = data
       this.statusName = status.statusTitle
-      this.statusLeftBtnName = status.buttonLeftName
-      this.statusRightBtnName = status.buttonRightName
     }).fail(fail => {
       this.Title.text = fail.message
       this.dialogShow = true

@@ -10,6 +10,7 @@ export default class Http {
     if (!needTokenArr.includes(args.url)) {
       args.data.access_token = window.token
     }
+    console.log(window.token)
     axios({
       url: Url[args.url],
       method: 'post',
