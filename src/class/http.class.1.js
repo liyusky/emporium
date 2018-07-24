@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import ajax from 'ajax'
 import Url from './url.class.js'
 export default class Http {
   static send (args) {
@@ -10,24 +10,30 @@ export default class Http {
     if (needTokenArr.includes(args.url)) {
       delete headers.access_token
     }
-    $.ajax({
-      type: 'POST',
-      url: `http://api2.jietiaodashi.com${Url[args.url]}`,
-      data: args.data,
-      headers: headers,
-      success: response => {
-        console.log(args.url)
-        console.log(response)
-        Http.dispense(response)
-      },
-      error: (xhr, errorType, error) => {
-        console.log(xhr)
-        console.log(errorType)
-        console.log(error)
-      },
-      complete: () => {
-        if (this.defaultCallback) this.defaultCallback()
+    let data = ''
+    for (let key in args.data) {
+      if (args.data[key]) {
+        data += `${key}=${args.data[key]}&`
       }
+    }
+    data.substr(-1 * data.length + 1)
+    console.log(data)
+    ajax({
+      url: Url[args.url],
+      method: 'post',
+      baseURL: 'http://api2.jietiaodashi.com',
+      // baseURL: 'http://192.168.0.101:8082',
+      headers: headers,
+      // data: args.data ? JSON.stringify(args.data) : {}
+      data: data
+    }).then(response => {
+      console.log(args.url)
+      console.log(response)
+      Http.dispense(response.data)
+      if (this.defaultCallback) this.defaultCallback()
+    }).catch(error => {
+      console.log(error.response)
+      if (this.defaultCallback) this.defaultCallback()
     })
     return this
   }

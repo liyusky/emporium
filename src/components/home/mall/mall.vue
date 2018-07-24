@@ -75,7 +75,7 @@ export default {
   created () {
     Http.send({
       url: 'mall',
-      params: {
+      data: {
         Pageindex: this.page
       }
     }).success(data => {
@@ -101,7 +101,7 @@ export default {
     loadMore () {
       Http.send({
         url: 'mall',
-        params: {
+        data: {
           Pageindex: ++this.page
         }
       }).success(data => {

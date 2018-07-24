@@ -146,7 +146,7 @@ export default {
     this.OrderNo = this.$store.state.OrderNo
     Http.send({
       url: 'product',
-      params: {
+      data: {
         id: this.id
       }
     }).success(data => {
@@ -227,7 +227,7 @@ export default {
       }
       Http.send({
         url: 'orderSubmit',
-        params: {
+        data: {
           Orderno: this.OrderNo,
           payType: this.selected,
           num: this.installmentNum

@@ -64,7 +64,7 @@ export default {
   created () {
     Http.send({
       url: 'GetPostAddress',
-      params: {
+      data: {
         customerId: window.id
       }
     }).success((data) => {
@@ -85,7 +85,7 @@ export default {
       if (this.origin === 'order-confirm') {
         Http.send({
           url: 'ModifyResiver',
-          params: {
+          data: {
             Orderno: this.OrderNo,
             Name: item.ReseverName,
             Phone: item.PhoneNo,
@@ -107,7 +107,7 @@ export default {
     setDefault (postId) {
       Http.send({
         url: 'SetDefaultAddress',
-        params: {
+        data: {
           customerId: window.id,
           postId: postId
         }
@@ -137,7 +137,7 @@ export default {
       this.reminderShow = false
       Http.send({
         url: 'DeletePostAddress',
-        params: {
+        data: {
           id: this.deleteParams.id
         }
       }).success((data) => {

@@ -106,7 +106,7 @@ export default {
       if (this.title) {
         Http.send({
           url: 'ModifyPostAddress',
-          params: {
+          data: {
             Id: this.id,
             name: this.name,
             phone: this.phone,
@@ -127,7 +127,7 @@ export default {
       } else {
         Http.send({
           url: 'AddPostAddress',
-          params: {
+          data: {
             customerId: window.id,
             name: this.name,
             phone: this.phone,

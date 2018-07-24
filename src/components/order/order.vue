@@ -79,7 +79,7 @@ export default {
     getData (status) {
       Http.send({
         url: 'orderList',
-        params: {
+        data: {
           custermerId: window.id,
           status: status
         }
@@ -96,12 +96,12 @@ export default {
     loadMore () {
       Http.send({
         url: 'orderList',
-        params: {
+        data: {
           custermerId: window.id,
           status: this.status,
           pageCurrent: ++this.page
         }
-      }).success((data) => {
+      }).success(data => {
         this.tips = this.tips.concat(data)
       })
     },

@@ -113,7 +113,7 @@ export default {
     this.OrderNo = this.$store.state.OrderNo
     Http.send({
       url: 'orderDetail',
-      params: {
+      data: {
         Orderno: this.OrderNo
       }
     }).success(data => {
@@ -167,7 +167,7 @@ export default {
       this.reminderShow = false
       Http.send({
         url: 'Cancel',
-        params: {
+        data: {
           orderno: this.orderDetail.OrderNo
         }
       }).success(data => {
@@ -209,7 +209,7 @@ export default {
     confrim () {
       Http.send({
         url: 'Receipt',
-        params: {
+        data: {
           Orderno: this.OrderNo
         }
       }).success(data => {

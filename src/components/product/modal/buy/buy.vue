@@ -64,7 +64,7 @@ export default {
     order () {
       Http.send({
         url: 'buy',
-        params: {
+        data: {
           CustermerId: window.id,
           commodityId: this.buy.Id,
           PayType: 0,
