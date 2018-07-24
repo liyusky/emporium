@@ -37,18 +37,16 @@
       margin: {
         right: 21 / $unit * $symbol;
       }
-      border: 2px solid #fff;
       border-radius: 50%;
       background: #fff;
       img {
-        display: block;
-        width: 100%;
-        height: 100%;
+        width: 111 / $unit * $symbol;
+        height: 111 / $unit * $symbol;
         border-radius: 50%;
       }
     }
     .detail-user {
-      $param: (flex flex) (direction column) (justifyContent space-between);
+      $param: (flex flex) (direction column) (justifyContent center);
       @include flexSet($param);
       width: 100%;
       height: 100%;
@@ -61,7 +59,7 @@
         font-size: 36 / $unit * $symbol;
       }
       .user-account {
-        font-size: 24 / $unit * $symbol;
+        font-size: 39 / $unit * $symbol;
       }
     }
   }

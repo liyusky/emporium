@@ -1,33 +1,31 @@
-import $ from 'jquery'
+import axios from 'axios'
 import Url from './url.class.js'
 export default class Http {
   static send (args) {
     let headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'access_token': window.token
+      'Content-Type': 'application/x-www-form-urlencoded'
     }
-    let needTokenArr = ['SendSMS', 'RegistCustomer', 'LoginCustomer', 'mall', 'product']
-    if (needTokenArr.includes(args.url)) {
-      delete headers.access_token
+    args.data = args.data ? args.data : {}
+    let needTokenArr = ['SendSMS', 'RegistCustomer', 'LoginCustomer', 'mall', 'product', 'ModifyCustomerPwd']
+    if (!needTokenArr.includes(args.url)) {
+      args.data.access_token = window.token
     }
-    $.ajax({
-      type: 'POST',
-      url: `http://api2.jietiaodashi.com${Url[args.url]}`,
-      data: args.data,
+    axios({
+      url: Url[args.url],
+      method: 'post',
+      baseURL: 'http://api2.jietiaodashi.com',
+      // baseURL: 'http://192.168.0.101:8082',
       headers: headers,
-      success: response => {
-        console.log(args.url)
-        console.log(response)
-        Http.dispense(response)
-      },
-      error: (xhr, errorType, error) => {
-        console.log(xhr)
-        console.log(errorType)
-        console.log(error)
-      },
-      complete: () => {
-        if (this.defaultCallback) this.defaultCallback()
-      }
+      params: args.data
+    }).then(response => {
+      console.log(args.url)
+      console.log(response)
+      Http.dispense(response.data)
+      if (this.defaultCallback) this.defaultCallback()
+    }).catch(error => {
+      console.log(error.response)
+      // window.vueModule
+      if (this.defaultCallback) this.defaultCallback()
     })
     return this
   }

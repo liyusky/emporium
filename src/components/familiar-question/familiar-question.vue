@@ -73,7 +73,8 @@ export default {
   data () {
     return {
       theme: {
-        title: '常见问题'
+        title: '常见问题',
+        goal: 'product'
       }
     }
   },

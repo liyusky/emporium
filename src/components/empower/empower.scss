@@ -105,6 +105,10 @@
           font-size: 27 / $unit * $symbol;
           color: #8d8d8d;
         }
+        .code-active {
+          background: #DECECE;
+          color: #7E7E7E;
+        }
       }
     }
   }
