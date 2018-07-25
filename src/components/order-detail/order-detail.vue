@@ -196,6 +196,12 @@ export default {
             noncestr: this.noncestr
           }))
         }
+        let payListener = setInterval(() => {
+          if (window.payFinish) {
+            this.state = 2
+            clearInterval(payListener)
+          }
+        }, 1000)
       } catch (error) {
         this.Title.text = '支付失败'
         this.reminderShow = true

@@ -24,10 +24,13 @@
         let token = localStorage.getItem('token')
         let OrderNo = localStorage.getItem('OrderNo')
         let origin = localStorage.getItem('origin5')
+        
         window.id = id
         window.token = token
-        window.vueModule.$store.commit('saveOrderNo', OrderNo)
-        window.vueModule.$router.push({name: origin})
+        window.payFinish = true
+        // location.reload()
+        // window.vueModule.$store.commit('saveOrderNo', OrderNo)
+        // window.vueModule.$router.push({name: origin})
       }
     }
   </script>
