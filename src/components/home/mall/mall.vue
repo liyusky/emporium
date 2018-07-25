@@ -35,10 +35,10 @@
                 </div>
                 <div class="content-economize">
                   <div>省</div>
-                  <div>￥{{parseFloat (phone.originalPrice - phone.nowPrice)}}</div>
+                  <div>￥{{parseFloat(phone.originalPrice - phone.nowPrice).toFixed(2)}}</div>
                 </div>
                 <div class="content-badge" v-if="phone.IsTested">
-                  <p>已检测</p>
+                  <p>{{phone.Status == '2' ? '已售完' : '已检测'}}</p>
                 </div>
               </div>
             </li>

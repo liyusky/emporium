@@ -37,7 +37,7 @@
           <ul class="phone-list">
             <li class="list-item">
               <p class="item-title">商品总价</p>
-              <p class="item-value">￥{{parseFloat (orderDetail.CommodityPrice * orderDetail.rownum)}}</p>
+              <p class="item-value">￥{{parseFloat(orderDetail.CommodityPrice * orderDetail.rownum).toFixed(2)}}</p>
             </li>
             <li class="list-item">
               <p class="item-title">运费</p>
@@ -185,12 +185,12 @@ export default {
       })
     },
     pay () {
-      alert('payid  == ' + this.payId)
-      alert('noncestr  == ' + this.noncestr)
       try {
-        alert('appJsInterface !== undefined ' + typeof (appJsInterface) !== 'undefined')
+        if (window.localStorage) {
+          localStorage.setItem('OrderNo', this.Orderno)
+          localStorage.setItem('Origin5', 'order-detail')
+        }
         if (typeof (appJsInterface) !== 'undefined') {
-          alert(1)
           appJsInterface.payWeChat(JSON.stringify({
             prepayId: this.payId,
             noncestr: this.noncestr

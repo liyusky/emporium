@@ -22,6 +22,7 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
+    "babel-polyfill":"babel-polyfill",
     app: './src/main.js'
   },
   output: {
@@ -30,6 +31,7 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
+    // chunkFilename:'chunks/[name]-[chunkhash:8].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],

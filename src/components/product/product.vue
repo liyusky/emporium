@@ -1,21 +1,21 @@
 <template>
   <!-- s 产品详情 -->
-  <section class="product">
+  <section class="product" id="product">
     <Theme :theme="theme"></Theme>
     <nav class="product-nav">
-      <div class="nav-item" :class="{active: rollSite == 'summary'}" @click="gotoRollSite('summary')">
-        <a href="#summary">商品</a>
+      <div class="nav-item" :class="{active: rollSite == 'summary'}" @click="scroll('summary')">
+        <span>商品</span>
       </div>
-      <div class="nav-item" :class="{active: rollSite == 'quality'}" @click="gotoRollSite('quality')">
-        <a href="#quality">质检</a>
+      <div class="nav-item" :class="{active: rollSite == 'quality'}" @click="scroll('quality')">
+        <span>质检</span>
       </div>
-      <div class="nav-item" :class="{active: rollSite == 'sample'}" @click="gotoRollSite('sample')">
-        <a href="#sample">实拍</a>
+      <div class="nav-item" :class="{active: rollSite == 'sample'}" @click="scroll('sample')">
+        <span>实拍</span>
       </div>
     </nav>
-    <Summary id="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
-    <Quality id="quality" :quality="quality"></Quality>
-    <Sample id="sample" :sample="sample" :link="shareLink" @OPEN_MODAL_EVENT="openModal"></Sample>
+    <Summary id="summary" ref="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
+    <Quality id="quality" ref="quality" :quality="quality"></Quality>
+    <Sample id="sample" ref="sample" :sample="sample" :link="shareLink" @OPEN_MODAL_EVENT="openModal"></Sample>
     <Guidance></Guidance>
     <footer class="product-order">
       <div class="order-content">
@@ -91,7 +91,8 @@ export default {
       rollSite: 'summary',
       params: {},
       shareLink: null,
-      dialogShow: false
+      dialogShow: false,
+      currentTop: 0
     }
   },
   created () {
@@ -194,8 +195,27 @@ export default {
       this.modal = false
       this.dialogShow = false
     },
-    gotoRollSite (site) {
+    scroll (site) {
+      if (this.currentTop === document.documentElement.scrollTop && this.rollSite === site) return
       this.rollSite = site
+      let goalTop = document.getElementById(site).offsetTop - document.getElementById('summary').offsetTop
+      this.currentTop = document.documentElement.scrollTop
+      let direction = 1
+      let speed = 10
+      let animation = setInterval(() => {
+        if (Math.abs(this.currentTop - goalTop) <= 5) {
+          clearInterval(animation)
+          this.currentTop = goalTop
+        } else {
+          if (goalTop < this.currentTop) {
+            direction = -1
+          } else if (goalTop > this.currentTop) {
+            direction = 1
+          }
+          this.currentTop += direction * speed
+        }
+        document.documentElement.scrollTop = this.currentTop
+      }, 3)
     }
   }
 }
