@@ -18,6 +18,25 @@
         console.log('该页面没有标题栏或者返回按钮没有获取到！')
       }
     }
+    window.paySuccess = function (finish) {
+      if (window.localStorage) {
+        let id = localStorage.getItem('id')
+        let token = localStorage.getItem('token')
+        let OrderNo = localStorage.getItem('OrderNo')
+        let origin = localStorage.getItem('origin5')
+        
+        window.id = id
+        window.token = token
+        if (finish) {
+          window.payFinish = 'success'
+        } else {
+          window.payFinish = 'fail'
+        }
+        // location.reload()
+        // window.vueModule.$store.commit('saveOrderNo', OrderNo)
+        // window.vueModule.$router.push({name: origin})
+      }
+    }
   </script>
 </body>
 </html>

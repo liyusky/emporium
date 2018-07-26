@@ -10,10 +10,12 @@ export default class Http {
     if (!needTokenArr.includes(args.url)) {
       args.data.access_token = window.token
     }
+    console.log(window.token)
     axios({
       url: Url[args.url],
       method: 'post',
-      baseURL: 'http://api2.jietiaodashi.com',
+      // baseURL: 'http://api2.jietiaodashi.com',
+      baseURL: 'http://xqapi.jietiaodashi.com',
       // baseURL: 'http://192.168.0.101:8082',
       headers: headers,
       params: args.data

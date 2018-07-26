@@ -242,6 +242,10 @@ export default {
       }).success(data => {
         window.token = data.access_token
         window.id = data.customerId
+        if (window.localStorage) {
+          localStorage.setItem('token', data.access_token)
+          localStorage.setItem('id', data.customerId)
+        }
         this.goback()
       }).fail(data => {
         this.Title.text = data.message

@@ -20,13 +20,13 @@
       <div class="item-summary">
         <p>
           <span>共1件商品 合计:</span>
-          <span class="summary-price">{{item.rownum * item.CommodityPrice}}</span>
+          <span class="summary-price">{{parseFloat(item.rownum * item.CommodityPrice).toFixed(2)}}</span>
           <span class="summary-fare"> (含运费￥{{item.DeliverPrice}})</span>
         </p>
       </div>
       <div class="item-button">
         <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">取消订单</button>
-        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.PayId, item.noncestr)">去支付</button>
+        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.PayId, item.noncestr, item.OrderNo, index)">去支付</button>
         <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">提交订单</button>
         <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item)">确认收货</button>
       </div>
@@ -41,9 +41,7 @@
 import Http from '../../../class/http.class.js'
 import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
-import {
-  mapMutations
-} from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -103,18 +101,24 @@ export default {
       this.Title.text = '您确认要删除订单'
       this.reminderShow = true
     },
-    pay (payId, noncestr) {
-      alert('payid  == ' + payId)
-      alert('noncestr  == ' + noncestr)
+    pay (payId, noncestr, Orderno, index) {
+      if (window.localStorage) {
+        localStorage.setItem('OrderNo', Orderno)
+        localStorage.setItem('Origin5', 'order')
+      }
       try {
-        alert('appJsInterface !== undefined ' + typeof (appJsInterface) !== 'undefined')
-        if (typeof (appJsInterface) !== 'undefined') {
-          alert(2)
-          appJsInterface.payWeChat(JSON.stringify({
-            prepayId: payId,
-            noncestr: noncestr
-          }))
-        }
+        appJsInterface.payWeChat(JSON.stringify({
+          prepayId: payId,
+          noncestr: noncestr
+        }))
+        let payListener = setInterval(() => {
+          if (window.payFinish === 'success') {
+            this.tips[index].Status = 2
+            clearInterval(payListener)
+          } else if (window.payFinish === 'success') {
+            clearInterval(payListener)
+          }
+        }, 1000)
       } catch (error) {
         this.Title.text = '支付失败'
         this.reminderShow = true
