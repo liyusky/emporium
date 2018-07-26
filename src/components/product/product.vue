@@ -3,14 +3,19 @@
   <section class="product" id="product">
     <Theme :theme="theme"></Theme>
     <nav class="product-nav">
-      <div class="nav-item" :class="{active: rollSite == 'summary'}" @click="scroll('summary')">
-        <span>商品</span>
+      <div class="nav-content">
+        <div class="nav-item" :class="{active: rollSite == 'summary'}" @click="scroll('summary', 0)">
+          <span>商品</span>
+        </div>
+        <div class="nav-item" :class="{active: rollSite == 'quality'}" @click="scroll('quality', 1)">
+          <span>质检</span>
+        </div>
+        <div class="nav-item" :class="{active: rollSite == 'sample'}" @click="scroll('sample', 2)">
+          <span>实拍</span>
+        </div>
       </div>
-      <div class="nav-item" :class="{active: rollSite == 'quality'}" @click="scroll('quality')">
-        <span>质检</span>
-      </div>
-      <div class="nav-item" :class="{active: rollSite == 'sample'}" @click="scroll('sample')">
-        <span>实拍</span>
+      <div class="nav-scroll">
+        <div class="scroll" id="scroll"></div>
       </div>
     </nav>
     <Summary id="summary" ref="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
@@ -195,7 +200,9 @@ export default {
       this.modal = false
       this.dialogShow = false
     },
-    scroll (site) {
+    scroll (site, index) {
+      let offset = document.getElementsByClassName('nav-item')[index].offsetLeft
+      document.getElementById('scroll').style.left = offset + 'px'
       if (this.currentTop === (document.documentElement.scrollTop || document.body.scrollTop) && this.rollSite === site) return
       this.rollSite = site
       let goalTop = document.getElementById(site).offsetTop - document.getElementById('summary').offsetTop

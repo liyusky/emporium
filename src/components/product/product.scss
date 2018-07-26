@@ -15,8 +15,6 @@
     left: 0;
     right: 0;
     z-index: 100;
-    $param: (flex flex) (alignItems center) (justifyContent space-between);
-    @include flexSet($param);
     width: 100%;
     height: 99 / $unit * $symbol;
     padding: {
@@ -24,30 +22,41 @@
       right: 133 / $unit * $symbol;
     }
     background-color: #fff;
-    .nav-item {
+    .nav-content {
       position: relative;
-      $param: (flex flex) (alignItems center) (justifyContent center);
+      $param: (flex flex) (alignItems center) (justifyContent space-between);
       @include flexSet($param);
-      height: 100%;
-      font-size: 30 / $unit * $symbol;
-      font-weight: bold;
-      color: #333333;
-      &::after {
+      height: 94 / $unit * $symbol;
+      .nav-item {
+        position: relative;
+        $param: (flex flex) (alignItems center) (justifyContent center);
+        @include flexSet($param);
+        height: 100%;
+        font-size: 30 / $unit * $symbol;
+        font-weight: bold;
+        color: #333333;
+      }
+      .active::after {
+        background-color: red;
+      }
+    }
+    .nav-scroll {
+      position: relative;
+      width: 100%;
+      height: 5 / $unit * $symbol;
+      .scroll {
         position: absolute;
-        bottom: 3 / $unit * $symbol;
         left: 0;
         right: 0;
         z-index: 100;
-        content: '';
-        width: 100%;
+        width: 60 / $unit * $symbol;
         height: 5 / $unit * $symbol;
+        background-color: red;
         border-radius: 3 / $unit * $symbol;
-        background-color: fff;
+        transition: all 0.2s;
       }
     }
-    .active::after {
-      background-color: red;
-    }
+    
   }
   &-order {
     position: fixed;
