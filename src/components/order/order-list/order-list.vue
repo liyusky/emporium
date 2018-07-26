@@ -112,8 +112,10 @@ export default {
           noncestr: noncestr
         }))
         let payListener = setInterval(() => {
-          if (window.payFinish) {
+          if (window.payFinish === 'success') {
             this.tips[index].Status = 2
+            clearInterval(payListener)
+          } else if (window.payFinish === 'success') {
             clearInterval(payListener)
           }
         }, 1000)

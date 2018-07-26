@@ -196,10 +196,10 @@ export default {
       this.dialogShow = false
     },
     scroll (site) {
-      if (this.currentTop === document.documentElement.scrollTop && this.rollSite === site) return
+      if (this.currentTop === (document.documentElement.scrollTop || document.body.scrollTop) && this.rollSite === site) return
       this.rollSite = site
       let goalTop = document.getElementById(site).offsetTop - document.getElementById('summary').offsetTop
-      this.currentTop = document.documentElement.scrollTop
+      this.currentTop = document.documentElement.scrollTop || document.body.scrollTop
       let direction = 1
       let speed = 10
       let animation = setInterval(() => {
@@ -214,6 +214,7 @@ export default {
           }
           this.currentTop += direction * speed
         }
+        document.body.scrollTop = this.currentTop
         document.documentElement.scrollTop = this.currentTop
       }, 3)
     }

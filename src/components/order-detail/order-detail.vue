@@ -190,15 +190,15 @@ export default {
           localStorage.setItem('OrderNo', this.Orderno)
           localStorage.setItem('Origin5', 'order-detail')
         }
-        if (typeof (appJsInterface) !== 'undefined') {
-          appJsInterface.payWeChat(JSON.stringify({
-            prepayId: this.payId,
-            noncestr: this.noncestr
-          }))
-        }
+        appJsInterface.payWeChat(JSON.stringify({
+          prepayId: this.payId,
+          noncestr: this.noncestr
+        }))
         let payListener = setInterval(() => {
-          if (window.payFinish) {
+          if (window.payFinish === 'success') {
             this.state = 2
+            clearInterval(payListener)
+          } else if (window.payFinish === 'success') {
             clearInterval(payListener)
           }
         }, 1000)
