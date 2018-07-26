@@ -50,8 +50,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
-        exclude: /NIM_Web_SDK.*\.js/,
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'), resolve('node_modules/vue-loader')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

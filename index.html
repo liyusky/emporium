@@ -12,18 +12,19 @@
   <section id="app"></section>
   <script>
     window.kill = function () {
-      try {
-        document.getElementById('back-btn').click()
-      } catch (error) {
+      var btnDom = document.getElementById('back-btn')
+      if (btnDom) {
+        btnDom.click()
+      } else {
         console.log('该页面没有标题栏或者返回按钮没有获取到！')
       }
     }
     window.paySuccess = function (finish) {
       if (window.localStorage) {
-        let id = localStorage.getItem('id')
-        let token = localStorage.getItem('token')
-        let OrderNo = localStorage.getItem('OrderNo')
-        let origin = localStorage.getItem('origin5')
+        var id = localStorage.getItem('id')
+        var token = localStorage.getItem('token')
+        var OrderNo = localStorage.getItem('OrderNo')
+        var origin = localStorage.getItem('origin5')
         
         window.id = id
         window.token = token
