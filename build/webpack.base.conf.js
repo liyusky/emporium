@@ -30,6 +30,7 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
+    // chunkFilename:'chunks/[name]-[chunkhash:8].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -49,8 +50,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
-        exclude: /NIM_Web_SDK.*\.js/,
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'), resolve('node_modules/vue-loader')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

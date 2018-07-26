@@ -1,21 +1,26 @@
 <template>
   <!-- s 产品详情 -->
-  <section class="product">
+  <section class="product" id="product">
     <Theme :theme="theme"></Theme>
     <nav class="product-nav">
-      <div class="nav-item" :class="{active: rollSite == 'summary'}" @click="gotoRollSite('summary')">
-        <a href="#summary">商品</a>
+      <div class="nav-content">
+        <div class="nav-item" @click="scroll('summary', 0)">
+          <span>商品</span>
+        </div>
+        <div class="nav-item" @click="scroll('quality', 1)">
+          <span>质检</span>
+        </div>
+        <div class="nav-item" @click="scroll('sample', 2)">
+          <span>实拍</span>
+        </div>
       </div>
-      <div class="nav-item" :class="{active: rollSite == 'quality'}" @click="gotoRollSite('quality')">
-        <a href="#quality">质检</a>
-      </div>
-      <div class="nav-item" :class="{active: rollSite == 'sample'}" @click="gotoRollSite('sample')">
-        <a href="#sample">实拍</a>
+      <div class="nav-scroll">
+        <div class="scroll" id="scroll"></div>
       </div>
     </nav>
-    <Summary id="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
-    <Quality id="quality" :quality="quality"></Quality>
-    <Sample id="sample" :sample="sample" :link="shareLink" @OPEN_MODAL_EVENT="openModal"></Sample>
+    <Summary id="summary" ref="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
+    <Quality id="quality" ref="quality" :quality="quality"></Quality>
+    <Sample id="sample" ref="sample" :sample="sample" :link="shareLink" @OPEN_MODAL_EVENT="openModal"></Sample>
     <Guidance></Guidance>
     <footer class="product-order">
       <div class="order-content">
@@ -91,7 +96,8 @@ export default {
       rollSite: 'summary',
       params: {},
       shareLink: null,
-      dialogShow: false
+      dialogShow: false,
+      currentTop: 0
     }
   },
   created () {
@@ -104,6 +110,7 @@ export default {
     }).success(data => {
       setPaymentTypeArr()
       setPaymentTypePartArr()
+      setGuaranteeArr()
       this.summary = data.Phone
       this.theme.title = data.Phone.Title
       this.sample = data.AttachmentList.filter(item => {
@@ -164,6 +171,15 @@ export default {
         })
         data.Phone.PaymentTypePartArr = content
       }
+      function setGuaranteeArr () {
+        let type = ['原装正品', '一年保修', '七天包退', '官当自营']
+        let allowArr = data.Phone.Guarantee.toString(2).split('')
+        let content = []
+        allowArr.forEach((item, index) => {
+          if (item * 1) content.push(type[index])
+        })
+        data.Phone.Guarantee = content.join('/')
+      }
     }).fail(data => {
       this.Title.text = data.message
       this.dialogShow = true
@@ -184,8 +200,30 @@ export default {
       this.modal = false
       this.dialogShow = false
     },
-    gotoRollSite (site) {
+    scroll (site, index) {
+      let offset = document.getElementsByClassName('nav-item')[index].offsetLeft
+      document.getElementById('scroll').style.left = offset + 'px'
+      if (this.currentTop === (document.documentElement.scrollTop || document.body.scrollTop) && this.rollSite === site) return
       this.rollSite = site
+      let goalTop = document.getElementById(site).offsetTop - document.getElementById('summary').offsetTop
+      this.currentTop = document.documentElement.scrollTop || document.body.scrollTop
+      let direction = 1
+      let speed = 10
+      let animation = setInterval(() => {
+        if (Math.abs(this.currentTop - goalTop) <= 5) {
+          clearInterval(animation)
+          this.currentTop = goalTop
+        } else {
+          if (goalTop < this.currentTop) {
+            direction = -1
+          } else if (goalTop > this.currentTop) {
+            direction = 1
+          }
+          this.currentTop += direction * speed
+        }
+        document.body.scrollTop = this.currentTop
+        document.documentElement.scrollTop = this.currentTop
+      }, 3)
     }
   }
 }

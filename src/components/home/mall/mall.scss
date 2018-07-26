@@ -78,7 +78,7 @@
             padding: {
               top: 42 / $unit * $symbol;
             }
-            border-radius: 3 / $unit * $symbol;
+            border-radius: 9 / $unit * $symbol;
             background: #fff;
             box-shadow: 0 0 (30 / $unit * $symbol) (6 / $unit * $symbol) #efeeec;
             .content-shop-picture {
@@ -155,23 +155,24 @@
               border: 1px solid #eb2828;
               border-radius: 4 / $unit * $symbol;
               div:first-of-type {
+                $param: (flex flex) (alignItems center) (justifyContent center);
+                @include flexSet($param);
                 width: 39 / $unit * $symbol;
                 height: 38 / $unit * $symbol;
-                line-height: 36 / $unit * $symbol;
                 padding: {
                   right: 1px;
                 }
-                text-align: center;
                 background: #eb2828;
                 color: #fff;
                 font-size: 21 / $unit * $symbol;
               }
               div:last-of-type {
+                $param: (flex flex) (alignItems center);
+                @include flexSet($param);
                 padding: {
                   left: 9 / $unit * $symbol;
                   right: 9 / $unit * $symbol;
                 }
-                line-height: 38 / $unit * $symbol;
                 color: #393939;
                 font-size: 21 / $unit * $symbol;
                 font-weight: bold;

@@ -35,10 +35,10 @@
                 </div>
                 <div class="content-economize">
                   <div>省</div>
-                  <div>￥{{phone.originalPrice - phone.nowPrice}}</div>
+                  <div>￥{{parseFloat(phone.originalPrice - phone.nowPrice).toFixed(2)}}</div>
                 </div>
                 <div class="content-badge" v-if="phone.IsTested">
-                  <p>已检测</p>
+                  <p>{{phone.Status == '2' ? '已售完' : '已检测'}}</p>
                 </div>
               </div>
             </li>
@@ -55,6 +55,7 @@ import PullRefresh from '../../common/pull-refresh/pull-refresh.vue'
 // import ModalHint from '../../common/alert-modal/modal-hint/modal-hint.vue'
 import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import Http from '../../../class/http.class.js'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Home',
   data () {
@@ -87,6 +88,7 @@ export default {
   },
   methods: {
     gotoPage (id, title) {
+      this.saveProductId(id)
       this.$router.push({
         name: 'product',
         params: {
@@ -117,7 +119,8 @@ export default {
         this.Title.text = data.message
         this.dialogShow = true
       })
-    }
+    },
+    ...mapMutations(['saveProductId'])
   }
 }
 </script>

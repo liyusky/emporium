@@ -74,7 +74,10 @@ export default {
     return {
       theme: {
         title: '常见问题',
-        goal: 'product'
+        goal: 'product',
+        params: {
+          id: this.$store.state.productId
+        }
       }
     }
   },
