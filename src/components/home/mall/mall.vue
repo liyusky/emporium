@@ -24,7 +24,7 @@
                 <div class="content-shop-picture">
                   <img :src="phone.Icon">
                 </div>
-                <p class="content-title">{{phone.Title}} {{phone.ModelNo}}</p>
+                <p class="content-title">{{phone.Title}}</p>
                 <div class="content-parameter">
                   <div class="parameter-item">{{phone.Memory}}</div>
                   <div class="parameter-item">{{phone.Degree == '100' ? '全' : phone.Degree + '成'}}新</div>
@@ -34,8 +34,8 @@
                   <p>市场价{{phone.originalPrice}}</p>
                 </div>
                 <div class="content-economize">
-                  <div>省</div>
-                  <div>￥{{parseFloat(phone.originalPrice - phone.nowPrice).toFixed(2)}}</div>
+                  <span>省</span>
+                  <span>￥{{parseFloat(phone.originalPrice - phone.nowPrice).toFixed(2)}}</span>
                 </div>
                 <div class="content-badge" v-if="phone.IsTested">
                   <p>{{phone.Status == '2' ? '已售完' : '已检测'}}</p>

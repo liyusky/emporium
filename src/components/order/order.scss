@@ -4,7 +4,7 @@
   width: 100vw;
   height: 100vh;
   padding: {
-    top: (129 + 84) / $unit * $symbol;
+    top: (93 + 84) / $unit * $symbol;
   }
   background: #f4f4f4;
   overflow-y: auto;
@@ -12,7 +12,7 @@
     $param: (flex flex) (justifyContent space-around);
     @include flexSet($param);
     position: fixed;
-    top: 129 / $unit * $symbol;
+    top: 93 / $unit * $symbol;
     left: 0;
     right: 0;
     z-index: 100;
@@ -24,9 +24,10 @@
     }
     background: #fff;
     .tabbar-item {
+      $param: (flex flex) (alignItems center);
+        @include flexSet($param);
       position: relative;
       height: 77 / $unit * $symbol;
-      line-height: 77 / $unit * $symbol;
       font-size: 27 / $unit * $symbol;
       font-weight: bold;
       color: #4b4b4b;

@@ -90,29 +90,29 @@
           height: 38 / $unit * $symbol;
           border: 1px solid #eb2828;
           border-radius: 4 / $unit * $symbol;
-          div:first-of-type {
-            $param: (flex flex) (alignItems center) (justifyContent center);
+          span:first-of-type {
+            $param: (flex flex) (direction column) (justifyContent center);
             @include flexSet($param);
+            display: block;
             width: 39 / $unit * $symbol;
-            height: 38 / $unit * $symbol;
-            line-height: 36 / $unit * $symbol;
+            height: 100%;
+            text-align: center;
             padding: {
               right: 1px;
             }
-            text-align: center;
             background: #eb2828;
             color: #fff;
             font-size: 21 / $unit * $symbol;
-            font-weight: bold;
           }
-          div:last-of-type {
-            $param: (flex flex) (alignItems center);
+          span:last-of-type {
+            $param: (flex flex) (direction column) (justifyContent center);
             @include flexSet($param);
+            display: block;
+            height: 100%;
             padding: {
               left: 9 / $unit * $symbol;
               right: 9 / $unit * $symbol;
             }
-            line-height: 36 / $unit * $symbol;
             color: #393939;
             font-size: 21 / $unit * $symbol;
             font-weight: bold;
@@ -225,9 +225,6 @@
             height: 30 / $unit * $symbol;
           }
           img {
-            margin: {
-              right: 6 / $unit * $symbol;
-            }
             vertical-align: middle;
             width: 27 / $unit * $symbol;
             height: 27 / $unit * $symbol;

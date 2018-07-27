@@ -114,7 +114,8 @@
               left: 20 / $unit * $symbol;
             }
             .content-title {
-              line-height: 36 / $unit * $symbol;
+              $param: (flex flex) (alignItems center) (justifyContent flex-start);
+              @include flexSet($param);
               font-size: 30 / $unit * $symbol;
               color: #2a2a2a;
             }
