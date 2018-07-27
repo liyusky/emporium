@@ -2,11 +2,10 @@
   <!-- s 我的订单 -->
   <section class="order">
     <div class="order-title" @click="gotoPage(-1)">
-      <h3>我的订单</h3>
-      <p>
-        <span>全部订单</span>
+      <div class="title-content">
+        <h3>我的订单</h3>
         <i class="iconfont icon-arrow-right"></i>
-      </p>
+      </div>
     </div>
     <nav class="order-menu">
       <div class="menu-item" @click="gotoPage(1)">

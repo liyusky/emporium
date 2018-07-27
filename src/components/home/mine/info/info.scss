@@ -6,6 +6,9 @@
   @include flexSet($param);
   width: 100%;
   height: 282 / $unit * $symbol;
+  margin: {
+    bottom: 24 / $unit * $symbol;
+  }
   background-color: transparent;
   .info-header {
     $param: (flex flex) (alignItems center) (justifyContent space-between);
@@ -22,44 +25,47 @@
       color: #ffffff;
     }
   }
-  .info-detail {
+  .info-login {
     $param: (flex flex) (alignItems center);
     @include flexSet($param);
     width: 100%;
-    height: 111 / $unit * $symbol;
+    height: 171 / $unit * $symbol;
     padding: {
-      left: 24 / $unit * $symbol;
-      right: 24 / $unit * $symbol;
+      left: 33 / $unit * $symbol;
+      right: 33 / $unit * $symbol;
     }
-    .detail-portrait {
-      width: 111 / $unit * $symbol;
-      height: 111 / $unit * $symbol;
-      margin: {
-        right: 21 / $unit * $symbol;
-      }
-      border-radius: 50%;
-      background: #fff;
-      img {
-        width: 111 / $unit * $symbol;
-        height: 111 / $unit * $symbol;
-        border-radius: 50%;
-      }
-    }
-    .detail-user {
-      $param: (flex flex) (direction column) (justifyContent center);
+    background-color: transparent;
+    .login-tip {
+      $param: (flex flex) (alignItems center) (justifyContent space-between);
       @include flexSet($param);
       width: 100%;
       height: 100%;
       padding: {
-        top: 18 / $unit * $symbol;
-        bottom: 27 / $unit * $symbol;
+        left: 36 / $unit * $symbol;
+        right: 36 / $unit * $symbol;
       }
-      color: #fff;
-      .user-name {
-        font-size: 36 / $unit * $symbol;
+      background-color: #fff;
+      border-radius: 18 / $unit * $symbol;
+      .tip-portrait {
+        width: 123 / $unit * $symbol;
+        height: 123 / $unit * $symbol;
+        border-radius: 50%;
+        img {
+          width: 123 / $unit * $symbol;
+          height: 123 / $unit * $symbol;
+          border-radius: 50%;
+        }
       }
-      .user-account {
-        font-size: 39 / $unit * $symbol;
+      .tip-user {
+        flex-grow: 1;
+        padding: {
+          left: 33 / $unit * $symbol;
+        }
+        .user-account {
+          font-size: 30 / $unit * $symbol;
+          font-weight: 600;
+          color: #333333;
+        }
       }
     }
   }
@@ -71,7 +77,6 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    background: #fff;
     img {
       width: 100%;
       height: 100%;

@@ -11,7 +11,7 @@
     $param: (flex flex) (alignItems center) (justifyContent space-between);
     @include flexSet($param);
     width: 100%;
-    height: 99 / $unit * $symbol;
+    height: 104 / $unit * $symbol;
     padding: {
       right: 30 / $unit * $symbol;
     }
@@ -21,24 +21,37 @@
     .item-title {
       font-size: 30 / $unit * $symbol;
       color: #222222;
+      font-weight: 600;
+      i {
+        font-size: 30 / $unit * $symbol;
+        color: #a5a5a5;
+        padding: {
+          right: 15 / $unit * $symbol;
+        }
+      }
     }
     i {
-      font-size: 27 / $unit * $symbol;
+      font-size: 30 / $unit * $symbol;
       color: #a5a5a5;
     }
     div {
+      $param: (flex flex) (alignItems center) (justifyContent space-between);
+      @include flexSet($param);
       .item-tip {
-        display: inline-block;
+        $param: (flex flex) (alignItems center);
+        @include flexSet($param);
+        height: 39 / $unit * $symbol;
         font-size: 21 / $unit * $symbol;
         padding: {
-          top: 3 / $unit * $symbol;
-          bottom: 3 / $unit * $symbol;
           left: 12 / $unit * $symbol;
-          right: 12 / $unit * $symbol;
+          right: 21 / $unit * $symbol;
         }
         margin: {
           right: 12 / $unit * $symbol;
         }
+        border-top-left-radius: 9 / $unit * $symbol;
+        border-bottom-left-radius: 6 / $unit * $symbol;
+        border-bottom-right-radius: 39 / $unit * $symbol;
         background-color: #f75258;
         color: #fff;
       }

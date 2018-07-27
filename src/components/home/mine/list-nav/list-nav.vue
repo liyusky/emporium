@@ -1,29 +1,44 @@
 <template>
   <!-- s 我的-列表导航 -->
   <nav class="mine-list-nav">
-    <!-- <div class="nav-item">
-      <p class="item-title">手机回收</p>
+    <div class="nav-item">
+      <p class="item-title">
+        <i class="iconfont icon-dingdan"></i>
+        <span>手机回收</span>
+      </p>
       <div>
-        <span class="item-tip">好坏都要</span>
-        <i class="iconfont icon-dacong"></i>
+        <div class="item-tip">好坏都要</div>
+        <i class="iconfont icon-arrow-right"></i>
       </div>
     </div>
     <div class="nav-item">
-      <p class="item-title">回收订单</p>
-      <i class="iconfont icon-dacong"></i>
-    </div> -->
-    <div class="nav-item" @click="gotoPage('address-manage')">
-      <p class="item-title">地址管理</p>
+      <p class="item-title">
+        <i class="iconfont icon-dingdan"></i>
+        <span>回收订单</span>
+      </p>
       <i class="iconfont icon-arrow-right"></i>
     </div>
-    <!-- <div class="nav-item" @click="gotoPage('feedback')">
-      <p class="item-title">用户反馈</p>
-      <i class="iconfont icon-dacong"></i>
-    </div> -->
-    <!-- <div class="nav-item">
-      <p class="item-title">客服电话</p>
-      <i class="iconfont icon-dacong"></i>
-    </div> -->
+    <div class="nav-item" @click="gotoPage('address-manage')">
+      <p class="item-title">
+        <i class="iconfont icon-dingdan"></i>
+        <span>地址管理</span>
+      </p>
+      <i class="iconfont icon-arrow-right"></i>
+    </div>
+    <div class="nav-item" @click="gotoPage('feedback')">
+      <p class="item-title">
+        <i class="iconfont icon-dingdan"></i>
+        <span>用户反馈</span>
+      </p>
+      <i class="iconfont icon-arrow-right"></i>
+    </div>
+    <div class="nav-item">
+      <p class="item-title">
+        <i class="iconfont icon-dingdan"></i>
+        <span>客服电话</span>
+      </p>
+      <i class="iconfont icon-arrow-right"></i>
+    </div>
   </nav>
   <!-- e 我的-列表导航 -->
 </template>
@@ -48,5 +63,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  @import "./list-nav.scss";
+@import "./list-nav.scss";
 </style>

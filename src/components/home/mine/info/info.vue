@@ -11,13 +11,14 @@
         <span>设置</span>
       </p> -->
     </div>
-    <div class="info-detail">
-      <div class="detail-portrait">
-        <img src="../../../../assets/images/master.png">
-      </div>
-      <div class="detail-user">
-        <!-- <p class="user-name">清风使者</p> -->
-        <p class="user-account">{{phone ? phone : '未登录'}}</p>
+    <div class="info-login">
+      <div class="login-tip">
+        <div class="tip-portrait">
+          <img src="../../../../assets/images/master.png">
+        </div>
+        <div class="tip-user">
+          <p class="user-account">{{phone ? phone : '登录'}}</p>
+        </div>
       </div>
     </div>
     <div class="info-bg">
@@ -39,5 +40,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  @import "./info.scss";
+@import './info.scss';
 </style>

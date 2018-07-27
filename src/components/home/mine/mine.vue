@@ -23,5 +23,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import "./mine.scss";
+@import './mine.scss';
 </style>
