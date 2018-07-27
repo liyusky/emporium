@@ -155,25 +155,24 @@
               height: 39 / $unit * $symbol;
               border: 1px solid #eb2828;
               border-radius: 4 / $unit * $symbol;
-              span {
+              p {
                 $param: (flex flex) (direction column) (justifyContent center);
                 @include flexSet($param);
                 height: 100%;
-                text-align: center;
-              }
-              span:first-of-type {
-                width: 39 / $unit * $symbol;
-                background: #eb2828;
-                color: #fff;
                 font-size: 21 / $unit * $symbol;
               }
-              span:last-of-type {
+              p:first-of-type {
+                width: 39 / $unit * $symbol;
+                text-align: center;
+                background: #eb2828;
+                color: #fff;
+              }
+              p:last-of-type {
                 padding: {
                   left: 9 / $unit * $symbol;
                   right: 9 / $unit * $symbol;
                 }
                 color: #393939;
-                font-size: 21 / $unit * $symbol;
                 font-weight: bold;
               }
             }
@@ -184,7 +183,7 @@
               width: 81 / $unit * $symbol;
               height: 36 / $unit * $symbol;
               background: #fe5649;
-              border-radius: 6 / $unit * $symbol;
+              border-top-left-radius: 9 / $unit * $symbol;
               p {
                 $param: (flex flex) (alignItems center) (justifyContent center);
                 @include flexSet($param);
