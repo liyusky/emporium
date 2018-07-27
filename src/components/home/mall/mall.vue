@@ -34,8 +34,8 @@
                   <p>市场价{{phone.originalPrice}}</p>
                 </div>
                 <div class="content-economize">
-                  <div>省</div>
-                  <div>￥{{parseFloat(phone.originalPrice - phone.nowPrice).toFixed(2)}}</div>
+                  <span>省</span>
+                  <span>￥{{parseFloat(phone.originalPrice - phone.nowPrice).toFixed(2)}}</span>
                 </div>
                 <div class="content-badge" v-if="phone.IsTested">
                   <p>{{phone.Status == '2' ? '已售完' : '已检测'}}</p>
