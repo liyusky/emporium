@@ -248,35 +248,24 @@
       $param: (flex flex) (alignItems center) (justifyContent space-between);
       @include flexSet($param);
       width: 100%;
-      height: 237 / $unit * $symbol;
+      height: 198 / $unit * $symbol;
       .flow-item {
-        $param: (flex flex) (direction column) (alignItems center) (justifyContent space-between);
+        $param: (flex flex) (direction column) (alignItems center) (justifyContent flex-end);
         @include flexSet($param);
         width: 25%;
         height: 100%;
-        padding: {
-          top: 18 / $unit * $symbol;
-          bottom: 24 / $unit * $symbol;
-        }
         .icon {
-          font-size: 75 / $unit * $symbol;
+          font-size: 54 / $unit * $symbol;
         }
         .item-tip {
-          $param: (flex flex) (direction column) (alignItems center) (justifyContent space-between);
+          $param: (flex flex) (alignItems center) (justifyContent center);
           @include flexSet($param);
           width: 100%;
           height: 90 / $unit * $symbol;
-          .tip-sequence {
-            $param: (flex flex) (alignItems center) (justifyContent center);
-            @include flexSet($param);
-            width: 42 / $unit * $symbol;
-            height: 42 / $unit * $symbol;
-            border-radius: 50%;
-            background-color: #f75258;
-            font-size: 30 / $unit * $symbol;
-            color: #ffffff;
-          }
           font-size: 24 / $unit * $symbol;
+          i {
+            font-size: 24 / $unit * $symbol;
+          }
         }
       }
     }

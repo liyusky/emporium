@@ -50,7 +50,6 @@
             <use xlink:href="#icon-waiguanjiancepingji"></use>
           </svg>
           <div class="item-tip">
-            <div class="tip-sequence">1</div>
             <p>外观检测评级</p>
           </div>
         </li>
@@ -59,16 +58,14 @@
             <use xlink:href="#icon-neibugongnengjiance"></use>
           </svg>
           <div class="item-tip">
-            <div class="tip-sequence">2</div>
             <p>内部功能检测</p>
           </div>
         </li>
         <li class="flow-item">
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-zhengjiqingjieshangjia"></use>
+            <use xlink:href="#icon-yingjiangongnengjiancha"></use>
           </svg>
           <div class="item-tip">
-            <div class="tip-sequence">3</div>
             <p>硬件功能检查</p>
           </div>
         </li>
@@ -77,7 +74,6 @@
             <use xlink:href="#icon-zhengjiqingjieshangjia"></use>
           </svg>
           <div class="item-tip">
-            <div class="tip-sequence">4</div>
             <p>整机清洁上架</p>
           </div>
         </li>

@@ -152,34 +152,27 @@
               $param: (flex flex) (alignItems center);
               @include flexSet($param);
               width: auto;
-              height: 38 / $unit * $symbol;
+              height: 39 / $unit * $symbol;
               border: 1px solid #eb2828;
               border-radius: 4 / $unit * $symbol;
-              span:first-of-type {
+              div {
                 $param: (flex flex) (direction column) (justifyContent center);
                 @include flexSet($param);
-                display: block;
-                width: 39 / $unit * $symbol;
                 height: 100%;
-                text-align: center;
-                padding: {
-                  right: 1px;
-                }
-                background: #eb2828;
-                color: #fff;
                 font-size: 21 / $unit * $symbol;
               }
-              span:last-of-type {
-                $param: (flex flex) (direction column) (justifyContent center);
-                @include flexSet($param);
-                display: block;
-                height: 100%;
+              div:first-of-type {
+                width: 39 / $unit * $symbol;
+                text-align: center;
+                background: #eb2828;
+                color: #fff;
+              }
+              div:last-of-type {
                 padding: {
                   left: 9 / $unit * $symbol;
                   right: 9 / $unit * $symbol;
                 }
                 color: #393939;
-                font-size: 21 / $unit * $symbol;
                 font-weight: bold;
               }
             }
@@ -190,7 +183,7 @@
               width: 81 / $unit * $symbol;
               height: 36 / $unit * $symbol;
               background: #fe5649;
-              border-radius: 6 / $unit * $symbol;
+              border-top-left-radius: 9 / $unit * $symbol;
               p {
                 $param: (flex flex) (alignItems center) (justifyContent center);
                 @include flexSet($param);
