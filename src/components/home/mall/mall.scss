@@ -152,28 +152,22 @@
               $param: (flex flex) (alignItems center);
               @include flexSet($param);
               width: auto;
-              height: 38 / $unit * $symbol;
+              height: 39 / $unit * $symbol;
               border: 1px solid #eb2828;
               border-radius: 4 / $unit * $symbol;
-              span:first-of-type {
+              span {
                 $param: (flex flex) (direction column) (justifyContent center);
                 @include flexSet($param);
-                display: block;
-                width: 39 / $unit * $symbol;
                 height: 100%;
                 text-align: center;
-                padding: {
-                  right: 1px;
-                }
+              }
+              span:first-of-type {
+                width: 39 / $unit * $symbol;
                 background: #eb2828;
                 color: #fff;
                 font-size: 21 / $unit * $symbol;
               }
               span:last-of-type {
-                $param: (flex flex) (direction column) (justifyContent center);
-                @include flexSet($param);
-                display: block;
-                height: 100%;
                 padding: {
                   left: 9 / $unit * $symbol;
                   right: 9 / $unit * $symbol;
