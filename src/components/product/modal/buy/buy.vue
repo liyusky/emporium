@@ -7,8 +7,8 @@
       </div>
       <div class="commodity-detail">
         <p class="detail-name">{{buy.Title}}</p>
-        <p class="detail-price">{{buy.nowPrice}}</p>
-        <p class="detail-advantage">{{buy.PaymentType}}</p>
+        <p class="detail-price">￥{{buy.nowPrice}}</p>
+        <p class="detail-advantage">{{buy.Guarantee}}</p>
       </div>
       <i class="iconfont icon-close" @click="closeModal"></i>
     </div>
@@ -16,15 +16,15 @@
       <div class="property-item">
         <p class="item-title">网络</p>
         <div class="item-attribute">
-          <div class="attribute-value active" :class="{active:true}">网络:{{buy.NetType}}</div>
+          <div class="attribute-value active"><span>网络:{{buy.NetType}}</span></div>
         </div>
       </div>
-     <!-- <div class="property-item">
+     <div class="property-item">
         <p class="item-title">版本</p>
         <div class="item-attribute">
-          <div class="attribute-value" :class="{activeShow:true}">版本:其他版本</div>
+          <div class="attribute-value"><span>版本:其他版本</span></div>
         </div>
-      </div> -->
+      </div>
       <!-- <div class="property-item">
         <p class="item-title">服务</p>
         <div class="item-attribute">
@@ -56,6 +56,9 @@ export default {
   },
   components: {
     ModalReminder
+  },
+  created () {
+    console.log(this.buy)
   },
   methods: {
     closeModal () {

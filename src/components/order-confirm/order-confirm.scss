@@ -114,10 +114,11 @@
       }
       background: #fff;
       .title-time {
+        $param: (flex flex) (alignItems center);
+        @include flexSet($param);
         font-size: 27 / $unit * $symbol;
         color: #111111;
         height: 80 / $unit * $symbol;
-        line-height: 80 / $unit * $symbol;
       }
     }
     .content-detail {
@@ -143,7 +144,8 @@
           left: 30 / $unit * $symbol;
         }
         .content-title {
-          line-height: 36 / $unit * $symbol;
+          $param: (flex flex) (alignItems center);
+          @include flexSet($param);
           font-size: 30 / $unit * $symbol;
           color: #2a2a2a;
         }
@@ -213,12 +215,13 @@
         bottom: 1px;
       }
       .leave-message {
+        $param: (flex flex) (alignItems center);
+        @include flexSet($param);
         height: 85 / $unit * $symbol;
         width: 700 / $unit * $symbol;
         background: #f4f4f4;
         font-size: 27 / $unit * $symbol;
         color: #353535;
-        line-height: 85 / $unit * $symbol;
         padding: {
           left: 15 / $unit * $symbol;
         }
@@ -304,12 +307,6 @@
               color: #2a2a2a;
             }
           }
-          .itme-introduce {
-            height: 49 / $unit * $symbol;
-            line-height: 49 / $unit * $symbol;
-            font-size: 21 / $unit * $symbol;
-            color: #9f9f9f;
-          }
         }
         .iocn {
           font-size: 39 / $unit * $symbol;
@@ -343,9 +340,10 @@
       }
     }
     .submit-button {
+      $param: (flex flex) (justifyContent center) (alignItems center);
+      @include flexSet($param);
       width: 260 / $unit * $symbol;
       height: 60 / $unit * $symbol;
-      line-height: 65 / $unit * $symbol;
       background: #eb2828;
       font-size: 27 / $unit * $symbol;
       color: #fff;

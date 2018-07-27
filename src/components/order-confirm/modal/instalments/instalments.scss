@@ -76,14 +76,16 @@
             border-radius: 9 / $unit * $symbol;
             border: 1px solid #ccc;
             .content-title {
+              $param: (flex flex) (alignItems center);
+              @include flexSet($param);
               height: 38 / $unit * $symbol;
-              line-height: 38 / $unit * $symbol;
               font-size: 27 / $unit * $symbol;
               color: #333333;
             }
             .content-tip {
+              $param: (flex flex) (alignItems center);
+              @include flexSet($param);
               height: 38 / $unit * $symbol;
-              line-height: 38 / $unit * $symbol;
               padding: {
                 left: 12 / $unit * $symbol;
               }
