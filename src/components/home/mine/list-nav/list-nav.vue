@@ -3,7 +3,7 @@
   <nav class="mine-list-nav">
     <div class="nav-item">
       <p class="item-title">
-        <i class="iconfont icon-dingdan"></i>
+        <i class="iconfont icon-shoujihuishou"></i>
         <span>手机回收</span>
       </p>
       <div>
@@ -13,28 +13,28 @@
     </div>
     <div class="nav-item">
       <p class="item-title">
-        <i class="iconfont icon-dingdan"></i>
+        <i class="iconfont icon-huishoudingdan"></i>
         <span>回收订单</span>
       </p>
       <i class="iconfont icon-arrow-right"></i>
     </div>
     <div class="nav-item" @click="gotoPage('address-manage')">
       <p class="item-title">
-        <i class="iconfont icon-dingdan"></i>
+        <i class="iconfont icon-dizhiguanli"></i>
         <span>地址管理</span>
       </p>
       <i class="iconfont icon-arrow-right"></i>
     </div>
     <div class="nav-item" @click="gotoPage('feedback')">
       <p class="item-title">
-        <i class="iconfont icon-dingdan"></i>
+        <i class="iconfont icon-yonghufankui"></i>
         <span>用户反馈</span>
       </p>
       <i class="iconfont icon-arrow-right"></i>
     </div>
     <div class="nav-item">
       <p class="item-title">
-        <i class="iconfont icon-dingdan"></i>
+        <i class="iconfont icon-kefudianhua"></i>
         <span>客服电话</span>
       </p>
       <i class="iconfont icon-arrow-right"></i>

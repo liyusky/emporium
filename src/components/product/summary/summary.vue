@@ -37,8 +37,8 @@
             </p>
           </div>
           <div class="bill-reduce">
-            <span>省</span>
-            <span>￥{{parseFloat(summary.originalPrice - summary.nowPrice).toFixed(2)}}</span>
+            <p>省</p>
+            <p>￥{{parseFloat(summary.originalPrice - summary.nowPrice).toFixed(2)}}</p>
           </div>
         </div>
         <div class="phone-installments">
