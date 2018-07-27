@@ -2,14 +2,14 @@
   <!-- s  -->
   <section class="mine-info">
     <div class="info-header">
-      <p>
+      <!-- <p>
         <i class="iconfont icon-xiaoxi"></i>
         <span>消息</span>
       </p>
       <p>
         <i class="iconfont icon-shezhi"></i>
         <span>设置</span>
-      </p>
+      </p> -->
     </div>
     <div class="info-detail">
       <div class="detail-portrait">
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'Info',
   data () {
     return {
       phone: window.id
@@ -39,5 +39,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  @import "./info.scss";
+@import './info.scss;
 </style>
