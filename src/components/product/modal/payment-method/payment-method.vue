@@ -21,7 +21,7 @@
       </div>
       <div class="way-alipay" v-for="(item, index) in paymentMethod.methods" :key="index">
         <svg class="icon" aria-hidden="true">
-          <use :xlink:href = item.icon></use>
+          <use :xlink:href="item.icon"></use>
         </svg>
         <p class="alipay-title">{{item.name}}</p>
       </div>

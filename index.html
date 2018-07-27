@@ -20,23 +20,57 @@
       }
     }
     window.paySuccess = function (finish) {
+      alert(finish)
       if (window.localStorage) {
+        alert(1)
         var id = localStorage.getItem('id')
+        alert(2)
         var token = localStorage.getItem('token')
+        alert(3)
         var OrderNo = localStorage.getItem('OrderNo')
+        alert(4)
         var origin = localStorage.getItem('origin5')
+        alert(5)
         
         window.id = id
+        alert(6)
         window.token = token
         if (finish) {
+          alert(7)
           window.payFinish = 'success'
         } else {
+          alert(8)
           window.payFinish = 'fail'
         }
         // location.reload()
         // window.vueModule.$store.commit('saveOrderNo', OrderNo)
         // window.vueModule.$router.push({name: origin})
       }
+    }
+    window.onload = function name(params) {
+      var bodyDom = document.documentElement || document.body
+      var scrollDom, summaryDom, qualityDom, sampleDom, currentTop, summaryLimit, qualityLimit, summaryBtnDom, qualityBtnDom, sampleBtnDom,
+      bodyDom.addEventListener('scroll', function (event) {
+        var event = event || window.event
+        summaryDom = document.getElementById('summary')
+        qualityDom = document.getElementById('quality')
+        sampleDom = document.getElementById('sample')
+        summaryBtnDom = document.getElementById('summary-btn')
+        qualityBtnDom = document.getElementById('quality-btn')
+        sampleBtnDom = document.getElementById('sample-btn')
+        scrollDom = document.getElementById('scroll')
+        if (!scrollDom || !summaryDom || !qualityDom || !sampleDom || !summaryBtnDom || !qualityBtnDom || !sampleBtnDom) return
+        summaryLimit = qualityDom.offsetTop - summaryDom.offsetTop
+        qualityLimit = sampleDom.offsetTop - summaryDom.offsetTop
+        currentTop = bodyDom.scrollTop
+        if (currentTop < summaryLimit) {
+          scrollDom.style.left = summaryBtnDom.offsetLeft + 'px'
+        } else if (currentTop < qualityLimit) {
+          scrollDom.style.left = qualityBtnDom.offsetLeft + 'px'
+        } else {
+          scrollDom.style.left = sampleBtnDom.offsetLeft + 'px'
+        }
+      })
     }
   </script>
 </body>

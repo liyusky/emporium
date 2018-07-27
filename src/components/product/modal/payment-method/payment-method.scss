@@ -32,18 +32,17 @@
         width: 100%;
         height: 98 / $unit * $symbol;
         .title-img {
-          width: 28 / $unit * $symbol;
-          height: 28 / $unit * $symbol;
-          margin: {
-            right: 18 / $unit * $symbol;
-          }
-          img {
-            display: block;
+          width: 33 / $unit * $symbol;
+          height: 33 / $unit * $symbol;
+          img{
             width: 100%;
             height: 100%;
           }
         }
         .title-payname {
+          margin: {
+            left: 18 / $unit * $symbol;
+          }
           font-size: 27 / $unit * $symbol;
           color: #333333;
         }
@@ -88,15 +87,19 @@
       @include flexSet($param);
       width: 100%;
       height: 98 / $unit * $symbol;
+      font-size: 27 / $unit * $symbol;
       border: {
         bottom: 1px solid #dddddd;
       }
       .icon {
-        margin: {
-          right: 18 / $unit * $symbol;
-        }
-        font-size: 27 / $unit * $symbol;
+        width: 33 / $unit * $symbol;
+        height: 33 / $unit * $symbol;
         color: #666;
+      }
+      p {
+        margin: {
+          left: 18 / $unit * $symbol;
+        }
       }
     }
   }

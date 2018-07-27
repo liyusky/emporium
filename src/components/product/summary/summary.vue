@@ -60,12 +60,6 @@
         <div class="method-selected" @click="openModal('PaymentMethod')">
           <div class="selected-tip">
             <b>支付方式</b>
-            <p class="tip-sign">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-tongzhi"></use>
-              </svg>
-              <span>请选择</span>
-            </p>
           </div>
           <i class="iconfont icon-shenglvehao"></i>
         </div>
@@ -75,7 +69,7 @@
               <use :xlink:href="item.icon"></use>
             </svg>
             <img v-else-if="!item.icon" src="../../../assets/images/master.png">
-            <span>{{item.name}}</span>
+            <p>{{item.name}}</p>
           </li>
         </ul>
       </div>
