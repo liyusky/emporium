@@ -14,7 +14,7 @@
     <div class="info-login">
       <div class="login-tip">
         <div class="tip-portrait">
-          <img src="../../../../assets/images/master.png">
+          <img :src="phone ? '../../../../assets/images/master.png' : '../../../../assets/images/logout.png'">
         </div>
         <div class="tip-user">
           <p class="user-account">{{phone ? phone : '登录'}}</p>

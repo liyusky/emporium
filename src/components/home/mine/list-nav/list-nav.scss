@@ -52,7 +52,7 @@
         border-top-left-radius: 9 / $unit * $symbol;
         border-bottom-left-radius: 6 / $unit * $symbol;
         border-bottom-right-radius: 39 / $unit * $symbol;
-        background-color: #f75258;
+        background: linear-gradient(left, #ff3060 8%, #ff0509 95%);
         color: #fff;
       }
       .iconfont {
