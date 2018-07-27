@@ -155,19 +155,19 @@
               height: 39 / $unit * $symbol;
               border: 1px solid #eb2828;
               border-radius: 4 / $unit * $symbol;
-              div {
+              p {
                 $param: (flex flex) (direction column) (justifyContent center);
                 @include flexSet($param);
                 height: 100%;
                 font-size: 21 / $unit * $symbol;
               }
-              div:first-of-type {
+              p:first-of-type {
                 width: 39 / $unit * $symbol;
                 text-align: center;
                 background: #eb2828;
                 color: #fff;
               }
-              div:last-of-type {
+              p:last-of-type {
                 padding: {
                   left: 9 / $unit * $symbol;
                   right: 9 / $unit * $symbol;
