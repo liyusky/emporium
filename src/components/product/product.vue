@@ -4,13 +4,13 @@
     <Theme :theme="theme"></Theme>
     <nav class="product-nav">
       <div class="nav-content">
-        <div class="nav-item" @click="scroll('summary', 0)">
+        <div class="nav-item" id="summary-btn" @click="scroll('summary', 0)">
           <span>商品</span>
         </div>
-        <div class="nav-item" @click="scroll('quality', 1)">
+        <div class="nav-item" id="quality-btn" @click="scroll('quality', 1)">
           <span>质检</span>
         </div>
-        <div class="nav-item" @click="scroll('sample', 2)">
+        <div class="nav-item" id="sample-btn" @click="scroll('sample', 2)">
           <span>实拍</span>
         </div>
       </div>
@@ -201,9 +201,9 @@ export default {
       this.dialogShow = false
     },
     scroll (site, index) {
+      if (this.currentTop === (document.documentElement.scrollTop || document.body.scrollTop) && this.rollSite === site) return
       let offset = document.getElementsByClassName('nav-item')[index].offsetLeft
       document.getElementById('scroll').style.left = offset + 'px'
-      if (this.currentTop === (document.documentElement.scrollTop || document.body.scrollTop) && this.rollSite === site) return
       this.rollSite = site
       let goalTop = document.getElementById(site).offsetTop - document.getElementById('summary').offsetTop
       this.currentTop = document.documentElement.scrollTop || document.body.scrollTop

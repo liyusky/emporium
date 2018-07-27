@@ -215,14 +215,14 @@
         width: 100%;
         height: 30 / $unit * $symbol;
         .selectable-item {
+          $param: (flex flex) (alignItems center);
+          @include flexSet($param);
           margin: {
             right: 30 / $unit * $symbol;
           }
           .icon {
-            margin: {
-              right: 6 / $unit * $symbol;
-            }
-            font-size: 27 / $unit * $symbol;
+            width: 30 / $unit * $symbol;
+            height: 30 / $unit * $symbol;
           }
           img {
             margin: {
@@ -232,7 +232,10 @@
             width: 27 / $unit * $symbol;
             height: 27 / $unit * $symbol;
           }
-          span {
+          p {
+            margin: {
+              left: 6 / $unit * $symbol;
+            }
             font-size: 24 / $unit * $symbol;
             color: #999999;
           }
