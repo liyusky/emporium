@@ -65,7 +65,7 @@
         </li>
         <li class="flow-item">
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-yingjiangongnengjiancha"></use>
+            <use xlink:href="#icon-zhengjiqingjieshangjia"></use>
           </svg>
           <div class="item-tip">
             <div class="tip-sequence">3</div>

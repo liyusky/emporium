@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'Info',
   data () {
     return {
       phone: window.id
