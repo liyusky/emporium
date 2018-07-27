@@ -38,7 +38,7 @@
           </div>
           <div class="bill-reduce">
             <div>省</div>
-            <div>￥{{summary.originalPrice - summary.nowPrice}}</div>
+            <div>￥{{parseFloat(summary.originalPrice - summary.nowPrice).toFixed(2)}}</div>
           </div>
         </div>
         <div class="phone-installments">
@@ -101,11 +101,11 @@ export default {
     // 轮播图
     this.$nextTick(function () {
       var mySwiper = new Swiper('.swiper-container', {
-        loop: true,
         autoplay: {
           delay: 2000,
           disableOnInteraction: false
         },
+        loop: true,
         freeMode: false,
         speed: 1000,
         pagination: {

@@ -10,7 +10,7 @@
               <img src="../../../assets/images/qulity.png">
             </div>
             <div class="information-resume">
-              <p>王群</p>
+              <p>连俊杰</p>
               <p>高级质检师</p>
             </div>
           </div>

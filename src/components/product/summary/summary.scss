@@ -91,6 +91,8 @@
           border: 1px solid #eb2828;
           border-radius: 4 / $unit * $symbol;
           div:first-of-type {
+            $param: (flex flex) (alignItems center) (justifyContent center);
+            @include flexSet($param);
             width: 39 / $unit * $symbol;
             height: 38 / $unit * $symbol;
             line-height: 36 / $unit * $symbol;
@@ -104,6 +106,8 @@
             font-weight: bold;
           }
           div:last-of-type {
+            $param: (flex flex) (alignItems center);
+            @include flexSet($param);
             padding: {
               left: 9 / $unit * $symbol;
               right: 9 / $unit * $symbol;

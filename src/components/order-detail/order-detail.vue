@@ -37,7 +37,7 @@
           <ul class="phone-list">
             <li class="list-item">
               <p class="item-title">商品总价</p>
-              <p class="item-value">￥{{orderDetail.CommodityPrice * orderDetail.rownum}}</p>
+              <p class="item-value">￥{{parseFloat(orderDetail.CommodityPrice * orderDetail.rownum).toFixed(2)}}</p>
             </li>
             <li class="list-item">
               <p class="item-title">运费</p>
@@ -103,8 +103,6 @@ export default {
       payId: null,
       noncestr: null,
       statusName: '',
-      statusLeftBtnName: '',
-      statusRightBtnName: '',
       reminderShow: false,
       dialogShow: false
     }
@@ -123,8 +121,6 @@ export default {
       let status = this.status.get(data.Status)
       this.orderDetail = data
       this.statusName = status.statusTitle
-      this.statusLeftBtnName = status.buttonLeftName
-      this.statusRightBtnName = status.buttonRightName
     }).fail(fail => {
       this.Title.text = fail.message
       this.dialogShow = true
@@ -189,17 +185,23 @@ export default {
       })
     },
     pay () {
-      alert('payid  == ' + this.payId)
-      alert('noncestr  == ' + this.noncestr)
       try {
-        alert('appJsInterface !== undefined ' + typeof (appJsInterface) !== 'undefined')
-        if (typeof (appJsInterface) !== 'undefined') {
-          alert(1)
-          appJsInterface.payWeChat(JSON.stringify({
-            prepayId: this.payId,
-            noncestr: this.noncestr
-          }))
+        if (window.localStorage) {
+          localStorage.setItem('OrderNo', this.Orderno)
+          localStorage.setItem('Origin5', 'order-detail')
         }
+        appJsInterface.payWeChat(JSON.stringify({
+          prepayId: this.payId,
+          noncestr: this.noncestr
+        }))
+        let payListener = setInterval(() => {
+          if (window.payFinish === 'success') {
+            this.state = 2
+            clearInterval(payListener)
+          } else if (window.payFinish === 'success') {
+            clearInterval(payListener)
+          }
+        }, 1000)
       } catch (error) {
         this.Title.text = '支付失败'
         this.reminderShow = true

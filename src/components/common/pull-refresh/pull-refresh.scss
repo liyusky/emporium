@@ -4,7 +4,6 @@
 .pull-refresh {
   position: relative;
   width: 100%;
-  height: auto;
   min-height: 100%;
   .refresh-list {
     position: relative;
@@ -18,7 +17,7 @@
     $param: (flex flex) (alignItems center) (justifyContent center);
     @include flexSet($param);
     width: 100%;
-    font-size: 33 / $unit * $symbol;
+    font-size: 27 / $unit * $symbol;
     color: #333333;
   }
   .tip-bottom {
