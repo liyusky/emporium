@@ -155,10 +155,11 @@
               border: 1px solid #eb2828;
               border-radius: 4 / $unit * $symbol;
               div:first-of-type {
-                $param: (flex flex) (alignItems center) (justifyContent center);
+                $param: (flex flex) (direction column) (justifyContent center);
                 @include flexSet($param);
                 width: 39 / $unit * $symbol;
                 height: 38 / $unit * $symbol;
+                text-align: center;
                 padding: {
                   right: 1px;
                 }
@@ -167,7 +168,7 @@
                 font-size: 21 / $unit * $symbol;
               }
               div:last-of-type {
-                $param: (flex flex) (alignItems center);
+                $param: (flex flex) (direction column) (justifyContent center);
                 @include flexSet($param);
                 padding: {
                   left: 9 / $unit * $symbol;
@@ -185,6 +186,7 @@
               width: 81 / $unit * $symbol;
               height: 36 / $unit * $symbol;
               background: #fe5649;
+              border-radius: 6 / $unit * $symbol;
               p {
                 $param: (flex flex) (alignItems center) (justifyContent center);
                 @include flexSet($param);

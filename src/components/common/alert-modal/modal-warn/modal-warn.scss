@@ -28,8 +28,8 @@
     border-radius: 20 / $unit * $symbol;
     transform: translateX(-50%) translateY(-50%);
     .content-title {
-      line-height: 54 / $unit * $symbol;
-      text-align: center;
+      $param: (flex flex) (justifyContent center) (alignItems center);
+      @include flexSet($param);
       font-size: 30 / $unit * $symbol;
       color: #f1f1f1;
     }

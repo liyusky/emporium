@@ -84,8 +84,9 @@
         $param: (flex flex) (justifyContent flex-start) (flexWrap wrap);
         @include flexSet($param);
         .attribute-value {
+          $param: (flex flex) (alignItems center);
+          @include flexSet($param);
           height: 58 / $unit * $symbol;
-          line-height: 56 / $unit * $symbol;
           padding: {
             left: 15 / $unit * $symbol;
             right: 15 / $unit * $symbol;
@@ -94,18 +95,15 @@
             right: 18 / $unit * $symbol;
             bottom: 14 / $unit * $symbol;
           }
-          border-radius: 8 / $unit * $symbol;
-          border: 1px solid #9c9c9c;
+          border-radius: 8 / $unit * $symbol; // border: 1px solid #9c9c9c;
+          border: 1px solid #ff5757;
+          color: #ff5757;
+          background: #ffe0da;
           font-size: 24 / $unit * $symbol;
           color: #2e3135;
           span {
             color: #ff5757;
           }
-        }
-        .active {
-          border: 1px solid #ff5757;
-          color: #ff5757;
-          background: #ffe0da;
         }
       }
     }

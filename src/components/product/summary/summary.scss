@@ -91,11 +91,10 @@
           border: 1px solid #eb2828;
           border-radius: 4 / $unit * $symbol;
           div:first-of-type {
-            $param: (flex flex) (alignItems center) (justifyContent center);
+            $param: (flex flex) (direction column) (justifyContent center);
             @include flexSet($param);
             width: 39 / $unit * $symbol;
             height: 38 / $unit * $symbol;
-            line-height: 36 / $unit * $symbol;
             padding: {
               right: 1px;
             }
@@ -106,13 +105,12 @@
             font-weight: bold;
           }
           div:last-of-type {
-            $param: (flex flex) (alignItems center);
+            $param: (flex flex) (direction column) (justifyContent center);
             @include flexSet($param);
             padding: {
               left: 9 / $unit * $symbol;
               right: 9 / $unit * $symbol;
             }
-            line-height: 36 / $unit * $symbol;
             color: #393939;
             font-size: 21 / $unit * $symbol;
             font-weight: bold;
@@ -219,20 +217,18 @@
             right: 30 / $unit * $symbol;
           }
           .icon {
-            margin: {
-              right: 6 / $unit * $symbol;
-            }
-            font-size: 27 / $unit * $symbol;
+            width: 27 / $unit * $symbol;
+            height: 27 / $unit * $symbol;
           }
           img {
-            margin: {
-              right: 6 / $unit * $symbol;
-            }
             vertical-align: middle;
             width: 27 / $unit * $symbol;
             height: 27 / $unit * $symbol;
           }
           span {
+            margin: {
+              left: 6 / $unit * $symbol;
+            }
             font-size: 24 / $unit * $symbol;
             color: #999999;
           }

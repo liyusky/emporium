@@ -37,7 +37,7 @@
           margin: {
             right: 18 / $unit * $symbol;
           }
-          img{
+          img {
             display: block;
             width: 100%;
             height: 100%;
@@ -67,14 +67,16 @@
             left: 10 / $unit * $symbol;
           }
           .item-title {
+            $param: (flex flex) (alignItems center);
+            @include flexSet($param);
             height: 35 / $unit * $symbol;
-            line-height: 35 / $unit * $symbol;
             font-size: 27 / $unit * $symbol;
             color: #333333;
           }
           .item-tip {
+            $param: (flex flex) (alignItems center);
+            @include flexSet($param);
             height: 35 / $unit * $symbol;
-            line-height: 33 / $unit * $symbol;
             font-size: 24 / $unit * $symbol;
             color: #999999;
           }

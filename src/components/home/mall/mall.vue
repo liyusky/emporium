@@ -24,7 +24,7 @@
                 <div class="content-shop-picture">
                   <img :src="phone.Icon">
                 </div>
-                <p class="content-title">{{phone.Title}} {{phone.ModelNo}}</p>
+                <p class="content-title">{{phone.Title}}</p>
                 <div class="content-parameter">
                   <div class="parameter-item">{{phone.Memory}}</div>
                   <div class="parameter-item">{{phone.Degree == '100' ? '全' : phone.Degree + '成'}}新</div>

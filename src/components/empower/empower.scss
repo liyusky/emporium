@@ -82,9 +82,10 @@
         font-size: 36 / $unit * $symbol;
         color: #000;
         background: transparent;
-        &::-webkit-input-placeholder {
-          color: #b5b5b5;
-        }
+      }
+      input::-webkit-input-placeholder {
+        font-size: 30 / $unit * $symbol;
+        color: #b5b5b5;
       }
       .item-password-switch {
         width: 40 / $unit * $symbol;
