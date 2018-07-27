@@ -47,9 +47,9 @@
         // window.vueModule.$router.push({name: origin})
       }
     }
-    window.onload = function name(params) {
+    window.onload = function () {
       var bodyDom = document.documentElement || document.body
-      var scrollDom, summaryDom, qualityDom, sampleDom, currentTop, summaryLimit, qualityLimit, summaryBtnDom, qualityBtnDom, sampleBtnDom,
+      var scrollDom, summaryDom, qualityDom, sampleDom, currentTop, summaryLimit, qualityLimit, summaryBtnDom, qualityBtnDom, sampleBtnDom
       bodyDom.addEventListener('scroll', function (event) {
         var event = event || window.event
         summaryDom = document.getElementById('summary')
@@ -71,6 +71,12 @@
           scrollDom.style.left = sampleBtnDom.offsetLeft + 'px'
         }
       })
+    }
+
+    try {
+      appJsInterface.sendTokenToHtml()
+    } catch (error) {
+      console.log(error)
     }
   </script>
 </body>
