@@ -1,7 +1,7 @@
 <template>
   <!-- s 我的-列表导航 -->
   <nav class="mine-list-nav">
-    <div class="nav-item">
+    <div class="nav-item" @click="gotoPage()">
       <p class="item-title">
         <i class="iconfont icon-shoujihuishou"></i>
         <span>手机回收</span>
@@ -11,7 +11,7 @@
         <i class="iconfont icon-arrow-right"></i>
       </div>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" @click="gotoPage()">
       <p class="item-title">
         <i class="iconfont icon-huishoudingdan"></i>
         <span>回收订单</span>
@@ -25,14 +25,14 @@
       </p>
       <i class="iconfont icon-arrow-right"></i>
     </div>
-    <div class="nav-item" @click="gotoPage('feedback')">
+    <div class="nav-item" @click="gotoPage()">
       <p class="item-title">
         <i class="iconfont icon-yonghufankui"></i>
         <span>用户反馈</span>
       </p>
       <i class="iconfont icon-arrow-right"></i>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" @click="gotoPage()">
       <p class="item-title">
         <i class="iconfont icon-kefudianhua"></i>
         <span>客服电话</span>
@@ -52,6 +52,10 @@ export default {
   },
   methods: {
     gotoPage (page) {
+      if (!page) {
+        this.$emit('SHOW_MODAL_EVENT')
+        return
+      }
       this.saveOrigin2('mine')
       this.$router.push({
         name: page
