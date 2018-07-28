@@ -8,12 +8,14 @@
       <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3)">待收货</button>
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
-    <section class="order-classify" ref="orders">
-      <OrderWithout v-show="!tips.length"></OrderWithout>
-      <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-        <OrderList :tips="tips" :statusList="statusList" :timeArr="timeArr"></OrderList>
-      </PullRefresh>
-    </section>
+      <section class="order-classify" ref="orders">
+        <v-touch class="classify-touch" @swipeleft="onSwipeLeft()" @swiperight="onSwipeRight()">
+          <OrderWithout v-show="!tips.length"></OrderWithout>
+          <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+            <OrderList :tips="tips" :statusList="statusList" :timeArr="timeArr"></OrderList>
+          </PullRefresh>
+        </v-touch>
+      </section>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
 </template>
@@ -59,7 +61,23 @@ export default {
         '9': {
           statusTitle: '已取消订单'
         }
-      }
+      },
+      slideStatus: {
+        '-1': {
+          slideNum: 0
+        },
+        '1': {
+          slideNum: 1
+        },
+        '2': {
+          slideNum: 2
+        },
+        '3': {
+          slideNum: 3
+        }
+      },
+      statusArr: [-1, 1, 2, 3],
+      statusArrKey: 0
     }
   },
   created () {
@@ -107,6 +125,20 @@ export default {
     },
     closeModal () {
       this.dialogShow = false
+    },
+    onSwipeLeft () {
+      this.statusArrKey = this.slideStatus[this.status].slideNum
+      this.statusArrKey--
+      if (this.statusArrKey < 0) this.statusArrKey = 3
+      this.status = this.statusArr[this.statusArrKey]
+      this.getData(this.status)
+    },
+    onSwipeRight () {
+      this.statusArrKey = this.slideStatus[this.status].slideNum
+      this.statusArrKey++
+      if (this.statusArrKey > 3) this.statusArrKey = 0
+      this.status = this.statusArr[this.statusArrKey]
+      this.getData(this.status)
     },
     ...mapMutations(['changeStatusNum', 'saveOrigin4'])
   },
