@@ -16,7 +16,7 @@
         <div class="tip-portrait">
           <img src="../../../../assets/images/master.png">
         </div>
-        <div class="tip-user">
+        <div class="tip-user"  @click="gotoPage('empower')">
           <p class="user-account">{{phone ? phone : '登录'}}</p>
         </div>
       </div>
@@ -34,6 +34,12 @@ export default {
   data () {
     return {
       phone: window.id
+    }
+  },
+  methods: {
+    gotoPage (page) {
+      if (this.phone) return
+      this.$router.push({name: page})
     }
   }
 }
