@@ -74,7 +74,10 @@
     }
 
     try {
-      appJsInterface.sendTokenToHtml()
+      alert(appJsInterface.sendTokenToHtml())
+      var basicData = appJsInterface.sendTokenToHtml().split('-')
+      id = basicData[0]
+      token = basicData[1]
     } catch (error) {
       console.log(error)
     }
