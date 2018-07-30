@@ -7,7 +7,6 @@
     top: (93 + 84) / $unit * $symbol;
   }
   background: #f4f4f4;
-  overflow-y: auto;
   .order-tabbar {
     $param: (flex flex) (justifyContent space-around);
     @include flexSet($param);
@@ -55,10 +54,11 @@
     padding: {
       top: 15 / $unit * $symbol;
     }
-    overflow-y: auto;
     .classify-touch {
+      touch-action: pan-y!important;
       width: 100%;
       height: 100%;
+      overflow-y: auto;
     }
   }
 }

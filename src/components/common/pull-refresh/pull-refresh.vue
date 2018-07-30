@@ -64,7 +64,8 @@ export default {
     }
   },
   mounted () {
-    this.parentDom = this.$parent.$refs[this.parent]
+    this.parentDom = document.getElementById(this.parent)
+    // this.parentDom = this.$parent.$refs[this.parent]
   }
 }
 </script>

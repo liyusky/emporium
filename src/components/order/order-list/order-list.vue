@@ -43,6 +43,7 @@ import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
 import { mapMutations } from 'vuex'
 export default {
+  props: ['tips', 'timeArr', 'statusList'],
   data () {
     return {
       titleTime: null,
@@ -54,7 +55,6 @@ export default {
       index: null
     }
   },
-  props: ['tips', 'statusList', 'timeArr'],
   components: {
     ModalDialog,
     ModalReminder
