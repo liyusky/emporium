@@ -8,14 +8,14 @@
   z-index: 999;
   width: 100%;
   padding: {
-    left: 25 / $unit * $symbol;
-    right: 25 / $unit * $symbol;
+    left: 24 / $unit * $symbol;
+    right: 24 / $unit * $symbol;
   }
   background-color: #fff;
   .payment-title {
     $param: (flex flex) (justifyContent center) (alignItems center);
     @include flexSet($param);
-    height: 113 / $unit * $symbol;
+    height: 114 / $unit * $symbol;
     p {
       font-size: 30 / $unit * $symbol;
       color: #000000;

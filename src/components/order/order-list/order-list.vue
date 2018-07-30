@@ -78,7 +78,7 @@ export default {
     },
     judgeCancel (status) {
       let result = true
-      if (status === 3 || status === 9) result = false
+      if (status > 1) result = false
       return result
     },
     judgePay (status) {

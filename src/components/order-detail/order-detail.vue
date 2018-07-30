@@ -94,6 +94,9 @@ export default {
         [3, {
           statusTitle: '已发货'
         }],
+        [8, {
+          statusTitle: '已取消'
+        }],
         [9, {
           statusTitle: '已取消订单'
         }]
@@ -142,7 +145,7 @@ export default {
     },
     judgeCancel () {
       let result = true
-      if (this.state === 3 || this.state === 9) result = false
+      if (this.state > 1) result = false
       return result
     },
     judgePay () {

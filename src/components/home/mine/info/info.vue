@@ -14,9 +14,10 @@
     <div class="info-login">
       <div class="login-tip">
         <div class="tip-portrait">
-          <img :src="phone ? '../../../../assets/images/master.png' : '../../../../assets/images/logout.png'">
+          <img src="../../../../assets/images/master.png" v-if="phone">
+          <img src="../../../../assets/images/logout.png" v-if="!phone">
         </div>
-        <div class="tip-user"  @click="gotoPage('empower')">
+        <div class="tip-user" @click="gotoPage('empower')">
           <p class="user-account">{{phone ? phone : '登录'}}</p>
         </div>
       </div>
@@ -29,6 +30,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'Info',
   data () {
@@ -38,9 +40,11 @@ export default {
   },
   methods: {
     gotoPage (page) {
-      if (this.phone) return
+      if (window.id) return
+      this.saveOrigin4('mine')
       this.$router.push({name: page})
-    }
+    },
+    ...mapMutations(['saveOrigin4'])
   }
 }
 </script>

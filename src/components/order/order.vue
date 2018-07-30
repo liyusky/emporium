@@ -56,6 +56,9 @@ export default {
         '3': {
           statusTitle: '已发货'
         },
+        '8': {
+          statusTitle: '已取消'
+        },
         '9': {
           statusTitle: '已取消订单'
         }

@@ -8,7 +8,7 @@
       </div>
       <p class="header-item" v-show="!state.show.theme" @click="toggleState(null)">{{state.text.title}}</p>
       <p class="header-title" v-show="state.show.theme">{{state.text.title}}</p>
-      <div class="header-right" @click="goback">
+      <div class="header-right" id="back-btn" @click="goback">
         <i class="iconfont icon-close"></i>
       </div>
     </header>
