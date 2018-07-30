@@ -1,5 +1,5 @@
 <template>
-  <section class="index" id="index">
+  <section id="index" class="index">
     <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'index'">
       <header class="index-header">
         <img src="../../../assets/images/header.png">

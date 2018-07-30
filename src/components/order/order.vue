@@ -9,8 +9,8 @@
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
       <transition name="fade">
-        <section class="order-classify" id="orders">
-          <v-touch class="classify-touch" @swipeleft="onSwipeLeft()" @swiperight="onSwipeRight()">
+        <section class="order-classify">
+          <v-touch  id="orders" class="classify-touch" @swipeleft="onSwipeLeft()" @swiperight="onSwipeRight()">
             <OrderWithout v-show="!tips.length"></OrderWithout>
             <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
               <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
@@ -62,7 +62,7 @@ export default {
           statusTitle: '已发货'
         },
         '8': {
-          statusTitle: '已发货'
+          statusTitle: '已取消'
         },
         '9': {
           statusTitle: '已取消订单'

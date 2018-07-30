@@ -19,6 +19,3 @@ window.vueModule = new Vue({
   store,
   render: f => f(App)
 })
-
-window.token = null
-window.id = null

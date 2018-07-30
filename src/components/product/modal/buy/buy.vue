@@ -74,7 +74,7 @@ export default {
           CustermerId: window.id,
           commodityId: this.buy.Id,
           PayType: 0,
-          DeliverType: 0,
+          DeliverType: 1,
           DeliverPrice: 0,
           OtherCost: 0,
           CommodityPrice: this.buy.nowPrice

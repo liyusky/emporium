@@ -109,12 +109,13 @@
     }
   }
   .rightbuy-button {
-    $param: (flex flex) (justifyContent center) (alignItems center);
+    $param: (flex flex) (direction column) (justifyContent center) (alignItems center);
     @include flexSet($param);
     width: 100%;
-    height: 92 / $unit * $symbol;
+    height: 93 / $unit * $symbol;
     background: #eb2828;
     font-size: 30 / $unit * $symbol;
+    text-align: center;
     color: #fff;
   }
 }
