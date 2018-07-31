@@ -63,7 +63,6 @@ window.init = function () {
         console.log(login_data)
       }
     }
-
   } catch (error) {
     console.log(error)
   }
