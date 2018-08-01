@@ -4,12 +4,12 @@
   width: 100vw;
   height: 100vh;
   padding: {
-    top: (93 + 84) / $unit * $symbol;
+    top: (93+ 36 + 84) / $unit * $symbol;
   }
   background: #f4f4f4;
   .order-tabbar {
     position: fixed;
-    top: 93 / $unit * $symbol;
+    top: (93 + 36) / $unit * $symbol;
     left: 0;
     right: 0;
     z-index: 100;

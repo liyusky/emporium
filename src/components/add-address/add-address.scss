@@ -3,7 +3,7 @@
 @import '../../../dependencies/sass/_btn.scss';
 .add-address{
   padding: {
-    top: 129 / $unit * $symbol;
+    top: (93 + 36) / $unit * $symbol;
   }
 }
 

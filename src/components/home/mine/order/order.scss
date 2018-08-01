@@ -47,6 +47,7 @@
     }
     background-color: #fff;
     .menu-item {
+      position: relative;
       $param: (flex flex) (direction column) (alignItems center) (justifyContent space-around);
       @include flexSet($param);
       width: 25%;
@@ -61,6 +62,26 @@
       p {
         font-size: 27 / $unit * $symbol;
         color: #686868;
+      }
+      .item-badge {
+        position: absolute;
+        top: 21 / $unit * $symbol;
+        right: 21 / $unit * $symbol;
+        z-index: 99;
+        $param: (flex flex) (alignItems center) (justifyContent center);
+        @include flexSet($param);
+        // width: 33 / $unit * $symbol;
+        height: 33 / $unit * $symbol;
+        padding: {
+          left: 9 / $unit * $symbol;
+          right: 9 / $unit * $symbol;
+        }
+        background: red;
+        border-radius: 15 / $unit * $symbol;
+        // text-align: center;
+        font-size: 15 / $unit * $symbol;
+        color: #fff;
+
       }
     }
   }

@@ -13,24 +13,28 @@
           <use xlink:href="#icon-daifukuan"></use>
         </svg>
         <p>待付款</p>
+        <!-- <div class="item-badge">1</div> -->
       </div>
       <div class="menu-item" @click="gotoPage(2)">
        <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-daifahuo"></use>
         </svg>
         <p>待发货</p>
+        <!-- <div class="item-badge">12</div> -->
       </div>
       <div class="menu-item" @click="gotoPage(3)">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-daishouhuo"></use>
         </svg>
         <p>待收货</p>
+        <!-- <div class="item-badge">12</div> -->
       </div>
       <div class="menu-item" @click="gotoPage(-1)">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-quanbudingdan"></use>
         </svg>
         <p>全部订单</p>
+        <!-- <div class="item-badge">12</div> -->
       </div>
     </nav>
   </section>

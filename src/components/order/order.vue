@@ -2,10 +2,10 @@
   <section class="order">
     <Theme :theme="theme"></Theme>
     <section class="order-tabbar">
-      <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1, 0)">全部</button>
       <button class="tabbar-item" :class="{active:status == 1}" @click="switchTips(1, 1)">待付款</button>
       <button class="tabbar-item" :class="{active:status == 2}" @click="switchTips(2, 2)">待发货</button>
       <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3, 3)">待收货</button>
+      <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1, 0)">全部</button>
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
     <section class="order-classify" id="orders">
