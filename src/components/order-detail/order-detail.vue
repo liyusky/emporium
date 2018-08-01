@@ -199,7 +199,7 @@ export default {
             noncestr: this.noncestr
           }))
         } else {
-          window.webkit.messageHandlers.popWeichatPay.postMessage(this.payId)
+          window.webkit.messageHandlers.popWeichatPay.postMessage((JSON.stringify(this.payId)))
         }
         let payListener = setInterval(() => {
           if (window.payFinish === 'success') {

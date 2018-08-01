@@ -1,5 +1,6 @@
 window.token = null
 window.id = null
+window.phoneno = null
 window.kill = function () {
   var btnDom = document.getElementById('back-btn')
   if (btnDom) {
@@ -55,6 +56,7 @@ window.init = function () {
       var basicData = appJsInterface.sendTokenToHtml().split('-')
       window.id = basicData[0]
       window.token = basicData[1]
+      window.phoneno = basicData[2]
     } else { //ios
       window.returnLoginData = function(login_data) {
         var data = login_data.split('-')

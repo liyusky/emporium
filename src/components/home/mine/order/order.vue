@@ -13,28 +13,28 @@
           <use xlink:href="#icon-daifukuan"></use>
         </svg>
         <p>待付款</p>
-        <!-- <div class="item-badge">1</div> -->
+        <div class="item-badge" v-show="affirmLogin && payNum">{{payNum}}</div>
       </div>
       <div class="menu-item" @click="gotoPage(2)">
        <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-daifahuo"></use>
         </svg>
         <p>待发货</p>
-        <!-- <div class="item-badge">12</div> -->
+        <div class="item-badge" v-show="affirmLogin && sendNum">{{sendNum}}</div>
       </div>
       <div class="menu-item" @click="gotoPage(3)">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-daishouhuo"></use>
         </svg>
         <p>待收货</p>
-        <!-- <div class="item-badge">12</div> -->
+        <div class="item-badge" v-show="affirmLogin && receiveNum">{{receiveNum}}</div>
       </div>
       <div class="menu-item" @click="gotoPage(-1)">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-quanbudingdan"></use>
         </svg>
         <p>全部订单</p>
-        <!-- <div class="item-badge">12</div> -->
+        <div class="item-badge" v-show="affirmLogin && allNum">{{allNum}}</div>
       </div>
     </nav>
   </section>
@@ -43,10 +43,57 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import Http from '../../../../class/http.class.js'
 export default {
   name: 'Order',
   data () {
-    return {}
+    return {
+      affirmLogin: window.id,
+      allNum: '',
+      payNum: '',
+      sendNum: '',
+      receiveNum: ''
+    }
+  },
+  created () {
+    if (window.id) {
+      Http.send({
+        url: 'orderList',
+        data: {
+          custermerId: window.id,
+          status: -1
+        }
+      }).success(data => {
+        this.allNum = data.length
+        Http.send({
+          url: 'orderList',
+          data: {
+            custermerId: window.id,
+            status: 1
+          }
+        }).success(data => {
+          this.payNum = data.length
+          Http.send({
+            url: 'orderList',
+            data: {
+              custermerId: window.id,
+              status: 2
+            }
+          }).success(data => {
+            this.sendNum = data.length
+            Http.send({
+              url: 'orderList',
+              data: {
+                custermerId: window.id,
+                status: 2
+              }
+            }).success(data => {
+              this.receiveNum = data.length
+            })
+          })
+        })
+      })
+    }
   },
   methods: {
     gotoPage (status) {
