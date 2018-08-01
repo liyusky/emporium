@@ -85,10 +85,11 @@ export default {
               url: 'orderList',
               data: {
                 custermerId: window.id,
-                status: 2
+                status: 3
               }
             }).success(data => {
               this.receiveNum = data.length
+              console.log(data)
             })
           })
         })
