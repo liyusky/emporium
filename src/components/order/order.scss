@@ -83,15 +83,15 @@
 .fade-enter{
   transform: translateX(100%);
 }
-.fade-leave-to{
-	transform: translateX(-100);
-}
-.fade2-enter-active,.fade2-leave-active{
+// .fade-leave-to{
+// 	transform: translateX(-100);
+// }
+.fade2-leave-active{
 	transition: all .3s;
 }
-.fade2-enter{
-  transform: translateX(-100%);
-}
+// .fade2-enter{
+//   transform: translateX(-100%);
+// }
 .fade2-leave-to{
-	transform: translateX(100%);
+	transform: translateX(-100%);
 }

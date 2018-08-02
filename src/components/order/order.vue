@@ -10,23 +10,23 @@
     </section>
     <section class="order-classify" id="orders">
       <v-touch  class="classify-touch" @swipeleft="onSwipeLeft()" @swiperight="onSwipeRight()">
+        <transition :name="fade">
+          <div class="classify-item" v-show="isShow">
+            <OrderWithout v-show="!tips.length"></OrderWithout>
+            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+            </PullRefresh>
+          </div>
+        </transition>
+        <transition :name="fade2">
+          <div class="classify-item" v-show="!isShow">
+            <OrderWithout v-show="!tips.length"></OrderWithout>
+            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+            </PullRefresh>
+          </div>
+        </transition>
         <!-- <transition :name="fade">
-          <div class="classify-item" v-show="status == -1">
-            <OrderWithout v-show="!tips.length"></OrderWithout>
-            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
-            </PullRefresh>
-          </div>
-        </transition>
-        <transition :name="fade">
-          <div class="classify-item" v-show="status == 1">
-            <OrderWithout v-show="!tips.length"></OrderWithout>
-            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
-            </PullRefresh>
-          </div>
-        </transition>
-        <transition :name="fade">
           <div  class="classify-item" v-show="status == 2">
             <OrderWithout v-show="!tips.length"></OrderWithout>
             <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
@@ -42,10 +42,10 @@
             </PullRefresh>
           </div>
         </transition> -->
-        <OrderWithout v-show="!tips.length"></OrderWithout>
+        <!-- <OrderWithout v-show="!tips.length"></OrderWithout>
         <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
           <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
-        </PullRefresh>
+        </PullRefresh> -->
       </v-touch>
     </section>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
@@ -74,7 +74,7 @@ export default {
       },
       status: -1,
       tips: [],
-      fade: 'fade',
+      isShow: true,
       page: 1,
       dialogShow: false,
       animationShow: false,
@@ -119,6 +119,10 @@ export default {
         this.statusArrKey = statusKey
         this.status = status
         this.getData(this.status)
+        this.isShow = false
+        setTimeout(() => {
+          this.isShow = true
+        }, 10)
       }
     },
     getData (status) {
