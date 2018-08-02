@@ -238,7 +238,7 @@ export default {
   components: {
     Theme,
     ModalReminder,
-    ModalDialog,
+    ModalDialog
   },
   computed: {
     ...mapState(['productId'])

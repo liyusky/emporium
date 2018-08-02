@@ -44,9 +44,6 @@
     </footer>
     <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
-    <Modal v-show="modal">
-      <RepaymentDetail @CLOSE_MODAL_EVENT="closeModal"></RepaymentDetail>
-    </Modal>
   </section>
 </template>
 <script>
@@ -54,8 +51,6 @@
 import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
-import Modal from '../common/modal/modal.vue'
-import RepaymentDetail from './repayment-detail/repayment-detail.vue'
 export default {
   name: 'InstallmentDetail',
   data () {
@@ -71,9 +66,7 @@ export default {
   components: {
     Theme,
     ModalReminder,
-    Modal,
-    ModalDialog,
-    RepaymentDetail
+    ModalDialog
   }
 }
 </script>

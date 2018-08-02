@@ -1,6 +1,6 @@
-window.token = null
-window.id = null
-window.phoneno = null
+window.token = 'f8c976155bd44719c3a8a148272a7711'
+window.id = '10002'
+window.phoneno = '15921769360'
 window.kill = function () {
   var btnDom = document.getElementById('back-btn')
   if (btnDom) {
