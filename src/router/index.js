@@ -33,7 +33,6 @@ const OrderConfirm = () => import(/* webpackChunkName: "order-confirm" */ '../co
 const OrderDetail = () => import(/* webpackChunkName: "order-detail" */ '../components/order-detail/order-detail.vue')
 const FamiliarQuestion = () => import(/* webpackChunkName: "familiar-question" */ '../components/familiar-question/familiar-question.vue')
 const Empower = () => import(/* webpackChunkName: "empower" */ '../components/empower/empower.vue')
-const Installment = () => import(/* webpackChunkName: "installment" */ '../components/installment/installment.vue')
 export default new Router({
   routes: [
     {
@@ -98,11 +97,6 @@ export default new Router({
       path: '/empower',
       name: 'empower',
       component: Empower
-    },
-    {
-      path: '/installment',
-      name: 'installment',
-      component: Installment
     }
   ]
 })
