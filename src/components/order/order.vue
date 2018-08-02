@@ -173,21 +173,6 @@ export default {
     },
     ...mapMutations(['changeStatusNum', 'saveOrigin4'])
   },
-  // watch: {
-  //   statusArrKey (newNum, oldNum) {
-  //     console.log(newNum)
-  //     console.log(oldNum)
-  //     if (newNum - oldNum === 3) {
-  //       this.fade = 'fade2'
-  //       return
-  //     }
-  //     if (newNum - oldNum === -3) {
-  //       this.fade = 'fade'
-  //       return
-  //     }
-  //     this.fade = newNum > oldNum ? 'fade' : 'fade2'
-  //   }
-  // },
   components: {
     Theme,
     OrderList,

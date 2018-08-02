@@ -60,6 +60,7 @@
     </footer>
     <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
+
   </section>
 </template>
 <script>
@@ -77,6 +78,7 @@ export default {
         goal: null,
         params: {}
       },
+      modal: true,
       Title: {
         text: ''
       },
@@ -93,6 +95,9 @@ export default {
         }],
         [3, {
           statusTitle: '已发货'
+        }],
+        [4, {
+          statusTitle: '已收货'
         }],
         [8, {
           statusTitle: '已取消'
@@ -142,6 +147,7 @@ export default {
     closeModal () {
       this.reminderShow = false
       this.dialogShow = false
+      this.modal = false
     },
     judgeCancel () {
       let result = true
@@ -232,7 +238,7 @@ export default {
   components: {
     Theme,
     ModalReminder,
-    ModalDialog
+    ModalDialog,
   },
   computed: {
     ...mapState(['productId'])
