@@ -1,5 +1,6 @@
-@import '../../../dependencies/sass/_unit.scss';
 @import '../../../dependencies/sass/_flex.scss';
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_btn.scss';
 .installment {
   width: 100vw;
   height: 100vh;
@@ -164,7 +165,7 @@
         color: #353535;
       }
       .due-price {
-        param: (flex flex) (alignItems center);
+        $param: (flex flex) (alignItems center);
         @include flexSet($param);
         height: 36 / $unit * $symbol;
         span {
