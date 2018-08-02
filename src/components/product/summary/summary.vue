@@ -68,7 +68,7 @@
             <svg class="icon" aria-hidden="true" v-if="item.icon">
               <use :xlink:href="item.icon"></use>
             </svg>
-            <img v-else-if="!item.icon" src="../../../assets/images/master.png">
+            <img v-else-if="!item.icon" src="../../../assets/images/receipt-master.png">
             <p>{{item.name}}</p>
           </li>
         </ul>

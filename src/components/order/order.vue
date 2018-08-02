@@ -2,17 +2,51 @@
   <section class="order">
     <Theme :theme="theme"></Theme>
     <section class="order-tabbar">
-      <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1)">全部</button>
-      <button class="tabbar-item" :class="{active:status == 1}" @click="switchTips(1)">待付款</button>
-      <button class="tabbar-item" :class="{active:status == 2}" @click="switchTips(2)">待发货</button>
-      <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3)">待收货</button>
+      <button class="tabbar-item" :class="{active:status == 1}" @click="switchTips(1, 1)">待付款</button>
+      <button class="tabbar-item" :class="{active:status == 2}" @click="switchTips(2, 2)">待发货</button>
+      <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3, 3)">待收货</button>
+      <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1, 0)">全部</button>
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
-    <section class="order-classify" ref="orders">
-      <OrderWithout v-show="!tips.length"></OrderWithout>
-      <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-        <OrderList :tips="tips" :statusList="statusList" :timeArr="timeArr"></OrderList>
-      </PullRefresh>
+    <section class="order-classify" id="orders">
+      <v-touch  class="classify-touch" @swipeleft="onSwipeLeft()" @swiperight="onSwipeRight()">
+        <!-- <transition :name="fade">
+          <div class="classify-item" v-show="status == -1">
+            <OrderWithout v-show="!tips.length"></OrderWithout>
+            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+            </PullRefresh>
+          </div>
+        </transition>
+        <transition :name="fade">
+          <div class="classify-item" v-show="status == 1">
+            <OrderWithout v-show="!tips.length"></OrderWithout>
+            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+            </PullRefresh>
+          </div>
+        </transition>
+        <transition :name="fade">
+          <div  class="classify-item" v-show="status == 2">
+            <OrderWithout v-show="!tips.length"></OrderWithout>
+            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+            </PullRefresh>
+          </div>
+        </transition>
+        <transition :name="fade">
+          <div  class="classify-item" v-show="status == 3">
+            <OrderWithout v-show="!tips.length"></OrderWithout>
+            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+            </PullRefresh>
+          </div>
+        </transition> -->
+        <OrderWithout v-show="!tips.length"></OrderWithout>
+        <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+          <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+        </PullRefresh>
+      </v-touch>
     </section>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
@@ -40,10 +74,12 @@ export default {
       },
       status: -1,
       tips: [],
+      fade: 'fade',
       page: 1,
       dialogShow: false,
+      animationShow: false,
       timeArr: [],
-      statusList: {
+      statusNameList: {
         '0': {
           statusTitle: '待提交'
         },
@@ -57,15 +93,17 @@ export default {
           statusTitle: '已发货'
         },
         '4': {
-          statusTitle: '已收货'
+          statusTitle: '已收获'
         },
         '8': {
-          statusTitle: '已取消'
+          statusTitle: '已取消订单'
         },
         '9': {
           statusTitle: '已取消订单'
         }
-      }
+      },
+      statusArr: [-1, 1, 2, 3],
+      statusArrKey: 0
     }
   },
   created () {
@@ -75,9 +113,10 @@ export default {
     this.saveOrigin4('order')
   },
   methods: {
-    switchTips (status) {
-      this.changeStatusNum(status)
+    switchTips (status, statusKey) {
       if (this.status !== status) {
+        this.changeStatusNum(status)
+        this.statusArrKey = statusKey
         this.status = status
         this.getData(this.status)
       }
@@ -113,6 +152,20 @@ export default {
     },
     closeModal () {
       this.dialogShow = false
+    },
+    onSwipeLeft () {
+      this.tips = []
+      this.statusArrKey++
+      if (this.statusArrKey > 3) this.statusArrKey = 0
+      this.status = this.statusArr[this.statusArrKey]
+      this.getData(this.status)
+    },
+    onSwipeRight () {
+      this.tips = []
+      this.statusArrKey--
+      if (this.statusArrKey < 0) this.statusArrKey = 3
+      this.status = this.statusArr[this.statusArrKey]
+      this.getData(this.status)
     },
     ...mapMutations(['changeStatusNum', 'saveOrigin4'])
   },

@@ -1,5 +1,6 @@
-window.token = 'e3116e607a3051738b036315fe5ce1ec'
-window.id = '10002'
+window.token = null
+window.id = null
+window.phoneno = null
 window.kill = function () {
   var btnDom = document.getElementById('back-btn')
   if (btnDom) {
@@ -51,9 +52,19 @@ window.bindScroll = function () {
 }
 window.init = function () {
   try {
-    var basicData = appJsInterface.sendTokenToHtml().split('-')
-    window.id = basicData[0]
-    window.token = basicData[1]
+    if (typeof (appJsInterface) != "undefined") { //android
+      var basicData = appJsInterface.sendTokenToHtml().split('-')
+      window.id = basicData[0]
+      window.token = basicData[1]
+      window.phoneno = basicData[2]
+    } else { //ios
+      window.returnLoginData = function(login_data) {
+        var data = login_data.split('-')
+        window.id = data[0]
+        window.token = data[1]
+        window.phoneno = basicData[2]
+      }
+    }
   } catch (error) {
     console.log(error)
   }

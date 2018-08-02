@@ -203,10 +203,14 @@ export default {
           localStorage.setItem('OrderNo', this.Orderno)
           localStorage.setItem('Origin5', 'order-detail')
         }
-        appJsInterface.payWeChat(JSON.stringify({
-          prepayId: this.payId,
-          noncestr: this.noncestr
-        }))
+        if (typeof (appJsInterface) !== 'undefined') {
+          appJsInterface.payWeChat(JSON.stringify({
+            prepayId: this.payId,
+            noncestr: this.noncestr
+          }))
+        } else {
+          window.webkit.messageHandlers.popWeichatPay.postMessage((JSON.stringify(this.payId)))
+        }
         let payListener = setInterval(() => {
           if (window.payFinish === 'success') {
             this.state = 2
