@@ -89,7 +89,6 @@ export default {
               }
             }).success(data => {
               this.receiveNum = data.length
-              console.log(data)
             })
           })
         })

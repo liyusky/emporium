@@ -62,7 +62,7 @@ window.init = function () {
         var data = login_data.split('-')
         window.id = data[0]
         window.token = data[1]
-        console.log(login_data)
+        window.phoneno = basicData[2]
       }
     }
   } catch (error) {
