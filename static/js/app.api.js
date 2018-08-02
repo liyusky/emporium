@@ -1,5 +1,5 @@
-window.token = null
-window.id = null
+window.token = 'e3116e607a3051738b036315fe5ce1ec'
+window.id = '10002'
 window.kill = function () {
   var btnDom = document.getElementById('back-btn')
   if (btnDom) {

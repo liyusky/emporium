@@ -60,12 +60,17 @@
     </footer>
     <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
+    <Modal v-show="modal">
+      <RepaymentDetail @CLOSE_MODAL_EVENT="closeModal"></RepaymentDetail>
+    </Modal>
   </section>
 </template>
 <script>
 import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
+import Modal from '../common/modal/modal.vue'
+import RepaymentDetail from './repayment-detail/repayment-detail.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 import { mapState } from 'vuex'
 export default {
@@ -77,6 +82,7 @@ export default {
         goal: null,
         params: {}
       },
+      modal: true,
       Title: {
         text: ''
       },
@@ -93,6 +99,9 @@ export default {
         }],
         [3, {
           statusTitle: '已发货'
+        }],
+        [4, {
+          statusTitle: '已收货'
         }],
         [8, {
           statusTitle: '已取消'
@@ -142,6 +151,7 @@ export default {
     closeModal () {
       this.reminderShow = false
       this.dialogShow = false
+      this.modal = false
     },
     judgeCancel () {
       let result = true
@@ -227,8 +237,10 @@ export default {
   },
   components: {
     Theme,
+    Modal,
     ModalReminder,
-    ModalDialog
+    ModalDialog,
+    RepaymentDetail
   },
   computed: {
     ...mapState(['productId'])
