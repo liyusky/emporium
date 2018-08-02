@@ -4,7 +4,7 @@
     <div class="installment-info">
       <div class="info-phone">
         <div class="phone-img">
-          <img src="../../../assets/images/logout.png">
+          <img src="../../assets/images/logout.png">
         </div>
         <div class="phone-detail">
           <h3 class="detail-title">99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G</h3>
@@ -48,14 +48,18 @@
 </template>
 <script>
 // import Http from '../../class/http.class.js'
-import Theme from '../../common/theme/theme.vue'
+import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
-import ModalDialog from '../..common/alert-modal/modal-dialog/modal-dialog.vue'
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 export default {
+  name: 'InstallmentDetail',
   data () {
     return {
       theme: {
         title: '分期账单'
+      },
+      Title: {
+        text: ''
       }
     }
   },
@@ -67,6 +71,6 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-@import './installment.scss';
+<style lang="sass" scoped>
+@import "./installment-detail.scss";
 </style>
