@@ -43,6 +43,14 @@ function build (dir) {
             content = scssSrc + content
             scssSrc = ''
           }
+          else if (type == 'vue') {
+            let nameArr = name.split('-')
+            nameArr.forEach((value, index) => {
+              nameArr[index] = value.substring(0, 1).toUpperCase() + value.substring(1)
+            })
+            content = content.replace('SITE_MODULE_NAME', nameArr.join(''))
+            content = content.replace('SITE_SASS_NAME', `./${name}.scss`)
+          }
           fs.writeFile(goal, content, (err) => {
             if (err) throw err;
             console.log(goal + '创建成功');

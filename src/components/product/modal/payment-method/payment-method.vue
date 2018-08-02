@@ -8,7 +8,7 @@
       <div class="way-master">
         <div class="master-title">
           <div class="title-img">
-            <img src="../../../../assets/images/master.png">
+            <img src="../../../../assets/images/receipt-master.png">
           </div>
           <p class="title-payname">大师分期</p>
         </div>

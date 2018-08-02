@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'SITE_MODULE_NAME',
   data () {
     return {}
   }
@@ -14,5 +14,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import ".";
+@import "SITE_SASS_NAME";
 </style>

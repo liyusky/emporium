@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   padding: {
-    top: 129 / $unit * $symbol;
+    top: (93 + 36) / $unit * $symbol;
     bottom: 100 / $unit * $symbol;
   }
   overflow-y: auto;

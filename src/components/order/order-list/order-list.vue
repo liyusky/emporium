@@ -28,7 +28,7 @@
         <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">取消订单</button>
         <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.PayId, item.noncestr, item.OrderNo, index)">去支付</button>
         <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">提交订单</button>
-        <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item)">确认收货</button>
+        <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item, index)">确认收货</button>
       </div>
     </div>
     <ModalReminder :Title="Title" v-show="reminderShow" @CLOSE_MODAL_EVENT="closeModal" @SENF_REQUEST_EVENT="sendRequest"></ModalReminder>
@@ -43,6 +43,7 @@ import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'
 import { mapMutations } from 'vuex'
 export default {
+  props: ['tips', 'timeArr', 'statusList'],
   data () {
     return {
       titleTime: null,
@@ -54,14 +55,9 @@ export default {
       index: null
     }
   },
-  props: ['tips', 'statusList', 'timeArr'],
   components: {
     ModalDialog,
     ModalReminder
-  },
-  mounted () {
-    // 订单日期
-    // this.titleTime = Time.change(Number(this.item.CreateTime.substring(6, 19)))
   },
   methods: {
     gotoPage (item) {
@@ -107,10 +103,14 @@ export default {
         localStorage.setItem('Origin5', 'order')
       }
       try {
-        appJsInterface.payWeChat(JSON.stringify({
-          prepayId: payId,
-          noncestr: noncestr
-        }))
+        if (typeof (appJsInterface) !== 'undefined') {
+          appJsInterface.payWeChat(JSON.stringify({
+            prepayId: payId,
+            noncestr: noncestr
+          }))
+        } else {
+          window.webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(payId))
+        }
         let payListener = setInterval(() => {
           if (window.payFinish === 'success') {
             this.tips[index].Status = 2
@@ -125,32 +125,40 @@ export default {
         console.log(error)
       }
     },
-    confrim (item) {
-      Http.send({
-        url: 'Receipt',
-        data: {
-          Orderno: this.OrderNo
-        }
-      }).success(data => {
-        item.Status = 4
-      }).fail(fail => {
-        this.Title.text = fail.message
-        this.dialogShow = true
-      })
+    confrim (item, index) {
+      this.index = index
+      this.Title.text = '您确认收货'
+      this.reminderShow = true
     },
     sendRequest () {
-      Http.send({
-        url: 'Cancel',
-        data: {
-          orderno: this.tips[this.index].OrderNo
-        }
-      }).success(data => {
-        this.tips.splice(this.index, 1)
-        this.reminderShow = false
-      }).fail(data => {
-        this.Title.text = data.message
-        this.dialogShow = true
-      })
+      if (this.Title.text === '您确认收货') {
+        Http.send({
+          url: 'Receipt',
+          data: {
+            Orderno: this.tips[this.index].OrderNo
+          }
+        }).success(data => {
+          this.tips.splice(this.index, 1)
+          this.reminderShow = false
+        }).fail(fail => {
+          this.Title.text = fail.message
+          this.dialogShow = true
+        })
+      }
+      if (this.Title.text === '您确认要删除订单') {
+        Http.send({
+          url: 'Cancel',
+          data: {
+            orderno: this.tips[this.index].OrderNo
+          }
+        }).success(data => {
+          this.tips.splice(this.index, 1)
+          this.reminderShow = false
+        }).fail(data => {
+          this.Title.text = data.message
+          this.dialogShow = true
+        })
+      }
     },
     closeModal () {
       this.dialogShow = false
