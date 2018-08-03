@@ -26,7 +26,7 @@
       </div>
       <div class="item-button">
         <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">取消订单</button>
-        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item.PayId, item.noncestr, item.OrderNo, index)">去支付</button>
+        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item, index)">去支付</button>
         <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">提交订单</button>
         <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item, index)">确认收货</button>
       </div>
@@ -63,7 +63,7 @@ export default {
     gotoPage (item) {
       this.saveOrderNo(item.OrderNo)
       if (item.Status > 0) {
-        if (item.BillStatus > 0 && item.BillStatus < 99) {
+        if (item.PayType === 3 && item.BillStatus < 99) {
           this.saveOrigin6('order')
           this.$router.push({ name: 'installment-detail' })
         } else {
@@ -101,32 +101,41 @@ export default {
       this.Title.text = '您确认要删除订单'
       this.reminderShow = true
     },
-    pay (payId, noncestr, Orderno, index) {
+    pay (item, index) {
       if (window.localStorage) {
-        localStorage.setItem('OrderNo', Orderno)
+        localStorage.setItem('OrderNo', item.Orderno)
         localStorage.setItem('Origin5', 'order')
       }
-      try {
-        if (typeof (appJsInterface) !== 'undefined') {
-          appJsInterface.payWeChat(JSON.stringify({
-            prepayId: payId,
-            noncestr: noncestr
-          }))
-        } else {
-          window.webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(payId))
-        }
-        let payListener = setInterval(() => {
-          if (window.payFinish === 'success') {
-            this.tips[index].Status = 2
-            clearInterval(payListener)
-          } else if (window.payFinish === 'success') {
-            clearInterval(payListener)
+      switch (item.PayType) {
+        case 1:
+          try {
+            if (typeof (appJsInterface) !== 'undefined') {
+              appJsInterface.payWeChat(JSON.stringify({
+                prepayId: item.payId,
+                noncestr: item.noncestr
+              }))
+            } else {
+              window.webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(item.payId))
+            }
+            let payListener = setInterval(() => {
+              if (window.payFinish === 'success') {
+                this.tips[index].Status = 2
+                clearInterval(payListener)
+              } else if (window.payFinish === 'success') {
+                clearInterval(payListener)
+              }
+            }, 1000)
+          } catch (error) {
+            this.Title.text = '支付失败'
+            this.reminderShow = true
+            console.log(error)
           }
-        }, 1000)
-      } catch (error) {
-        this.Title.text = '支付失败'
-        this.reminderShow = true
-        console.log(error)
+          break
+        case 2:
+          break
+        case 3:
+          this.gotoPage(item)
+          break
       }
     },
     confrim (item, index) {

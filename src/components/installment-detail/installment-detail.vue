@@ -62,7 +62,7 @@ export default {
     return {
       theme: {
         title: '分期账单',
-        goal: null,
+        goal: null
       },
       Title: {
         text: ''
