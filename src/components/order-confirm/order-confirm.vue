@@ -136,7 +136,8 @@ export default {
       installmentNum: 0,
       hasAddressDefault: true,
       icons: '#icon-dadaobiaozhun',
-      dialogShow: false
+      dialogShow: false,
+      defaultAddress: null
     }
   },
   created () {
@@ -144,6 +145,10 @@ export default {
     this.theme.params.id = this.$store.state.productId
     this.id = this.$store.state.productId
     this.OrderNo = this.$store.state.OrderNo
+    if (window.localStorage) {
+      var address = localStorage.getItem('defaultAddress')
+      this.defaultAddress = JSON.parse(address)
+    }
     Http.send({
       url: 'product',
       data: {

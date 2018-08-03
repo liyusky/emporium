@@ -144,38 +144,40 @@ export default {
       this.dialogShow = false
     },
     onSwipeLeft () {
-      this.tips = []
       this.statusArrIndex++
       if (this.statusArrIndex > 3) this.statusArrIndex = 0
-      this.status = this.statusArr[this.statusArrIndex]
-      this.getData(this.status)
-      this.isShow = false
-      setTimeout(() => {
-        this.isShow = true
-      }, 10)
+      if (this.status !== this.statusArr[this.statusArrIndex]) {
+        this.status = this.statusArr[this.statusArrIndex]
+        this.getData(this.status)
+        this.isShow = false
+        setTimeout(() => {
+          this.isShow = true
+        }, 10)
+      }
     },
     onSwipeRight () {
-      this.tips = []
       this.statusArrIndex--
       if (this.statusArrIndex < 0) this.statusArrIndex = 3
-      this.status = this.statusArr[this.statusArrIndex]
-      this.getData(this.status)
-      this.isShow = false
-      setTimeout(() => {
-        this.isShow = true
-      }, 10)
+      if (this.status !== this.statusArr[this.statusArrIndex]) {
+        this.status = this.statusArr[this.statusArrIndex]
+        this.getData(this.status)
+        this.isShow = false
+        setTimeout(() => {
+          this.isShow = true
+        }, 10)
+      }
     },
     ...mapMutations(['changeStatusNum', 'addStatusArrIndex', 'saveOrigin4'])
   },
   watch: {
+    // 监听左右滚动
     statusArrIndex (newNum, oldNum) {
-      console.log(newNum, oldNum)
-      if ((newNum - oldNum) === 3) {
+      if (newNum === 3 && oldNum === 0) {
         this.fadeNewName = 'fade3'
         this.fadeOldName = 'fade4'
         return
       }
-      if ((newNum - oldNum) === -3) {
+      if (newNum === 0 && oldNum === 3) {
         this.fadeNewName = 'fade'
         this.fadeOldName = 'fade2'
         return
