@@ -16,6 +16,9 @@ const mutations = {
   changeStatusNum (state, number) {
     state.statusNum = number
   },
+  addStatusArrIndex (state, index) {
+    state.statusArrIndex = index
+  },
   saveOrigin (state, origin) {
     state.origin = origin
   },

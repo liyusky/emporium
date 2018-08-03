@@ -242,7 +242,7 @@ export default {
       }).success(data => {
         window.token = data.access_token
         window.id = data.customerId
-        window.phoneno = this.phone
+        window.phone = this.phone
         if (window.localStorage) {
           localStorage.setItem('token', data.access_token)
           localStorage.setItem('id', data.customerId)

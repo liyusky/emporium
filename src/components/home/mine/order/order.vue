@@ -1,35 +1,35 @@
 <template>
   <!-- s 我的订单 -->
   <section class="order">
-    <div class="order-title" @click="gotoPage(-1)">
+    <div class="order-title" @click="gotoPage(-1, 3)">
       <div class="title-content">
         <h3>我的订单</h3>
         <i class="iconfont icon-arrow-right"></i>
       </div>
     </div>
     <nav class="order-menu">
-      <div class="menu-item" @click="gotoPage(1)">
+      <div class="menu-item" @click="gotoPage(1, 0)">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-daifukuan"></use>
         </svg>
         <p>待付款</p>
         <div class="item-badge" v-show="affirmLogin && payNum">{{payNum}}</div>
       </div>
-      <div class="menu-item" @click="gotoPage(2)">
+      <div class="menu-item" @click="gotoPage(2, 1)">
        <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-daifahuo"></use>
         </svg>
         <p>待发货</p>
         <div class="item-badge" v-show="affirmLogin && sendNum">{{sendNum}}</div>
       </div>
-      <div class="menu-item" @click="gotoPage(3)">
+      <div class="menu-item" @click="gotoPage(3, 2)">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-daishouhuo"></use>
         </svg>
         <p>待收货</p>
         <div class="item-badge" v-show="affirmLogin && receiveNum">{{receiveNum}}</div>
       </div>
-      <div class="menu-item" @click="gotoPage(-1)">
+      <div class="menu-item" @click="gotoPage(-1, 3)">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-quanbudingdan"></use>
         </svg>
@@ -48,7 +48,7 @@ export default {
   name: 'Order',
   data () {
     return {
-      affirmLogin: window.id,
+      affirmLogin: window.token,
       allNum: '',
       payNum: '',
       sendNum: '',
@@ -56,7 +56,7 @@ export default {
     }
   },
   created () {
-    if (window.id) {
+    if (window.token) {
       Http.send({
         url: 'orderList',
         data: {
@@ -96,13 +96,14 @@ export default {
     }
   },
   methods: {
-    gotoPage (status) {
+    gotoPage (status, index) {
       this.$router.push({
         name: 'order'
       })
       this.changeStatusNum(status)
+      this.addStatusArrIndex(index)
     },
-    ...mapMutations(['changeStatusNum'])
+    ...mapMutations(['changeStatusNum', 'addStatusArrIndex'])
   }
 }
 </script>

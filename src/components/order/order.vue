@@ -54,9 +54,6 @@ export default {
       },
       status: -1,
       tips: [],
-      isShow: true,
-      fadeNewName: 'fade',
-      fadeOldName: 'fade2',
       page: 1,
       dialogShow: false,
       animationShow: false,
@@ -84,13 +81,19 @@ export default {
           statusTitle: '已取消订单'
         }
       },
+      isShow: true,
+      fadeNewName: 'fade',
+      fadeOldName: 'fade2',
       statusArr: [1, 2, 3, -1],
-      statusArrKey: 0
+      statusArrIndex: 0
     }
   },
   created () {
     let defaultStatus = this.$store.state.statusNum
+    let defaultStatusArrIndex = this.$store.state.statusArrIndex
     if (typeof defaultStatus === 'number') this.status = defaultStatus
+    this.statusArrIndex = defaultStatusArrIndex
+    console.log(this.statusArrIndex)
     this.getData(this.status)
     this.saveOrigin4('order')
   },
@@ -98,7 +101,8 @@ export default {
     switchTips (status, statusKey) {
       if (this.status !== status) {
         this.changeStatusNum(status)
-        this.statusArrKey = statusKey
+        this.addStatusArrIndex(statusKey)
+        this.statusArrIndex = statusKey
         this.status = status
         this.getData(this.status)
         this.isShow = false
@@ -141,9 +145,9 @@ export default {
     },
     onSwipeLeft () {
       this.tips = []
-      this.statusArrKey++
-      if (this.statusArrKey > 3) this.statusArrKey = 0
-      this.status = this.statusArr[this.statusArrKey]
+      this.statusArrIndex++
+      if (this.statusArrIndex > 3) this.statusArrIndex = 0
+      this.status = this.statusArr[this.statusArrIndex]
       this.getData(this.status)
       this.isShow = false
       setTimeout(() => {
@@ -152,21 +156,20 @@ export default {
     },
     onSwipeRight () {
       this.tips = []
-      this.statusArrKey--
-      if (this.statusArrKey < 0) this.statusArrKey = 3
-      this.status = this.statusArr[this.statusArrKey]
+      this.statusArrIndex--
+      if (this.statusArrIndex < 0) this.statusArrIndex = 3
+      this.status = this.statusArr[this.statusArrIndex]
       this.getData(this.status)
       this.isShow = false
       setTimeout(() => {
         this.isShow = true
       }, 10)
     },
-    ...mapMutations(['changeStatusNum', 'saveOrigin4'])
+    ...mapMutations(['changeStatusNum', 'addStatusArrIndex', 'saveOrigin4'])
   },
   watch: {
-    statusArrKey (newNum, oldNum) {
-      console.log(newNum)
-      console.log(oldNum)
+    statusArrIndex (newNum, oldNum) {
+      console.log(newNum, oldNum)
       if ((newNum - oldNum) === 3) {
         this.fadeNewName = 'fade3'
         this.fadeOldName = 'fade4'

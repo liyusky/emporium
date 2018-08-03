@@ -1,6 +1,9 @@
-window.token = 'f8c976155bd44719c3a8a148272a7711'
+window.token = 'a4c0536e2632731ec2561cd0ffbf0ba4'
 window.id = '10002'
-window.phoneno = '15921769360'
+window.phone = '15921769360'
+// window.token = null
+// window.id = null
+// window.phone = null
 window.kill = function () {
   var btnDom = document.getElementById('back-btn')
   if (btnDom) {
@@ -56,13 +59,13 @@ window.init = function () {
       var basicData = appJsInterface.sendTokenToHtml().split('-')
       window.id = basicData[0]
       window.token = basicData[1]
-      window.phoneno = basicData[2]
+      window.phone = basicData[2]
     } else { //ios
-      window.returnLoginData = function(login_data) {
-        var data = login_data.split('-')
+      window.returnLoginData = function(data) {
+        var data = data.split('-')
         window.id = data[0]
         window.token = data[1]
-        window.phoneno = basicData[2]
+        window.phone = basicData[2]
       }
     }
   } catch (error) {
