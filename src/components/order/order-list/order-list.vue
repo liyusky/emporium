@@ -37,7 +37,6 @@
 </template>
 
 <script>
-// import Time from '../../../class/time.class.js'
 import Http from '../../../class/http.class.js'
 import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import ModalReminder from '../../common/alert-modal/modal-reminder/modal-reminder.vue'

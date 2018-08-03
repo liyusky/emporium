@@ -6,6 +6,7 @@ const state = {
   OrderNo: null,
   // 传入order的参数
   statusNum: null,
+  statusArrIndex: null,
   // order-confirm origin
   origin: null,
   // address-manger origin

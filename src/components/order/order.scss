@@ -62,7 +62,6 @@
       width: 100%;
       height: 100%;
       overflow-y: auto;
-      overflow-x: hidden;
       .classify-item {
         position: absolute;
         top: 0;
@@ -70,28 +69,23 @@
         right: 0;
         width: 100%;
         height: 100%;
+        // overflow-y: auto;
       }
     }
   }
 }
-.fade-enter-active{
-  transition: all .3s;
-}
-.fade-leave-active {
+.fade-enter-active,.fade2-leave-active,.fade3-enter-active,.fade4-leave-active{
   transition: all .3s;
 }
 .fade-enter{
   transform: translateX(100%);
 }
-.fade-leave-to{
-	transform: translateX(-100);
+.fade2-leave-to{
+	transform: translateX(-100%);
 }
-.fade2-enter-active,.fade2-leave-active{
-	transition: all .3s;
-}
-.fade2-enter{
+.fade3-enter{
   transform: translateX(-100%);
 }
-.fade2-leave-to{
+.fade4-leave-to{
 	transform: translateX(100%);
 }

@@ -211,8 +211,8 @@
       $param: (flex flex) (alignItems center) (justifyContent center);
       @include flexSet($param);
       background: #fff;
-      margin: {
-        bottom: 1px;
+      border: {
+        bottom: 1px solid #f4f4f4;
       }
       .leave-message {
         $param: (flex flex) (alignItems center);
@@ -227,7 +227,6 @@
         }
         border-radius: 4px;
         outline: none;
-        resize: none;
         &::-webkit-input-placeholder {
           color: #bcbcbc;
         }
