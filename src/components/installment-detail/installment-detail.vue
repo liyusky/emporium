@@ -45,7 +45,8 @@
     <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
     <Modal v-show="modal">
-      <RepaymentDetail @CLOSE_MODAL_EVENT="closeModal"></RepaymentDetail>
+      <RepaymentDetail @CLOSE_MODAL_EVENT="closeModal" v-show="false"></RepaymentDetail>
+      <PayPassword></PayPassword>
     </Modal>
   </section>
 </template>
@@ -56,6 +57,7 @@ import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 import Modal from '../common/modal/modal.vue'
 import RepaymentDetail from './repayment-detail/repayment-detail.vue'
+import PayPassword from './pay-password/pay-password.vue'
 export default {
   name: 'InstallmentDetail',
   data () {
@@ -66,7 +68,10 @@ export default {
       },
       Title: {
         text: ''
-      }
+      },
+      modal: true,
+      reminderShow: false,
+      dialogShow: false
     }
   },
   components: {
@@ -74,11 +79,17 @@ export default {
     ModalReminder,
     Modal,
     ModalDialog,
-    RepaymentDetail
+    RepaymentDetail,
+    PayPassword
   },
   created () {
     this.OrderNo = this.$store.state.OrderNo
     this.theme.goal = this.$store.state.origin6
+  },
+  methods: {
+    closeModal () {
+      this.modal = false
+    }
   }
 }
 </script>

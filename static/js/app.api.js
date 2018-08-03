@@ -1,4 +1,4 @@
-window.token = 'aaf03fc27735a4bdedf49618bac31be6'
+window.token = '1c101aa5f7484d9392c9329bc95d1ab7'
 window.id = '10002'
 window.phone = '15921769360'
 window.kill = function () {
