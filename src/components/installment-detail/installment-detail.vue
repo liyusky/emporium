@@ -61,7 +61,8 @@ export default {
   data () {
     return {
       theme: {
-        title: '分期账单'
+        title: '分期账单',
+        goal: null,
       },
       Title: {
         text: ''
@@ -74,6 +75,10 @@ export default {
     Modal,
     ModalDialog,
     RepaymentDetail
+  },
+  created () {
+    this.OrderNo = this.$store.state.OrderNo
+    this.theme.goal = this.$store.state.origin6
   }
 }
 </script>

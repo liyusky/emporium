@@ -35,7 +35,7 @@ export default {
   name: 'Info',
   data () {
     return {
-      phone: window.phoneno
+      phone: window.phone
     }
   },
   methods: {

@@ -16,6 +16,8 @@ const state = {
   origin4: null,
   // pay origin
   origin5: null,
+  // installments-detail origin
+  origin6: null,
   productId: null
 }
 export default state

@@ -56,7 +56,7 @@ export default {
     }
   },
   created () {
-    if (window.id) {
+    if (window.token) {
       Http.send({
         url: 'orderList',
         data: {

@@ -19,13 +19,13 @@ export default class Http {
       headers: headers,
       params: args.data
     }).then(response => {
+      console.log(response)
       // console.log(JSON.stringify(response))
       // console.log(JSON.stringify(response.data))
       Http.dispense(response.data)
       if (this.defaultCallback) this.defaultCallback()
     }).catch(error => {
       console.log(error.response)
-      // window.vueModule
       if (this.defaultCallback) this.defaultCallback()
     })
     return this

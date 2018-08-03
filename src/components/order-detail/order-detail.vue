@@ -123,6 +123,7 @@ export default {
         Orderno: this.OrderNo
       }
     }).success(data => {
+      data = data.order
       this.state = data.Status
       this.payId = data.PayId
       this.noncestr = data.noncestr
@@ -238,7 +239,7 @@ export default {
   components: {
     Theme,
     ModalReminder,
-    ModalDialog,
+    ModalDialog
   },
   computed: {
     ...mapState(['productId'])
