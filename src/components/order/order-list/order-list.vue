@@ -61,14 +61,18 @@ export default {
   },
   methods: {
     gotoPage (item) {
+      this.saveOrderNo(item.OrderNo)
       if (item.Status > 0) {
-        this.saveOrigin3('order')
-        this.saveOrderNo(item.OrderNo)
-        this.$router.push({ name: 'order-detail' })
+        if (item.PayType === 3 && item.BillStatus < 99) {
+          this.saveOrigin6('order')
+          this.$router.push({ name: 'installment-detail' })
+        } else {
+          this.saveOrigin3('order')
+          this.$router.push({ name: 'order-detail' })
+        }
       } else {
         this.saveOrigin('order')
         this.saveProductId(item.CommodityId)
-        this.saveOrderNo(item.OrderNo)
         this.$router.push({ name: 'order-confirm' })
       }
     },
@@ -164,7 +168,7 @@ export default {
       this.dialogShow = false
       this.reminderShow = false
     },
-    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrderNo', 'saveProductId'])
+    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrigin6', 'saveOrderNo', 'saveProductId'])
   }
 }
 </script>

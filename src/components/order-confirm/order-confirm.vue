@@ -212,6 +212,7 @@ export default {
     },
     gotoPage (page) {
       this.saveOrigin2('order-confirm')
+      this.saveOrigin6('order-confirm')
       this.$router.push({ name: page })
     },
     confrim () {
@@ -234,13 +235,17 @@ export default {
           num: this.installmentNum
         }
       }).success(data => {
-        this.gotoPage('order-detail')
+        if (this.selected === 3) {
+          this.gotoPage('installment-detail')
+        } else {
+          this.gotoPage('order-detail')
+        }
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
       })
     },
-    ...mapMutations(['saveOrigin2', 'saveOrigin3', 'saveSelectedAddress'])
+    ...mapMutations(['saveOrigin2', 'saveOrigin3', 'saveOrigin6', 'saveSelectedAddress'])
   },
   destroyed () {
     this.saveSelectedAddress(null)

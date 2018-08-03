@@ -41,9 +41,6 @@ export default {
   components: {
     ModalDialog
   },
-  mounted () {
-    console.log(this.instalments)
-  },
   methods: {
     closeModal () {
       this.dialogShow = false

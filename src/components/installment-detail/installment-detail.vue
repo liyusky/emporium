@@ -42,12 +42,12 @@
     <footer class="installment-button">
       <button>立即付款</button>
     </footer>
-    <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>
-    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
+    <!-- <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder> -->
+    <!-- <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog> -->
   </section>
 </template>
 <script>
-// import Http from '../../class/http.class.js'
+import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
@@ -56,7 +56,8 @@ export default {
   data () {
     return {
       theme: {
-        title: '分期账单'
+        title: '分期账单',
+        goal: null
       },
       Title: {
         text: ''
@@ -66,7 +67,26 @@ export default {
   components: {
     Theme,
     ModalReminder,
+    // Modal,
     ModalDialog
+    // RepaymentDetail
+  },
+  created () {
+    this.OrderNo = this.$store.state.OrderNo
+    this.theme.goal = this.$store.state.origin6
+    this.id = this.$store.state.productId
+    Http.send({
+      url: 'product',
+      data: {
+        id: this.id
+      }
+    }).success(data => {
+      console.log(data)
+    })
+    // .fail(data => {
+    //   this.Title.text = data.message
+    //   this.dialogShow = true
+    // })
   }
 }
 </script>

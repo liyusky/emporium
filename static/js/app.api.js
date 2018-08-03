@@ -25,10 +25,12 @@ window.paySuccess = function (finish) {
     }
   }
 }
+
 window.onload = function () {
   window.init()
   window.bindScroll()
 }
+
 window.bindScroll = function () {
   var scrollDom, summaryDom, qualityDom, sampleDom, currentTop, summaryLimit, qualityLimit, summaryBtnDom, qualityBtnDom, sampleBtnDom
   document.body.onscroll = function (event) {
@@ -53,22 +55,22 @@ window.bindScroll = function () {
     }
   }
 }
+
 window.init = function () {
   try {
-    if (typeof (appJsInterface) != "undefined") { //android
-      var basicData = appJsInterface.sendTokenToHtml().split('-')
-      window.id = basicData[0]
-      window.token = basicData[1]
-      window.phone = basicData[2]
-    } else { //ios
-      window.returnLoginData = function(data) {
-        var data = data.split('-')
-        window.id = data[0]
-        window.token = data[1]
-        window.phone = basicData[2]
-      }
-    }
+    var basicData = appJsInterface.sendTokenToHtml().split('-')
+    window.id = basicData[0]
+    window.token = basicData[1]
+    window.phone = basicData[2]
   } catch (error) {
     console.log(error)
   }
+}
+
+// ios
+window.returnLoginData = function (data) {
+  data = data.split('-')
+  window.id = data[0]
+  window.token = data[1]
+  window.phone = data[2]
 }
