@@ -10,16 +10,10 @@ window.kill = function () {
   }
 }
 window.paySuccess = function (finish) {
-  if (window.localStorage) {
-    var id = localStorage.getItem('id')
-    var token = localStorage.getItem('token')
-    window.id = id
-    window.token = token
-    if (finish) {
-      window.payFinish = 'success'
-    } else {
-      window.payFinish = 'fail'
-    }
+  if (finish) {
+    window.payFinish = 'success'
+  } else {
+    window.payFinish = 'fail'
   }
 }
 
@@ -42,7 +36,7 @@ window.bindScroll = function () {
     if (!scrollDom || !summaryDom || !qualityDom || !sampleDom || !summaryBtnDom || !qualityBtnDom || !sampleBtnDom) return
     summaryLimit = qualityDom.offsetTop - summaryDom.offsetTop
     qualityLimit = sampleDom.offsetTop - summaryDom.offsetTop
-    currentTop = document.documentElement.scrollTop
+    currentTop = document.body.scrollTop
     if (currentTop < summaryLimit) {
       scrollDom.style.left = summaryBtnDom.offsetLeft + 'px'
     } else if (currentTop < qualityLimit) {
