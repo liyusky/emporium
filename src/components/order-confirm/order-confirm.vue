@@ -146,7 +146,6 @@ export default {
     this.id = this.$store.state.productId
     this.OrderNo = this.$store.state.OrderNo
     this.address = this.$store.state.address
-    console.log(this.address)
     Http.send({
       url: 'product',
       data: {
