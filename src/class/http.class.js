@@ -1,7 +1,12 @@
 import axios from 'axios'
 import Url from './url.class.js'
 export default class Http {
+  successCallback = null
+  failCallback = null
+  defaultCallback = null
   static send (args) {
+    let instance = new Http()
+    console.log(instance)
     let headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
@@ -21,15 +26,15 @@ export default class Http {
     }).then(response => {
       console.log(args.url)
       console.log(response)
-      Http.dispense(response.data)
-      if (this.defaultCallback) this.defaultCallback()
+      instance.dispense(response.data)
+      if (instance.defaultCallback) instance.defaultCallback()
     }).catch(error => {
       console.log(error.response)
-      if (this.defaultCallback) this.defaultCallback()
+      if (instance.defaultCallback) instance.defaultCallback()
     })
-    return this
+    return instance
   }
-  static dispense (response) {
+  dispense (response) {
     switch (response.code) {
       case 200:
         if (this.successCallback) this.successCallback(response.data)
@@ -41,18 +46,15 @@ export default class Http {
         if (this.failCallback) this.failCallback(response)
     }
   }
-
-  static success (callback) {
+  success (callback) {
     this.successCallback = callback
     return this
   }
-
-  static fail (callback) {
+  fail (callback) {
     this.failCallback = callback
     return this
   }
-
-  static default (callback) {
+  default (callback) {
     this.defaultCallback = callback
     return this
   }

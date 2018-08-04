@@ -106,7 +106,7 @@ import Modal from '../common/modal/modal.vue'
 import Instalments from './modal/instalments/instalments.vue'
 import Http from '../../class/http.class.js'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   name: 'OrderConfirm',
   components: {
@@ -129,6 +129,7 @@ export default {
       },
       id: null,
       OrderNo: null,
+      address: null,
       phone: {},
       installments: [],
       selected: null,
@@ -145,10 +146,7 @@ export default {
     this.theme.params.id = this.$store.state.productId
     this.id = this.$store.state.productId
     this.OrderNo = this.$store.state.OrderNo
-    if (window.localStorage) {
-      var address = localStorage.getItem('defaultAddress')
-      this.defaultAddress = JSON.parse(address)
-    }
+    this.address = this.$store.state.address
     Http.send({
       url: 'product',
       data: {
@@ -185,6 +183,22 @@ export default {
       }
     }).fail(data => {
       this.Title.text = data.message
+      this.dialogShow = true
+    })
+    Http.send({
+      url: 'orderDetail',
+      data: {
+        Orderno: this.OrderNo
+      }
+    }).success(data => {
+      console.log(data.order)
+      this.address = {
+        ReseverName: data.order.ReciverName,
+        PhoneNo: data.order.ReciverPhone,
+        Address: data.order.ReciverAddress
+      }
+    }).fail(fail => {
+      this.Title.text = fail.message
       this.dialogShow = true
     })
   },
@@ -254,9 +268,6 @@ export default {
   },
   destroyed () {
     this.saveSelectedAddress(null)
-  },
-  computed: {
-    ...mapState(['address'])
   }
 }
 </script>

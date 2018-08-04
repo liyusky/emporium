@@ -172,7 +172,7 @@ export default {
         data.Phone.PaymentTypePartArr = content
       }
       function setGuaranteeArr () {
-        let type = ['原装正品', '一年保修', '七天包退', '官当自营']
+        let type = ['原装正品', '一年保修', '七天包退', '官方自营']
         let allowArr = data.Phone.Guarantee.toString(2).split('')
         let content = []
         allowArr.forEach((item, index) => {
