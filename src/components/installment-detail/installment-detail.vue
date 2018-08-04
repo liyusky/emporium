@@ -6,10 +6,10 @@
     <footer class="installment-button">
       <button @click="openModal('installment-detail')">立即付款</button>
     </footer>
-    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeToast"></ModalDialog>
     <Modal v-show="modal">
-      <RepaymentDetail @CLOSE_MODAL_EVENT="closeModal" :bill="bill" :order="order" v-show="repaymentDetailShow" @OPEN_MODAL_EVENT="openModal('repayment-detail')"></RepaymentDetail>
-      <PayPassword :orderNo="orderNo" :billId="billId" v-show="payPasswordShow"></PayPassword>
+      <RepaymentDetail :currentIndex="currentIndex" :bill="bill" :order="order" v-show="repaymentDetailShow" @OPEN_MODAL_EVENT="openModal('repayment-detail')" @CLOSE_MODAL_EVENT="closeModal"></RepaymentDetail>
+      <PayPassword :OrderNo="OrderNo" :BillId="BillId" v-show="payPasswordShow" @PAY_SUCCESS_EVENT="paySuccess" @PAY_FAIL_EVENT="payFail" @CLOSE_MODAL_EVENT="closePayPassword"></PayPassword>
     </Modal>
   </section>
 </template>
@@ -23,6 +23,7 @@ import Info from './info/info.vue'
 import Stage from './stage/stage.vue'
 import PayPassword from './pay-password/pay-password.vue'
 import Modal from '../common/modal/modal.vue'
+import { mapMutations } from 'vuex'
 export default {
   name: 'InstallmentDetail',
   data () {
@@ -42,8 +43,8 @@ export default {
       reminderShow: false,
       repaymentDetailShow: false,
       payPasswordShow: false,
-      orderNo: null,
-      billId: 0
+      OrderNo: null,
+      BillId: null
     }
   },
   components: {
@@ -57,24 +58,33 @@ export default {
     PayPassword
   },
   created () {
-    this.orderNo = this.$store.state.OrderNo
+    this.OrderNo = this.$store.state.OrderNo
     this.theme.goal = this.$store.state.origin6
-    Http.send({
-      url: 'orderDetail',
-      data: {
-        Orderno: this.OrderNo
-      }
-    }).success(data => {
-      this.bill = data.bill
-      this.order = data.order
-      this.BillId = this.bill[this.currentIndex].Id
-      console.log(this.BillId)
-    }).fail(data => {
-      this.Title.text = data.message
-      this.dialogShow = true
-    })
+    this.getData()
   },
   methods: {
+    getData () {
+      Http.send({
+        url: 'orderDetail',
+        data: {
+          Orderno: this.OrderNo
+        }
+      }).success(data => {
+        this.bill = data.bill
+        this.order = data.order
+        let len = this.bill.length
+        for (let i = 0; i < len; i++) {
+          if (!this.bill[i].IsPayed) {
+            this.currentIndex = i
+            this.BillId = this.bill[i].Id
+            break
+          }
+        }
+      }).fail(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
     openModal (origin) {
       switch (origin) {
         case 'stage':
@@ -95,9 +105,33 @@ export default {
     },
     closeModal () {
       this.RepaymentDetailShow = false
-      this.dialogShow = false
       this.modal = false
-    }
+    },
+    closeToast () {
+      this.dialogShow = false
+    },
+    closePayPassword () {
+      if (!this.repaymentDetailShow) this.modal = false
+      this.payPasswordShow = false
+    },
+    paySuccess () {
+      this.currentIndex++
+      if (this.currentIndex === this.bill.length) {
+        this.saveOrigin3('installment-detail')
+        this.$router.push({ name: 'order-detail' })
+      }
+      this.payPasswordShow = false
+      this.RepaymentDetailShow = false
+      this.modal = false
+    },
+    payFail () {
+      this.Title.text = '支付失败'
+      this.dialogShow = true
+      this.payPasswordShow = false
+      this.RepaymentDetailShow = false
+      this.modal = false
+    },
+    ...mapMutations(['saveOrigin3'])
   }
 }
 </script>

@@ -32,12 +32,9 @@
 <script>
 export default {
   name: 'RepaymentDetail',
-  props: ['order', 'bill'],
+  props: ['order', 'bill', 'currentIndex'],
   data () {
-    return {
-      money: 5000,
-      currentIndex: 0
-    }
+    return {}
   },
   methods: {
     closeModal () {

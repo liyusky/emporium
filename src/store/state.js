@@ -7,18 +7,12 @@ const state = {
   // 传入order的参数
   statusNum: null,
   statusArrIndex: null,
-  // order-confirm origin
-  origin: null,
-  // address-manger origin
-  origin2: null,
-  // order-detail origin
-  origin3: null,
-  // empower origin
-  origin4: null,
-  // pay origin
-  origin5: null,
-  // installments-detail origin
-  origin6: null,
+  origin: null, // order-confirm origin
+  origin2: null, // address-manger origin
+  origin3: null, // order-detail origin
+  origin4: null, // empower origin
+  origin5: null, // pay origin
+  origin6: null, // installments-detail origin
   productId: null
 }
 export default state

@@ -141,6 +141,8 @@ export default {
       case 'order':
         this.theme.goal = 'order'
         break
+      case 'installment-detail':
+        this.theme.goal = 'order'
     }
     if (this.$store.state.productId) this.theme.params.id = this.$store.state.productId
   },
