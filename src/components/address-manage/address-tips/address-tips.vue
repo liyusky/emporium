@@ -112,10 +112,6 @@ export default {
         }
       }).success(data => {
         this.defaultId = item.Id
-        // 添加默认地址
-        if (window.localStorage) {
-          localStorage.setItem('defaultAddress', JSON.stringify(item))
-        }
       }).fail((data) => {
         this.Title.text = data.message
         this.dialogShow = true

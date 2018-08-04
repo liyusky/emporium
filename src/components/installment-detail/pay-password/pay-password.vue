@@ -14,7 +14,9 @@
       <li class="keyboard-item" v-for="(number, index) in keyboard" :key="index" @click="press(number)">{{number}}</li>
       <li class="keyboard-item"></li>
       <li class="keyboard-item" @click="press(0)">0</li>
-      <li class="keyboard-item" @click="remove"></li>
+      <li class="keyboard-item" @click="remove">
+        <i class="iconfont icon-huitui"></i>
+      </li>
     </ul>
   </section>
   <!-- e  -->
