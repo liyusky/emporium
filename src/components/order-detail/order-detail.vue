@@ -30,7 +30,7 @@
               <h3 class="content-title">{{orderDetail.Title}}</h3>
               <div class="content-price-number">
                 <p class="content-price">￥{{orderDetail.CommodityPrice}}</p>
-                <p class="content-number">x{{orderDetail.rownum}}</p>
+                <p class="content-number">x1</p>
               </div>
             </div>
           </div>
@@ -141,6 +141,8 @@ export default {
       case 'order':
         this.theme.goal = 'order'
         break
+      case 'installment-detail':
+        this.theme.goal = 'order'
     }
     if (this.$store.state.productId) this.theme.params.id = this.$store.state.productId
   },

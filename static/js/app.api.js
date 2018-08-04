@@ -1,4 +1,4 @@
-window.token = 'd825d88fc5f822319f5d4e48e3b15b05'
+window.token = '41bff73595d0cd4f95eae8fc944f0b8f'
 window.id = '10002'
 window.phone = '15921769360'
 // window.token = null

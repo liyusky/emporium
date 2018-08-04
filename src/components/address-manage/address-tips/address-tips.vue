@@ -54,8 +54,7 @@ export default {
       },
       reminderShow: false,
       dialogShow: false,
-      deleteParams: {},
-      switchAddress: false
+      deleteParams: {}
     }
   },
   components: {
@@ -113,8 +112,6 @@ export default {
         }
       }).success(data => {
         this.defaultId = item.Id
-        this.switchAddress = true
-        this.saveswitchAddressStatus(this.switchAddress)
       }).fail((data) => {
         this.Title.text = data.message
         this.dialogShow = true
@@ -153,7 +150,7 @@ export default {
       this.reminderShow = false
       this.dialogShow = false
     },
-    ...mapMutations(['saveSelectedAddress', 'saveswitchAddressStatus'])
+    ...mapMutations(['saveSelectedAddress'])
   }
 }
 </script>

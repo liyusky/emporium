@@ -7,7 +7,7 @@
           <img src="../../assets/images/process-bar.png">
         </div>
         <!-- 有地址 -->
-        <div class="address-exist" v-if="address">
+        <div class="address-exist" v-show="address ">
           <div class="exist-person-info">
             <p class="info-name-telphone">
               <svg class="icon" aria-hidden="true">
@@ -20,7 +20,7 @@
           <i class="iconfont icon-arrow-right"></i>
         </div>
         <!-- 无地址 -->
-        <div class="address-without" v-if="!address">
+        <div class="address-without" v-show="!address">
             <p class="without-title">
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-didian"></use>
@@ -106,7 +106,7 @@ import Modal from '../common/modal/modal.vue'
 import Instalments from './modal/instalments/instalments.vue'
 import Http from '../../class/http.class.js'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   name: 'OrderConfirm',
   components: {
@@ -137,20 +137,16 @@ export default {
       hasAddressDefault: true,
       icons: '#icon-dadaobiaozhun',
       dialogShow: false,
-      defaultAddress: null,
-      orderDetail: null
+      address: null
     }
   },
   created () {
-    console.log(this.address)
     this.theme.goal = this.$store.state.origin
     this.theme.params.id = this.$store.state.productId
     this.id = this.$store.state.productId
     this.OrderNo = this.$store.state.OrderNo
-    if (window.localStorage) {
-      var address = localStorage.getItem('defaultAddress')
-      this.defaultAddress = JSON.parse(address)
-    }
+    this.address = this.$store.state.address
+    console.log(this.address)
     Http.send({
       url: 'product',
       data: {
@@ -191,9 +187,12 @@ export default {
           Orderno: this.OrderNo
         }
       }).success(data => {
-        this.address.ReseverName = data.order.ReciverName
-        this.address.ReciverAddress = data.order.ReciverAddress
-        this.address.ReciverPhone = data.order.ReciverPhone
+        if (this.address) return
+        this.address = {
+          ReseverName: data.order.ReciverName,
+          Address: data.order.ReciverAddress,
+          PhoneNo: data.order.ReciverPhone
+        }
       })
     }).fail(data => {
       this.Title.text = data.message
@@ -266,9 +265,6 @@ export default {
   },
   destroyed () {
     this.saveSelectedAddress(null)
-  },
-  computed: {
-    ...mapState(['address', 'switchAddress'])
   }
 }
 </script>

@@ -14,7 +14,9 @@
       <li class="keyboard-item" v-for="(number, index) in keyboard" :key="index" @click="press(number)">{{number}}</li>
       <li class="keyboard-item"></li>
       <li class="keyboard-item" @click="press(0)">0</li>
-      <li class="keyboard-item" @click="remove"></li>
+      <li class="keyboard-item" @click="remove">
+        <i class="iconfont icon-huitui"></i>
+      </li>
     </ul>
   </section>
   <!-- e  -->
@@ -24,13 +26,16 @@
 import Http from '../../../class/http.class.js'
 export default {
   name: 'PayPassword',
-  props: ['orderNo', 'billId'],
+  props: ['OrderNo', 'BillId'],
   data () {
     return {
       keyboard: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       password: [],
       size: 0
     }
+  },
+  created () {
+    this.OrderNo = this.$store.state.OrderNo
   },
   methods: {
     press (number) {
@@ -43,27 +48,29 @@ export default {
     },
     closeModal () {
       this.$emit('CLOSE_MODAL_EVENT')
+    },
+    payPart () {
+      Http.send({
+        url: 'PayOrderBill',
+        data: {
+          access_token: window.token,
+          BillId: this.BillId,
+          orderNo: this.OrderNo,
+          phoneno: window.phone,
+          pwd: this.password.join('')
+        }
+      }).success(data => {
+        this.$emit('PAY_SUCCESS_EVENT')
+      }).fail(data => {
+        this.$emit('PAY_FAIL_EVENT')
+      }).default(() => {
+        this.password = []
+      })
     }
   },
   watch: {
-    password: (current, previous) => {
-      if (current.length === 6) {
-        console.log(this)
-        Http.send({
-          url: 'PayOrderBill',
-          data: {
-            access_token: window.token,
-            BillId: this.billId,
-            orderNo: this.orderNo,
-            phoneno: window.phone,
-            pwd: current.join('')
-          }
-        }).success(data => {
-        }).fail(data => {
-          this.Title.text = data.message
-          this.dialogShow = true
-        })
-      }
+    password: function (current) {
+      if (current.length === 6) this.payPart()
     }
   }
 }

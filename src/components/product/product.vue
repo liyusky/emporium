@@ -26,7 +26,7 @@
       <div class="order-content">
         <div class="content-sign">
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-kefu"></use>
+            <use xlink:href="#icon-qqkefu"></use>
           </svg>
           <p>客服</p>
         </div>
