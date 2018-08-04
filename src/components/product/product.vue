@@ -24,7 +24,7 @@
     <Guidance></Guidance>
     <footer class="product-order">
       <div class="order-content">
-        <div class="content-sign">
+        <div class="content-sign" @click="chatQQ">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-qqkefu"></use>
           </svg>
@@ -224,6 +224,9 @@ export default {
         document.body.scrollTop = this.currentTop
         document.documentElement.scrollTop = this.currentTop
       }, 3)
+    },
+    chatQQ () {
+      window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=727011147&version=3&src_type=web&web_src=oicqzone.com'
     }
   }
 }
