@@ -8,6 +8,10 @@ const mutations = {
     state.address = address
     console.log(state.address)
   },
+  // 是否有默认地址
+  saveswitchAddressStatus (state, switchAddress) {
+    state.switchAddress = switchAddress
+  },
   saveInstallments (state, installments) {
     state.installments = installments
   },

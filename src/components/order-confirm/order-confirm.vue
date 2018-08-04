@@ -137,10 +137,12 @@ export default {
       hasAddressDefault: true,
       icons: '#icon-dadaobiaozhun',
       dialogShow: false,
-      defaultAddress: null
+      defaultAddress: null,
+      orderDetail: null
     }
   },
   created () {
+    console.log(this.address)
     this.theme.goal = this.$store.state.origin
     this.theme.params.id = this.$store.state.productId
     this.id = this.$store.state.productId
@@ -183,6 +185,16 @@ export default {
         })
         data.Phone.PaymentTypeArr = content
       }
+      Http.send({
+        url: 'orderDetail',
+        data: {
+          Orderno: this.OrderNo
+        }
+      }).success(data => {
+        this.address.ReseverName = data.order.ReciverName
+        this.address.ReciverAddress = data.order.ReciverAddress
+        this.address.ReciverPhone = data.order.ReciverPhone
+      })
     }).fail(data => {
       this.Title.text = data.message
       this.dialogShow = true
@@ -256,7 +268,7 @@ export default {
     this.saveSelectedAddress(null)
   },
   computed: {
-    ...mapState(['address'])
+    ...mapState(['address', 'switchAddress'])
   }
 }
 </script>

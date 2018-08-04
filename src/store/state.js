@@ -19,6 +19,7 @@ const state = {
   origin5: null,
   // installments-detail origin
   origin6: null,
-  productId: null
+  productId: null,
+  switchAddress: false
 }
 export default state

@@ -68,7 +68,6 @@ export default {
       this.bill = data.bill
       this.order = data.order
       this.BillId = this.bill[this.currentIndex].Id
-      console.log(this.BillId)
     }).fail(data => {
       this.Title.text = data.message
       this.dialogShow = true

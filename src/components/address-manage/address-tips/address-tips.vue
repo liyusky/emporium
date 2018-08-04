@@ -54,7 +54,8 @@ export default {
       },
       reminderShow: false,
       dialogShow: false,
-      deleteParams: {}
+      deleteParams: {},
+      switchAddress: false
     }
   },
   components: {
@@ -112,10 +113,8 @@ export default {
         }
       }).success(data => {
         this.defaultId = item.Id
-        // 添加默认地址
-        if (window.localStorage) {
-          localStorage.setItem('defaultAddress', JSON.stringify(item))
-        }
+        this.switchAddress = true
+        this.saveswitchAddressStatus(this.switchAddress)
       }).fail((data) => {
         this.Title.text = data.message
         this.dialogShow = true
@@ -154,7 +153,7 @@ export default {
       this.reminderShow = false
       this.dialogShow = false
     },
-    ...mapMutations(['saveSelectedAddress'])
+    ...mapMutations(['saveSelectedAddress', 'saveswitchAddressStatus'])
   }
 }
 </script>
