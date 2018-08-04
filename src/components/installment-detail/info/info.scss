@@ -1,0 +1,79 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_btn.scss';
+.installment-info {
+  width: 100%;
+  padding: {
+    left: 26 / $unit * $symbol;
+    right: 26 / $unit * $symbol;
+  }
+  margin: {
+    bottom: 21 / $unit * $symbol;
+  }
+  background: #fff;
+  .info-phone {
+    $param: (flex flex) (alignItems center) (justifyContent flex-start);
+    @include flexSet($param);
+    width: 100%;
+    height: 222 / $unit * $symbol;
+    padding: {
+      left: 21 / $unit * $symbol;
+      right: 21 / $unit * $symbol;
+    }
+    border: {
+      bottom: 1px solid #ededed;
+    }
+    .phone-img {
+      width: 120 / $unit * $symbol;
+      height: 120 / $unit * $symbol;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .phone-detail {
+      flex: 1;
+      padding: {
+        left: 21 / $unit * $symbol;
+      }
+      .detail-title {
+        $param: (flex flex) (alignItems center) (justifyContent flex-start);
+        @include flexSet($param);
+        font-size: 30 / $unit * $symbol;
+        color: #2a2a2a;
+      }
+      .detail-price-number {
+        $param: (flex flex) (alignItems center) (justifyContent space-between);
+        @include flexSet($param);
+        padding: {
+          top: 15 / $unit * $symbol;
+        }
+        p:first-of-type {
+          font-size: 30 / $unit * $symbol;
+          color: #eb2828;
+          font-weight: bold;
+        }
+        p:last-of-type {
+          font-size: 24 / $unit * $symbol;
+          color: #666666;
+        }
+      }
+    }
+  }
+  .info-total-price {
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: 96 / $unit * $symbol;
+    background: #fff;
+    p:first-of-type {
+      font-size: 27 / $unit * $symbol;
+      color: #353535;
+    }
+    p:last-of-type {
+      font-size: 27 / $unit * $symbol;
+      font-weight: bold;
+      color: #353535;
+    }
+  }
+}
