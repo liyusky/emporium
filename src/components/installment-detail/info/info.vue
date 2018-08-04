@@ -1,0 +1,43 @@
+<template>
+  <!-- s  -->
+  <section class="installment-info">
+    <div class="info-phone">
+      <div class="phone-img">
+        <img :src="order.Icon">
+      </div>
+      <div class="phone-detail">
+        <h3 class="detail-title">{{order.Title}}</h3>
+        <div class="detail-price-number">
+          <p>￥{{order.CommodityPrice}}</p>
+          <p>x{{order.rownum}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-total-price">
+      <p>商品总价</p>
+      <p>￥{{order.CommodityPrice}}</p>
+    </div>
+  </section>
+  <!-- e  -->
+</template>
+
+<script>
+export default {
+  name: 'Info',
+  props: ['order'],
+  data () {
+    return {
+      detail: {}
+    }
+  },
+  watch: {
+    order: (current, previous) => {
+      if (current) this.detail = current
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped>
+@import "./info.scss";
+</style>

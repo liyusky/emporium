@@ -1,0 +1,101 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_btn.scss';
+.installment-stage {
+  width: 100%;
+  background: #fff;
+  .stage-title {
+    $param: (flex flex) (alignItems center) (justifyContent flex-start);
+    @include flexSet($param);
+    width: 100%;
+    height: 78 / $unit * $symbol;
+    padding: {
+      right: 30 / $unit * $symbol;
+      left: 30 / $unit * $symbol;
+    }
+    border: {
+      bottom: 1px solid #ededed;
+    }
+    p {
+      font-size: 27 / $unit * $symbol;
+      color: #666666;
+    }
+  }
+  .stage-list {
+    $param: (flex flex) (flexWrap wrap);
+    @include flexSet($param); // width: 100%;
+    padding: {
+      top: 9 / $unit * $symbol;
+      bottom: 21 / $unit * $symbol;
+    }
+    margin: {
+      right: 26 / $unit * $symbol;
+      left: 26 / $unit * $symbol;
+    }
+    border: {
+      bottom: 1px solid #ededed;
+    }
+    .list-item {
+      $param: (flex flex) (alignItems center) (justifyContent center);
+      @include flexSet($param);
+      width: 33%;
+      height: 147 / $unit * $symbol;
+      .item-bill {
+        $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+        @include flexSet($param);
+        width: 207 / $unit * $symbol;
+        height: 105 / $unit * $symbol;
+        border: 1px solid #e9e9e9;
+        border-radius: 7 / $unit * $symbol;
+        p:first-of-type {
+          font-size: 27 / $unit * $symbol;
+          color: #666666;
+        }
+        p:last-of-type {
+          font-size: 24 / $unit * $symbol;
+          color: #999999;
+        }
+      }
+      .bill-active {
+        border: 1px solid #eb2828;
+        color: #eb2828;
+        p:first-of-type,
+        p:last-of-type {
+          color: #eb2828;
+        }
+      }
+    }
+  }
+  .stage-due {
+    $param: (flex flex) (alignItems center) (justifyContent space-between);
+    @include flexSet($param);
+    width: 100%;
+    height: 105 / $unit * $symbol;
+    padding: {
+      right: 39 / $unit * $symbol;
+      left: 30 / $unit * $symbol;
+    }
+    p {
+      font-size: 27 / $unit * $symbol;
+      color: #353535;
+    }
+    .due-price {
+      $param: (flex flex) (alignItems center);
+      @include flexSet($param);
+      height: 36 / $unit * $symbol;
+      span {
+        font-size: 30 / $unit * $symbol;
+        color: #353535;
+        font-weight: bold;
+      }
+      i {
+        margin: {
+          top: 9 / $unit * $symbol;
+          left: 15 / $unit * $symbol;
+        }
+        font-size: 33 / $unit * $symbol;
+        color: #898989;
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ const mutations = {
   // 保存选中的地址
   saveSelectedAddress (state, address) {
     state.address = address
+    console.log(state.address)
   },
   saveInstallments (state, installments) {
     state.installments = installments
@@ -15,6 +16,9 @@ const mutations = {
   },
   changeStatusNum (state, number) {
     state.statusNum = number
+  },
+  addStatusArrIndex (state, index) {
+    state.statusArrIndex = index
   },
   saveOrigin (state, origin) {
     state.origin = origin

@@ -7,12 +7,7 @@
     </div>
     <div class="password-input">
       <ul class="input-list">
-        <li class="list-item">{{first}}</li>
-        <li class="list-item">{{password[1]}}</li>
-        <li class="list-item">{{password[2]}}</li>
-        <li class="list-item">{{password[3]}}</li>
-        <li class="list-item">{{password[4]}}</li>
-        <li class="list-item">{{password[5]}}</li>
+        <li class="list-item" v-for="index in 6" :key="index">{{isNaN(password[index - 1]) ? '' : '•'}}</li>
       </ul>
     </div>
     <ul class="password-keyboard">
@@ -26,21 +21,20 @@
 </template>
 
 <script>
+import Http from '../../../class/http.class.js'
 export default {
   name: 'PayPassword',
+  props: ['orderNo', 'billId'],
   data () {
     return {
       keyboard: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       password: [],
-      size: 0,
-      first: 0
+      size: 0
     }
   },
   methods: {
     press (number) {
       if (this.password.length > 5) return
-      console.log(this.first)
-      this.first = number
       this.password.push(number)
     },
     remove () {
@@ -50,13 +44,28 @@ export default {
     closeModal () {
       this.$emit('CLOSE_MODAL_EVENT')
     }
+  },
+  watch: {
+    password: (current, previous) => {
+      if (current.length === 6) {
+        console.log(this)
+        Http.send({
+          url: 'PayOrderBill',
+          data: {
+            access_token: window.token,
+            BillId: this.billId,
+            orderNo: this.orderNo,
+            phoneno: window.phone,
+            pwd: current.join('')
+          }
+        }).success(data => {
+        }).fail(data => {
+          this.Title.text = data.message
+          this.dialogShow = true
+        })
+      }
+    }
   }
-  // watch: {
-  //   password: (current, previous) => {
-  //     if (current.length === 6) {
-  //     }
-  //   }
-  // }
 }
 </script>
 

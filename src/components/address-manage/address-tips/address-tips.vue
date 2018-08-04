@@ -11,7 +11,7 @@
           <p class="detail-address">{{item.Address}}</p>
         </div>
         <div class="tip-operation">
-          <p class="operation-set-default" @click.stop="setDefault(item.Id)">
+          <p class="operation-set-default" @click.stop="setDefault(item)">
             <i class="iconfont icon-dadaobiaozhun" :class="{'icon-default': item.Id == defaultId}"></i>
             <span>设为默认地址</span>
           </p>
@@ -103,15 +103,19 @@ export default {
         })
       }
     },
-    setDefault (postId) {
+    setDefault (item) {
       Http.send({
         url: 'SetDefaultAddress',
         data: {
           customerId: window.id,
-          postId: postId
+          postId: item.Id
         }
       }).success(data => {
-        this.defaultId = postId
+        this.defaultId = item.Id
+        // 添加默认地址
+        if (window.localStorage) {
+          localStorage.setItem('defaultAddress', JSON.stringify(item))
+        }
       }).fail((data) => {
         this.Title.text = data.message
         this.dialogShow = true
