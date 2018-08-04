@@ -30,7 +30,7 @@
               <h3 class="content-title">{{orderDetail.Title}}</h3>
               <div class="content-price-number">
                 <p class="content-price">￥{{orderDetail.CommodityPrice}}</p>
-                <p class="content-number">x{{orderDetail.rownum}}</p>
+                <p class="content-number">x1</p>
               </div>
             </div>
           </div>

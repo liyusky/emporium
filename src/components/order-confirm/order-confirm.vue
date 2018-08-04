@@ -6,8 +6,18 @@
         <div class="address-process">
           <img src="../../assets/images/process-bar.png">
         </div>
+        <!-- 无地址 -->
+        <div class="address-without" v-if="!address">
+            <p class="without-title">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-didian"></use>
+              </svg>
+              <span>添加收货地址</span>
+            </p>
+          <i class="iconfont icon-arrow-right"></i>
+        </div>
         <!-- 有地址 -->
-        <div class="address-exist" v-if="address">
+        <div class="address-exist" v-else-if="address ">
           <div class="exist-person-info">
             <p class="info-name-telphone">
               <svg class="icon" aria-hidden="true">
@@ -17,16 +27,6 @@
             </p>
             <p class="info-receipt-place">{{address.Address}}</p>
           </div>
-          <i class="iconfont icon-arrow-right"></i>
-        </div>
-        <!-- 无地址 -->
-        <div class="address-without" v-if="!address">
-            <p class="without-title">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-didian"></use>
-              </svg>
-              <span>添加收货地址</span>
-            </p>
           <i class="iconfont icon-arrow-right"></i>
         </div>
       </div>
@@ -137,8 +137,7 @@ export default {
       installmentNum: 0,
       hasAddressDefault: true,
       icons: '#icon-dadaobiaozhun',
-      dialogShow: false,
-      defaultAddress: null
+      dialogShow: false
     }
   },
   created () {
@@ -181,6 +180,19 @@ export default {
         })
         data.Phone.PaymentTypeArr = content
       }
+      Http.send({
+        url: 'orderDetail',
+        data: {
+          Orderno: this.OrderNo
+        }
+      }).success(data => {
+        if (this.address) return
+        this.address = {
+          ReseverName: data.order.ReciverName,
+          Address: data.order.ReciverAddress,
+          PhoneNo: data.order.ReciverPhone
+        }
+      })
     }).fail(data => {
       this.Title.text = data.message
       this.dialogShow = true
@@ -191,7 +203,7 @@ export default {
         Orderno: this.OrderNo
       }
     }).success(data => {
-      console.log(data.order)
+      if (this.address) return
       this.address = {
         ReseverName: data.order.ReciverName,
         PhoneNo: data.order.ReciverPhone,

@@ -13,7 +13,7 @@
           <p class="content-title">{{item.Title}}</p>
           <div class="content-price-number">
             <p class="content-price">￥{{item.CommodityPrice}}</p>
-            <p class="content-number">x{{item.rownum}}</p>
+            <p class="content-number">x1</p>
           </div>
         </div>
       </div>
