@@ -122,7 +122,8 @@ export default {
     closeModal () {
       this.RepaymentDetailShow = false
       this.dialogShow = false
-    }
+    },
+    sendRequest () {}
   }
 }
 </script>
