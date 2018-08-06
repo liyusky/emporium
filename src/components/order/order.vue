@@ -8,10 +8,10 @@
       <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1, 3)">全部</button>
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
-    <section class="order-classify" id="orders">
+    <section class="order-classify" >
       <v-touch  class="classify-touch" @swipeleft="onSwipeLeft()" @swiperight="onSwipeRight()">
         <transition :name="fadeNewName">
-          <div class="classify-item" v-if="isShow">
+          <div class="classify-item" v-if="isShow" id="orders">
             <OrderWithout v-show="!tips.length"></OrderWithout>
             <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
               <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
@@ -19,7 +19,7 @@
           </div>
         </transition>
         <transition :name="fadeOldName">
-          <div class="classify-item" v-if="!isShow">
+          <div class="classify-item" v-if="!isShow" id="orders">
             <OrderWithout v-show="!tips.length"></OrderWithout>
             <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
               <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>

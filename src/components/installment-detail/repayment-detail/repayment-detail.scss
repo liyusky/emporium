@@ -51,14 +51,12 @@
   }
   .detail-list {
     width: 100%;
-    max-height: 650 / $unit * $symbol;
     padding: {
       bottom: 39 / $unit * $symbol;
     }
     border: {
       top: 1px solid #f0f0f0;
     }
-    overflow: auto;
     .list-item {
       $param: (flex flex) (justifyContent space-between);
       @include flexSet($param);
