@@ -57,9 +57,6 @@ export default {
   components: {
     ModalReminder
   },
-  created () {
-    console.log(this.buy)
-  },
   methods: {
     closeModal () {
       this.$emit('CLOSE_MODAL_EVENT')

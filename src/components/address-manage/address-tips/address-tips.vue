@@ -97,7 +97,6 @@ export default {
             name: 'order-confirm'
           })
         }).fail((data) => {
-          console.log(data)
           this.Title.text = data.message
           this.dialogShow = true
         })

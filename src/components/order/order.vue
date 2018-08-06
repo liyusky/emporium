@@ -93,7 +93,6 @@ export default {
     let defaultStatusArrIndex = this.$store.state.statusArrIndex
     if (typeof defaultStatus === 'number') this.status = defaultStatus
     this.statusArrIndex = defaultStatusArrIndex
-    console.log(this.statusArrIndex)
     this.getData(this.status)
     this.saveOrigin4('order')
   },

@@ -44,7 +44,6 @@ export default {
     selectProvince (item) {
       this.province = item
       let cityList = []
-      console.log(this.cities)
       for (const key in this.cities[item]) {
         cityList.push(key)
       }

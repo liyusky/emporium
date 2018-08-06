@@ -224,7 +224,6 @@ export default {
       } else {
         this.type = this.previous
       }
-      console.log(this.type)
       this.state = this.status.get(this.type)
       this.SMSType = this.state.SMSType
       this.submit = this[this.state.operation]
@@ -381,7 +380,6 @@ export default {
       this.dialogShow = false
     },
     goback () {
-      console.log(this.origin)
       if (this.origin === 'product') {
         this.$router.push({
           name: 'product',

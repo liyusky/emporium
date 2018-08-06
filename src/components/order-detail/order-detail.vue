@@ -221,7 +221,6 @@ export default {
       } catch (error) {
         this.Title.text = '支付失败'
         this.reminderShow = true
-        console.log(error)
       }
     },
     confrim () {

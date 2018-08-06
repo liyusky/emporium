@@ -1,15 +1,10 @@
-window.token = '41bff73595d0cd4f95eae8fc944f0b8f'
-window.id = '10002'
-window.phone = '15921769360'
-// window.token = null
-// window.id = null
-// window.phone = null
+window.token = null
+window.id = null
+window.phone = null
 window.kill = function () {
-  var btnDom = document.getElementById('back-btn')
-  if (btnDom) {
-    btnDom.click()
-  } else {
-    console.log('该页面没有标题栏或者返回按钮没有获取到！')
+  try {
+    document.getElementById('back-btn').click()
+  } catch (error) {
   }
 }
 window.paySuccess = function (finish) {
@@ -57,7 +52,6 @@ window.init = function () {
     window.token = basicData[1]
     window.phone = basicData[2]
   } catch (error) {
-    console.log(error)
   }
 }
 

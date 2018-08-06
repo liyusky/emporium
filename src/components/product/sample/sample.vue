@@ -93,7 +93,6 @@ export default {
         //   // window.webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
         // }
       } catch (error) {
-        console.log(error)
       }
     }
   }
