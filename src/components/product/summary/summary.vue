@@ -91,10 +91,10 @@ export default {
     return {}
   },
   mounted () {
-    console.log(this.summary)
     // 轮播图
     this.$nextTick(function () {
-      var mySwiper = new Swiper('.swiper-container', {
+      /* eslint-disable no-new */
+      new Swiper('.swiper-container', {
         autoplay: {
           delay: 2000,
           disableOnInteraction: false
@@ -110,7 +110,6 @@ export default {
         observer: true,
         observeParents: true
       })
-      console.log(mySwiper)
     })
   },
   methods: {
