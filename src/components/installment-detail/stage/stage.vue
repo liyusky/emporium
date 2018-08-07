@@ -26,12 +26,7 @@
 <script>
 export default {
   name: 'Stage',
-  props: ['bill'],
-  data () {
-    return {
-      currentIndex: 0 // 第几期
-    }
-  },
+  props: ['bill', 'currentIndex'],
   methods: {
     openModal () {
       this.$emit('OPEN_MODAL_EVENT')

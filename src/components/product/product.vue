@@ -226,7 +226,11 @@ export default {
       }, 3)
     },
     chatQQ () {
-      window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=727011147&version=3&src_type=web&web_src=oicqzone.com'
+      try {
+        window.webkit.messageHandlers.popQQ.postMessage(JSON.stringify('727011147'))
+      } catch (error) {
+        window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=727011147&version=3&src_type=web&web_src=oicqzone.com'
+      }
     }
   }
 }
