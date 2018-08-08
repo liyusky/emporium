@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <div class="information-phone">
+        <div class="information-phone" @click="showProduct">
           <div class="phone-detail">
             <div class="detail-img">
               <img :src="orderDetail.Icon">
@@ -123,6 +123,7 @@ export default {
         Orderno: this.OrderNo
       }
     }).success(data => {
+      console.log(data)
       data = data.order
       this.state = data.Status
       this.payId = data.PayId
@@ -151,6 +152,14 @@ export default {
       this.reminderShow = false
       this.dialogShow = false
       this.modal = false
+    },
+    showProduct () {
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: this.orderDetail.order.CommodityId
+        }
+      })
     },
     judgeCancel () {
       let result = true

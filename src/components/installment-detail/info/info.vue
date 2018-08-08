@@ -1,6 +1,6 @@
 <template>
   <!-- s  -->
-  <section class="installment-info">
+  <section class="installment-info" @click="showProduct">
     <div class="info-phone">
       <div class="phone-img">
         <img :src="order.Icon">
@@ -33,6 +33,16 @@ export default {
   watch: {
     order: (current, previous) => {
       if (current) this.detail = current
+    }
+  },
+  methods: {
+    showProduct () {
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: this.order.CommodityId
+        }
+      })
     }
   }
 }

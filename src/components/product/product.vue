@@ -77,8 +77,7 @@ export default {
   data () {
     return {
       theme: {
-        title: null,
-        goal: 'mall'
+        title: null
       },
       Title: {
         text: ''

@@ -17,7 +17,7 @@
           <i class="iconfont icon-arrow-right"></i>
         </div>
         <!-- 有地址 -->
-        <div class="address-exist" v-else-if="address ">
+        <div class="address-exist" v-else-if="address">
           <div class="exist-person-info">
             <p class="info-name-telphone">
               <svg class="icon" aria-hidden="true">
@@ -33,7 +33,7 @@
       <div class="content-order-number">
         <p class="title-time">{{OrderNo}}</p>
       </div>
-      <div class="content-detail">
+      <div class="content-detail" @click="showProduct">
         <div class="detail-img">
           <img :src="phone.Icon">
         </div>
@@ -152,6 +152,7 @@ export default {
         id: this.id
       }
     }).success(data => {
+      console.log(data)
       setPaymentTypeArr()
       this.phone = data.Phone
       this.installments = data.CommodityInstallmentList
@@ -245,6 +246,14 @@ export default {
       this.saveOrigin2('order-confirm')
       this.saveOrigin6('order-confirm')
       this.$router.push({ name: page })
+    },
+    showProduct () {
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: this.phone.Id
+        }
+      })
     },
     confrim () {
       if (!this.address) {
