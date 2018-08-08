@@ -2,7 +2,7 @@
   <section class="installment">
     <Theme :theme="theme"></Theme>
     <Info :order="order"></Info>
-    <Stage :bill="bill" @OPEN_MODAL_EVENT="openModal('stage')"></Stage>
+    <Stage :bill="bill" :currentIndex="currentIndex" @OPEN_MODAL_EVENT="openModal('stage')"></Stage>
     <footer class="installment-button">
       <button @click="openModal('installment-detail')">立即付款</button>
     </footer>
@@ -115,17 +115,20 @@ export default {
       this.payPasswordShow = false
     },
     paySuccess () {
-      this.currentIndex++
-      if (this.currentIndex === this.bill.length) {
+      if (this.currentIndex === this.bill.length - 1) {
         this.saveOrigin3('installment-detail')
         this.$router.push({ name: 'order-detail' })
+        return
       }
+      this.BillId = this.bill[++this.currentIndex].Id
       this.payPasswordShow = false
       this.RepaymentDetailShow = false
       this.modal = false
+      this.Title.text = '支付成功'
+      this.dialogShow = true
     },
-    payFail () {
-      this.Title.text = '支付失败'
+    payFail (message) {
+      this.Title.text = message
       this.dialogShow = true
       this.payPasswordShow = false
       this.RepaymentDetailShow = false

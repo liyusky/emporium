@@ -18,4 +18,5 @@ export default class Url {
   static RegistCustomer = '/Customer/RegistCustomer'
   static ModifyCustomerPwd = '/Customer/ModifyCustomerPwd'
   static SendSMS = '/Customer/SendSMS'
+  static LogisticsDetail = '/Order/Trace'
 }

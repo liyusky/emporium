@@ -23,6 +23,8 @@ export default class Http {
       headers: headers,
       params: args.data
     }).then(response => {
+      // console.log(args.url)
+      // console.log(response)
       instance.dispense(response.data)
       if (instance.defaultCallback) instance.defaultCallback()
     }).catch(() => {

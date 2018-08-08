@@ -1,0 +1,244 @@
+@import '../../../dependencies/sass/_flex.scss';
+@import '../../../dependencies/sass/_unit.scss';
+@import '../../../dependencies/sass/_btn.scss';
+.logistics {
+  width: 100vw;
+  height: 100vh;
+  padding: {
+    top: (93 + 36) / $unit * $symbol;
+    bottom: 99 / $unit * $symbol;
+  }
+  background: #fff;
+  overflow: auto;
+  &-detail {
+    width: 100%;
+    .detial-orderno {
+      $param: (flex flex) (alignItems center) (justifyContent flex-start);
+      @include flexSet($param);
+      width: 100%;
+      height: 90 / $unit * $symbol;
+      padding: {
+        left: 30 / $unit * $symbol;
+      }
+      border: {
+        bottom: 1px solid #ededed;
+      }
+      font-size: 30 / $unit * $symbol;
+      color: #000000;
+      font-weight: bold;
+    }
+    .detail-info {
+      width: 100%;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      } // margin: {
+      //   bottom: 21 / $unit * $symbol;
+      // }
+      background: #fff;
+      .info-phone {
+        $param: (flex flex) (alignItems center) (justifyContent flex-start);
+        @include flexSet($param);
+        width: 100%;
+        height: 222 / $unit * $symbol;
+        border: {
+          bottom: 1px solid #ededed;
+        }
+        .phone-img {
+          width: 120 / $unit * $symbol;
+          height: 120 / $unit * $symbol;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .phone-detail {
+          flex: 1;
+          padding: {
+            left: 21 / $unit * $symbol;
+          }
+          .detail-title {
+            $param: (flex flex) (alignItems center) (justifyContent flex-start);
+            @include flexSet($param);
+            font-size: 30 / $unit * $symbol;
+            color: #2a2a2a;
+          }
+          .detail-price-number {
+            $param: (flex flex) (alignItems center) (justifyContent space-between);
+            @include flexSet($param);
+            padding: {
+              top: 15 / $unit * $symbol;
+            }
+            p:first-of-type {
+              font-size: 30 / $unit * $symbol;
+              color: #eb2828;
+              font-weight: bold;
+            }
+            p:last-of-type {
+              font-size: 24 / $unit * $symbol;
+              color: #666666;
+            }
+          }
+        }
+      }
+    }
+    .detail-message {
+      width: 100%;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      .message-item {
+        $param: (flex flex) (alignItems center) (justifyContent flex-start);
+        @include flexSet($param);
+        width: 100%;
+        height: 93 / $unit * $symbol;
+        border: {
+          bottom: 1px solid #ededed;
+        }
+        span:first-of-type {
+          font-size: 30 / $unit * $symbol;
+          color: #666666;
+        }
+        span:last-of-type {
+          padding: {
+            left: 9 / $unit * $symbol;
+          }
+          font-size: 30 / $unit * $symbol;
+          color: #353535;
+        }
+        span.issign {
+          color: #ff5555;
+        }
+      }
+    }
+    .detail-trace {
+      width: 100%;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      .trace-title {
+        $param: (flex flex) (alignItems center) (justifyContent flex-start);
+        @include flexSet($param);
+        width: 100%;
+        height: 108 / $unit * $symbol;
+        font-size: 27 / $unit * $symbol;
+        color: #353535;
+      }
+      .trace-list {
+        width: 100%;
+        .list-item {
+          position: relative;
+          width: 100%;
+          padding: {
+            top: 27 / $unit * $symbol;
+            bottom: 21 / $unit * $symbol;
+            left: 60 / $unit * $symbol;
+          }
+          p:first-of-type {
+            line-height: 33 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            color: #999999;
+          }
+          p:last-of-type {
+            $param: (flex flex) (alignItems center);
+            @include flexSet($param);
+            height: 60 / $unit * $symbol;
+            font-size: 27 / $unit * $symbol;
+            color: #999999;
+          }
+          .time-badge {
+            position: absolute;
+            left: 6 / $unit * $symbol;
+            top: 30 / $unit * $symbol;
+            z-index: 9;
+            $param: (flex flex) (direction column) (alignItems center);
+            @include flexSet($param);
+            width: 27 / $unit * $symbol;
+            height: 100%;
+            .badge-top {
+              $param: (flex flex) (alignItems center) (justifyContent center);
+              @include flexSet($param);
+              width: 18 / $unit * $symbol;
+              height: 18 / $unit * $symbol;
+              border-radius: 50%;
+              background: #fff;
+              .top-radius {
+                width: 12 / $unit * $symbol;
+                height: 12 / $unit * $symbol;
+                border-radius: 50%;
+                background: #dbdbdb;
+              }
+            }
+            .badge-bottom {
+              flex: 1;
+              width: 2 / $unit * $symbol;
+              background: #dbdbdb;
+            }
+          }
+        }
+        .list-item:last-of-type {
+          .badge-bottom {
+            display: none;
+          }
+        }
+        .list-item:first-of-type {
+          .badge-top {
+            $param: (flex flex) (alignItems center) (justifyContent center);
+            @include flexSet($param);
+            width: 26 / $unit * $symbol;
+            height: 26 / $unit * $symbol;
+            background: #ffc8ca;
+            // margin: {
+            //   bottom: 3 / $unit * $symbol;
+            // }
+            .top-radius {
+              width: 18 / $unit * $symbol;
+              height: 18 / $unit * $symbol;
+              background: #ff464e;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    $param: (flex flex) (alignItems center) (justifyContent flex-end);
+    @include flexSet($param);
+    width: 100%;
+    height: 99 / $unit * $symbol;
+    border: {
+      top: 1px solid #e7e7e7;
+    }
+    box-shadow: 0 0 (3 / $unit * $symbol) #e7e7e7;
+    background: #fff;
+    button {
+      $param: (flex flex) (alignItems center) (justifyContent center);
+      @include flexSet($param);
+      width: 169 / $unit * $symbol;
+      height: 60 / $unit * $symbol;
+      margin: {
+        right: 20 / $unit * $symbol;
+      }
+      font-size: 27 / $unit * $symbol;
+      border: 1px solid #eb2828;
+      border-radius: 7 / $unit * $symbol;
+      background-color: #fff;
+      outline: none;
+      color: #fff;
+    }
+    button:first-of-type {
+      border: 1px solid #818181;
+      color: #000000;
+    }
+    button:last-of-type {
+      background-color: #eb2828;
+      color: #fff;
+    }
+  }
+}

@@ -62,7 +62,7 @@ export default {
       }).success(data => {
         this.$emit('PAY_SUCCESS_EVENT')
       }).fail(data => {
-        this.$emit('PAY_FAIL_EVENT')
+        this.$emit('PAY_FAIL_EVENT', data.message)
       }).default(() => {
         this.password = []
       })
