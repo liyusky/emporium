@@ -152,7 +152,6 @@ export default {
         id: this.id
       }
     }).success(data => {
-      console.log(data)
       setPaymentTypeArr()
       this.phone = data.Phone
       this.installments = data.CommodityInstallmentList

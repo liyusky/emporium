@@ -42,6 +42,9 @@ const mutations = {
   },
   saveProductId (state, id) {
     state.productId = id
+  },
+  saveOrderDetail (state, item) {
+    state.OrderDetail = item
   }
 }
 export default mutations

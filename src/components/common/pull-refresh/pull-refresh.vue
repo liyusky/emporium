@@ -17,6 +17,8 @@ export default {
   data () {
     return {
       pageY: 0,
+      pageX: 0,
+      touchScale: 0,
       tipHeight: 0,
       direction: null,
       parentDom: null,
@@ -29,27 +31,30 @@ export default {
   methods: {
     handleTouchStart (event) {
       this.pageY = event.targetTouches[0].pageY
+      this.pageX = event.targetTouches[0].pageX
       this.scrollPosition = this.parentDom.scrollTop
       this.scrollHeight = this.parentDom.scrollHeight
       this.maxScrollTop = this.parentDom.scrollHeight - this.parentDom.clientHeight
     },
     handleTouchMove (event) {
-      if (event.targetTouches[0].pageY > this.pageY) {
-      } else if (event.targetTouches[0].pageY < this.pageY) {
-        if (this.parentDom.scrollTop + this.parentDom.clientHeight < this.scrollHeight) return
-        this.tip = '上拉加载'
-        this.direction = 'bottom'
-        this.tipHeight = this.pageY - event.targetTouches[0].pageY - this.maxScrollTop + this.scrollPosition
-        if (this.tipHeight > 30) {
-          this.tip = '正在获取数据'
-        }
-        if (this.tipHeight > 45) {
-          this.tipHeight = 45
-        }
+      var touchPageXMounts = event.targetTouches[0].pageX - this.pageX
+      var touchPageYMounts = event.targetTouches[0].pageY - this.pageY
+      if (Math.abs(touchPageYMounts) < Math.abs(touchPageXMounts)) return
+      if (touchPageYMounts > 0) return
+      if (this.parentDom.scrollTop + this.parentDom.clientHeight < this.scrollHeight) return
+      this.tip = '上拉加载'
+      this.direction = 'bottom'
+      this.tipHeight = this.pageY - event.targetTouches[0].pageY - this.maxScrollTop + this.scrollPosition
+      if (this.tipHeight > 30) {
+        this.tip = '正在获取数据'
+      }
+      if (this.tipHeight > 45) {
+        this.tipHeight = 45
       }
       // event.preventDefault()
     },
     handleTouchEnd () {
+      if (this.parentDom.scrollTop + this.parentDom.clientHeight < this.scrollHeight) return
       this.$emit('LOAD_MORE_EVENT')
       let animation = setInterval(() => {
         if (this.tipHeight > 0) {
