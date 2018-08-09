@@ -68,7 +68,7 @@ import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   // 订单参数
   data () {
@@ -173,28 +173,45 @@ export default {
     },
     sendRequest () {
       this.reminderShow = false
-      Http.send({
-        url: 'Cancel',
-        data: {
-          orderno: this.orderDetail.OrderNo
-        }
-      }).success(data => {
-        let page = this.theme.goal
-        if (page === 'mall') {
-          page = 'product'
+      if (this.Title.text === '您确认收货') {
+        Http.send({
+          url: 'Receipt',
+          data: {
+            Orderno: this.OrderNo
+          }
+        }).success(data => {
+          this.changeStatusNum(3)
           this.$router.push({
-            name: page,
-            params: {
-              id: this.productId
-            }
+            name: 'order'
           })
-        } else {
-          this.$router.push({ name: page })
-        }
-      }).fail(data => {
-        this.Title.text = data.message
-        this.dialogShow = true
-      })
+        }).fail(fail => {
+          this.Title.text = fail.message
+          this.dialogShow = true
+        })
+      } else {
+        Http.send({
+          url: 'Cancel',
+          data: {
+            orderno: this.orderDetail.OrderNo
+          }
+        }).success(data => {
+          let page = this.theme.goal
+          if (page === 'mall') {
+            page = 'product'
+            this.$router.push({
+              name: page,
+              params: {
+                id: this.productId
+              }
+            })
+          } else {
+            this.$router.push({ name: page })
+          }
+        }).fail(data => {
+          this.Title.text = data.message
+          this.dialogShow = true
+        })
+      }
     },
     pay () {
       try {
@@ -224,18 +241,10 @@ export default {
       }
     },
     confrim () {
-      Http.send({
-        url: 'Receipt',
-        data: {
-          Orderno: this.OrderNo
-        }
-      }).success(data => {
-        this.state = 4
-      }).fail(fail => {
-        this.Title.text = fail.message
-        this.dialogShow = true
-      })
-    }
+      this.Title.text = '您确认收货'
+      this.reminderShow = true
+    },
+    ...mapMutations(['changeStatusNum'])
   },
   components: {
     Theme,

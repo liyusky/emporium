@@ -8,25 +8,21 @@
       <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1, 3)">全部</button>
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
-    <section class="order-classify" >
-      <v-touch  class="classify-touch" @swipeleft="onSwipeLeft()" @swiperight="onSwipeRight()">
-        <transition :name="fadeNewName">
-          <div class="classify-item" v-if="isShow" id="orders">
-            <OrderWithout v-show="!tips.length"></OrderWithout>
-            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
-            </PullRefresh>
-          </div>
-        </transition>
-        <transition :name="fadeOldName">
-          <div class="classify-item" v-if="!isShow" id="orders">
-            <OrderWithout v-show="!tips.length"></OrderWithout>
-            <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
-              <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
-            </PullRefresh>
-          </div>
-        </transition>
-      </v-touch>
+    <section class="order-classify" @touchstart="handleTouchStart($event)" @touchmove="handleTouchMove($event)" @touchend="handleTouchEnd($event)">
+      <transition :name="fadeNewName">
+        <div class="classify-item" v-if="isShow" id="orders" >
+          <OrderWithout v-show="!tips.length"></OrderWithout>
+          <PullRefresh v-show="tips.length" @LOAD_MORE_EVENT="loadMore" :parent="'orders'">
+            <OrderList :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+          </PullRefresh>
+        </div>
+      </transition>
+      <transition :name="fadeOldName">
+        <div class="classify-item" v-if="!isShow" id="orders">
+          <OrderWithout v-show="!tips.length"></OrderWithout>
+          <OrderList v-show="tips.length" :tips="tips" :timeArr="timeArr" :statusList="statusNameList"></OrderList>
+        </div>
+      </transition>
     </section>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
@@ -85,7 +81,12 @@ export default {
       fadeNewName: 'fade',
       fadeOldName: 'fade2',
       statusArr: [1, 2, 3, -1],
-      statusArrIndex: 0
+      statusArrIndex: 0,
+      touchPageX: 0,
+      touchPageY: 0,
+      touchScale: 0,
+      touchPageXMounts: 0,
+      touchPageYMounts: 0
     }
   },
   created () {
@@ -143,29 +144,45 @@ export default {
     closeModal () {
       this.dialogShow = false
     },
-    onSwipeLeft () {
-      this.statusArrIndex++
-      if (this.statusArrIndex > 3) this.statusArrIndex = 0
-      if (this.status !== this.statusArr[this.statusArrIndex]) {
-        this.status = this.statusArr[this.statusArrIndex]
-        this.getData(this.status)
-        this.isShow = false
-        setTimeout(() => {
-          this.isShow = true
-        }, 10)
-      }
+    handleTouchStart (event) {
+      this.touchPageX = event.targetTouches[0].pageX
+      this.touchPageY = event.targetTouches[0].pageY
     },
-    onSwipeRight () {
-      this.statusArrIndex--
-      if (this.statusArrIndex < 0) this.statusArrIndex = 3
-      if (this.status !== this.statusArr[this.statusArrIndex]) {
-        this.status = this.statusArr[this.statusArrIndex]
-        this.getData(this.status)
-        this.isShow = false
-        setTimeout(() => {
-          this.isShow = true
-        }, 10)
+    handleTouchMove () {
+      this.touchPageXMounts = this.touchPageX - event.targetTouches[0].pageX
+      this.touchPageYMounts = this.touchPageY - event.targetTouches[0].pageY
+    },
+    handleTouchEnd (event) {
+      if (Math.abs(this.touchPageYMounts) > Math.abs(this.touchPageXMounts)) return
+      var screenWidth = screen.width
+      this.touchScale = parseFloat(this.touchPageXMounts / screenWidth).toFixed(2)
+      if (Math.abs(this.touchScale) < 0.20) return
+      if (this.touchScale > 0.20) {
+        this.statusArrIndex++
+        if (this.statusArrIndex > 3) this.statusArrIndex = 0
+        if (this.status !== this.statusArr[this.statusArrIndex]) {
+          this.status = this.statusArr[this.statusArrIndex]
+          this.getData(this.status)
+          this.isShow = false
+          setTimeout(() => {
+            this.isShow = true
+          }, 10)
+        }
       }
+      if (this.touchScale < -0.20) {
+        this.statusArrIndex--
+        if (this.statusArrIndex < 0) this.statusArrIndex = 3
+        if (this.status !== this.statusArr[this.statusArrIndex]) {
+          this.status = this.statusArr[this.statusArrIndex]
+          this.getData(this.status)
+          this.isShow = false
+          setTimeout(() => {
+            this.isShow = true
+          }, 10)
+        }
+      }
+      console.log(this.statusArrIndex)
+      console.log(this.touchScale)
     },
     ...mapMutations(['changeStatusNum', 'addStatusArrIndex', 'saveOrigin4'])
   },

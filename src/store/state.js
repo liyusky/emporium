@@ -4,6 +4,8 @@ const state = {
   phone: null,
   installments: null,
   OrderNo: null,
+  // 订单详情
+  OrderDetail: null,
   // 传入order的参数
   statusNum: null,
   statusArrIndex: null,

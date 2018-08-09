@@ -41,7 +41,8 @@
         width: 100%;
         height: 5 / $unit * $symbol;
         border-radius: 3 / $unit * $symbol;
-        background-color: fff;
+        // background-color: #fff;
+        transition: all 0.3s;
       }
     }
     .active::after {
@@ -49,29 +50,31 @@
     }
   }
   .order-classify {
+    position: relative;
     width: 100%;
     height: 100%;
     padding: {
       top: 15 / $unit * $symbol;
     }
-    .classify-touch {
-      position: relative;
-      // $param: (flex flex) (justifyContent flex-start);
-      // @include flexSet($param);
-      touch-action: pan-y!important;
+    .classify-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       width: 100%;
       height: 100%;
       overflow-y: auto;
-      .classify-item {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        // overflow-y: auto;
-      }
     }
+    touch-action: pan-y!important;
+    // .classify-touch {
+    //   position: relative;
+    //   // $param: (flex flex) (justifyContent flex-start);
+    //   // @include flexSet($param);
+    //   touch-action: pan-y!important;
+    //   width: 100%;
+    //   height: 100%;
+    //   overflow-y: auto;
+    // }
   }
 }
 .fade-enter-active,.fade2-leave-active,.fade3-enter-active,.fade4-leave-active{
