@@ -34,7 +34,7 @@ const OrderDetail = () => import(/* webpackChunkName: "order-detail" */ '../comp
 const FamiliarQuestion = () => import(/* webpackChunkName: "familiar-question" */ '../components/familiar-question/familiar-question.vue')
 const Empower = () => import(/* webpackChunkName: "empower" */ '../components/empower/empower.vue')
 const InstallmentDetail = () => import(/* webpackChunkName: "installment-detail" */ '../components/installment-detail/installment-detail.vue')
-const LogisticsDetail = () => import(/* webpackChunkName: "logistics-detail" */ '../components/logistics-detail/logistics-detail.vue')
+// const LogisticsDetail = () => import(/* webpackChunkName: "logistics-detail" */ '../components/logistics-detail/logistics-detail.vue')
 export default new Router({
   routes: [
     {
@@ -104,11 +104,12 @@ export default new Router({
       path: '/installment-detail',
       name: 'installment-detail',
       component: InstallmentDetail
-    },
-    {
-      path: '/logistics-detail',
-      name: 'logistics-detail',
-      component: LogisticsDetail
     }
+    // ,
+    // {
+    //   path: '/logistics-detail',
+    //   name: 'logistics-detail',
+    //   component: LogisticsDetail
+    // }
   ]
 })
