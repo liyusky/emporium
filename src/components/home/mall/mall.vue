@@ -4,7 +4,7 @@
       <header class="index-header">
         <img src="../../../assets/images/header.png">
       </header>
-      <section class="index-advertising">
+      <section class="index-advertising" @click="chatQQ">
         <img src="../../../assets/images/advertising.png">
       </section>
       <ul class="index-brand">
@@ -120,6 +120,13 @@ export default {
         this.Title.text = data.message
         this.dialogShow = true
       })
+    },
+    chatQQ () {
+      try {
+        window.webkit.messageHandlers.popQQ.postMessage(JSON.stringify('727011147'))
+      } catch (error) {
+        window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=727011147&version=3&src_type=web&web_src=oicqzone.com'
+      }
     },
     ...mapMutations(['saveProductId', 'saveOrigin7'])
   }

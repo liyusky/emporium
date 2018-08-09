@@ -52,7 +52,7 @@
       </div> -->
       <div class="content-tip">
         <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-baozhang"></use>
+          <use xlink:href="#icon-baozhang1"></use>
         </svg>
         <span>{{summary.Guarantee}}</span>
       </div>
