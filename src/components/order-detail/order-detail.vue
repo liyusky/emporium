@@ -68,7 +68,7 @@ import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
-import { mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   // 订单参数
   data () {
@@ -123,7 +123,6 @@ export default {
         Orderno: this.OrderNo
       }
     }).success(data => {
-      console.log(data)
       data = data.order
       this.state = data.Status
       this.payId = data.PayId
@@ -154,6 +153,7 @@ export default {
       this.modal = false
     },
     showProduct () {
+      this.saveOrigin7('order-detail')
       this.$router.push({
         name: 'product',
         params: {
@@ -207,17 +207,13 @@ export default {
     },
     pay () {
       try {
-        if (window.localStorage) {
-          localStorage.setItem('OrderNo', this.Orderno)
-          localStorage.setItem('Origin5', 'order-detail')
-        }
         if (typeof (appJsInterface) !== 'undefined') {
           appJsInterface.payWeChat(JSON.stringify({
             prepayId: this.payId,
             noncestr: this.noncestr
           }))
         } else {
-          window.webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(this.payId))
+          webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(this.payId))
         }
         let payListener = setInterval(() => {
           if (window.payFinish === 'success') {
@@ -244,15 +240,13 @@ export default {
         this.Title.text = fail.message
         this.dialogShow = true
       })
-    }
+    },
+    ...mapMutations(['saveOrigin7'])
   },
   components: {
     Theme,
     ModalReminder,
     ModalDialog
-  },
-  computed: {
-    ...mapState(['productId'])
   }
 }
 </script>

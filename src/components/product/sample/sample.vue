@@ -84,15 +84,10 @@ export default {
         message: '高品手机分期拿，快来试试吧!',
         url: this.link
       }
-      // popShareUI 约定好的方法名
       try {
-        if (typeof (appJsInterface) !== 'undefined') {
-          appJsInterface.Share(JSON.stringify(jsonStr))
-        }
-        // else {
-        //   // window.webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
-        // }
+        webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
       } catch (error) {
+        appJsInterface.Share(JSON.stringify(jsonStr))
       }
     }
   }

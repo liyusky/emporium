@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'Info',
   props: ['order'],
@@ -37,13 +38,15 @@ export default {
   },
   methods: {
     showProduct () {
+      this.saveOrigin7('installment-detail')
       this.$router.push({
         name: 'product',
         params: {
           id: this.order.CommodityId
         }
       })
-    }
+    },
+    ...mapMutations(['saveOrigin7'])
   }
 }
 </script>

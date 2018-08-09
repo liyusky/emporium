@@ -248,6 +248,8 @@ export default {
       this.$router.push({ name: page })
     },
     showProduct () {
+      if (this.theme.goal === 'product') return
+      this.saveOrigin7('order-confirm')
       this.$router.push({
         name: 'product',
         params: {
@@ -285,7 +287,7 @@ export default {
         this.dialogShow = true
       })
     },
-    ...mapMutations(['saveOrigin2', 'saveOrigin3', 'saveOrigin6', 'saveSelectedAddress'])
+    ...mapMutations(['saveOrigin2', 'saveOrigin3', 'saveOrigin6', 'saveOrigin7', 'saveSelectedAddress'])
   },
   destroyed () {
     this.saveSelectedAddress(null)

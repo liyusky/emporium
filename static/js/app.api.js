@@ -15,6 +15,14 @@ window.paySuccess = function (finish) {
   }
 }
 
+window.returnPayResult = function (finish) {
+  if (finish) {
+    window.payFinish = 'success'
+  } else {
+    window.payFinish = 'fail'
+  }
+}
+
 window.onload = function () {
   window.init()
   window.bindScroll()

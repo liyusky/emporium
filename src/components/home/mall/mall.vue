@@ -89,6 +89,7 @@ export default {
   methods: {
     gotoPage (id, title) {
       this.saveProductId(id)
+      this.saveOrigin7('mall')
       this.$router.push({
         name: 'product',
         params: {
@@ -120,7 +121,7 @@ export default {
         this.dialogShow = true
       })
     },
-    ...mapMutations(['saveProductId'])
+    ...mapMutations(['saveProductId', 'saveOrigin7'])
   }
 }
 </script>

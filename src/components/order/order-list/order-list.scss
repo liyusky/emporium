@@ -106,9 +106,12 @@
       }
       background: #fff;
       button {
+        $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+        @include flexSet($param);
         width: 160 / $unit * $symbol;
         height: 60 / $unit * $symbol;
         font-size: 27 / $unit * $symbol;
+        text-align: center;
         border-radius: 7 / $unit * $symbol;
         outline: none;
         margin: {

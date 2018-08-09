@@ -13,6 +13,7 @@ const state = {
   origin4: null, // empower origin
   origin5: null, // pay origin
   origin6: null, // installments-detail origin
+  origin7: null, // product origin
   productId: null
 }
 export default state

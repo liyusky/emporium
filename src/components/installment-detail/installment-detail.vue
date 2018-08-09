@@ -134,7 +134,7 @@ export default {
       this.RepaymentDetailShow = false
       this.modal = false
     },
-    ...mapMutations(['saveOrigin3'])
+    ...mapMutations(['saveOrigin3', 'saveOrigin7'])
   }
 }
 </script>

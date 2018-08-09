@@ -132,6 +132,8 @@
     width: 100%;
     height: 150 / $unit * $symbol;
     .button-sure {
+      $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+      @include flexSet($param);
       width: 100%;
       height: 91 / $unit * $symbol;
       text-align: center;

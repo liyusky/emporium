@@ -115,12 +115,13 @@
       }
     }
     .order-btn {
-      $param: (flex flex) (alignItems center) (justifyContent center);
+      $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
       @include flexSet($param);
       width: 279 / $unit * $symbol;
       height: 100%;
       background-color: #eb2828;
       font-size: 33 / $unit * $symbol;
+      text-align: center;
       color: #ffffff;
     }
   }
