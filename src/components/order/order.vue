@@ -119,7 +119,6 @@ export default {
           status: status
         }
       }).success(data => {
-        console.log(data)
         if (status === this.status) this.tips = data
         this.tips.forEach(ele => {
           this.timeArr.push(Time.change(Number(ele.CreateTime.substring(6, 19))))
@@ -181,8 +180,6 @@ export default {
           }, 10)
         }
       }
-      console.log(this.statusArrIndex)
-      console.log(this.touchScale)
     },
     ...mapMutations(['changeStatusNum', 'addStatusArrIndex', 'saveOrigin4'])
   },
