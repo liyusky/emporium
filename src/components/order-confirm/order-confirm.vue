@@ -17,7 +17,7 @@
           <i class="iconfont icon-arrow-right"></i>
         </div>
         <!-- 有地址 -->
-        <div class="address-exist" v-else-if="address ">
+        <div class="address-exist" v-else-if="address">
           <div class="exist-person-info">
             <p class="info-name-telphone">
               <svg class="icon" aria-hidden="true">
@@ -33,7 +33,7 @@
       <div class="content-order-number">
         <p class="title-time">{{OrderNo}}</p>
       </div>
-      <div class="content-detail">
+      <div class="content-detail" @click="showProduct">
         <div class="detail-img">
           <img :src="phone.Icon">
         </div>
@@ -152,6 +152,7 @@ export default {
         id: this.id
       }
     }).success(data => {
+      console.log(data)
       setPaymentTypeArr()
       this.phone = data.Phone
       this.installments = data.CommodityInstallmentList
@@ -246,6 +247,16 @@ export default {
       this.saveOrigin6('order-confirm')
       this.$router.push({ name: page })
     },
+    showProduct () {
+      if (this.theme.goal === 'product') return
+      this.saveOrigin7('order-confirm')
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: this.phone.Id
+        }
+      })
+    },
     confrim () {
       if (!this.address) {
         this.Title.text = '请选择地址'
@@ -276,7 +287,7 @@ export default {
         this.dialogShow = true
       })
     },
-    ...mapMutations(['saveOrigin2', 'saveOrigin3', 'saveOrigin6', 'saveSelectedAddress'])
+    ...mapMutations(['saveOrigin2', 'saveOrigin3', 'saveOrigin6', 'saveOrigin7', 'saveSelectedAddress'])
   },
   destroyed () {
     this.saveSelectedAddress(null)

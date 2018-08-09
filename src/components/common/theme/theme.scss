@@ -29,10 +29,12 @@
   }
   &-left {
     position: absolute;
+    height: 93 / $unit * $symbol;
     left: 30 / $unit * $symbol;
     z-index: 100;
     i {
       font-size: 24 / $unit * $symbol;
+      line-height: 93 / $unit * $symbol;
       color: #333333;
       font-weight: bold;
     }

@@ -89,6 +89,7 @@ export default {
   methods: {
     gotoPage (id, title) {
       this.saveProductId(id)
+      this.saveOrigin7('mall')
       this.$router.push({
         name: 'product',
         params: {
@@ -127,7 +128,7 @@ export default {
         window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=727011147&version=3&src_type=web&web_src=oicqzone.com'
       }
     },
-    ...mapMutations(['saveProductId'])
+    ...mapMutations(['saveProductId', 'saveOrigin7'])
   }
 }
 </script>

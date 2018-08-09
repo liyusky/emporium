@@ -50,12 +50,13 @@
       width: 100%;
       .button-cancel,
       .button-sure {
-        $param: (flex flex) (justifyContent center) (alignItems center);
+        $param: (flex flex) (direction column) (justifyContent center) (alignItems center);
         @include flexSet($param);
         width: 240 / $unit * $symbol;
         height: 89 / $unit * $symbol;
         background-color: transparent;
         font-size: 27 / $unit * $symbol;
+        text-align: center;
         color: #333333;
       }
       .button-cancel {

@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <div class="information-phone">
+        <div class="information-phone" @click="showProduct">
           <div class="phone-detail">
             <div class="detail-img">
               <img :src="orderDetail.Icon">
@@ -68,7 +68,7 @@ import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalReminder from '@/components/common/alert-modal/modal-reminder/modal-reminder.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
-import { mapState, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   // 订单参数
   data () {
@@ -152,6 +152,15 @@ export default {
       this.dialogShow = false
       this.modal = false
     },
+    showProduct () {
+      this.saveOrigin7('order-detail')
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: this.orderDetail.order.CommodityId
+        }
+      })
+    },
     judgeCancel () {
       let result = true
       if (this.state > 1) result = false
@@ -215,17 +224,13 @@ export default {
     },
     pay () {
       try {
-        if (window.localStorage) {
-          localStorage.setItem('OrderNo', this.Orderno)
-          localStorage.setItem('Origin5', 'order-detail')
-        }
         if (typeof (appJsInterface) !== 'undefined') {
           appJsInterface.payWeChat(JSON.stringify({
             prepayId: this.payId,
             noncestr: this.noncestr
           }))
         } else {
-          window.webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(this.payId))
+          webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(this.payId))
         }
         let payListener = setInterval(() => {
           if (window.payFinish === 'success') {
@@ -250,9 +255,6 @@ export default {
     Theme,
     ModalReminder,
     ModalDialog
-  },
-  computed: {
-    ...mapState(['productId'])
   }
 }
 </script>

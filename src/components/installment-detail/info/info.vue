@@ -1,6 +1,6 @@
 <template>
   <!-- s  -->
-  <section class="installment-info">
+  <section class="installment-info" @click="showProduct">
     <div class="info-phone">
       <div class="phone-img">
         <img :src="order.Icon">
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'Info',
   props: ['order'],
@@ -34,6 +35,18 @@ export default {
     order: (current, previous) => {
       if (current) this.detail = current
     }
+  },
+  methods: {
+    showProduct () {
+      this.saveOrigin7('installment-detail')
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: this.order.CommodityId
+        }
+      })
+    },
+    ...mapMutations(['saveOrigin7'])
   }
 }
 </script>

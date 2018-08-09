@@ -120,7 +120,7 @@
         color: #333333;
       }
       .tip-copy-btn {
-        $param: (flex flex) (alignItems center) (justifyContent center);
+        $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
         @include flexSet($param);
         width: 66 / $unit * $symbol;
         height: 42 / $unit * $symbol;
@@ -128,6 +128,7 @@
         border-radius: 6 / $unit * $symbol;
         background-color: #fff;
         font-size: 21 / $unit * $symbol;
+        text-align: center;
         color: #ff5555;
       }
     }
