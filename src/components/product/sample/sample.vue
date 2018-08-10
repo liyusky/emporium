@@ -62,26 +62,16 @@
         <button class="tip-copy-btn" @click="share">分享</button>
       </div>
     </div>
-     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
   <!-- e 实拍 -->
 </template>
 
 <script>
-import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 export default {
   name: 'Sample',
   props: ['sample', 'link'],
   data () {
-    return {
-      Title: {
-        text: ''
-      },
-      dialogShow: false
-    }
-  },
-  components: {
-    ModalDialog
+    return {}
   },
   methods: {
     share () {
@@ -98,8 +88,7 @@ export default {
           webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
         }
       } catch (error) {
-        this.Title.text = error
-        this.dialogShow = true
+        this.$emit('OPEN_SHARE_EVENT', '分享失败')
       }
     },
     closeModal () {
