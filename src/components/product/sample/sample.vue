@@ -81,10 +81,12 @@ export default {
         id: this.id,
         title: '分期手机等你拿',
         message: '高品手机分期拿，快来试试吧!',
-        url: this.link
+        url: this.link,
+        type: 2
       }
+      // alert(JSON.stringify(jsonStr))
       try {
-        if (appJsInterface !== 'undefined') {
+        if (typeof (appJsInterface) !== 'undefined') {
           appJsInterface.Share(JSON.stringify(jsonStr))
         } else {
           webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
