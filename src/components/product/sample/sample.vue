@@ -74,9 +74,6 @@ export default {
     return {}
   },
   methods: {
-    openModal (modal) {
-      this.$emit('OPEN_MODAL_EVENT', 'Share')
-    },
     share () {
       let jsonStr = {
         id: this.id,
@@ -85,10 +82,17 @@ export default {
         url: this.link
       }
       try {
-        webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
+        if (appJsInterface !== 'undefined') {
+          appJsInterface.Share(JSON.stringify(jsonStr))
+        } else {
+          webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
+        }
       } catch (error) {
-        appJsInterface.Share(JSON.stringify(jsonStr))
+        this.$emit('OPEN_SHARE_EVENT', '分享失败')
       }
+    },
+    closeModal () {
+      this.dialogShow = false
     }
   }
 }

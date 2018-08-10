@@ -187,6 +187,7 @@ export default {
         }
       }).success(data => {
         if (this.address) return
+        if (!data.order.ReciverName) return
         this.address = {
           ReseverName: data.order.ReciverName,
           Address: data.order.ReciverAddress,
@@ -195,22 +196,6 @@ export default {
       })
     }).fail(data => {
       this.Title.text = data.message
-      this.dialogShow = true
-    })
-    Http.send({
-      url: 'orderDetail',
-      data: {
-        Orderno: this.OrderNo
-      }
-    }).success(data => {
-      if (this.address) return
-      this.address = {
-        ReseverName: data.order.ReciverName,
-        PhoneNo: data.order.ReciverPhone,
-        Address: data.order.ReciverAddress
-      }
-    }).fail(fail => {
-      this.Title.text = fail.message
       this.dialogShow = true
     })
   },
