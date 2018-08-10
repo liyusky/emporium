@@ -9,6 +9,7 @@
     bottom: 100 / $unit * $symbol;
   }
   overflow-y: auto;
+  // -webkit-overflow-scrolling: touch;
   background: #f4f4f4;
   .confirm-content {
     width: 100%;

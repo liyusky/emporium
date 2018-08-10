@@ -123,6 +123,7 @@ export default {
         Orderno: this.OrderNo
       }
     }).success(data => {
+      console.log(data)
       data = data.order
       this.state = data.Status
       this.payId = data.PayId
