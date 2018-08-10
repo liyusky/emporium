@@ -92,7 +92,9 @@
         <span>合计：</span>
         <span>￥{{phone.nowPrice}}</span>
       </p>
-      <button class="submit-button" @click="confrim">提交订单</button>
+      <button class="submit-button" @click="confrim">
+        <div>提交订单</div>
+      </button>
     </div>
     <Modal v-show="modal">
       <Instalments :instalments="installments" @CLOSE_INSTALMENT_EVENT="closeInstallments" @SELECT_INSTALMENT_EVENT="record" @CLOSE_MODAL_EVENT="closeModal"></Instalments>

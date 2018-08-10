@@ -4,7 +4,9 @@
       <div class="content-title">
         <p class="title-text">{{Title.text}}</p>
       </div>
-      <button class="content-button" @click="close">确认</button>
+      <button class="content-button" @click="close">
+        <div>确认</div>
+      </button>
     </div>
   </section>
 </template>

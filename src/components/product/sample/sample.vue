@@ -2,8 +2,8 @@
   <!-- s 实拍 -->
   <section class="sample">
     <h3 class="sample-title">真机实拍</h3>
-    <ul class="sample-photos" v-for="(item, index) in sample" :key="index">
-      <li class="photos-item">
+    <ul class="sample-photos">
+      <li class="photos-item" v-for="(item, index) in banner" :key="index">
         <img :src="item.ArchiveUri">
         <!-- <img :src="https://api.vtrois.com/image/702x525/bbbfc0"> -->
       </li>
@@ -59,7 +59,9 @@
           <p>官方微信客服：jtds1256</p>
           <p>关注有惊喜！有任何问题欢迎随时勾搭~~~</p>
         </div>
-        <button class="tip-copy-btn" @click="share">分享</button>
+        <button class="tip-copy-btn" @click="share">
+          <div>分享</div>
+        </button>
       </div>
     </div>
   </section>
@@ -69,7 +71,7 @@
 <script>
 export default {
   name: 'Sample',
-  props: ['sample', 'link'],
+  props: ['sample', 'link', 'banner'],
   data () {
     return {}
   },

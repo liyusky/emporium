@@ -2,10 +2,18 @@
   <section class="order">
     <Theme :theme="theme"></Theme>
     <section class="order-tabbar">
-      <button class="tabbar-item" :class="{active:status == 1}" @click="switchTips(1, 0)">待付款</button>
-      <button class="tabbar-item" :class="{active:status == 2}" @click="switchTips(2, 1)">待发货</button>
-      <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3, 2)">待收货</button>
-      <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1, 3)">全部</button>
+      <button class="tabbar-item" :class="{active:status == 1}" @click="switchTips(1, 0)">
+        <div>待付款</div>
+      </button>
+      <button class="tabbar-item" :class="{active:status == 2}" @click="switchTips(2, 1)">
+        <div>待发货</div>
+      </button>
+      <button class="tabbar-item" :class="{active:status == 3}" @click="switchTips(3, 2)">
+        <div>待收货</div>
+      </button>
+      <button class="tabbar-item" :class="{active:status == -1}" @click="switchTips(-1, 3)">
+        <div>全部</div>
+      </button>
       <!-- <button class="tabbar-item" :class="{active:checkPageNum == 4}" type="button" :disabled = "disabledNum == 4" @click="checkPage(4)">待评价</button> -->
     </section>
     <section class="order-classify" @touchstart="handleTouchStart($event)" @touchmove="handleTouchMove($event)" @touchend="handleTouchEnd($event)">

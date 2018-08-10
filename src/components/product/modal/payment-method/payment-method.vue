@@ -27,7 +27,9 @@
       </div>
     </div>
     <div class="payment-button">
-      <button class="button-sure" @click="closeModal">确定</button>
+      <button class="button-sure" @click="closeModal">
+        <div>确定</div>
+      </button>
     </div>
   </section>
   <!-- e 支付 -->

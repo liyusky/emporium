@@ -8,12 +8,9 @@
   width: 100vw;
   height: 90 / $unit * $symbol;
   button {
-    $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
-    @include flexSet($param);
     width: 690 / $unit * $symbol;
     height: 100%;
     border-radius: 9 / $unit * $symbol;
-    text-align: center;
     font-size: 33 / $unit * $symbol;
   }
 }

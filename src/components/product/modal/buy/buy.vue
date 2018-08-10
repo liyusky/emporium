@@ -34,7 +34,9 @@
         </div>
       </div> -->
     </div>
-    <button class="rightbuy-button" @click="order">立即购买</button>
+    <button class="rightbuy-button" @click="order">
+      <div>立即购买</div>
+    </button>
     <ModalReminder v-show="DialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "close"></ModalReminder>
   </section>
   <!-- e 购买 -->

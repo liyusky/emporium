@@ -3,7 +3,9 @@
   <section class="address-manage">
     <Theme :theme="theme"></Theme>
     <AddressTips :origin="origin"></AddressTips>
-    <button class="manage-btn" @click="gotoPage('add-address')">新增收货地址</button>
+    <button class="manage-btn" @click="gotoPage('add-address')">
+      <div>新增收货地址</div>
+    </button>
   </section>
   <!-- e 地址管理 -->
 </template>

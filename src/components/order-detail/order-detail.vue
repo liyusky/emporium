@@ -53,9 +53,15 @@
     </section>
     <footer class="detail-button">
       <div class="button-item">
-        <button class="item-cancel" v-if="judgeCancel()" @click="cancel">取消订单</button>
-        <button class="item-pay" v-if="judgePay()" @click="pay">去支付</button>
-        <button class="item-confrim" v-if="judgeConfrim()" @click="confrim">确认收货</button>
+        <button class="item-cancel" v-if="judgeCancel()" @click="cancel">
+          <div>取消订单</div>
+        </button>
+        <button class="item-pay" v-if="judgePay()" @click="pay">
+          <div>去支付</div>
+        </button>
+        <button class="item-confrim" v-if="judgeConfrim()" @click="confrim">
+          <div>确认收货</div>
+        </button>
       </div>
     </footer>
     <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>

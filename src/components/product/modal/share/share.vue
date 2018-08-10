@@ -30,7 +30,9 @@
         <p class="item-name">复制链接</p>
       </div>
     </div>
-    <button class="cancel" @click="closeModal">取消</button>
+    <button class="cancel" @click="closeModal">
+      <div>取消</div>
+    </button>
   </section>
   <!-- e 分享 -->
 </template>

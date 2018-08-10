@@ -4,7 +4,9 @@
     <Info :order="order"></Info>
     <Stage :bill="bill" :currentIndex="currentIndex" @OPEN_MODAL_EVENT="openModal('stage')"></Stage>
     <footer class="installment-button">
-      <button @click="openModal('installment-detail')">立即付款</button>
+      <button @click="openModal('installment-detail')">
+        <div>立即付款</div>
+      </button>
     </footer>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeToast"></ModalDialog>
     <Modal v-show="modal">

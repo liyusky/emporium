@@ -4,8 +4,12 @@
       <p class="content-tip">提示</p>
       <p class="content-title">{{Title.text}}</p>
       <div class="content-button">
-        <button class="button-cancel" @click="closeModal">取消</button>
-        <button class="button-sure" @click="sendRequest">确认</button>
+        <button class="button-cancel" @click="closeModal">
+          <div>取消</div>
+        </button>
+        <button class="button-sure" @click="sendRequest">
+          <div>确认</div>
+        </button>
       </div>
     </div>
   </section>
