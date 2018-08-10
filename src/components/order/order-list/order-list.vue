@@ -25,11 +25,21 @@
         </p>
       </div>
       <div class="item-button">
-        <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">取消订单</button>
-        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item, index)">去支付</button>
-        <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">提交订单</button>
-        <button class="button button-logistics" v-if="judgeLogistics(item.Status)" @click="logistics(item)">查看物流</button>
-        <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item, index)">确认收货</button>
+        <button class="button button-cancel" v-if="judgeCancel(item.Status)" @click="cancel(index)">
+          <div>取消订单</div>
+        </button>
+        <button class="button button-pay" v-if="judgePay(item.Status)" @click="pay(item, index)">
+          <div>去支付</div>
+        </button>
+        <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">
+          <div>提交订单</div>
+        </button>
+        <button class="button button-submit" v-if="judgeLogistics(item.Status)" @click="logistics(item)">
+          <div>查看物流</div>
+        </button>
+        <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item, index)">
+          <div>确认收货</div>
+        </button>
       </div>
     </div>
     <ModalReminder :Title="Title" v-show="reminderShow" @CLOSE_MODAL_EVENT="closeModal" @SENF_REQUEST_EVENT="sendRequest"></ModalReminder>
@@ -120,7 +130,7 @@ export default {
                 noncestr: item.noncestr
               }))
             } else {
-              window.webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(item.payId))
+              webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(item.payId))
             }
             let payListener = setInterval(() => {
               if (window.payFinish === 'success') {

@@ -17,7 +17,9 @@
       </div>
     </div>
     <div class="payment-button">
-      <button class="button-sure" @click="confrim">确定</button>
+      <button class="button-sure" @click="confrim">
+        <div>确定</div>
+      </button>
     </div>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>

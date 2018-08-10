@@ -20,7 +20,7 @@
     </nav>
     <Summary id="summary" ref="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
     <Quality id="quality" ref="quality" :quality="quality"></Quality>
-    <Sample id="sample" ref="sample" :sample="sample" :link="shareLink" @OPEN_SHARE_EVENT="openShareModal"></Sample>
+    <Sample id="sample" ref="sample" :banner="banner" :sample="sample" :link="shareLink" @OPEN_SHARE_EVENT="openShareModal"></Sample>
     <Guidance></Guidance>
     <footer class="product-order">
       <div class="order-content">
@@ -35,7 +35,9 @@
           <p>{{summary.nowPrice}}</p>
         </div>
       </div>
-      <button class="order-btn" @click="openModal('Buy')">立即购买</button>
+      <button class="order-btn" @click="openModal('Buy')">
+        <div>立即购买</div>
+      </button>
     </footer>
     <Modal v-show="modal">
       <component v-show="modal" :is="component" :parameter="parameter" :paymentMethod="paymentMethod" :buy="buy" @CLOSE_MODAL_EVENT="closeModal"></component>
@@ -232,9 +234,9 @@ export default {
     },
     chatQQ () {
       try {
-        window.webkit.messageHandlers.popQQ.postMessage(JSON.stringify('727011147'))
+        webkit.messageHandlers.popQQ.postMessage(JSON.stringify('1436278338'))
       } catch (error) {
-        window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=727011147&version=3&src_type=web&web_src=oicqzone.com'
+        window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=1436278338&version=3&src_type=web&web_src=oicqzone.com'
       }
     }
   }

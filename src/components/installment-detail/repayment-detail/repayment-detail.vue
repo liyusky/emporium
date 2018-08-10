@@ -20,7 +20,9 @@
         <div class="item-money">¥{{item.InstallmentAmount}}</div>
         <div class="item-status">
           <p class="status-tip" v-if="index < currentIndex">已还款</p>
-          <button class="status-btn" v-if="index == currentIndex" @click="openModal">立刻还款</button>
+          <button class="status-btn" v-if="index == currentIndex" @click="openModal">
+            <div>立刻还款</div>
+          </button>
           <p class="status-tip" v-if="index > currentIndex">等待还款</p>
         </div>
       </li>

@@ -1,7 +1,9 @@
 <template>
   <!-- s  -->
   <section class="button-default">
-    <button disabled="disabled">保存</button>
+    <button disabled="disabled">
+      <div>保存</div>
+    </button>
   </section>
   <!-- e  -->
 </template>

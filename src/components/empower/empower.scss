@@ -98,13 +98,10 @@
         width: 171 / $unit * $symbol;
         height: 54 / $unit * $symbol;
         .gain-btn {
-          $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
-          @include flexSet($param);
           width: 100%;
           height: 100%;
           background: #e4e4e4;
           font-size: 27 / $unit * $symbol;
-          text-align: center;
           color: #8d8d8d;
         }
         .code-active {
@@ -173,15 +170,12 @@
       right: 63 / $unit * $symbol;
     }
     button {
-      $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
-      @include flexSet($param);
       width: 100%;
       height: 90 / $unit * $symbol;
       background: #eb2828;
       font-size: 33 / $unit * $symbol;
       color: #fff;
-      text-align: center;
-      border-radius: 7 / $unit * $symbol;
+      border-radius: 9 / $unit * $symbol;
     }
   }
   .far-away {

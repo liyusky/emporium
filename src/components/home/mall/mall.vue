@@ -123,9 +123,9 @@ export default {
     },
     chatQQ () {
       try {
-        window.webkit.messageHandlers.popQQ.postMessage(JSON.stringify('727011147'))
+        webkit.messageHandlers.popQQ.postMessage(JSON.stringify('1436278338'))
       } catch (error) {
-        window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=727011147&version=3&src_type=web&web_src=oicqzone.com'
+        window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=1436278338&version=3&src_type=web&web_src=oicqzone.com'
       }
     },
     ...mapMutations(['saveProductId', 'saveOrigin7'])

@@ -31,7 +31,9 @@
       <li class="list-item" v-show="state.show.code">
         <input class="item-input" type="number" placeholder="请输入短信验证码" maxlength="6" v-model="code" @change="checkInput('code')">
         <div class="item-code-gain">
-          <button class="gain-btn" :disabled="codeDisabled" :class="{'code-active':codeDisabled}" @click="getCode">{{state.text.code}}</button>
+          <button class="gain-btn" :disabled="codeDisabled" :class="{'code-active':codeDisabled}" @click="getCode">
+            <div>{{state.text.code}}</div>
+          </button>
           <!-- <button class="gain-countdown">60秒</button> -->
         </div>
       </li>
@@ -51,7 +53,9 @@
     <!-- e 协议 -->
     <!-- s 按钮 -->
     <div class="empower-btn" :class="{'far-away': state.class}">
-      <button :disabled="submitDisabled" @click="submit">{{state.text.btn}}</button>
+      <button :disabled="submitDisabled" @click="submit">
+        <div>{{state.text.btn}}</div>
+      </button>
     </div>
     <!-- e 按钮 -->
     <div class="empower-operation" v-show="state.tip.exist">

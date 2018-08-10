@@ -32,7 +32,9 @@
     <!-- e 地址输入列表 -->
     <!-- s 按钮 -->
     <section class="button-default">
-      <button @click="submit">{{btn}}</button>
+      <button @click="submit">
+        <div>{{btn}}</div>
+      </button>
     </section>
     <!-- e 按钮 -->
     <Modal v-show="modal">
