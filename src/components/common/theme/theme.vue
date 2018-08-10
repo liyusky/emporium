@@ -18,6 +18,7 @@ export default {
   props: ['theme'],
   methods: {
     goback () {
+      alert(this.theme.goal)
       if (this.theme.goal) {
         this.$router.push({
           name: this.theme.goal,

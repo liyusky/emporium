@@ -77,11 +77,11 @@ export default {
   data () {
     return {
       theme: {
-        title: null
+        title: null,
+        goal: ''
       },
       Title: {
-        text: '',
-        goal: ''
+        text: ''
       },
       animationShow: false,
       component: null,
@@ -102,7 +102,7 @@ export default {
   },
   created () {
     this.shareLink = window.location.href
-    this.Title.goal = this.$store.state.origin7
+    this.theme.goal = this.$store.state.origin7
     Http.send({
       url: 'product',
       data: {
