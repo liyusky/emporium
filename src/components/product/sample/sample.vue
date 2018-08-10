@@ -74,9 +74,6 @@ export default {
     return {}
   },
   methods: {
-    openModal (modal) {
-      this.$emit('OPEN_MODAL_EVENT', 'Share')
-    },
     share () {
       let jsonStr = {
         id: this.id,
@@ -91,7 +88,11 @@ export default {
           webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
         }
       } catch (error) {
+        this.$emit('OPEN_SHARE_EVENT', '分享失败')
       }
+    },
+    closeModal () {
+      this.dialogShow = false
     }
   }
 }
