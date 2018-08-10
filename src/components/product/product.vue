@@ -20,7 +20,7 @@
     </nav>
     <Summary id="summary" ref="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
     <Quality id="quality" ref="quality" :quality="quality"></Quality>
-    <Sample id="sample" ref="sample" :sample="sample" :link="shareLink" @OPEN_MODAL_EVENT="openModal"></Sample>
+    <Sample id="sample" ref="sample" :sample="sample" :link="shareLink"></Sample>
     <Guidance></Guidance>
     <footer class="product-order">
       <div class="order-content">
