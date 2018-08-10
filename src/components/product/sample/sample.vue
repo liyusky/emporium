@@ -85,9 +85,12 @@ export default {
         url: this.link
       }
       try {
-        webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
+        if (appJsInterface !== 'undefined') {
+          appJsInterface.Share(JSON.stringify(jsonStr))
+        } else {
+          webkit.messageHandlers.popShareUI.postMessage(JSON.stringify(jsonStr))
+        }
       } catch (error) {
-        appJsInterface.Share(JSON.stringify(jsonStr))
       }
     }
   }
