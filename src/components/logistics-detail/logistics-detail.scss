@@ -9,6 +9,7 @@
   }
   background: #fff;
   overflow: auto;
+  // -webkit-overflow-scrolling: touch;
   &-detail {
     width: 100%;
     .detial-orderno {
@@ -182,7 +183,7 @@
             display: none;
           }
         }
-        .list-item:first-of-type {
+        .list-item:last-of-type {
           p:first-of-type {
             color: #ff464e;
           }
@@ -193,7 +194,7 @@
             height: 27 / $unit * $symbol;
             background: #ffc8ca;
             // margin: {
-            //   bottom: 3 / $unit * $symbol;
+            //   top: 3 / $unit * $symbol;
             // }
             .top-radius {
               width: 18 / $unit * $symbol;

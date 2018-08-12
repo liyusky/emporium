@@ -21,7 +21,7 @@
       <ul class="detail-message">
         <li class="message-item">
           <span>物流进度:</span>
-          <span :class="{issign: logisticsDetail.Success}">{{logisticsDetail.Success ? '已签收' : '未签收'}}</span>
+          <span>未签收</span>
         </li>
         <li class="message-item">
           <span>物流公司:</span>
@@ -36,8 +36,8 @@
         <div class="trace-title">
           <p>物流跟踪</p>
         </div>
-        <ul class="trace-list" v-if="true">
-          <li class="list-item" v-for="(item, index) in logisticsDetail.Traces" :key="index">
+        <ul class="trace-list" v-if="logisticsDetail">
+          <li class="list-item" v-for="(item, index) in logisticsDetail" :key="index">
             <p class="item-address">{{item.AcceptStation}}</p>
             <p class="itme-time">{{item.AcceptTime}}</p>
             <div class="item-badge">
@@ -48,7 +48,7 @@
             </div>
           </li>
         </ul>
-        <div class="trace-no" v-if="false">
+        <div class="trace-no" v-if="!logisticsDetail">
           <p>卖家还未发货</p>
           <div class="item-badge"></div>
         </div>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-// import Http from '../../class/http.class.js'
+import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
 export default {
@@ -77,64 +77,27 @@ export default {
       reminderShow: false,
       dialogShow: false,
       orderDetail: null,
-      logisticsDetail: {
-        'EBusinessID': '1109259',
-        'OrderCode': '',
-        'ShipperCode': 'SF',
-        'LogisticCode': '118461988807',
-        'Success': true,
-        'State': 3,
-        'Reason': null,
-        'Traces': [
-          {
-            'AcceptTime': '2014/06/25 08:05:37',
-            'AcceptStation': '正在派件..(派件人:邓裕富,电话:18718866310)【深圳 市】',
-            'Remark': null
-          },
-          {
-            'AcceptTime': '2014/06/25 04:01:28',
-            'AcceptStation': '快件在 深圳集散中心 , 准备送往下一站 深圳 【深圳市】',
-            'Remark': null
-          },
-          {
-            'AcceptTime': '2014/06/25 01:41:06',
-            'AcceptStation': '快件在 深圳集散中心 【深圳市】',
-            'Remark': null
-          },
-          {
-            'AcceptTime': '2014/06/24 20:18:58',
-            'AcceptStation': '已收件【深圳市】',
-            'Remark': null
-          },
-          {
-            'AcceptTime': '2014/06/24 20:55:28',
-            'AcceptStation': '快件在 深圳 ,准备送往下一站 深圳集散中心 【深圳市】',
-            'Remark': null
-          },
-          {
-            'AcceptTime': '2014/06/25 10:23:03',
-            'AcceptStation': '派件已签收【深圳市】',
-            'Remark': null
-          },
-          {
-            'AcceptTime': '2014/06/25 10:23:03',
-            'AcceptStation': '签收人是：已签收【深圳市】',
-            'Remark': null
-          }
-        ]
-      }
+      OrderNo: null,
+      logisticsDetail: []
     }
   },
   created () {
-    this.orderDetail = this.$store.state.OrderDetail
-    // Http.send({
-    //   url: 'LogisticsDetail',
-    //   data: {
-    //     logistisCode: data.order.logistisCode
-    //   }
-    // }).success(data => {
-    //   this.logisticsDetail = data
-    // })
+    this.OrderNo = this.$store.state.OrderNo
+    Http.send({
+      url: 'orderDetail',
+      data: {
+        Orderno: this.OrderNo
+      }
+    }).success(data => {
+      Http.send({
+        url: 'LogisticsDetail',
+        data: {
+          logisticCode: data.order.DeliverNo
+        }
+      }).success(data => {
+        this.logisticsDetail = data
+      })
+    })
   },
   methods: {
     closeModal () {

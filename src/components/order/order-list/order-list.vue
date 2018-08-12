@@ -34,7 +34,9 @@
         <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">
           <div>提交订单</div>
         </button>
-        <!-- <button class="button button-logistics" v-if="judgeLogistics(item.Status)" @click="logistics(item)">查看物流</button> -->
+        <button class="button button-logistics" v-if="judgeLogistics(item.Status)" @click="logistics(item)">
+          <div>查看物流</div>
+        </button>
         <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item, index)">
           <div>确认收货</div>
         </button>
@@ -104,11 +106,11 @@ export default {
       if (status === 3) result = true
       return result
     },
-    // judgeLogistics (status) {
-    //   let result = false
-    //   if (status === 3) result = true
-    //   return result
-    // },
+    judgeLogistics (status) {
+      let result = false
+      if (status === 3) result = true
+      return result
+    },
     cancel (index) {
       this.index = index
       this.Title.text = '您确认要删除订单'
@@ -155,12 +157,12 @@ export default {
       this.Title.text = '您确认收货'
       this.reminderShow = true
     },
-    // logistics (item) {
-    //   this.saveOrderDetail(item)
-    //   this.$router.push({
-    //     name: 'logistics-detail'
-    //   })
-    // },
+    logistics (item) {
+      this.saveOrderNo(item.OrderNo)
+      this.$router.push({
+        name: 'logistics-detail'
+      })
+    },
     sendRequest () {
       this.reminderShow = false
       if (this.Title.text === '您确认收货') {
@@ -194,7 +196,7 @@ export default {
       this.dialogShow = false
       this.reminderShow = false
     },
-    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrigin6', 'saveOrderNo', 'saveProductId', 'changeStatusNum', 'saveOrderDetail'])
+    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrigin6', 'saveOrderNo', 'saveProductId', 'changeStatusNum'])
   }
 }
 </script>
