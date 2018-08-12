@@ -21,7 +21,7 @@
       <ul class="detail-message">
         <li class="message-item">
           <span>物流进度:</span>
-          <span>未签收</span>
+          <span>{{expressStatus[1]}}</span>
         </li>
         <li class="message-item">
           <span>物流公司:</span>
@@ -78,7 +78,13 @@ export default {
       dialogShow: false,
       orderDetail: {},
       OrderNo: null,
-      logisticsDetail: []
+      logisticsDetail: [],
+      expressStatus: {
+        '1': '未签收',
+        '2': '在途中',
+        '3': '签收',
+        '4': '问题件'
+      }
     }
   },
   created () {
