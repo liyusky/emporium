@@ -34,7 +34,7 @@
         <button class="button button-submit" v-if="judgeSubmit(item.Status)" @click="gotoPage(item)">
           <div>提交订单</div>
         </button>
-        <button class="button button-submit" v-if="judgeLogistics(item.Status)" @click="logistics(item)">
+        <button class="button button-logistics" v-if="judgeLogistics(item.Status)" @click="logistics(item)">
           <div>查看物流</div>
         </button>
         <button class="button button-confrim" v-if="judgeConfrim(item.Status)" @click="confrim(item, index)">

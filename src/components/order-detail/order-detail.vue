@@ -59,6 +59,9 @@
         <button class="item-pay" v-if="judgePay()" @click="pay">
           <div>去支付</div>
         </button>
+        <button class="item-logistics" v-if="judgeLogistics()" @click="logistics()">
+          <div>查看物流</div>
+        </button>
         <button class="item-confrim" v-if="judgeConfrim()" @click="confrim">
           <div>确认收货</div>
         </button>
@@ -129,7 +132,6 @@ export default {
         Orderno: this.OrderNo
       }
     }).success(data => {
-      console.log(data)
       data = data.order
       this.state = data.Status
       this.payId = data.PayId
@@ -178,6 +180,11 @@ export default {
       if (this.state === 1) result = true
       return result
     },
+    judgeLogistics () {
+      let result = false
+      if (this.state === 3) result = true
+      return result
+    },
     judgeConfrim () {
       let result = false
       if (this.state === 3) result = true
@@ -186,6 +193,12 @@ export default {
     cancel (index) {
       this.Title.text = '取消后，机器可能会被人抢走哦~'
       this.reminderShow = true
+    },
+    logistics () {
+      this.saveOrderNo(this.OrderNo)
+      this.$router.push({
+        name: 'logistics-detail'
+      })
     },
     sendRequest () {
       this.reminderShow = false
@@ -256,7 +269,7 @@ export default {
       this.Title.text = '您确认收货'
       this.reminderShow = true
     },
-    ...mapMutations(['changeStatusNum'])
+    ...mapMutations(['changeStatusNum', 'saveOrderNo'])
   },
   components: {
     Theme,
