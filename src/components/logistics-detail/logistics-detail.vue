@@ -3,8 +3,8 @@
   <section class="logistics">
     <Theme :theme="theme"></Theme>
     <div class="logistics-detail">
-      <!-- <div class="detial-orderno"><span>{{orderDetail.OrderNo}}</span></div> -->
-      <!-- <div class="detail-info">
+      <div class="detial-orderno"><span>{{orderDetail.OrderNo}}</span></div>
+      <div class="detail-info">
         <div class="info-phone">
           <div class="phone-img">
             <img :src="orderDetail.Icon">
@@ -17,7 +17,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
       <ul class="detail-message">
         <li class="message-item">
           <span>物流进度:</span>
@@ -29,7 +29,7 @@
         </li>
         <li class="message-item">
           <span>运单编号:</span>
-          <span>33946584365641</span>
+          <span>{{orderDetail.DeliverNo}}</span>
         </li>
       </ul>
       <div class="detail-trace">
@@ -76,7 +76,7 @@ export default {
       },
       reminderShow: false,
       dialogShow: false,
-      orderDetail: null,
+      orderDetail: {},
       OrderNo: null,
       logisticsDetail: []
     }
@@ -89,6 +89,7 @@ export default {
         Orderno: this.OrderNo
       }
     }).success(data => {
+      this.orderDetail = data.order
       Http.send({
         url: 'LogisticsDetail',
         data: {
@@ -96,6 +97,9 @@ export default {
         }
       }).success(data => {
         this.logisticsDetail = data
+      }).fail(data => {
+        this.Title.text = '获取数据失败'
+        this.dialogShow = true
       })
     })
   },
