@@ -21,7 +21,7 @@
       <ul class="detail-message">
         <li class="message-item">
           <span>物流进度:</span>
-          <span :class="{issign: logisticsDetail.state === '3'}">{{expressStatus[logisticsDetail.state]}}</span>
+          <span :class="{issign: logisticsDetail.state === '3'}">{{status}}</span>
         </li>
         <li class="message-item">
           <span>物流公司:</span>
@@ -84,7 +84,8 @@ export default {
         '2': '在途中',
         '3': '已签收',
         '4': '问题件'
-      }
+      },
+      status: '未签收'
     }
   },
   created () {
@@ -102,6 +103,7 @@ export default {
           logisticCode: data.order.DeliverNo
         }
       }).success(data => {
+        this.status = this.expressStatus[data.state]
         this.logisticsDetail = data
         this.logisticsDetail.traces = this.logisticsDetail.traces.reverse()
       }).fail(data => {
