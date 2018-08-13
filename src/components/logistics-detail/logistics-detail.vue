@@ -21,7 +21,7 @@
       <ul class="detail-message">
         <li class="message-item">
           <span>物流进度:</span>
-          <span>{{expressStatus[1]}}</span>
+          <span :class="{issign: logisticsDetail.state === '3'}">{{status}}</span>
         </li>
         <li class="message-item">
           <span>物流公司:</span>
@@ -36,8 +36,8 @@
         <div class="trace-title">
           <p>物流跟踪</p>
         </div>
-        <ul class="trace-list" v-if="logisticsDetail">
-          <li class="list-item" v-for="(item, index) in logisticsDetail" :key="index">
+        <ul class="trace-list" v-if="logisticsDetail.traces">
+          <li class="list-item" v-for="(item, index) in logisticsDetail.traces" :key="index">
             <p class="item-address">{{item.AcceptStation}}</p>
             <p class="itme-time">{{item.AcceptTime}}</p>
             <div class="item-badge">
@@ -48,7 +48,7 @@
             </div>
           </li>
         </ul>
-        <div class="trace-no" v-if="!logisticsDetail">
+        <div class="trace-no" v-if="!logisticsDetail.traces">
           <p>卖家还未发货</p>
           <div class="item-badge"></div>
         </div>
@@ -82,9 +82,10 @@ export default {
       expressStatus: {
         '1': '未签收',
         '2': '在途中',
-        '3': '签收',
+        '3': '已签收',
         '4': '问题件'
-      }
+      },
+      status: '未签收'
     }
   },
   created () {
@@ -102,7 +103,9 @@ export default {
           logisticCode: data.order.DeliverNo
         }
       }).success(data => {
+        this.status = this.expressStatus[data.state]
         this.logisticsDetail = data
+        this.logisticsDetail.traces = this.logisticsDetail.traces.reverse()
       }).fail(data => {
         this.Title.text = '获取数据失败'
         this.dialogShow = true
