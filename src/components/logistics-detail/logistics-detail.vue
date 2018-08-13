@@ -2,7 +2,7 @@
   <!-- s  物流详情-->
   <section class="logistics">
     <Theme :theme="theme"></Theme>
-    <div class="logistics-detail">
+    <div class="logistics-detail" @click="showProduct">
       <div class="detial-orderno"><span>{{orderDetail.OrderNo}}</span></div>
       <div class="detail-info">
         <div class="info-phone">
@@ -63,13 +63,13 @@
 import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
+import { mapMutations } from 'vuex'
 export default {
   name: 'LogisticsDetail',
   data () {
     return {
       theme: {
-        title: '物流详情',
-        goal: null
+        title: '物流详情'
       },
       Title: {
         text: ''
@@ -112,7 +112,17 @@ export default {
   methods: {
     closeModal () {
       this.dialogShow = false
-    }
+    },
+    showProduct () {
+      this.saveOrigin7('logistics-detail')
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: this.order.CommodityId
+        }
+      })
+    },
+    ...mapMutations(['saveOrigin7'])
   },
   components: {
     Theme,
