@@ -1,6 +1,6 @@
 <template>
   <section id="index" class="index">
-    <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'index'">
+    <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'index'" >
       <header class="index-header">
         <img src="../../../assets/images/header.png">
       </header>
@@ -46,13 +46,15 @@
         </li>
       </ul>
     </PullRefresh>
+    <div id="back" class="index-back" @click="backTop">
+      <i class="iconfont icon-jiantou"></i>
+    </div>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
   </section>
 </template>
 
 <script>
 import PullRefresh from '../../common/pull-refresh/pull-refresh.vue'
-// import ModalHint from '../../common/alert-modal/modal-hint/modal-hint.vue'
 import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import Http from '../../../class/http.class.js'
 import { mapMutations } from 'vuex'
@@ -80,6 +82,7 @@ export default {
         Pageindex: this.page
       }
     }).success(data => {
+      this.scroll()
       this.groups = data
     }).fail(data => {
       this.Title.text = data.message
@@ -96,6 +99,27 @@ export default {
           id: id
         }
       })
+    },
+    backTop () {
+      var animation = setInterval(() => {
+        var offset = document.getElementById('index').scrollTop
+        var speed = offset / 6
+        document.getElementById('index').scrollTop -= speed
+        if (document.getElementById('index').scrollTop <= 0) {
+          clearInterval(animation)
+        }
+      }, 20)
+    },
+    scroll () {
+      var bodyHeight = document.body.clientHeight
+      document.getElementById('index').onscroll = function () {
+        var scrollEnd = document.getElementById('index').scrollTop
+        if (scrollEnd >= bodyHeight) {
+          document.getElementById('back').style.display = 'block'
+        } else {
+          document.getElementById('back').style.display = 'none'
+        }
+      }
     },
     closeModal () {
       this.dialogShow = false

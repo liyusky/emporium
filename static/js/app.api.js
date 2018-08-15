@@ -52,7 +52,6 @@ window.bindScroll = function () {
     }
   }
 }
-
 window.init = function () {
   try {
     var basicData = appJsInterface.sendTokenToHtml().split('-')

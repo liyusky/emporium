@@ -76,7 +76,7 @@ export default {
           statusTitle: '已发货'
         },
         '4': {
-          statusTitle: '已收获'
+          statusTitle: '已收货'
         },
         '8': {
           statusTitle: '已取消订单'

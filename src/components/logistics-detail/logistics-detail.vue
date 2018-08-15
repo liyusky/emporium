@@ -103,7 +103,6 @@ export default {
           logisticCode: data.order.DeliverNo
         }
       }).success(data => {
-        console.log(data)
         this.status = this.expressStatus[data.state]
         this.logisticsDetail = data
         this.logisticsDetail.traces = this.logisticsDetail.traces.reverse()
