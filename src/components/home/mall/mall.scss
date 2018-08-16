@@ -199,4 +199,22 @@
       }
     }
   }
+  &-back {
+    position: fixed;
+    right: 27 / $unit * $symbol;
+    bottom: 150 / $unit * $symbol;
+    display: none;
+    width: 78 / $unit * $symbol;
+    height: 78 / $unit * $symbol;
+    padding: {
+      top: 18 /$unit * $symbol;
+    }
+    text-align: center;
+    background: #f2f2f2;
+    border: 1px solid #bdbbbb;
+    i {
+      font-size: 30 / $unit * $symbol;
+      color: #666;
+    }
+  }
 }
