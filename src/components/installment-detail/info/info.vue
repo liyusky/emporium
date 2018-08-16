@@ -1,7 +1,7 @@
 <template>
   <!-- s  -->
-  <section class="installment-info" @click="showProduct">
-    <div class="info-phone">
+  <section class="installment-info">
+    <div class="info-phone" @click="showProduct">
       <div class="phone-img">
         <img :src="order.Icon">
       </div>

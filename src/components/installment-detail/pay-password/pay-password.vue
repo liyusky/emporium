@@ -60,8 +60,10 @@ export default {
           pwd: this.password.join('')
         }
       }).success(data => {
+        console.log(data)
         this.$emit('PAY_SUCCESS_EVENT')
       }).fail(data => {
+        console.log(data)
         this.$emit('PAY_FAIL_EVENT', data.message)
       }).default(() => {
         this.password = []

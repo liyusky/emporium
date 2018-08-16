@@ -230,7 +230,7 @@ export default {
     },
     gotoPage (page) {
       this.saveOrigin2('order-confirm')
-      this.saveOrigin6('order-confirm')
+      this.saveOrigin6('mall')
       this.$router.push({ name: page })
     },
     showProduct () {
@@ -263,6 +263,7 @@ export default {
           num: this.installmentNum
         }
       }).success(data => {
+        console.log(data)
         if (this.selected === 3) {
           this.gotoPage('installment-detail')
         } else {

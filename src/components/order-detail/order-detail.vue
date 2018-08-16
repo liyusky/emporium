@@ -21,8 +21,8 @@
             </div>
           </div>
         </div>
-        <div class="information-phone" @click="showProduct">
-          <div class="phone-detail">
+        <div class="information-phone">
+          <div class="phone-detail" @click="showProduct">
             <div class="detail-img">
               <img :src="orderDetail.Icon">
             </div>
@@ -166,7 +166,7 @@ export default {
       this.$router.push({
         name: 'product',
         params: {
-          id: this.orderDetail.order.CommodityId
+          id: this.orderDetail.CommodityId
         }
       })
     },
@@ -195,6 +195,7 @@ export default {
       this.reminderShow = true
     },
     logistics () {
+      this.saveOrigin8('order-detail')
       this.saveOrderNo(this.OrderNo)
       this.$router.push({
         name: 'logistics-detail'
@@ -243,33 +244,44 @@ export default {
       }
     },
     pay () {
-      try {
-        if (typeof (appJsInterface) !== 'undefined') {
-          appJsInterface.payWeChat(JSON.stringify({
-            prepayId: this.payId,
-            noncestr: this.noncestr
-          }))
-        } else {
-          webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(this.payId))
-        }
-        let payListener = setInterval(() => {
-          if (window.payFinish === 'success') {
-            this.state = 2
-            clearInterval(payListener)
-          } else if (window.payFinish === 'success') {
-            clearInterval(payListener)
+      switch (this.orderDetail.PayType) {
+        case '微信':
+          try {
+            if (typeof (appJsInterface) !== 'undefined') {
+              appJsInterface.payWeChat(JSON.stringify({
+                prepayId: this.payId,
+                noncestr: this.noncestr
+              }))
+            } else {
+              webkit.messageHandlers.popWeichatPay.postMessage(JSON.stringify(this.payId))
+            }
+            let payListener = setInterval(() => {
+              if (window.payFinish === 'success') {
+                this.state = 2
+                clearInterval(payListener)
+              } else if (window.payFinish === 'success') {
+                clearInterval(payListener)
+              }
+            }, 1000)
+          } catch (error) {
+            this.Title.text = '支付失败'
+            this.reminderShow = true
           }
-        }, 1000)
-      } catch (error) {
-        this.Title.text = '支付失败'
-        this.reminderShow = true
+          break
+        case '支付宝':
+          ap.tradePay({
+            orderStr: this.orderDetail.OrderStr
+          }, function (res) {
+            ap.alert(res.resultCode)
+          })
+          break
       }
     },
     confrim () {
       this.Title.text = '您确认收货'
       this.reminderShow = true
     },
-    ...mapMutations(['changeStatusNum', 'saveOrderNo'])
+    ...mapMutations(['changeStatusNum', 'saveOrderNo', 'saveOrigin7', 'saveOrigin8'])
   },
   components: {
     Theme,

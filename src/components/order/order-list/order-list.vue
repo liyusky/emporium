@@ -158,6 +158,7 @@ export default {
       this.reminderShow = true
     },
     logistics (item) {
+      this.saveOrigin8('order')
       this.saveOrderNo(item.OrderNo)
       this.$router.push({
         name: 'logistics-detail'
@@ -196,7 +197,7 @@ export default {
       this.dialogShow = false
       this.reminderShow = false
     },
-    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrigin6', 'saveOrderNo', 'saveProductId', 'changeStatusNum'])
+    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrigin6', 'saveOrigin8', 'saveOrderNo', 'saveProductId', 'changeStatusNum'])
   }
 }
 </script>
