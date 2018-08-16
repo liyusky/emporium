@@ -57,7 +57,7 @@
       </div> -->
       <div class="content-distribution">
         <p class="distribution-title">配送方式</p>
-        <p class="distribution-express">顺风快递</p>
+        <p class="distribution-express">顺丰快递</p>
       </div>
       <div class="content-leave-message">
         <input class="leave-message" id="leave-message" name="leave-message" maxlength="50" rows="1" placeholder="给商家留言 (最多50字)">

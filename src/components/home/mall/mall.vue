@@ -1,5 +1,5 @@
 <template>
-  <section id="index" class="index">
+  <section id="index" class="index" @scroll="pageScroll">
     <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'index'" >
       <header class="index-header">
         <img src="../../../assets/images/header.png">
@@ -67,7 +67,9 @@ export default {
       Title: {
         text: ''
       },
-      dialogShow: false
+      dialogShow: false,
+      isTop: true,
+      animation: null
     }
   },
   components: {
@@ -82,7 +84,6 @@ export default {
         Pageindex: this.page
       }
     }).success(data => {
-      this.scroll()
       this.groups = data
     }).fail(data => {
       this.Title.text = data.message
@@ -101,16 +102,18 @@ export default {
       })
     },
     backTop () {
-      var animation = setInterval(() => {
+      if (document.getElementById('index').scrollTop > 0) clearInterval(this.animation)
+      this.animation = setInterval(() => {
         var offset = document.getElementById('index').scrollTop
         var speed = offset / 6
         document.getElementById('index').scrollTop -= speed
         if (document.getElementById('index').scrollTop <= 0) {
-          clearInterval(animation)
+          clearInterval(this.animation)
         }
+        this.isTop = true
       }, 20)
     },
-    scroll () {
+    pageScroll () {
       var bodyHeight = document.body.clientHeight
       document.getElementById('index').onscroll = function () {
         var scrollEnd = document.getElementById('index').scrollTop
@@ -120,6 +123,8 @@ export default {
           document.getElementById('back').style.display = 'none'
         }
       }
+      if (!this.isTop) clearInterval(this.animation)
+      this.isTop = false
     },
     closeModal () {
       this.dialogShow = false
@@ -153,6 +158,10 @@ export default {
       }
     },
     ...mapMutations(['saveProductId', 'saveOrigin7'])
+  },
+  destroyed () {
+    clearInterval(this.animation)
+    this.isTop = false
   }
 }
 </script>
