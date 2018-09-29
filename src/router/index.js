@@ -88,7 +88,8 @@ export default new Router({
     {
       path: '/order-detail',
       name: 'order-detail',
-      component: OrderDetail
+      component: OrderDetail,
+      props: true
     },
     {
       path: '/familiar-question',

@@ -94,7 +94,8 @@ export default {
       touchPageY: 0,
       touchScale: 0,
       touchPageXMounts: 0,
-      touchPageYMounts: 0
+      touchPageYMounts: 0,
+      loadCount: 3
     }
   },
   created () {
@@ -131,9 +132,15 @@ export default {
         this.tips.forEach(ele => {
           this.timeArr.push(Time.change(Number(ele.CreateTime.substring(6, 19))))
         })
+        this.loadCount = 3
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
+      }).login(data => {
+        if (this.loadCount > 0) {
+          this.getData(status)
+          this.loadCount--
+        }
       })
     },
     loadMore () {

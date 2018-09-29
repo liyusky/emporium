@@ -2,28 +2,28 @@
   <!-- s  -->
   <section class="home">
     <router-view></router-view>
-    <Tab :path="$route.path"></Tab>
+    <!-- <Tab :path="$route.path"></Tab> -->
   </section>
   <!-- e  -->
 </template>
 
 <script>
-import Tab from '../common/tab/tab.vue'
+// import Tab from '../common/tab/tab.vue'
 export default {
   name: 'Home',
   data () {
     return {}
   },
   components: {
-    Tab
+    // Tab
   },
   // mounted () {
   //   this.$router.push({name: 'mall'})
   // },
   methods: {
-    gotoPage (page) {
-      this.$router.push({name: page})
-    }
+    // gotoPage (page) {
+    //   this.$router.push({name: page})
+    // }
   }
 }
 </script>

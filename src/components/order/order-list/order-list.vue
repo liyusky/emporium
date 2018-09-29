@@ -146,6 +146,7 @@ export default {
           }
           break
         case 2:
+          document.getElementById('alipay').innerHTML = item.OrderStr + '<img src="./static/img/site.png" onload="submitALiPay()">'
           break
         case 3:
           this.gotoPage(item)

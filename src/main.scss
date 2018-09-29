@@ -23,4 +23,8 @@ html {
       transform: translateX(-100%);
     }
   }
+  .alipay {
+    position: fixed;
+    z-index: -99;
+  }
 }

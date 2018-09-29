@@ -69,7 +69,6 @@
     </footer>
     <ModalReminder v-show="reminderShow" @CLOSE_MODAL_EVENT = "closeModal" @SENF_REQUEST_EVENT="sendRequest" :Title="Title"></ModalReminder>
     <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT="closeModal"></ModalDialog>
-
   </section>
 </template>
 <script>
@@ -121,28 +120,13 @@ export default {
       noncestr: null,
       statusName: '',
       reminderShow: false,
-      dialogShow: false
+      dialogShow: false,
+      loadCount: 3
     }
   },
   created () {
     this.OrderNo = this.$store.state.OrderNo
-    Http.send({
-      url: 'orderDetail',
-      data: {
-        Orderno: this.OrderNo
-      }
-    }).success(data => {
-      data = data.order
-      this.state = data.Status
-      this.payId = data.PayId
-      this.noncestr = data.noncestr
-      let status = this.status.get(data.Status)
-      this.orderDetail = data
-      this.statusName = status.statusTitle
-    }).fail(fail => {
-      this.Title.text = fail.message
-      this.dialogShow = true
-    })
+    this.getData()
     switch (this.$store.state.origin3) {
       case 'order-confirm':
         this.theme.goal = 'mall'
@@ -156,6 +140,31 @@ export default {
     if (this.$store.state.productId) this.theme.params.id = this.$store.state.productId
   },
   methods: {
+    getData () {
+      Http.send({
+        url: 'orderDetail',
+        data: {
+          Orderno: this.OrderNo
+        }
+      }).success(data => {
+        data = data.order
+        this.state = data.Status
+        this.payId = data.PayId
+        this.noncestr = data.noncestr
+        let status = this.status.get(data.Status)
+        this.orderDetail = data
+        this.statusName = status.statusTitle
+        this.loadCount = 3
+      }).fail(fail => {
+        this.Title.text = fail.message
+        this.dialogShow = true
+      }).login(data => {
+        if (this.loadCount > 0) {
+          this.getData()
+          this.loadCount--
+        }
+      })
+    },
     closeModal () {
       this.reminderShow = false
       this.dialogShow = false
@@ -269,11 +278,16 @@ export default {
           }
           break
         case '支付宝':
-          ap.tradePay({
-            orderStr: this.orderDetail.OrderStr
-          }, function (res) {
-            ap.alert(res.resultCode)
-          })
+          document.getElementById('alipay').innerHTML = this.orderDetail.OrderStr + '<img src="./static/img/site.png" onload="submitALiPay()">'
+          // ap.tradePay({
+          //   orderStr: this.orderDetail.OrderStr
+          // }, function (res) {
+          //   ap.alert(res.resultCode)
+          // })          // ap.tradePay({
+          //   orderStr: this.orderDetail.OrderStr
+          // }, function (res) {
+          //   ap.alert(res.resultCode)
+          // })
           break
       }
     },

@@ -38,7 +38,9 @@
                   <p>￥{{parseFloat(phone.originalPrice - phone.nowPrice).toFixed(2)}}</p>
                 </div>
                 <div class="content-badge" v-if="phone.IsTested">
-                  <p>{{phone.Status == '2' ? '已售完' : '已检测'}}</p>
+                  <p v-if="phone.Status == 2">已售完</p>
+                  <p v-else-if="phone.Status == 3">已预定</p>
+                  <p v-else>已检测</p>
                 </div>
               </div>
             </li>
