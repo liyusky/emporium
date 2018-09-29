@@ -1,6 +1,7 @@
 window.token = null
 window.id = null
 window.phone = null
+window.api = ''
 window.kill = function () {
   try {
     document.getElementById('back-btn').click()
@@ -21,6 +22,11 @@ window.returnPayResult = function (finish) {
   } else {
     window.payFinish = 'fail'
   }
+}
+
+window.submitALiPay = function () {
+  document.forms['alipaysubmit'].submit()
+  document.getElementById('alipay').innerHTML = ''
 }
 
 window.onload = function () {
@@ -52,12 +58,27 @@ window.bindScroll = function () {
     }
   }
 }
-window.init = function () {
+
+window.init = function (callback) {
   try {
     var basicData = appJsInterface.sendTokenToHtml().split('-')
     window.id = basicData[0]
     window.token = basicData[1]
     window.phone = basicData[2]
+    if (window.localStorage) {
+      window.localStorage.setItem('id', window.id)
+      window.localStorage.setItem('token', window.id)
+      window.localStorage.setItem('phone', window.id)
+    }
+    if (document.cookie) {
+      var cookies = {
+        id: window.id,
+        token: window.token,
+        phone: window.phone
+      }
+      document.cookie = JSON.stringify(cookies)
+    }
+    if (callback) callback()
   } catch (error) {
   }
 }

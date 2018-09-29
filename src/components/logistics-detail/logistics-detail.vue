@@ -2,10 +2,10 @@
   <!-- s  物流详情-->
   <section class="logistics">
     <Theme :theme="theme"></Theme>
-    <div class="logistics-detail" @click="showProduct">
+    <div class="logistics-detail">
       <div class="detial-orderno"><span>{{orderDetail.OrderNo}}</span></div>
       <div class="detail-info">
-        <div class="info-phone">
+        <div class="info-phone" @click="showProduct">
           <div class="phone-img">
             <img :src="orderDetail.Icon">
           </div>
@@ -25,7 +25,7 @@
         </li>
         <li class="message-item">
           <span>物流公司:</span>
-          <span>顺风快递</span>
+          <span>顺丰快递</span>
         </li>
         <li class="message-item">
           <span>运单编号:</span>
@@ -89,7 +89,9 @@ export default {
     }
   },
   created () {
+    this.theme.goal = this.$store.state.Origin8
     this.OrderNo = this.$store.state.OrderNo
+    console.log(this.OrderNo)
     Http.send({
       url: 'orderDetail',
       data: {
@@ -121,7 +123,7 @@ export default {
       this.$router.push({
         name: 'product',
         params: {
-          id: this.order.CommodityId
+          id: this.orderDetail.CommodityId
         }
       })
     },

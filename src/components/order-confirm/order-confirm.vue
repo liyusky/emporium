@@ -230,7 +230,7 @@ export default {
     },
     gotoPage (page) {
       this.saveOrigin2('order-confirm')
-      this.saveOrigin6('order-confirm')
+      this.saveOrigin6('mall')
       this.$router.push({ name: page })
     },
     showProduct () {
@@ -258,11 +258,13 @@ export default {
       Http.send({
         url: 'orderSubmit',
         data: {
+          Iswap: true,
           Orderno: this.OrderNo,
           payType: this.selected,
           num: this.installmentNum
         }
       }).success(data => {
+        console.log(data)
         if (this.selected === 3) {
           this.gotoPage('installment-detail')
         } else {

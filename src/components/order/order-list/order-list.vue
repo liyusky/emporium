@@ -146,6 +146,7 @@ export default {
           }
           break
         case 2:
+          document.getElementById('alipay').innerHTML = item.OrderStr + '<img src="./static/img/site.png" onload="submitALiPay()">'
           break
         case 3:
           this.gotoPage(item)
@@ -158,6 +159,7 @@ export default {
       this.reminderShow = true
     },
     logistics (item) {
+      this.saveOrigin8('order')
       this.saveOrderNo(item.OrderNo)
       this.$router.push({
         name: 'logistics-detail'
@@ -196,7 +198,7 @@ export default {
       this.dialogShow = false
       this.reminderShow = false
     },
-    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrigin6', 'saveOrderNo', 'saveProductId', 'changeStatusNum'])
+    ...mapMutations(['saveOrigin', 'saveOrigin3', 'saveOrigin6', 'saveOrigin8', 'saveOrderNo', 'saveProductId', 'changeStatusNum'])
   }
 }
 </script>
