@@ -1,6 +1,6 @@
 <template>
   <section id="index" class="index" @scroll="pageScroll">
-    <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'index'" >
+    <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'index'">
       <header class="index-header">
         <img src="../../../assets/images/header.png">
       </header>

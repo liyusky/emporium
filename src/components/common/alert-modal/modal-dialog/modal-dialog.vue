@@ -1,5 +1,5 @@
 <template>
-  <section class="dialog">
+  <section class="dialog" @touchmove="stopScroll($event)">
     <div class="dialog-content">
       <div class="content-title">
         <p class="title-text">{{Title.text}}</p>
@@ -14,6 +14,9 @@
 export default {
   props: ['Title'],
   methods: {
+    stopScroll (e) {
+      e.preventDefault()
+    },
     close () {
       this.$emit('CLOSE_DIALOG_EVENT')
     }
