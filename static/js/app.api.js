@@ -1,7 +1,7 @@
 window.token = null
 window.id = null
 window.phone = null
-window.api = ''
+window.api = 'http://192.168.0.101:8090'
 window.kill = function () {
   try {
     document.getElementById('back-btn').click()

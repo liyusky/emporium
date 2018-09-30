@@ -18,8 +18,8 @@ export default class Http {
       url: Url[args.url],
       method: 'post',
       // baseURL: 'http://api2.jietiaodashi.com',
-      // baseURL: 'http://xqapi.jietiaodashi.com',
-      baseURL: window.api,
+      baseURL: 'http://xqapi.jietiaodashi.com',
+      // baseURL: window.api,
       // baseURL: 'http://192.168.0.101:8082',
       headers: headers,
       params: args.data
