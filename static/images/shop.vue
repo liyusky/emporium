@@ -17,7 +17,7 @@
         <div class="swiper-container banner">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
-              <img src="../../../assets/images/shop/head-banner.png">
+              <img src="../../../assets/images/header.png">
             </div>
           </div>
           <div class="swiper-pagination"></div>
@@ -42,7 +42,7 @@
     <div class="shop-look-at-look">
       <div class="look-saccade">
         <p>
-          <i class="iconfont icon-fenlei"></i>
+          <i class=""></i>
           <span>逛一逛</span>
         </p>
       </div>
@@ -70,13 +70,12 @@
         </div>
         <div class="title-more">
           <span>更多</span>
-          <i class="iconfont icon-jiantou1"></i>
+          <i class=""></i>
         </div>
       </div>
       <div class="purchase-goods">
         <Product :product="product" v-for="(item, index) in purchase" :key="index"></Product>
       </div>
-      <Exhibition :exhibition="item" v-for="(item, index) in exhibition" :key="index"></Exhibition>
     </div>
   </section>
   <!-- e  -->
@@ -85,51 +84,46 @@
 <script>
 import Swiper from 'Swiper'
 import Product from './product/product.vue'
-import Exhibition from './exhibition/exhibition.vue'
-import Http from '../../../class/http.class.js'
 export default {
   name: 'Shop',
   components: {
-    Product,
-    Exhibition
+    Product
   },
   data () {
     return {
-      page: 1,
-      exhibition: null,
       category1: [
         {
-          icon: '../../../../static/images/shoji.png',
+          icon: '',
           title: '手机通讯'
         },
         {
-          icon: '../../../../static/images/diannao.png',
+          icon: '',
           title: '电脑城'
         },
         {
-          icon: '../../../../static/images/meizhuang.png',
+          icon: '',
           title: '美妆个护'
         },
         {
-          icon: '../../../../static/images/zhubao.png',
+          icon: '',
           title: '珠宝首饰'
         }
       ],
       category2: [
         {
-          icon: '../../../../static/images/youhuiquan.png',
+          icon: '',
           title: '优惠券'
         },
         {
-          icon: '../../../../static/images/qianggou.png',
+          icon: '',
           title: '限时抢购'
         },
         {
-          icon: '../../../../static/images/yaoqing.png',
+          icon: '',
           title: '邀请有礼'
         },
         {
-          icon: '../../../../static/images/fenlei.png',
+          icon: '',
           title: '分类'
         }
       ],
@@ -160,7 +154,6 @@ export default {
     }
   },
   created () {
-    this.init()
     this.$nextTick(() => {
       this.initBannerSwiper()
     })
@@ -196,19 +189,6 @@ export default {
         }
       })
       // this.bannerSwiper.detachEvents()
-    },
-    init () {
-      Http.send({
-        url: 'mall',
-        data: {
-          Pageindex: this.page
-        }
-      }).success(data => {
-        this.exhibition = data
-      }).fail(data => {
-        this.Title.text = data.message
-        this.dialogShow = true
-      })
     }
   }
 }
