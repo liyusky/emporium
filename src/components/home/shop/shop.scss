@@ -1,0 +1,83 @@
+@import '../../../../dependencies/sass/_flex.scss';
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_btn.scss';
+.shop {
+  &-category {
+    @include vertical_center_horizontal_between_wrap();
+    width: 100%;
+    height: 288 / $unit * $symbol;
+    padding: {
+      left: 24 / $unit * $symbol;
+      right: 24 / $unit * $symbol;
+    }
+    .category-item {
+      @include column_center_between();
+      width: (90 + 15) / $unit * $symbol;
+      height: 144 / $unit * $symbol;
+      padding: {
+        top: 21 / $unit * $symbol;
+      }
+      .item-icon {
+        width: 90 / $unit * $symbol;
+        height: 90 / $unit * $symbol;
+      }
+      .item-title {
+        font-size: 21 / $unit * $symbol;
+        color: #666666;
+      }
+    }
+  }
+  &-recommend {
+    width: 100%;
+    height: (237 - 24) / $unit * $symbol;
+    padding: {
+      left: 33 / $unit * $symbol;
+      right: 33 / $unit * $symbol;
+    }
+  }
+  &-look-at-look {
+    width: 100%;
+    height: auto;
+    padding: {
+      left: 30 / $unit * $symbol;
+      right: 30 / $unit * $symbol;
+    }
+    .look-saccade {
+      @include center();
+      width: 100%;
+      height: 120 / $unit * $symbol;
+    }
+    .look-guide {
+      @include vertical_between_horizontal_between_wrap();
+      width: 100%;
+      height: (123 * 2 + 30);
+      .look-tip {
+        width: 336 / $unit * $symbol;
+        height: 123 / $unit * $symbol;
+        background: #f3f6fa;
+        .tip-messgae {
+          @include vertical_direction_between();
+          width: (336 - 123) / $unit * $symbol;
+          height: 100%;
+          padding: {
+            left: 33 / $unit * $symbol;
+            top: 30 / $unit * $symbol;
+            bottom: 27 / $unit * $symbol;
+          }
+          .messgae-title {
+            font-size: 30 / $unit * $symbol;
+            color: #222222;
+          }
+          .messgae-introduce {
+            font-size: 24 / $unit * $symbol;
+            color: #999999;
+          }
+        }
+        .tip-image {
+          width: 123 / $unit * $symbol;
+          height: 123 / $unit * $symbol;
+        }
+      }
+    }
+  }
+}

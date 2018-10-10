@@ -70,3 +70,89 @@
     }
   }
 }
+
+@mixin center () {
+  $param: (flex flex) (alignItems center) (justifyContent center);
+  @include flexSet($param);
+}
+
+@mixin vertical_left () {
+  $param: (flex flex) (alignItems flex-start);
+  @include flexSet($param);
+}
+
+@mixin horizontal_center () {
+  $param: (flex flex) (justifyContent center);
+  @include flexSet($param);
+}
+
+@mixin horizontal_end () {
+  $param: (flex flex) (justifyContent flex-end);
+  @include flexSet($param);
+}
+
+@mixin vertical_center () {
+  $param: (flex flex) (alignItems center);
+  @include flexSet($param);
+}
+
+@mixin vertical_end () {
+  $param: (flex flex) (alignItems flex-end);
+  @include flexSet($param);
+}
+
+@mixin vertical_center_horizontal_between () {
+  $param: (flex flex) (alignItems center) (justifyContent space-between);
+  @include flexSet($param);
+}
+
+@mixin vertical_between_horizontal_between_wrap () {
+  $param: (flex flex) (alignContent space-between) (justifyContent space-between) (flexWrap wrap);
+  @include flexSet($param);
+}
+
+@mixin vertical_center_horizontal_between_wrap () {
+  $param: (flex flex) (alignItems center) (justifyContent space-between) (flexWrap wrap);
+  @include flexSet($param);
+}
+
+@mixin vertical_center_horizontal_around () {
+  $param: (flex flex) (alignItems center) (justifyContent space-around);
+  @include flexSet($param);
+}
+
+// 纵向排列
+@mixin vertical_direction () {
+  $param: (flex flex) (direction column);
+  @include flexSet($param);
+}
+
+@mixin horizontal_between () {
+  $param: (flex flex) (justifyContent space-between);
+  @include flexSet($param);
+}
+
+@mixin vertical_direction_center () {
+  $param: (flex flex) (direction column) (alignItems center);
+  @include flexSet($param);
+}
+
+@mixin column_center () {
+  $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+  @include flexSet($param);
+}
+
+@mixin column_center_between () {
+  $param: (flex flex) (direction column) (alignItems center) (justifyContent space-between);
+  @include flexSet($param);
+}
+
+@mixin vertical_direction_between () {
+  $param: (flex flex) (direction column) (justifyContent space-between);
+  @include flexSet($param);
+}
+
+@mixin vertical_direction_around () {
+  $param: (flex flex) (direction column) (justifyContent space-around);
+  @include flexSet($param);
+}
