@@ -1,0 +1,34 @@
+@import '../../../../dependencies/sass/_unit.scss';
+@import '../../../../dependencies/sass/_flex.scss';
+	.footer{
+		position: fixed;
+		left: 0;
+    bottom: 0;
+    $param: (flex flex) (alignItems center) (justifyContent space-around);
+    @include flexSet($param);
+    width: 100vw;
+    height: 98 / $unit * $symbol;
+    background: #fff;
+    box-shadow: 0 -5 / $unit * $symbol 20 / $unit * $symbol #efeeec;
+    .activeShow{
+      height: 80 / $unit * $symbol;
+      border-radius: 50%;
+      background: #efeeec;
+    }
+    .footer-item{
+      $param: (flex flex) (direction column) (alignItems center) (justifyContent center);
+      @include flexSet($param);
+      width: 80 / $unit * $symbol;
+      .item-icon{
+        width: 44 / $unit * $symbol;
+        height: 42 / $unit * $symbol;
+        background: #fff;
+      }
+      .item_name{
+        margin: {
+          top: 5 / $unit * $symbol;
+        }
+        font-size: 24 / $unit * $symbol;
+      }
+    }
+	}        

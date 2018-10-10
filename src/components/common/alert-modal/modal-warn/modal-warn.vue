@@ -1,5 +1,5 @@
 <template>
-  <section class="warn">
+  <section class="warn" @touchmove="stopScroll($event)">
     <div class="warn-content">
       <p class="content-title">{{Title.text}}</p>
     </div>
@@ -7,7 +7,12 @@
 </template>
 <script>
 export default {
-  props: ['Title']
+  props: ['Title'],
+  methods: {
+    stopScroll (e) {
+      e.preventDefault()
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
