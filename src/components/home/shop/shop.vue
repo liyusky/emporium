@@ -65,11 +65,11 @@
           <span>限时抢购</span>
           <span>|</span>
           <span>距结束</span>
-          <div class="message-hour">00</div>
+          <div class="message-hour">{{countDownHour}}</div>
           <span>:</span>
-          <div class="message-minute">21</div>
+          <div class="message-minute">{{countMinute}}</div>
           <span>:</span>
-          <div class="message-seconds">05</div>
+          <div class="message-seconds">{{countDownSecound}}</div>
         </div>
         <div class="title-more">
           <span>更多</span>
@@ -159,10 +159,14 @@ export default {
         }
       ],
       purchase: [],
-      bannerSwiper: null
+      bannerSwiper: null,
+      countDownHour: null,
+      countMinute: null,
+      countDownSecound: null
     }
   },
   created () {
+    this.timeCycle()
     this.init()
     this.$nextTick(() => {
       this.initBannerSwiper()
@@ -212,6 +216,20 @@ export default {
         this.Title.text = data.message
         this.dialogShow = true
       })
+    },
+    timeCycle () {
+      setInterval(this.countDown, 1000)
+    },
+    countDown () {
+      let endTime = new Date(2018, 9, 12)
+      let nowTime = new Date()
+      let diffTime = endTime.getTime() - nowTime.getTime()
+      this.countDownHour = this.fillZero(parseInt(diffTime / 1000 / 60 / 60))
+      this.countMinute = this.fillZero(parseInt(diffTime / 1000 / 60 % 60))
+      this.countDownSecound = this.fillZero(parseInt(diffTime / 1000 % 60))
+    },
+    fillZero (time) {
+      return time < 10 ? '0' + time : '' + time
     }
   }
 }
