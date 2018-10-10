@@ -75,12 +75,14 @@
         left: 24 / $unit * $symbol;
         right: 24 / $unit * $symbol;
       }
+      border-radius: 9 / $unit * $symbol;
       .banner {
         width: 100%;
         height: 100%;
         img {
           width: 100%;
           height: 100%;
+          border-radius: 9 / $unit * $symbol;
         }
       }
     }
@@ -98,13 +100,15 @@
       width: (90 + 15) / $unit * $symbol;
       height: 144 / $unit * $symbol;
       padding: {
-        top: 21 / $unit * $symbol;
+        top: 12 / $unit * $symbol;
       }
       .item-icon {
         width: 90 / $unit * $symbol;
         height: 90 / $unit * $symbol;
       }
       .item-title {
+        @include vertical_center();
+        height: 42 / $unit * $symbol;
         font-size: 21 / $unit * $symbol;
         color: #666666;
       }
@@ -112,7 +116,7 @@
   }
   &-recommend {
     width: 100%;
-    height: (237 - 24) / $unit * $symbol;
+    height: 237 / $unit * $symbol;
     padding: {
       left: 33 / $unit * $symbol;
       right: 33 / $unit * $symbol;
