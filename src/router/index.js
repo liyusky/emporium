@@ -59,7 +59,7 @@ export default new Router({
           component: Shop
         }
       ],
-      redirect: '/mall'
+      redirect: '/shop'
     },
     {
       path: '/product/:id',
