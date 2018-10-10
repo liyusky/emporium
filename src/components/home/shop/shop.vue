@@ -63,6 +63,7 @@
 
 <script>
 import Product from './product/product.vue'
+// import Http from '../../../class/http.class.js'
 export default {
   name: 'Shop',
   components: {
@@ -70,6 +71,7 @@ export default {
   },
   data () {
     return {
+      page: 1,
       category1: [
         {
           icon: '',
