@@ -3,6 +3,86 @@
 @import '../../../../dependencies/sass/_btn.scss';
 .shop {
   background-color: #fff;
+  &-header {
+    position: relative;
+    width: 100%;
+    height: 462 / $unit * $symbol;
+    .header-bg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .header-search {
+      position: relative;
+      z-index: 10;
+      @include vertical_center_horizontal_between();
+      width: 100%;
+      height: 144 / $unit * $symbol;
+      padding: {
+        top: 24 / $unit * $symbol;
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      i {
+        font-size: 39 / $unit * $symbol;
+        color: #fff;
+      }
+      .search-input {
+        @include vertical_center();
+        width: 561 / $unit * $symbol;
+        height: 60 / $unit * $symbol;
+        padding: {
+          left: 21 / $unit * $symbol;
+          right: 21 / $unit * $symbol;
+        }
+        background-color: #fff;
+        border-radius: 30 / $unit * $symbol;
+        i {
+          font-size: 27 / $unit * $symbol;
+          color: #999;
+        }
+        input {
+          flex: 1;
+          height: 100%;
+          padding: {
+            left: 21 / $unit * $symbol;
+          }
+          font-size: 24 / $unit * $symbol;
+          color: #333;
+          &::-webkit-input-placeholder {
+            font-size: 24 / $unit * $symbol;
+            color: #999;
+          }
+        }
+      }
+    }
+    .header-banner {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 318 / $unit * $symbol;
+      padding: {
+        left: 24 / $unit * $symbol;
+        right: 24 / $unit * $symbol;
+      }
+      .banner {
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
   &-category {
     @include vertical_center_horizontal_between_wrap();
     width: 100%;
