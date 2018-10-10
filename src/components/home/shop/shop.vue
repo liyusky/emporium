@@ -6,18 +6,21 @@
         <img src="../../../assets/images/shop/head-bg.png">
       </div>
       <div class="header-search">
-        <i class="iconfont icon-xiaoxi"></i>
+        <i class="iconfont icon-fenlei1"></i>
         <div class="search-input">
-          <i class="iconfont icon-xiaoxi"></i>
+          <i class="iconfont icon-sousuo"></i>
           <input type="text" placeholder="请输入查询条件">
         </div>
-        <i class="iconfont icon-xiaoxi"></i>
+        <i class="iconfont icon-gouwuche"></i>
       </div>
       <div class="header-banner">
         <div class="swiper-container banner">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
+            <div class="swiper-slide">
               <img src="../../../assets/images/shop/head-banner.png">
+            </div>
+            <div class="swiper-slide">
+              <img src="../../../assets/images/header.png">
             </div>
           </div>
           <div class="swiper-pagination"></div>

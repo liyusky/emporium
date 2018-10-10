@@ -11,51 +11,18 @@
     <div class="exhibition-banner">
       <img src="../../../../assets/images/shoji-banner.png">
     </div>
-    <ul class="exhibition-goods">
-      <div class="swiper-container goods">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(item, index) in exhibition.PhoneList" :key="index">
-            <Product :product="item" ></Product>
-          </div>
-        </div>
-      </div>
-    </ul>
+    <Goods :goods="exhibition.PhoneList"></Goods>
   </section>
   <!-- e  -->
 </template>
 
 <script>
-import Swiper from 'Swiper'
-import Product from '../product/product.vue'
+import Goods from '../goods/goods.vue'
 export default {
   name: 'Exhibition',
   props: ['exhibition'],
   components: {
-    Product
-  },
-  data () {
-    return {
-      goodsSwiper: null
-    }
-  },
-  created () {
-    this.$nextTick(() => {
-      this.initGoodsSwiper()
-    })
-  },
-  methods: {
-    initGoodsSwiper () {
-      if (this.goodsSwiper !== null) return
-      this.goodsSwiper = new Swiper('.goods', {
-        slidesPerView: 3,
-        slidesPerGroup: 1,
-        spaceBetween: 10,
-        freeMode: true,
-        observer: true,
-        observeParents: true
-      })
-      // this.bannerSwiper.detachEvents()
-    }
+    Goods
   }
 }
 </script>
