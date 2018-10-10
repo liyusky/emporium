@@ -35,26 +35,26 @@ window.onload = function () {
 }
 
 window.bindScroll = function () {
-  var scrollDom, summaryDom, qualityDom, sampleDom, currentTop, summaryLimit, qualityLimit, summaryBtnDom, qualityBtnDom, sampleBtnDom
+  var scrollDom, summaryDom, sampleDom, guidanceDom, currentTop, summaryLimit, sampleLimit, summaryBtnDom, sampleBtnDom, guidanceBtnDom
   document.body.onscroll = function (event) {
     event = event || window.event
     summaryDom = document.getElementById('summary')
-    qualityDom = document.getElementById('quality')
     sampleDom = document.getElementById('sample')
+    guidanceDom = document.getElementById('guidance')
     summaryBtnDom = document.getElementById('summary-btn')
-    qualityBtnDom = document.getElementById('quality-btn')
     sampleBtnDom = document.getElementById('sample-btn')
+    guidanceBtnDom = document.getElementById('guidance-btn')
     scrollDom = document.getElementById('scroll')
-    if (!scrollDom || !summaryDom || !qualityDom || !sampleDom || !summaryBtnDom || !qualityBtnDom || !sampleBtnDom) return
-    summaryLimit = qualityDom.offsetTop - summaryDom.offsetTop
-    qualityLimit = sampleDom.offsetTop - summaryDom.offsetTop
+    if (!scrollDom || !summaryDom || !sampleDom || !guidanceDom || !summaryBtnDom || !sampleBtnDom || !guidanceBtnDom) return
+    summaryLimit = sampleDom.offsetTop - summaryDom.offsetTop
+    sampleLimit = guidanceDom.offsetTop - summaryDom.offsetTop
     currentTop = document.body.scrollTop
     if (currentTop < summaryLimit) {
       scrollDom.style.left = summaryBtnDom.offsetLeft + 'px'
-    } else if (currentTop < qualityLimit) {
-      scrollDom.style.left = qualityBtnDom.offsetLeft + 'px'
-    } else {
+    } else if (currentTop < sampleLimit) {
       scrollDom.style.left = sampleBtnDom.offsetLeft + 'px'
+    } else {
+      scrollDom.style.left = guidanceBtnDom.offsetLeft + 'px'
     }
   }
 }
