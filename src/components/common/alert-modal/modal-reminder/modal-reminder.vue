@@ -1,5 +1,5 @@
 <template>
-  <section class="reminder">
+  <section class="reminder" @touchmove="stopScroll($event)">
     <div class="reminder-content">
       <p class="content-tip">提示</p>
       <p class="content-title">{{Title.text}}</p>
@@ -23,6 +23,9 @@ export default {
     },
     sendRequest () {
       this.$emit('SENF_REQUEST_EVENT')
+    },
+    stopScroll (e) {
+      e.preventDefault()
     }
   }
 }

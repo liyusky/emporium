@@ -7,11 +7,11 @@
         <div class="nav-item" id="summary-btn" @click="scroll('summary', 0)">
           <span>商品</span>
         </div>
-        <div class="nav-item" id="quality-btn" @click="scroll('quality', 1)">
-          <span>质检</span>
-        </div>
-        <div class="nav-item" id="sample-btn" @click="scroll('sample', 2)">
+        <div class="nav-item" id="sample-btn" @click="scroll('sample', 1)">
           <span>实拍</span>
+        </div>
+        <div class="nav-item" id="guidance-btn" @click="scroll('guidance', 2)">
+          <span>问题</span>
         </div>
       </div>
       <div class="nav-scroll">
@@ -19,9 +19,8 @@
       </div>
     </nav>
     <Summary id="summary" ref="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
-    <Quality id="quality" ref="quality" :quality="quality"></Quality>
     <Sample id="sample" ref="sample" :banner="banner" :sample="sample" :link="shareLink" @OPEN_SHARE_EVENT="openShareModal"></Sample>
-    <Guidance></Guidance>
+    <Guidance id="guidance"></Guidance>
     <footer class="product-order">
       <div class="order-content">
         <div class="content-sign" @click="chatQQ">
@@ -51,7 +50,6 @@
 import Http from '../../class/http.class.js'
 import Theme from '../common/theme/theme.vue'
 import Summary from './summary/summary.vue'
-import Quality from './quality/quality.vue'
 import Sample from './sample/sample.vue'
 import Guidance from './guidance/guidance.vue'
 import Modal from '../common/modal/modal.vue'
@@ -66,7 +64,6 @@ export default {
   components: {
     Theme,
     Summary,
-    Quality,
     Sample,
     Guidance,
     Modal,
@@ -122,6 +119,7 @@ export default {
       this.banner = data.AttachmentList.filter(item => {
         if (item.ArchiveType === '1') return item
       })
+      console.log(this.banner)
       this.quality = data.PhoneTestInfo
       this.parameter = data.Phone.ParamList
       this.paymentMethod = {

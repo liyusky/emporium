@@ -1,6 +1,6 @@
 <template>
   <!-- s 模态框 -->
-  <section class="modal">
+  <section class="modal" id="modal" @touchmove="stopScroll($event)">
     <div class="modal-bg"></div>
     <div class="modal-content">
       <slot></slot>
@@ -14,6 +14,11 @@ export default {
   name: 'Modal',
   data () {
     return {}
+  },
+  methods: {
+    stopScroll (e) {
+      e.preventDefault()
+    }
   }
 }
 </script>

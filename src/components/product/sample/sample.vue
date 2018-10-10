@@ -75,6 +75,9 @@ export default {
   data () {
     return {}
   },
+  mounted () {
+    console.log(this.banner)
+  },
   methods: {
     share () {
       let jsonStr = {
