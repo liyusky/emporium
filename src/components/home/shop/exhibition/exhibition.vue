@@ -2,7 +2,7 @@
   <!-- s  -->
   <section class="exhibition">
     <div class="exhibition-title">
-      <h3 class="title-name">{{exhibition.title}}</h3>
+      <h3 class="title-name">{{exhibition.Key}}</h3>
       <p class="title-more">
         <span>更多</span>
         <i></i>
@@ -12,7 +12,7 @@
       <img :src="exhibition.banner">
     </div>
     <ul class="exhibition-goods">
-      <Product :product="item" v-for="(item, index) in exhibition.product" :key="index"></Product>
+      <Product :product="item" v-for="(item, index) in exhibition.PhoneList" :key="index"></Product>
     </ul>
   </section>
   <!-- e  -->

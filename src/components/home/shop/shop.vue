@@ -76,6 +76,7 @@
       <div class="purchase-goods">
         <Product :product="product" v-for="(item, index) in purchase" :key="index"></Product>
       </div>
+      <Exhibition :exhibition="item" v-for="(item, index) in exhibition" :key="index"></Exhibition>
     </div>
   </section>
   <!-- e  -->
@@ -84,13 +85,18 @@
 <script>
 import Swiper from 'Swiper'
 import Product from './product/product.vue'
+import Exhibition from './exhibition/exhibition.vue'
+import Http from '../../../class/http.class.js'
 export default {
   name: 'Shop',
   components: {
-    Product
+    Product,
+    Exhibition
   },
   data () {
     return {
+      page: 1,
+      exhibition: null,
       category1: [
         {
           icon: '../../../../static/images/shoji.png',
@@ -154,6 +160,7 @@ export default {
     }
   },
   created () {
+    this.init()
     this.$nextTick(() => {
       this.initBannerSwiper()
     })
@@ -189,6 +196,19 @@ export default {
         }
       })
       // this.bannerSwiper.detachEvents()
+    },
+    init () {
+      Http.send({
+        url: 'mall',
+        data: {
+          Pageindex: this.page
+        }
+      }).success(data => {
+        this.exhibition = data
+      }).fail(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
     }
   }
 }

@@ -2,6 +2,8 @@
 @import '../../../../dependencies/sass/_unit.scss';
 @import '../../../../dependencies/sass/_btn.scss';
 .shop {
+  width: 100vw;
+  height: auto;
   background-color: #fff;
   &-header {
     position: relative;
