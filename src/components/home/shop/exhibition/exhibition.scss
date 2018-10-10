@@ -38,6 +38,9 @@
       left: 15 / $unit * $symbol;
       right: 15 / $unit * $symbol;
     }
+    img {
+      border-radius: 12 / $unit * $symbol;
+    }
   }
   &-goods {
     @include horizontal_between();

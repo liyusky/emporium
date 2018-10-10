@@ -1,7 +1,7 @@
 <template>
   <!-- s  -->
   <li class="product-item">
-    <img class="item-image" :src="product.image">
+    <img class="item-image" src="">
     <p class="item-title">{{product.Title}}</p>
     <p class="item-prise">¥{{product.nowPrice}}</p>
     <p class="item-staging">

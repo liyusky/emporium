@@ -9,7 +9,7 @@
       </p>
     </div>
     <div class="exhibition-banner">
-      <img :src="exhibition.banner">
+      <img src="../../../../assets/images/shoji-banner.png">
     </div>
     <ul class="exhibition-goods">
       <Product :product="item" v-for="(item, index) in exhibition.PhoneList" :key="index"></Product>
