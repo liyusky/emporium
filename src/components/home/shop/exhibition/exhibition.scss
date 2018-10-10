@@ -4,6 +4,7 @@
 .exhibition {
   width: 100%;
   height: 721 / $unit * $symbol;
+  background-color: #fff;
   &-title { 
     @include vertical_center_horizontal_between();
     width: 100%;

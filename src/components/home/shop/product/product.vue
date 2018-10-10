@@ -2,8 +2,8 @@
   <!-- s  -->
   <li class="product-item">
     <img class="item-image" :src="product.image">
-    <p class="item-title">{{product.title}}</p>
-    <p class="item-prise">¥{{product.moneyAmount}}</p>
+    <p class="item-title">{{product.Title}}</p>
+    <p class="item-prise">¥{{product.nowPrice}}</p>
     <p class="item-staging">
       <span>¥{{product.money}}</span>
       <span>x{{product.time}}期</span>
