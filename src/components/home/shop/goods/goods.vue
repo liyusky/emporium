@@ -4,7 +4,7 @@
     <div class="swiper-container goods-swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(item, index) in goods" :key="index">
-          <li class="goods-item">
+          <li class="goods-item" @click="gotoPage(phone.Id, phone.ProductName)">
             <img class="item-image" :src="item.Icon">
             <p class="item-title">{{item.Title}}</p>
             <p class="item-prise">¥{{item.nowPrice}}</p>
@@ -22,6 +22,7 @@
 
 <script>
 import Swiper from 'Swiper'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Goods',
   props: ['goods'],
@@ -46,7 +47,18 @@ export default {
         observer: true,
         observeParents: true
       })
-    }
+    },
+    gotoPage (id, title) {
+      this.saveProductId(id)
+      this.saveOrigin7('shop')
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: id
+        }
+      })
+    },
+    ...mapMutations(['saveProductId', 'saveOrigin7'])
   }
 }
 </script>

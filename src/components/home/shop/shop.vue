@@ -76,24 +76,22 @@
           <i class="iconfont icon-jiantou1"></i>
         </div>
       </div>
-      <div class="purchase-goods">
-        <Product :product="product" v-for="(item, index) in purchase" :key="index"></Product>
-      </div>
-      <Exhibition :exhibition="item" v-for="(item, index) in exhibition" :key="index"></Exhibition>
+      <Goods :goods="purchase"></Goods>
     </div>
+    <Exhibition :exhibition="item" v-for="(item, index) in exhibition" :key="index"></Exhibition>
   </section>
   <!-- e  -->
 </template>
 
 <script>
 import Swiper from 'Swiper'
-import Product from './product/product.vue'
+import Goods from './goods/goods.vue'
 import Exhibition from './exhibition/exhibition.vue'
 import Http from '../../../class/http.class.js'
 export default {
   name: 'Shop',
   components: {
-    Product,
+    Goods,
     Exhibition
   },
   data () {

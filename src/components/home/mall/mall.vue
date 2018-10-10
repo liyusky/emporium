@@ -76,7 +76,6 @@ export default {
   },
   components: {
     PullRefresh,
-    // ModalHint,
     ModalDialog
   },
   created () {
