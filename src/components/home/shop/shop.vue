@@ -205,6 +205,7 @@ export default {
         }
       }).success(data => {
         this.exhibition = data
+        this.purchase = data[0].PhoneList
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
