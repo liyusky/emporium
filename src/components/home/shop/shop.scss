@@ -2,71 +2,17 @@
 @import '../../../../dependencies/sass/_unit.scss';
 @import '../../../../dependencies/sass/_btn.scss';
 .shop {
-  position: relative;
-  &-bg {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: -1;
+  background-color: #fff;
+  &-header {
+    position: relative;
     width: 100%;
     height: 462 / $unit * $symbol;
-    background: rgba($color: #000000, $alpha: .4);
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  &-search {
-    @include vertical_center_horizontal_between();
-    width: 100%;
-    height: 144 / $unit * $symbol;
-    padding: {
-      top: 24 / $unit * $symbol;
-      left: 30 / $unit * $symbol;
-      right: 30 / $unit * $symbol;
-    }
-    i {
-      font-size: 39 / $unit * $symbol;
-      color: #fff;
-    }
-    .search-input {
-      @include vertical_center();
-      width: 561 / $unit * $symbol;
-      height: 60 / $unit * $symbol;
-      padding: {
-        left: 21 / $unit * $symbol;
-        right: 21 / $unit * $symbol;
-      }
-      background-color: #fff;
-      border-radius: 30 / $unit * $symbol;
-      i {
-        font-size: 27 / $unit * $symbol;
-        color: #999;
-      }
-      input {
-        flex: 1;
-        height: 100%;
-        padding: {
-          left: 21 / $unit * $symbol;
-        }
-        font-size: 24 / $unit * $symbol;
-        color: #333;
-        &::-webkit-input-placeholder {
-          font-size: 24 / $unit * $symbol;
-          color: #999;
-        }
-      }
-    }
-  }
-  &-banner {
-    width: 100%;
-    height: 318 / $unit * $symbol;
-    padding: {
-      left: 24 / $unit * $symbol;
-      right: 24 / $unit * $symbol;
-    }
-    .banner {
+    .header-bg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 0;
       width: 100%;
       height: 100%;
       img {
@@ -74,11 +20,73 @@
         height: 100%;
       }
     }
+    .header-search {
+      position: relative;
+      z-index: 10;
+      @include vertical_center_horizontal_between();
+      width: 100%;
+      height: 144 / $unit * $symbol;
+      padding: {
+        top: 24 / $unit * $symbol;
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      i {
+        font-size: 39 / $unit * $symbol;
+        color: #fff;
+      }
+      .search-input {
+        @include vertical_center();
+        width: 561 / $unit * $symbol;
+        height: 60 / $unit * $symbol;
+        padding: {
+          left: 21 / $unit * $symbol;
+          right: 21 / $unit * $symbol;
+        }
+        background-color: #fff;
+        border-radius: 30 / $unit * $symbol;
+        i {
+          font-size: 27 / $unit * $symbol;
+          color: #999;
+        }
+        input {
+          flex: 1;
+          height: 100%;
+          padding: {
+            left: 21 / $unit * $symbol;
+          }
+          font-size: 24 / $unit * $symbol;
+          color: #333;
+          &::-webkit-input-placeholder {
+            font-size: 24 / $unit * $symbol;
+            color: #999;
+          }
+        }
+      }
+    }
+    .header-banner {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 318 / $unit * $symbol;
+      padding: {
+        left: 24 / $unit * $symbol;
+        right: 24 / $unit * $symbol;
+      }
+      .banner {
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
   }
   &-category {
     @include vertical_center_horizontal_between_wrap();
     width: 100%;
-    height: 288 / $unit * $symbol;
+    height: 144 / $unit * $symbol;
     padding: {
       left: 24 / $unit * $symbol;
       right: 24 / $unit * $symbol;
@@ -119,12 +127,14 @@
       @include center();
       width: 100%;
       height: 120 / $unit * $symbol;
+      font-size: 30 / $unit * $symbol;
     }
     .look-guide {
       @include vertical_between_horizontal_between_wrap();
       width: 100%;
-      height: (123 * 2 + 30);
+      height: (123 * 2 + 30) / $unit * $symbol;
       .look-tip {
+        @include vertical_left();
         width: 336 / $unit * $symbol;
         height: 123 / $unit * $symbol;
         background: #f3f6fa;
@@ -133,7 +143,7 @@
           width: (336 - 123) / $unit * $symbol;
           height: 100%;
           padding: {
-            left: 33 / $unit * $symbol;
+            left: 24 / $unit * $symbol;
             top: 30 / $unit * $symbol;
             bottom: 27 / $unit * $symbol;
           }
@@ -150,6 +160,65 @@
           width: 123 / $unit * $symbol;
           height: 123 / $unit * $symbol;
         }
+      }
+    }
+  }
+  &-rush-purchase {
+    width: 100%;
+    height: 438 / $unit * $symbol;
+    .purchase-title {
+      @include vertical_center_horizontal_between();
+      width: 100%;
+      height: 133 / $unit * $symbol;
+      padding: {
+        left: 30 / $unit * $symbol;
+        right: 30 / $unit * $symbol;
+      }
+      .title-message {
+        @include vertical_center_horizontal_between();
+        height: 100%;
+        span:first-of-type {
+          font-size: 33 / $unit * $symbol;
+          color: #ff7941;
+        }
+        span:nth-of-type(2) {
+          font-size: 33 / $unit * $symbol;
+          margin: {
+            left: 9 / $unit * $symbol;
+            right: 9 / $unit * $symbol;
+          }
+          color: #dddddd;
+        }
+        span:nth-of-type(3) {
+          font-size: 27 / $unit * $symbol;
+          color: #474747;
+        
+        }
+        span:nth-of-type(4),
+        span:nth-of-type(5) {
+          font-size: 27 / $unit * $symbol;
+          color: #333333;
+        }
+  
+        .message-hour,
+        .message-minute,
+        .message-seconds {
+          @include center();
+          width: 36 / $unit * $symbol;
+          height: 36 / $unit * $symbol;
+          font-size: 24 / $unit * $symbol;
+          color: #fff;
+          background-color: #333333;
+          border-radius: 3 / $unit * $symbol;
+          margin: {
+            left: 6 / $unit * $symbol;
+            right: 6 / $unit * $symbol;
+          }
+        }
+      }
+      .title-more {
+        font-size: 24 / $unit * $symbol;
+        color: #999999;
       }
     }
   }
