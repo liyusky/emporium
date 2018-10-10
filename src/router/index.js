@@ -25,6 +25,7 @@ import Router from 'vue-router'
 const Home = () => import(/* webpackChunkName: "home" */ '../components/home/home.vue')
 const Mine = () => import(/* webpackChunkName: "mine" */ '../components/home/mine/mine.vue')
 const Mall = () => import(/* webpackChunkName: "mall" */ '../components/home/mall/mall.vue')
+const Shop = () => import(/* webpackChunkName: "mall" */ '../components/home/shop/shop.vue')
 const Product = () => import(/* webpackChunkName: "product" */ '../components/product/product.vue')
 const AddressManage = () => import(/* webpackChunkName: "address-manage" */ '../components/address-manage/address-manage.vue')
 const AddAddress = () => import(/* webpackChunkName: "add-address" */ '../components/add-address/add-address.vue')
@@ -51,9 +52,14 @@ export default new Router({
           path: '/mine',
           name: 'mine',
           component: Mine
+        },
+        {
+          path: '/shop',
+          name: 'shop',
+          component: Shop
         }
       ],
-      redirect: '/mall'
+      redirect: '/shop'
     },
     {
       path: '/product/:id',
