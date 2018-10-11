@@ -86,7 +86,6 @@
 </template>
 
 <script>
-import Swiper from 'Swiper'
 import Goods from './goods/goods.vue'
 import Exhibition from './exhibition/exhibition.vue'
 import PullRefreshComponent from '../../common/pull-refresh-plus/pull-refresh.vue'
@@ -178,7 +177,7 @@ export default {
     // banner轮播图
     initBannerSwiper () {
       if (this.bannerSwiper !== null) return
-      this.bannerSwiper = new Swiper('.banner', {
+      this.bannerSwiper = new window.vueModule.Swiper('.banner', {
         effect: 'coverflow',
         loop: true,
         speed: 900,
@@ -201,7 +200,7 @@ export default {
         observeParents: true,
         pagination: {
           el: '.swiper-pagination',
-          type: 'bullets'
+          type: 'fraction'
         }
       })
       // this.bannerSwiper.detachEvents()

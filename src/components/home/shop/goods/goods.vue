@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import Swiper from 'Swiper'
 import { mapMutations } from 'vuex'
 export default {
   name: 'Goods',
@@ -39,7 +38,7 @@ export default {
   methods: {
     initGoodsSwiper () {
       if (this.goodsSwiper !== null) return
-      this.goodsSwiper = new Swiper('.goods-swiper', {
+      this.goodsSwiper = new window.vueModule.Swiper('.goods-swiper', {
         slidesPerView: 3,
         slidesPerGroup: 1,
         spaceBetween: 10,
