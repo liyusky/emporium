@@ -78,7 +78,9 @@
       </div>
       <Goods :goods="purchase"></Goods>
     </div>
-    <Exhibition :exhibition="item" v-for="(item, index) in exhibition" :key="index"></Exhibition>
+    <PullRefreshComponent :direction="'bottom'" v-if="exhibition.length" @LOAD_MORE_EVENT="loadMore">
+      <Exhibition :exhibition="item" v-for="(item, index) in exhibition" :key="index"></Exhibition>
+    </PullRefreshComponent>
   </section>
   <!-- e  -->
 </template>
@@ -87,17 +89,19 @@
 import Swiper from 'Swiper'
 import Goods from './goods/goods.vue'
 import Exhibition from './exhibition/exhibition.vue'
+import PullRefreshComponent from '../../common/pull-refresh-plus/pull-refresh.vue'
 import Http from '../../../class/http.class.js'
 export default {
   name: 'Shop',
   components: {
     Goods,
-    Exhibition
+    Exhibition,
+    PullRefreshComponent
   },
   data () {
     return {
       page: 1,
-      exhibition: null,
+      exhibition: [],
       category1: [
         {
           icon: '../../../../static/images/shoji.png',
@@ -209,12 +213,16 @@ export default {
           Pageindex: this.page
         }
       }).success(data => {
-        this.exhibition = data
+        this.exhibition = this.exhibition.concat(data)
         this.purchase = data[0].PhoneList
       }).fail(data => {
-        this.Title.text = data.message
-        this.dialogShow = true
+        // this.Title.text = data.message
+        // this.dialogShow = true
       })
+    },
+    loadMore () {
+      this.page++
+      this.init()
     },
     timeCycle () {
       setInterval(this.countDown, 1000)

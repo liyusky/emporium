@@ -4,13 +4,13 @@
     <div class="swiper-container goods-swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(item, index) in goods" :key="index">
-          <li class="goods-item" @click="gotoPage(phone.Id, phone.ProductName)">
+          <li class="goods-item" @click="gotoPage(item.Id, item.ProductName)">
             <img class="item-image" :src="item.Icon">
             <p class="item-title">{{item.Title}}</p>
             <p class="item-prise">¥{{item.nowPrice}}</p>
             <p class="item-staging">
-              <span>¥{{item.money}}</span>
-              <span>x{{item.time}}期</span>
+              <span>¥{{item.InstallmentAmount}}</span>
+              <span>x{{item.InstallmentNum}}期</span>
             </p>
           </li>
         </div>

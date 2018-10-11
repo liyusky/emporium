@@ -112,6 +112,7 @@ export default {
       setPaymentTypePartArr()
       setGuaranteeArr()
       this.summary = data.Phone
+      console.log(data.Phone.Title)
       this.theme.title = data.Phone.Title
       this.sample = data.AttachmentList.filter(item => {
         if (item.ArchiveType === '2') return item

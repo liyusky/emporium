@@ -20,12 +20,14 @@
   }
   background-color: #fff;
   &-title {
-    $param: (flex flex) (alignItems center) (justifyContent center);
-    @include flexSet($param);
-    width: 100%;
+    width: 510 / $unit * $symbol;
     height: 100%;
     font-size: 36 / $unit * $symbol;
+    line-height: 93 / $unit * $symbol;
     color: #333;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
   }
   &-left {
     position: absolute;
