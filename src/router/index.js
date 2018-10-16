@@ -36,6 +36,8 @@ const FamiliarQuestion = () => import(/* webpackChunkName: "familiar-question" *
 const Empower = () => import(/* webpackChunkName: "empower" */ '../components/empower/empower.vue')
 const InstallmentDetail = () => import(/* webpackChunkName: "installment-detail" */ '../components/installment-detail/installment-detail.vue')
 const LogisticsDetail = () => import(/* webpackChunkName: "logistics-detail" */ '../components/logistics-detail/logistics-detail.vue')
+const ComputerShop = () => import(/* webpackChunkName: "computer-shop" */ '../components/computer-shop/computer-shop.vue')
+const PhoneShop = () => import(/* webpackChunkName: "phone-shop" */ '../components/phone-shop/phone-shop.vue')
 export default new Router({
   routes: [
     {
@@ -60,6 +62,16 @@ export default new Router({
         }
       ],
       redirect: '/shop'
+    },
+    {
+      path: '/computer-shop',
+      name: 'computer-shop',
+      component: ComputerShop
+    },
+    {
+      path: '/phone-shop',
+      name: 'phone-shop',
+      component: PhoneShop
     },
     {
       path: '/product/:id',

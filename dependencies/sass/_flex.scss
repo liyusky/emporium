@@ -111,6 +111,11 @@
   @include flexSet($param);
 }
 
+@mixin vertical_between_horizontal_between_wrap () {
+  $param: (flex flex) (alignContent space-between) (justifyContent flex-start) (flexWrap wrap);
+  @include flexSet($param);
+}
+
 @mixin vertical_center_horizontal_between_wrap () {
   $param: (flex flex) (alignItems center) (justifyContent space-between) (flexWrap wrap);
   @include flexSet($param);
