@@ -1,3 +1,26 @@
 @import '../../../dependencies/sass/_flex.scss';
 @import '../../../dependencies/sass/_unit.scss';
 @import '../../../dependencies/sass/_btn.scss';
+.beauty-shop {
+  .shop-coupon {
+    width: 100vw;
+    height: 133 / $unit * $symbol;
+    padding: {
+      left: 36 / $unit * $symbol;
+      right: 36 / $unit * $symbol;
+    }
+    .coupon-item {
+      width: 330 / $unit * $symbol;
+      height: 100%;
+      padding: {
+        left: 15 / $unit * $symbol;
+        right: 15 / $unit * $symbol;
+        top: 12 / $unit * $symbol;
+        bottom: 12 / $unit * $symbol;
+      }
+      border: 1px dashed #fff;
+      background-color: #ff586c;
+      
+    }
+  }
+}

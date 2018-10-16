@@ -6,11 +6,12 @@
     </div>
     <ul class="shop-coupon">
       <li class="coupon-item">
-        <div>
+        <div class="item-message">
           <p>
-            <span>￥40</span>
-            <span>优惠券</span>
+            <span>¥</span>
+            <span>40</span>
           </p>
+          <p>优惠券</p>
         </div>
         <p>
           <span>全场满400元使用</span>
