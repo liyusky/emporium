@@ -76,17 +76,16 @@
           <i class="iconfont icon-jiantou1"></i>
         </div>
       </div>
-      <Goods :goods="purchase"></Goods>
+      <Goods :goods="purchase" :container="'goods-purchase'"></Goods>
     </div>
-    <PullRefreshComponent :direction="'bottom'" v-if="exhibition.length" @LOAD_MORE_EVENT="loadMore">
-      <Exhibition :exhibition="item" v-for="(item, index) in exhibition" :key="index"></Exhibition>
+    <PullRefreshComponent :direction="'bottom'" v-if="exhibition.length" @LOAD_MORE_EVENT="init">
+      <Exhibition :exhibition="item" :index="index" v-for="(item, index) in exhibition" :key="index"></Exhibition>
     </PullRefreshComponent>
   </section>
   <!-- e  -->
 </template>
 
 <script>
-import Swiper from 'Swiper'
 import Goods from './goods/goods.vue'
 import Exhibition from './exhibition/exhibition.vue'
 import PullRefreshComponent from '../../common/pull-refresh-plus/pull-refresh.vue'
@@ -201,7 +200,7 @@ export default {
         observeParents: true,
         pagination: {
           el: '.swiper-pagination',
-          type: 'bullets'
+          type: 'fraction'
         }
       })
       // this.bannerSwiper.detachEvents()
@@ -213,22 +212,21 @@ export default {
           Pageindex: this.page
         }
       }).success(data => {
-        this.exhibition = this.exhibition.concat(data)
-        this.purchase = data[0].PhoneList
+        if (data.length !== 0) {
+          this.exhibition = this.exhibition.concat(data)
+          this.purchase = data[0].PhoneList
+          this.page++
+        }
       }).fail(data => {
         // this.Title.text = data.message
         // this.dialogShow = true
       })
     },
-    loadMore () {
-      this.page++
-      this.init()
-    },
     timeCycle () {
       setInterval(this.countDown, 1000)
     },
     countDown () {
-      let endTime = new Date(2018, 9, 12)
+      let endTime = new Date(2018, 9, 20)
       let nowTime = new Date()
       let diffTime = endTime.getTime() - nowTime.getTime()
       this.countDownHour = this.fillZero(parseInt(diffTime / 1000 / 60 / 60))

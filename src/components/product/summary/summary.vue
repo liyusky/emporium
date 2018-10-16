@@ -83,18 +83,26 @@
 </template>
 
 <script>
-import Swiper from 'Swiper'
 export default {
   name: 'Summary',
   props: ['summary', 'banner'],
   data () {
-    return {}
+    return {
+      summarySwiper: null
+    }
   },
-  mounted () {
-    // 轮播图
+  created () {
     this.$nextTick(function () {
-      /* eslint-disable no-new */
-      new Swiper('.swiper-container', {
+      this.initSummarySwiper()
+    })
+  },
+  methods: {
+    openModal (modal) {
+      this.$emit('OPEN_MODAL_EVENT', modal)
+    },
+    initSummarySwiper () {
+      if (this.summarySwiper !== null) return
+      this.summarySwipernew = new Swiper('.swiper-container', {
         autoplay: {
           delay: 2000,
           disableOnInteraction: false
@@ -110,11 +118,6 @@ export default {
         observer: true,
         observeParents: true
       })
-    })
-  },
-  methods: {
-    openModal (modal) {
-      this.$emit('OPEN_MODAL_EVENT', modal)
     }
   }
 }

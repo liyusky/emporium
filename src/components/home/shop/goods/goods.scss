@@ -11,36 +11,41 @@
     left: 27 / $unit * $symbol;
     right: 27 / $unit * $symbol;
   }
-  .goods-item {
-    @include column_center_between();
-    flex-grow: 1;
-    min-width: (171 + 54) / $unit * $symbol;
-    height: 100%;
-    font-size: 24 / $unit * $symbol;
-  
-    .item-image {
-      width: 171 / $unit * $symbol;
-      height: 171 / $unit * $symbol;
-    }
-  
-    .item-title {
+  .swiper-container {
+    width: 100%;
+    .swiper-slide {
       width: 100%;
-      height: 30 / $unit * $symbol;
-      color: #414141;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  
-    .item-prise {
-      color: #999999;
-    }
-  
-    .item-staging {
-      color: #999999;
-  
-      span:first-of-type {
-        color: #e6162d;
+      .goods-item {
+        @include column_center_between();
+        flex-grow: 1;
+        min-width: (171 + 54) / $unit * $symbol;
+        height: 100%;
+        font-size: 24 / $unit * $symbol;
+        .item-image {
+          width: 171 / $unit * $symbol;
+          height: 171 / $unit * $symbol;
+        }
+      
+        .item-title {
+          width: 100%;
+          height: 30 / $unit * $symbol;
+          color: #414141;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      
+        .item-prise {
+          color: #999999;
+        }
+      
+        .item-staging {
+          color: #999999;
+      
+          span:first-of-type {
+            color: #e6162d;
+          }
+        }
       }
     }
   }
