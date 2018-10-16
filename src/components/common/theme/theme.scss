@@ -9,9 +9,8 @@
   right: 0;
   z-index: 100;
   width: 100vw;
-  height: (93+36) / $unit * $symbol;
+  height: 93 / $unit * $symbol;
   padding: {
-    top: 36 / $unit * $symbol;
     left: 30 / $unit * $symbol;
     right: 30 / $unit * $symbol;
   }
@@ -20,7 +19,7 @@
   }
   background-color: #fff;
   &-title {
-    width: 510 / $unit * $symbol;
+    max-width: 360 / $unit * $symbol;
     height: 100%;
     font-size: 36 / $unit * $symbol;
     line-height: 93 / $unit * $symbol;

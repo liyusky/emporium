@@ -102,7 +102,7 @@ export default {
     },
     initSummarySwiper () {
       if (this.summarySwiper !== null) return
-      this.summarySwipernew = new window.vueModule.Swiper('.swiper-container', {
+      this.summarySwipernew = new Swiper('.swiper-container', {
         autoplay: {
           delay: 2000,
           disableOnInteraction: false

@@ -42,6 +42,7 @@ export default {
       var touchPageXMounts = event.targetTouches[0].pageX - this.pageX
       var touchPageYMounts = event.targetTouches[0].pageY - this.pageY
       if (Math.abs(touchPageYMounts) < Math.abs(touchPageXMounts)) return
+      console.log(111111111111)
       if (this.direction === 'top') {
         if (touchPageYMounts < 0) return
         if (parentDom.scrollTop > 0) return
@@ -56,7 +57,6 @@ export default {
       }
       if (this.tipHeight > 45) {
         this.tip = this.direction === 'top' ? '正在刷新' : '正在获取数据'
-        this.isLoad = true
       }
       if (this.tipHeight > 50) {
         this.tipHeight = 50
@@ -71,7 +71,7 @@ export default {
       if (this.direction === 'bottom') {
         if (parentDom.scrollTop + parentDom.clientHeight < this.scrollHeight - 1) return
       }
-      if (this.isLoad) {
+      if (this.tipHeight > 45) {
         this.$emit('LOAD_MORE_EVENT')
       }
       let animation = setInterval(() => {

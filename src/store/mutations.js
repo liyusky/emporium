@@ -45,6 +45,9 @@ const mutations = {
   },
   saveProductId (state, id) {
     state.productId = id
+  },
+  saveSwiper (state, swiper) {
+    state.swiper = swiper
   }
 }
 export default mutations
