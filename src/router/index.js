@@ -38,6 +38,8 @@ const InstallmentDetail = () => import(/* webpackChunkName: "installment-detail"
 const LogisticsDetail = () => import(/* webpackChunkName: "logistics-detail" */ '../components/logistics-detail/logistics-detail.vue')
 const ComputerShop = () => import(/* webpackChunkName: "computer-shop" */ '../components/computer-shop/computer-shop.vue')
 const PhoneShop = () => import(/* webpackChunkName: "phone-shop" */ '../components/phone-shop/phone-shop.vue')
+const BeautyShop = () => import(/* webpackChunkName: "phone-shop" */ '../components/beauty-shop/beauty-shop.vue')
+const JewelryShop = () => import(/* webpackChunkName: "phone-shop" */ '../components/jewelry-shop/jewelry-shop.vue')
 export default new Router({
   routes: [
     {
@@ -72,6 +74,16 @@ export default new Router({
       path: '/phone-shop',
       name: 'phone-shop',
       component: PhoneShop
+    },
+    {
+      path: '/beauty-shop',
+      name: 'beauty-shop',
+      component: BeautyShop
+    },
+    {
+      path: '/jewelry-shop',
+      name: 'jewelry-shop',
+      component: JewelryShop
     },
     {
       path: '/product/:id',

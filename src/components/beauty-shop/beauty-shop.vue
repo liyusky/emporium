@@ -1,6 +1,7 @@
 <template>
   <!-- s  -->
   <section class="beauty-shop">
+    <Theme :theme="theme"></Theme>
     <div class="shop-bg">
       <img src="">
     </div>
@@ -28,7 +29,15 @@ import Theme from '../common/theme/theme.vue'
 export default {
   name: 'BeautyShop',
   data () {
-    return {}
+    return {
+      theme: {
+        title: '美妆个护',
+        goal: 'shop'
+      }
+    }
+  },
+  components: {
+    Theme
   }
 }
 </script>

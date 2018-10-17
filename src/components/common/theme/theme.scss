@@ -11,6 +11,7 @@
   width: 100vw;
   height: 93 / $unit * $symbol;
   padding: {
+    top: 15 / $unit * $symbol;
     left: 30 / $unit * $symbol;
     right: 30 / $unit * $symbol;
   }
@@ -30,7 +31,7 @@
   }
   &-left {
     position: absolute;
-    height: 93 / $unit * $symbol;
+    height: 78 / $unit * $symbol;
     left: 30 / $unit * $symbol;
     z-index: 100;
     i {

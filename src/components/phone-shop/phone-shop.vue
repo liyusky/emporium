@@ -69,8 +69,8 @@ export default {
   data () {
     return {
       theme: {
-        title: '电脑城',
-        goal: 'mine'
+        title: '手机商城',
+        goal: 'shop'
       }
     }
   },
