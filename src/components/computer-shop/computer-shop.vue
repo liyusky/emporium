@@ -8,10 +8,13 @@
     <ul class="shop-coupons">
       <li class="coupons-item">
         <div class="item-content">
-          <div class="content-money"></div>
+          <div class="content-money">
+            <span>￥</span>
+            <span>199</span>
+          </div>
           <div class="content-message">
-            <p></p>
-            <p></p>
+            <p>电脑会场</p>
+            <p>满3999元</p>
           </div>
         </div>
         <button class="item-accept">
@@ -22,11 +25,11 @@
         <div class="item-content">
           <div class="content-money">
             <span>￥</span>
-            <span>199</span>
+            <span>299</span>
           </div>
           <div class="content-message">
             <p>电脑会场</p>
-            <p>满3999元</p>
+            <p>满4999元</p>
           </div>
         </div>
         <button class="item-accept">
