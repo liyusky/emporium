@@ -99,7 +99,7 @@ export default {
     return {
       theme: {
         title: '电脑城',
-        goal: 'mine'
+        goal: 'shop'
       }
     }
   },

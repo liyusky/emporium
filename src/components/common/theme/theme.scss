@@ -19,6 +19,7 @@
   }
   background-color: #fff;
   &-title {
+    @include center();
     max-width: 360 / $unit * $symbol;
     height: 100%;
     font-size: 36 / $unit * $symbol;

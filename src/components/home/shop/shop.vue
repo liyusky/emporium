@@ -28,7 +28,7 @@
       </div>
     </div>
     <ul class="shop-category">
-      <li class="category-item" v-for="(item, index) in category1" :key="index">
+      <li class="category-item" v-for="(item, index) in category1" :key="index" @click="gotoPage(item.page)">
         <img class="item-icon" :src="item.icon">
         <p class="item-title">{{item.title}}</p>
       </li>
@@ -104,19 +104,23 @@ export default {
       category1: [
         {
           icon: '../../../../static/images/shoji.png',
-          title: '手机通讯'
+          title: '手机通讯',
+          page: 'phone-shop'
         },
         {
           icon: '../../../../static/images/diannao.png',
-          title: '电脑城'
+          title: '电脑城',
+          page: 'computer-shop'
         },
         {
           icon: '../../../../static/images/meizhuang.png',
-          title: '美妆个护'
+          title: '美妆个护',
+          page: 'beauty-shop'
         },
         {
           icon: '../../../../static/images/zhubao.png',
-          title: '珠宝首饰'
+          title: '珠宝首饰',
+          page: 'beauty-shop'
         }
       ],
       category2: [
@@ -235,6 +239,11 @@ export default {
     },
     fillZero (time) {
       return time < 10 ? '0' + time : '' + time
+    },
+    gotoPage (page) {
+      this.$router.push({
+        name: page
+      })
     }
   }
 }
