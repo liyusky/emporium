@@ -7,8 +7,9 @@ import store from './store/index'
 import './main.scss'
 import './css/swiper-4.3.3.min.css'
 import '../static/iconfont/iconfont.css'
-var VueTouch = require('vue-touch')
-Vue.use(VueTouch, {name: 'v-touch'})
+
+import fastclick from 'fastclick'
+fastclick.attach(document.body)
 Vue.config.productionTip = false
 Vue.use(Router)
 /* eslint-disable no-new */
