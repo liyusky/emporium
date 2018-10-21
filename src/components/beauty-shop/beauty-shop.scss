@@ -2,25 +2,186 @@
 @import '../../../dependencies/sass/_unit.scss';
 @import '../../../dependencies/sass/_btn.scss';
 .beauty-shop {
-  .shop-coupon {
+  padding: {
+    top: (93+36) / $unit * $symbol;
+  }
+  background-color: #f9eeed;
+  .shop-banner {
+    position: relative;
     width: 100vw;
-    height: 133 / $unit * $symbol;
+    height: 801 / $unit * $symbol;
     padding: {
-      left: 36 / $unit * $symbol;
-      right: 36 / $unit * $symbol;
+      top: 624 / $unit * $symbol;
     }
-    .coupon-item {
-      width: 330 / $unit * $symbol;
+
+    .banner-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
       height: 100%;
+    }
+    .banner-coupon {
+      @include vertical_center_horizontal_between();
+      width: 100vw;
+      height: 132 / $unit * $symbol;
       padding: {
-        left: 15 / $unit * $symbol;
-        right: 15 / $unit * $symbol;
-        top: 12 / $unit * $symbol;
+        left: 36 / $unit * $symbol;
+        right: 36 / $unit * $symbol;
+      }
+      .coupon-item {
+        @include center();
+        width: 330 / $unit * $symbol;
+        height: 100%;
+
+        background-color: #ffd4d4;
+        .item-content {
+          box-sizing: content-box;
+          width: 300 / $unit * $symbol;
+          height: 108 / $unit * $symbol;
+          border: 1px dashed #fff;
+          background-color: #ff586c;
+          color: #fff;
+          .content-message {
+            $param: (flex flex) (justifyContent flex-start);
+            @include flexSet($param);
+            width: 100%;
+            height: 72 / $unit * $symbol;
+            padding: {
+              left: 12 / $unit * $symbol;
+            }
+            .message-money {
+              height: 100%;
+              font-size: 21 / $unit * $symbol;
+              .money-num {
+                height: 100%;
+                font-size: 69 / $unit * $symbol;
+                padding: {
+                  left: 6 / $unit * $symbol;
+                }
+              }
+            }
+            .message-type {
+              @include vertical_end();
+              height: 100%;
+              font-size: 30 / $unit * $symbol;
+              padding: {
+                left: 15 / $unit * $symbol;
+                bottom: 3 / $unit * $symbol;
+              }
+            }
+          }
+          .content-proviso {
+            @include vertical_center_horizontal_between();
+            width: 100%;
+            height: 36 / $unit * $symbol;
+            padding: {
+              left: 21 / $unit * $symbol;
+              right: 15 / $unit * $symbol;
+            }
+            font-size: 18 / $unit * $symbol;
+          }
+        }
+      }
+    }
+  }
+  .shop-title {
+    @include column_center_between();
+    width: 100vw;
+    height: 120 / $unit * $symbol;
+    padding: {
+      bottom: 21 / $unit * $symbol;
+    }
+    .title-top {
+      font-size: 39 / $unit * $symbol;
+      color: #ff586c;
+    }
+    .title-division {
+      position: relative;
+      @include horizontal_center();
+      width: 100%;
+      height: 7 / $unit * $symbol;
+      .division-line {
+        position: absolute;
+        width: 100%;
+        height: 1px ;
+        background-color: #ff586c;
+      }
+      .division-chunk {
+        position: absolute;
+        top: -3 / $unit * $symbol;
+        width: 150 / $unit * $symbol;
+        height: 100%;
+        background-color: #ff586c;
+      }
+    }
+    .title-bottom {
+      font-size: 21 / $unit * $symbol;
+      color: #ff586c;
+    }
+  }
+  .shop-list {
+    @include vertical_between_horizontal_between_wrap();
+    width: 100vw;
+    height: auto;
+
+    padding: {
+      left: 18 / $unit * $symbol;
+      right: 12 / $unit * $symbol;
+    }
+
+    .list-item {
+      position: relative;
+      @include column_center_between();
+      width: 237 / $unit * $symbol;
+      height: 330 / $unit * $symbol;
+
+      padding: {
+        top: 15 / $unit * $symbol;
+        left: 12 / $unit * $symbol;
+        right: 3 / $unit * $symbol;
+        bottom: 33 / $unit * $symbol;
+      }
+
+      margin: {
+        right: 9 / $unit * $symbol;
         bottom: 12 / $unit * $symbol;
       }
-      border: 1px dashed #fff;
-      background-color: #ff586c;
-      
+
+      background-color: #fff;
+      border-radius: 6 / $unit * $symbol;
+
+      .item-exhibit {
+        width: 84 / $unit * $symbol;
+        height: 171 / $unit * $symbol;
+      }
+
+      .item-title {
+        width: 100%;
+        font-size: 24 / $unit * $symbol;
+        color: #414141;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+
+      .item-count {
+        @include center();
+        width: 100%;
+        font-size: 24 / $unit * $symbol;
+        color: #999999;
+      }
+
+      .item-money {
+        @include center();
+        width: 100%;
+        font-size: 21 / $unit * $symbol;
+        color: #999999;
+        span:first-of-type {
+          color: #e6162d;
+        }
+      }
     }
   }
 }
