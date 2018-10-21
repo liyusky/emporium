@@ -11,7 +11,7 @@
     <div class="exhibition-banner">
       <img src="../../../../assets/images/shoji-banner.png">
     </div>
-    <Goods :goods="exhibition.PhoneList"></Goods>
+    <Goods :goods="exhibition.PhoneList" :container="'goods-exhibition-' + index"></Goods>
   </section>
   <!-- e  -->
 </template>
@@ -20,7 +20,7 @@
 import Goods from '../goods/goods.vue'
 export default {
   name: 'Exhibition',
-  props: ['exhibition'],
+  props: ['exhibition', 'index'],
   components: {
     Goods
   }

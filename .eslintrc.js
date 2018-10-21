@@ -11,6 +11,7 @@ module.exports = {
   globals: {
     'appJsInterface': true,
     'webkit': true,
+    'Swiper': true,
     'ap': true
   },
   extends: [

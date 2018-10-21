@@ -1,7 +1,7 @@
 <template>
   <!-- s  -->
   <ul class="goods">
-    <div class="swiper-container goods-swiper">
+    <div class="swiper-container" :class="container">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(item, index) in goods" :key="index">
           <li class="goods-item" @click="gotoPage(item.Id, item.ProductName)">
@@ -21,11 +21,10 @@
 </template>
 
 <script>
-import Swiper from 'Swiper'
 import { mapMutations } from 'vuex'
 export default {
   name: 'Goods',
-  props: ['goods'],
+  props: ['goods', 'container'],
   data () {
     return {
       goodsSwiper: null
@@ -39,7 +38,7 @@ export default {
   methods: {
     initGoodsSwiper () {
       if (this.goodsSwiper !== null) return
-      this.goodsSwiper = new Swiper('.goods-swiper', {
+      this.goodsSwiper = new Swiper(`.${this.container}`, {
         slidesPerView: 3,
         slidesPerGroup: 1,
         spaceBetween: 10,
