@@ -71,8 +71,8 @@ export default {
   data () {
     return {
       theme: {
-        title: '电脑城',
-        goal: 'mine'
+        title: '美妆个护',
+        goal: 'shop'
       }
     }
   },
