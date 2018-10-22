@@ -67,8 +67,8 @@ window.init = function (callback) {
     window.phone = basicData[2]
     if (window.localStorage) {
       window.localStorage.setItem('id', window.id)
-      window.localStorage.setItem('token', window.id)
-      window.localStorage.setItem('phone', window.id)
+      window.localStorage.setItem('token', window.token)
+      window.localStorage.setItem('phone', window.phone)
     }
     if (document.cookie) {
       var cookies = {

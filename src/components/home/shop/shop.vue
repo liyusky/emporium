@@ -263,7 +263,7 @@ export default {
       setInterval(this.countDown, 1000)
     },
     countDown () {
-      let endTime = new Date(2018, 9, 20)
+      let endTime = new Date(2018, 9, 30)
       let nowTime = new Date()
       let diffTime = endTime.getTime() - nowTime.getTime()
       this.countDownHour = this.fillZero(parseInt(diffTime / 1000 / 60 / 60))
