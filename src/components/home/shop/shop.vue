@@ -1,94 +1,99 @@
 <template>
   <!-- s  -->
   <section class="shop" id="index">
-      <PullRefreshComponent :direction="'bottom'" ref="refresh" @LOAD_MORE_EVENT="loadMore">
-      <!-- <PullRefresh @LOAD_MORE_EVENT="loadMore" :parent="'index'"> -->
-        <div class="shop-header">
-          <div class="header-bg">
-            <img src="../../../assets/images/shop/head-bg.png">
-          </div>
-          <div class="header-search">
-            <i class="iconfont icon-fenlei1"></i>
-            <div class="search-input">
-              <i class="iconfont icon-sousuo"></i>
-              <input type="text" placeholder="请输入查询条件">
+    <div class="shop-header">
+      <div class="header-bg">
+        <img src="../../../assets/images/shop/head-bg.png">
+      </div>
+      <div class="header-search">
+        <i class="iconfont icon-fenlei1"></i>
+        <div class="search-input">
+          <i class="iconfont icon-sousuo"></i>
+          <input type="text" placeholder="请输入查询条件">
+        </div>
+        <i class="iconfont icon-gouwuche"></i>
+      </div>
+      <div class="header-banner">
+        <div class="swiper-container banner">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../../../assets/images/shop/head-banner.png">
             </div>
-            <i class="iconfont icon-gouwuche"></i>
-          </div>
-          <div class="header-banner">
-            <div class="swiper-container banner">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="../../../assets/images/shop/head-banner.png">
-                </div>
-                <div class="swiper-slide">
-                  <img src="../../../assets/images/header.png">
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
+            <div class="swiper-slide">
+              <img src="../../../assets/images/header.png">
             </div>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
-        <ul class="shop-category">
-          <li class="category-item" v-for="(item, index) in category1" :key="index" @click="gotoPage(item.url)">
-            <img class="item-icon" :src="item.icon">
-            <p class="item-title">{{item.title}}</p>
-          </li>
-        </ul>
-        <ul class="shop-category">
-          <li class="category-item" v-for="(item, index) in category2" :key="index">
-            <img class="item-icon" :src="item.icon">
-            <p class="item-title">{{item.title}}</p>
-          </li>
-        </ul>
-        <div class="shop-recommend">
-          <img src="../../../assets/images/shop/guanggao.png">
-        </div>
-        <div class="shop-look-at-look">
-          <div class="look-saccade">
-            <p>
-              <i class="iconfont icon-fenlei"></i>
-              <span>逛一逛</span>
-            </p>
+      </div>
+    </div>
+    <ul class="shop-category">
+      <li class="category-item" v-for="(item, index) in category1" :key="index" @click="gotoPage(item.url)">
+        <img class="item-icon" :src="item.icon">
+        <p class="item-title">{{item.title}}</p>
+      </li>
+    </ul>
+    <ul class="shop-category">
+      <li class="category-item" v-for="(item, index) in category2" :key="index">
+        <img class="item-icon" :src="item.icon">
+        <p class="item-title">{{item.title}}</p>
+      </li>
+    </ul>
+    <div class="shop-recommend">
+      <img src="../../../assets/images/shop/guanggao.png">
+    </div>
+    <div class="shop-look-at-look">
+      <div class="look-saccade">
+        <p>
+          <i class="iconfont icon-fenlei"></i>
+          <span>逛一逛</span>
+        </p>
+      </div>
+      <ul class="look-guide">
+        <li class="look-tip" v-for="(item, index) in guide" :key="index">
+          <div class="tip-messgae">
+            <p class="messgae-title">{{item.title}}</p>
+            <p class="messgae-introduce">{{item.introduce}}</p>
           </div>
-          <ul class="look-guide">
-            <li class="look-tip" v-for="(item, index) in guide" :key="index">
-              <div class="tip-messgae">
-                <p class="messgae-title">{{item.title}}</p>
-                <p class="messgae-introduce">{{item.introduce}}</p>
-              </div>
-              <img class="tip-image" :src="item.image">
-            </li>
-          </ul>
+          <img class="tip-image" :src="item.image">
+        </li>
+      </ul>
+    </div>
+    <div class="shop-rush-purchase">
+      <div class="purchase-title">
+        <div class="title-message">
+          <span>限时抢购</span>
+          <span>|</span>
+          <span>距结束</span>
+          <div class="message-hour">{{countDownHour}}</div>
+          <span>:</span>
+          <div class="message-minute">{{countMinute}}</div>
+          <span>:</span>
+          <div class="message-seconds">{{countDownSecound}}</div>
         </div>
-        <div class="shop-rush-purchase">
-          <div class="purchase-title">
-            <div class="title-message">
-              <span>限时抢购</span>
-              <span>|</span>
-              <span>距结束</span>
-              <div class="message-hour">{{countDownHour}}</div>
-              <span>:</span>
-              <div class="message-minute">{{countMinute}}</div>
-              <span>:</span>
-              <div class="message-seconds">{{countDownSecound}}</div>
-            </div>
-            <div class="title-more">
-              <span>更多</span>
-              <i class="iconfont icon-jiantou1"></i>
-            </div>
-          </div>
-          <Goods :goods="purchase" :container="'goods-purchase'"></Goods>
+        <div class="title-more">
+          <span>更多</span>
+          <i class="iconfont icon-jiantou1"></i>
         </div>
-        <Exhibition v-if="exhibition.length" :exhibition="item" :index="index" v-for="(item, index) in exhibition" :key="index"></Exhibition>
-      </PullRefreshComponent>
-    <!-- </PullRefresh> -->
+      </div>
+      <Goods :goods="purchase" :container="'goods-purchase'"></Goods>
+    </div>
+    <Exhibition v-if="exhibition.length" :exhibition="item" :index="index" v-for="(item, index) in exhibition" :key="index"></Exhibition>
+    <div class="shop-scroll" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="100">
+      <div class="loading">
+        <div class="loading-img" v-if="loadImgShow">
+          <img src="../../../assets/images/refresh.gif">
+        </div>
+        <p class="loading-tip">{{loadTip}}</p>
+      </div>
+    </div>
+    <ModalDialog v-show = "dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "closeModal"></ModalDialog>
   </section>
   <!-- e  -->
 </template>
 
 <script>
-import PullRefreshComponent from '../../common/pull-refresh-plus/pull-refresh-plus.vue'
+import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
 import Goods from './goods/goods.vue'
 import Exhibition from './exhibition/exhibition.vue'
 import Http from '../../../class/http.class.js'
@@ -97,11 +102,18 @@ export default {
   components: {
     Goods,
     Exhibition,
-    PullRefreshComponent
+    ModalDialog
   },
   data () {
     return {
       page: 1,
+      busy: false,
+      loadTip: '加载中...',
+      loadImgShow: true,
+      dialogShow: false,
+      Title: {
+        text: ''
+      },
       bottom: {
         pullText: '上拉加载',
         triggerText: '释放更新',
@@ -233,8 +245,8 @@ export default {
           this.initBannerSwiper()
         })
       }).fail(data => {
-        // this.Title.text = data.message
-        // this.dialogShow = true
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
     loadMore () {
@@ -244,14 +256,19 @@ export default {
           Pageindex: this.page
         }
       }).success(data => {
-        if (data.length === 0) this.$refs.refresh.noneData()
+        if (data.length === 0) {
+          this.loadImgShow = false
+          this.loadTip = '没有更多数据了'
+          this.busy = true
+          return
+        }
         this.exhibition = this.exhibition.concat(data)
         this.purchase = data[0].PhoneList
         this.page++
-        this.$refs.refresh.backScroll()
       }).fail(data => {
-        // this.Title.text = data.message
-        // this.dialogShow = true
+        this.loadTip = '加载失败'
+        this.Title.text = data.message
+        this.dialogShow = true
       })
     },
     gotoPage (page) {
@@ -272,6 +289,9 @@ export default {
     },
     fillZero (time) {
       return time < 10 ? '0' + time : '' + time
+    },
+    closeModal () {
+      this.dialogShow = false
     }
   }
 }

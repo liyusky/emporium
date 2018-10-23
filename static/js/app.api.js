@@ -47,9 +47,9 @@ window.bindScroll = function () {
     guidanceBtnDom = document.getElementById('guidance-btn')
     scrollDom = document.getElementById('scroll')
     if (!scrollDom || !summaryDom || !sampleDom || !guidanceDom || !summaryBtnDom || !sampleBtnDom || !guidanceBtnDom) return
+    currentTop = document.body.scrollTop || document.documentElement.scrollTop
     summaryLimit = sampleDom.offsetTop - summaryDom.offsetTop
-    sampleLimit = guidanceDom.offsetTop - summaryDom.offsetTop
-    currentTop = document.body.scrollTop
+    sampleLimit = guidanceDom.offsetTop - summaryDom.offsetTop - guidanceDom.offsetHeight
     if (currentTop < summaryLimit) {
       scrollDom.style.left = summaryBtnDom.offsetLeft + 'px'
     } else if (currentTop < sampleLimit) {
