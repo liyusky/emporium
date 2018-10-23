@@ -2,6 +2,7 @@ window.token = null
 window.id = null
 window.phone = null
 window.api = 'http://hhdsapi.jietiaodashi.com'
+window.md5key = ''
 window.kill = function () {
   try {
     document.getElementById('back-btn').click()
