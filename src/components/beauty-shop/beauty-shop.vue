@@ -4,7 +4,7 @@
     <Theme :theme="theme"></Theme>
     <div class="shop-banner">
       <div class="banner-bg">
-        <img src="">
+        <img src="../../assets/images/beauty-shop.png">
       </div>
       <ul class="banner-coupon">
         <li class="coupon-item">
@@ -27,7 +27,7 @@
             <div class="content-message">
               <p class="message-money">
                 <span>¥</span>
-                <span class="money-num">40</span>
+                <span class="money-num">80</span>
               </p>
               <p class="message-type">优惠券</p>
             </div>

@@ -272,11 +272,6 @@ export default {
     },
     fillZero (time) {
       return time < 10 ? '0' + time : '' + time
-    },
-    gotoPage (page) {
-      this.$router.push({
-        name: page
-      })
     }
   }
 }

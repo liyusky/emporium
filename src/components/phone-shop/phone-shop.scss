@@ -5,15 +5,20 @@
   @include vertical_direction_center();
   width: 100vw;
   min-height: 100vh;
-  background-color: #1d5ca3;
+  // background-color: #1e55a5;
+  background-image: linear-gradient(to right,#174890 0%,#225cb0 100%);
 
   padding: {
-    top: (93+36) / $unit * $symbol;
+    top: 93 / $unit * $symbol;
   }
 
   .shop-bg {
     width: 100%;
-    height: 720 / $unit * $symbol;
+    height: 810 / $unit * $symbol;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .shop-banner {
@@ -23,6 +28,7 @@
       right: 21 / $unit * $symbol;
     }
     margin: {
+      top: -90 / $unit * $symbol;
       bottom: 15 / $unit * $symbol;
     }
     border-radius: 6 / $unit * $symbol;

@@ -6,7 +6,7 @@
       <img src="../../assets/images/phone-shop-bg.png">
     </div>
     <div class="shop-banner">
-      <img src="../../assets/images/computer-shop-banner.png">
+      <img src="../../assets/images/phone-shop-banner.png">
     </div>
     <ul class="shop-list">
       <li class="list-item">

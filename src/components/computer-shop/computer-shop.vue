@@ -7,6 +7,9 @@
     </div>
     <ul class="shop-coupons">
       <li class="coupons-item">
+        <div class="item-badge">
+          <img src="../../assets/images/computer-shop-badge.png">
+        </div>
         <div class="item-content">
           <div class="content-money">
             <span>￥</span>
@@ -18,10 +21,13 @@
           </div>
         </div>
         <button class="item-accept">
-          <div class="accept-content"></div>
+          <img class="accept-content" src="../../assets/images/computer-shop-button.png">
         </button>
       </li>
       <li class="coupons-item">
+        <div class="item-badge">
+          <img src="../../assets/images/computer-shop-badge.png">
+        </div>
         <div class="item-content">
           <div class="content-money">
             <span>￥</span>
@@ -33,7 +39,7 @@
           </div>
         </div>
         <button class="item-accept">
-          <img class="accept-content" src="">
+          <img class="accept-content" src="../../assets/images/computer-shop-button.png">
         </button>
       </li>
     </ul>
