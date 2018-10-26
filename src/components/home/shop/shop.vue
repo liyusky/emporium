@@ -1,6 +1,6 @@
 <template>
   <!-- s  -->
-  <section class="shop" id="index">
+  <section class="shop">
     <div class="shop-header">
       <div class="header-bg">
         <img src="../../../assets/images/shop/head-bg.png">
@@ -79,14 +79,15 @@
       <Goods :goods="purchase" :container="'goods-purchase'"></Goods>
     </div>
     <Exhibition v-if="exhibition.length" :exhibition="item" :index="index" v-for="(item, index) in exhibition" :key="index"></Exhibition>
-    <div class="shop-scroll" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="100">
+    <!-- <div class="shop-scroll" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="100">
       <div class="loading">
         <div class="loading-img" v-if="loadImgShow">
           <img src="../../../assets/images/refresh.gif">
         </div>
         <p class="loading-tip">{{loadTip}}</p>
       </div>
-    </div>
+    </div> -->
+    <InfiniteScroll @LOADMORE_EVENT="loadMore" :loadImgShow="loadImgShow" :loadTip="loadTip" :busy="busy"></InfiniteScroll>
     <ModalDialog v-show = "dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "closeModal"></ModalDialog>
   </section>
   <!-- e  -->
@@ -94,6 +95,7 @@
 
 <script>
 import ModalDialog from '../../common/alert-modal/modal-dialog/modal-dialog.vue'
+import InfiniteScroll from '../../common/infinite-scroll/infinite-scroll.vue'
 import Goods from './goods/goods.vue'
 import Exhibition from './exhibition/exhibition.vue'
 import Http from '../../../class/http.class.js'
@@ -102,11 +104,13 @@ export default {
   components: {
     Goods,
     Exhibition,
-    ModalDialog
+    ModalDialog,
+    InfiniteScroll
   },
   data () {
     return {
       page: 1,
+      categroyNo: 4,
       busy: false,
       loadTip: '加载中...',
       loadImgShow: true,
@@ -200,6 +204,11 @@ export default {
     this.timeCycle()
     this.init()
   },
+  mounted () {
+    this.$nextTick(() => {
+      this.initBannerSwiper()
+    })
+  },
   methods: {
     // banner轮播图
     initBannerSwiper () {
@@ -236,14 +245,13 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          Pageindex: this.page
+          categroyNo: '1000',
+          pageIndex: this.page
         }
       }).success(data => {
+        console.log(data)
         this.exhibition = data
         this.purchase = data[0].PhoneList
-        this.$nextTick(() => {
-          this.initBannerSwiper()
-        })
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
@@ -253,9 +261,11 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          Pageindex: this.page
+          categroyNo: '100' + this.categroyNo,
+          pageIndex: this.page
         }
       }).success(data => {
+        console.log(data)
         if (data.length === 0) {
           this.loadImgShow = false
           this.loadTip = '没有更多数据了'
@@ -263,8 +273,7 @@ export default {
           return
         }
         this.exhibition = this.exhibition.concat(data)
-        this.purchase = data[0].PhoneList
-        this.page++
+        this.categroyNo++
       }).fail(data => {
         this.loadTip = '加载失败'
         this.Title.text = data.message

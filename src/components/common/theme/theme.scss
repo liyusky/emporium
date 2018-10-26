@@ -22,8 +22,9 @@
   &-title {
     width: 360 / $unit * $symbol;
     height: 100%;
-    font-size: 33 / $unit * $symbol;
+    text-align: center;
     line-height: 93 / $unit * $symbol;
+    font-size: 33 / $unit * $symbol;
     color: #333;
     overflow: hidden;
     text-overflow: ellipsis;

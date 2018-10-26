@@ -1,7 +1,8 @@
 window.token = null
 window.id = null
 window.phone = null
-window.api = 'http://hhdsapi.jietiaodashi.com'
+// window.api = 'http://hhdsapi.jietiaodashi.com'
+window.api = 'http://xqapi.jietiaodashi.com'
 window.md5key = ''
 window.kill = function () {
   try {
@@ -9,6 +10,7 @@ window.kill = function () {
   } catch (error) {
   }
 }
+
 window.paySuccess = function (finish) {
   if (finish) {
     window.payFinish = 'success'

@@ -2,15 +2,16 @@
 @import '../../../dependencies/sass/_unit.scss';
 @import '../../../dependencies/sass/_btn.scss';
 .phone-shop {
-  @include vertical_direction_center();
+  @include vertical_direction();
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   // background-color: #1e55a5;
   background-image: linear-gradient(to right,#174890 0%,#225cb0 100%);
-
+  
   padding: {
     top: 93 / $unit * $symbol;
   }
+  overflow: auto;
 
   .shop-bg {
     width: 100%;
@@ -190,8 +191,12 @@
       }
 
       .item-exhibit {
-        width: 84 / $unit * $symbol;
-        height: 169 / $unit * $symbol;
+        width: 201 / $unit * $symbol;
+        height: 201 / $unit * $symbol;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
 
       .item-title {

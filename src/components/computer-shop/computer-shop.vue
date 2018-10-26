@@ -47,61 +47,42 @@
       <img class="banner-image" src="../../assets/images/computer-shop-banner.png">
     </div>
     <ul class="shop-list">
-      <li class="list-item">
+      <li class="list-item" v-for="(item, index) in bannerComputerList" :key="index" @click="gotoPage(item.Id, item.ProductName)">
         <div class="item-privilege">5期免息</div>
         <div class="item-exhibit">
-          <img src="../../assets/images/computer-shop-sample.png">
+          <img :src="item.Icon">
         </div>
-        <p class="item-title">【国行正品】直降 360 苹果6S正品</p>
-        <p class="item-count">￥858</p>
-        <p class="item-money">月供:￥35.85起</p>
-      </li>
-      <li class="list-item">
-        <div class="item-privilege">5期免息</div>
-        <div class="item-exhibit">
-          <img src="../../assets/images/computer-shop-sample.png">
-        </div>
-        <p class="item-title">【国行正品】直降 360 苹果6S正品</p>
-        <p class="item-count">￥858</p>
-        <p class="item-money">月供:￥35.85起</p>
-      </li>
-      <li class="list-item">
-        <div class="item-privilege">5期免息</div>
-        <div class="item-exhibit">
-          <img src="../../assets/images/computer-shop-sample.png">
-        </div>
-        <p class="item-title">【国行正品】直降 360 苹果6S正品</p>
-        <p class="item-count">￥858</p>
-        <p class="item-money">月供:￥35.85起</p>
-      </li>
-      <li class="list-item">
-        <div class="item-privilege">5期免息</div>
-        <div class="item-exhibit">
-          <img src="../../assets/images/computer-shop-sample.png">
-        </div>
-        <p class="item-title">【国行正品】直降 360 苹果6S正品</p>
-        <p class="item-count">￥858</p>
-        <p class="item-money">月供:￥35.85起</p>
-      </li>
-      <li class="list-item">
-        <div class="item-privilege">5期免息</div>
-        <div class="item-exhibit">
-          <img src="../../assets/images/computer-shop-sample.png">
-        </div>
-        <p class="item-title">【国行正品】直降 360 苹果6S正品</p>
-        <p class="item-count">￥858</p>
-        <p class="item-money">月供:￥35.85起</p>
+        <p class="item-title">{{item.Title}}</p>
+        <p class="item-count">￥{{item.nowPrice}}</p>
+        <p class="item-money">月供:￥{{item.InstallmentAmount}}起</p>
       </li>
     </ul>
     <div class="shop-recommend">
       <img src="../../assets/images/computer-shop-recommend.png">
     </div>
+    <ul class="shop-list">
+      <li class="list-item" v-for="(item, index) in computerList" :key="index" @click="gotoPage(item.Id, item.ProductName)">
+        <div class="item-privilege">5期免息</div>
+        <div class="item-exhibit">
+          <img :src="item.Icon">
+        </div>
+        <p class="item-title">{{item.Title}}</p>
+        <p class="item-count">￥{{item.nowPrice}}</p>
+        <p class="item-money">月供:￥{{item.InstallmentAmount}}起</p>
+      </li>
+    </ul>
+    <InfiniteScroll @LOADMORE_EVENT="loadMore" :loadImgShow="loadImgShow" :loadTip="loadTip" :busy="busy"></InfiniteScroll>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "closeModal"></ModalDialog>
   </section>
   <!-- e  -->
 </template>
 
 <script>
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
+import InfiniteScroll from '../common/infinite-scroll/infinite-scroll.vue'
 import Theme from '../common/theme/theme.vue'
+import Http from '../../class/http.class.js'
+import { mapMutations } from 'vuex'
 export default {
   name: 'ComputerShop',
   data () {
@@ -109,11 +90,80 @@ export default {
       theme: {
         title: '电脑城',
         goal: 'shop'
-      }
+      },
+      page: 1,
+      busy: false,
+      loadTip: '加载中...',
+      loadImgShow: true,
+      dialogShow: false,
+      Title: {
+        text: ''
+      },
+      computerList: [],
+      bannerComputerList: []
     }
   },
   components: {
-    Theme
+    Theme,
+    ModalDialog,
+    InfiniteScroll
+  },
+  created () {
+    this.init()
+  },
+  methods: {
+    init () {
+      Http.send({
+        url: 'mall',
+        data: {
+          categroyNo: '1005',
+          pageIndex: this.page
+        }
+      }).success(data => {
+        console.log(data)
+        this.bannerComputerList = data[0].PhoneList.slice(0, 3)
+        this.computerList = data[0].PhoneList.slice(3)
+      }).fail(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
+    loadMore () {
+      Http.send({
+        url: 'mall',
+        data: {
+          categroyNo: '1004',
+          pageIndex: ++this.page
+        }
+      }).success(data => {
+        console.log(data)
+        if (data.length === 0) {
+          this.loadImgShow = false
+          this.loadTip = '没有更多数据了'
+          this.busy = true
+          return
+        }
+        this.computerList = this.computerList.concat(data[0].PhoneList)
+      }).fail(data => {
+        this.loadTip = '加载失败'
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
+    gotoPage (id, title) {
+      this.saveProductId(id)
+      this.saveOrigin7('computer-shop')
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: id
+        }
+      })
+    },
+    closeModal () {
+      this.dialogShow = false
+    },
+    ...mapMutations(['saveProductId', 'saveOrigin7'])
   }
 }
 </script>
