@@ -110,7 +110,7 @@ export default {
   data () {
     return {
       page: 1,
-      categroyNo: 4,
+      categroyNo: 27,
       busy: false,
       loadTip: '加载中...',
       loadImgShow: true,
@@ -245,13 +245,13 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          categroyNo: '1000',
+          productId: '1000027',
           pageIndex: this.page
         }
       }).success(data => {
-        console.log(data)
         this.exhibition = data
         this.purchase = data[0].PhoneList
+        this.categroyNo++
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
@@ -261,7 +261,7 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          categroyNo: '100' + this.categroyNo,
+          productId: '10000' + this.categroyNo,
           pageIndex: this.page
         }
       }).success(data => {
@@ -274,6 +274,7 @@ export default {
         }
         this.exhibition = this.exhibition.concat(data)
         this.categroyNo++
+        if (this.categroyNo === 30) this.categroyNo = 31
       }).fail(data => {
         this.loadTip = '加载失败'
         this.Title.text = data.message

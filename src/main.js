@@ -21,5 +21,3 @@ window.vueModule = new Vue({
   store,
   render: f => f(App)
 })
-
-console.log(window.vueModule)

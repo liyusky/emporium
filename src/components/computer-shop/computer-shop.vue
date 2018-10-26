@@ -116,7 +116,7 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          categroyNo: '1005',
+          productId: '1000028',
           pageIndex: this.page
         }
       }).success(data => {
@@ -132,7 +132,7 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          categroyNo: '1004',
+          productId: '1000028',
           pageIndex: ++this.page
         }
       }).success(data => {

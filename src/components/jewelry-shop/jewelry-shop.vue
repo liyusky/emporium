@@ -57,139 +57,7 @@ export default {
       Title: {
         text: ''
       },
-      jewelryList: [],
-      groups: [
-        {
-          Key: '美妆/个护清洁',
-          PhoneList: [
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            }
-          ]
-        },
-        {
-          Key: '美妆/个护清洁',
-          PhoneList: [
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            }
-          ]
-        }
-      ]
+      jewelryList: []
     }
   },
   components: {
@@ -205,7 +73,7 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          categroyNo: '1004',
+          productId: '1000031',
           pageIndex: this.page
         }
       }).success(data => {
@@ -220,7 +88,7 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          categroyNo: '1004',
+          productId: '1000031',
           pageIndex: ++this.page
         }
       }).success(data => {

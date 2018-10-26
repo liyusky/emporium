@@ -8,7 +8,7 @@
         <!-- <img :src="https://api.vtrois.com/image/702x525/bbbfc0"> -->
       </li>
     </ul>
-    <div class="sample-service">
+    <!-- <div class="sample-service">
       <h4 class="service-title">服务保障</h4>
       <ul class="service-project">
         <li class="project-group">
@@ -63,7 +63,7 @@
           <div>分享</div>
         </button>
       </div>
-    </div>
+    </div> -->
   </section>
   <!-- e 实拍 -->
 </template>

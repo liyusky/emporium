@@ -4,6 +4,9 @@
 .shop {
   width: 100vw;
   height: 100vh;
+  padding: {
+    bottom: 99 / $unit * $symbol;
+  }
   overflow: auto;
   &-header {
     position: relative;

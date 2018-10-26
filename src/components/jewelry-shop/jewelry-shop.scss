@@ -6,6 +6,7 @@
   height: 100vh;
   padding: {
     top: 93 / $unit * $symbol;
+    bottom: 99 / $unit * $symbol;
   }
   background-color: #fff;
   overflow: auto;
@@ -72,12 +73,12 @@
     }
   }
   &-list {
+    $param: (flex flex) (flexWrap wrap) (justifyContent flex-start);
+    @include flexSet($param);
     width: 100%;
     padding: {
       left: 9 / $unit * $symbol;
     }
-    $param: (flex flex) (flexWrap wrap) (justifyContent flex-start);
-    @include flexSet($param);
     .list-item {
       $param: (flex flex) (direction column) (alignItems center);
       @include flexSet($param);
@@ -86,6 +87,7 @@
       margin: {
         right: 6 / $unit * $symbol;
       }
+      background-color: #fff;
       .item-picture {
         width: 201 / $unit * $symbol;
         height: 201 / $unit * $symbol;

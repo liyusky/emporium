@@ -104,11 +104,10 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          categroyNo: '1006',
+          productId: '1000029',
           pageIndex: this.page
         }
       }).success(data => {
-        console.log(data)
         this.beautyList = data[0].PhoneList
       }).fail(data => {
         this.Title.text = data.message
@@ -119,11 +118,10 @@ export default {
       Http.send({
         url: 'mall',
         data: {
-          categroyNo: '1004',
+          productId: '1000029',
           pageIndex: ++this.page
         }
       }).success(data => {
-        console.log(data)
         if (data.length === 0) {
           this.loadImgShow = false
           this.loadTip = '没有更多数据了'
