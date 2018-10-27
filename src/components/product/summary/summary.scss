@@ -128,7 +128,7 @@
       background-color: #fff;
       .detail-badge {
         position: absolute;
-        top: 33 / $unit * $symbol;
+        top: 36 / $unit * $symbol;
         left: 30 / $unit * $symbol;
         z-index: 9;
         @include vertical_center();
