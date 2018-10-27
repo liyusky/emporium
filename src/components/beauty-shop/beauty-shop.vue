@@ -101,6 +101,7 @@ export default {
   },
   methods: {
     init () {
+      this.busy = true
       Http.send({
         url: 'mall',
         data: {
@@ -109,12 +110,14 @@ export default {
         }
       }).success(data => {
         this.beautyList = data[0].PhoneList
+        this.busy = false
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
       })
     },
     loadMore () {
+      this.busy = true
       Http.send({
         url: 'mall',
         data: {
@@ -129,6 +132,7 @@ export default {
           return
         }
         this.beautyList = this.beautyList.concat(data[0].PhoneList)
+        this.busy = false
       }).fail(data => {
         this.loadTip = '加载失败'
         this.Title.text = data.message

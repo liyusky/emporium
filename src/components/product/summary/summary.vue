@@ -102,6 +102,7 @@
 </template>
 
 <script>
+import Swiper from 'swiper'
 export default {
   name: 'Summary',
   props: ['summary', 'banner'],

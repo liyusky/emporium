@@ -22,6 +22,7 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import Swiper from 'swiper'
 export default {
   name: 'Goods',
   props: ['goods', 'container'],
@@ -38,6 +39,7 @@ export default {
   methods: {
     initGoodsSwiper () {
       if (this.goodsSwiper !== null) return
+      /* eslint-disable */
       this.goodsSwiper = new Swiper(`.${this.container}`, {
         slidesPerView: 3,
         slidesPerGroup: 1,

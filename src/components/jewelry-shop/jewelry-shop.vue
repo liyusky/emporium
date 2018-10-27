@@ -49,6 +49,7 @@ export default {
         title: '珠宝首饰',
         goal: 'shop'
       },
+      loadNum: 0,
       page: 1,
       busy: false,
       loadTip: '加载中...',
@@ -70,6 +71,7 @@ export default {
   },
   methods: {
     init () {
+      this.busy = true
       Http.send({
         url: 'mall',
         data: {
@@ -77,14 +79,15 @@ export default {
           pageIndex: this.page
         }
       }).success(data => {
-        console.log(data)
         this.jewelryList = data[0].PhoneList
+        this.busy = false
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
       })
     },
     loadMore () {
+      this.busy = true
       Http.send({
         url: 'mall',
         data: {
@@ -92,7 +95,6 @@ export default {
           pageIndex: ++this.page
         }
       }).success(data => {
-        console.log(data)
         if (data.length === 0) {
           this.loadImgShow = false
           this.loadTip = '没有更多数据了'
@@ -100,6 +102,7 @@ export default {
           return
         }
         this.jewelryList = this.jewelryList.concat(data[0].PhoneList)
+        this.busy = false
       }).fail(data => {
         this.loadTip = '加载失败'
         this.Title.text = data.message

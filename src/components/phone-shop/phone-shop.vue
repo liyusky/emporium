@@ -75,6 +75,7 @@ export default {
   },
   methods: {
     init () {
+      this.busy = true
       Http.send({
         url: 'mall',
         data: {
@@ -82,15 +83,16 @@ export default {
           pageIndex: this.page
         }
       }).success(data => {
-        console.log(data)
         this.bannerShopList = data[0].PhoneList.slice(0, 3)
         this.shopList = data[0].PhoneList.slice(3)
+        this.busy = false
       }).fail(data => {
         this.Title.text = data.message
         this.dialogShow = true
       })
     },
     loadMore () {
+      this.busy = true
       Http.send({
         url: 'mall',
         data: {
@@ -98,7 +100,6 @@ export default {
           pageIndex: ++this.page
         }
       }).success(data => {
-        console.log(data)
         if (data.length === 0) {
           this.loadImgShow = false
           this.loadTip = '没有更多数据了'
@@ -106,6 +107,7 @@ export default {
           return
         }
         this.shopList = this.shopList.concat(data[0].PhoneList)
+        this.busy = false
       }).fail(data => {
         this.loadTip = '加载失败'
         this.Title.text = data.message

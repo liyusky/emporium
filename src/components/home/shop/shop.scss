@@ -154,7 +154,15 @@
         @include vertical_left();
         width: 336 / $unit * $symbol;
         height: 123 / $unit * $symbol;
+        margin: {
+          right: 18 / $unit * $symbol;
+        }
         background: #f3f6fa;
+        &:nth-child(2n) {
+          margin: {
+            right: 0 / $unit * $symbol;
+          }
+        }
         .tip-messgae {
           @include vertical_direction_between();
           width: (336 - 123) / $unit * $symbol;
