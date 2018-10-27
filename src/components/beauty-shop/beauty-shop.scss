@@ -2,27 +2,35 @@
 @import '../../../dependencies/sass/_unit.scss';
 @import '../../../dependencies/sass/_btn.scss';
 .beauty-shop {
+  width: 100vw;
+  height: 100vh;
   padding: {
-    top: (93+36) / $unit * $symbol;
+    top: 93 / $unit * $symbol;
+    bottom: 99 / $unit * $symbol;
   }
   background-color: #f9eeed;
+  overflow: auto;
   .shop-banner {
     position: relative;
     width: 100vw;
     height: 801 / $unit * $symbol;
-    padding: {
-      top: 624 / $unit * $symbol;
-    }
+    // padding: {
+    //   top: 624 / $unit * $symbol;
+    // }
 
     .banner-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
       width: 100%;
       height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
     .banner-coupon {
+      position: absolute;
+      top: 624 / $unit * $symbol;
+      left: 0;
+      z-index: 1;
       @include vertical_center_horizontal_between();
       width: 100vw;
       height: 132 / $unit * $symbol;
@@ -47,15 +55,15 @@
             $param: (flex flex) (justifyContent flex-start);
             @include flexSet($param);
             width: 100%;
-            height: 72 / $unit * $symbol;
+            height: 66 / $unit * $symbol;
             padding: {
               left: 12 / $unit * $symbol;
             }
             .message-money {
+              @include vertical_center();
               height: 100%;
               font-size: 21 / $unit * $symbol;
               .money-num {
-                height: 100%;
                 font-size: 69 / $unit * $symbol;
                 padding: {
                   left: 6 / $unit * $symbol;
@@ -77,10 +85,13 @@
             width: 100%;
             height: 36 / $unit * $symbol;
             padding: {
-              left: 21 / $unit * $symbol;
-              right: 15 / $unit * $symbol;
+              left: 12 / $unit * $symbol;
+              right: 12 / $unit * $symbol;
             }
-            font-size: 18 / $unit * $symbol;
+            span {
+              font-size: 18 / $unit * $symbol;
+              color: #fff;
+            }
           }
         }
       }
@@ -125,27 +136,24 @@
     @include vertical_between_horizontal_between_wrap();
     width: 100vw;
     height: auto;
-
     padding: {
-      left: 18 / $unit * $symbol;
-      right: 12 / $unit * $symbol;
+      left: 15 / $unit * $symbol;
+      // right: 12 / $unit * $symbol;
     }
-
     .list-item {
       position: relative;
-      @include column_center_between();
-      width: 237 / $unit * $symbol;
+      @include vertical_direction_center();
+      width: 231 / $unit * $symbol;
       height: 330 / $unit * $symbol;
 
       padding: {
         top: 15 / $unit * $symbol;
         left: 12 / $unit * $symbol;
-        right: 3 / $unit * $symbol;
-        bottom: 33 / $unit * $symbol;
+        right: 12 / $unit * $symbol;
       }
 
       margin: {
-        right: 9 / $unit * $symbol;
+        right: 12 / $unit * $symbol;
         bottom: 12 / $unit * $symbol;
       }
 
@@ -153,22 +161,33 @@
       border-radius: 6 / $unit * $symbol;
 
       .item-exhibit {
-        width: 84 / $unit * $symbol;
+        width: 144 / $unit * $symbol;
         height: 171 / $unit * $symbol;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
 
       .item-title {
         width: 100%;
+        height: 51 / $unit * $symbol;
+        padding: {
+          top: 15 / $unit * $symbol;
+          left: 9 / $unit * $symbol;
+        }
+        line-height: 36 / $unit * $symbol;
         font-size: 24 / $unit * $symbol;
         color: #414141;
         overflow: hidden;
-        text-overflow:ellipsis;
+        text-overflow: ellipsis;
         white-space: nowrap;
       }
 
       .item-count {
         @include center();
         width: 100%;
+        height: 36 / $unit * $symbol;
         font-size: 24 / $unit * $symbol;
         color: #999999;
       }
@@ -181,6 +200,29 @@
         span:first-of-type {
           color: #e6162d;
         }
+      }
+    }
+  }
+  .shop-scroll {
+    width: 100%;
+    height: 90 / $unit * $symbol;
+    margin: {
+      top: -24 / $unit * $symbol;
+    }
+    .loading {
+      @include center();
+      width: 100%;
+      height: 100%;
+      .loading-img {
+        width: 33 / $unit * $symbol;
+        height: 33 / $unit * $symbol;
+      }
+      .loading-tip {
+        padding: {
+          left: 15 / $unit * $symbol;
+        }
+        font-size: 30 / $unit * $symbol;
+        color: #666;
       }
     }
   }

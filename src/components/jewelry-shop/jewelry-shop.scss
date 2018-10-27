@@ -6,6 +6,7 @@
   height: 100vh;
   padding: {
     top: 93 / $unit * $symbol;
+    bottom: 99 / $unit * $symbol;
   }
   background-color: #fff;
   overflow: auto;
@@ -45,109 +46,106 @@
       border-radius: 9 / $unit * $symbol;
     }
   }
-  &-brand {
+  &-title {
+    position: relative;
+    $param: (flex flex) (alignItems center) (justifyContent flex-start);
+    @include flexSet($param);
     width: 100%;
-    // padding: {
-    //   left: 18 / $unit * $symbol;
-    //   right: 18 / $unit * $symbol;
-    // }
-    .brand-classify {
-      width: 100%;
-      .classify-title {
-        position: relative;
-        $param: (flex flex) (alignItems center) (justifyContent flex-start);
-        @include flexSet($param);
-        width: 100%;
-        height: 96 / $unit * $symbol;
-        padding: {
-          left: 27 / $unit * $symbol;
-          right: 27 / $unit * $symbol;
-        }
-        span {
-          font-size: 30 / $unit * $symbol;
-          color: #262626;
-          font-weight: bold;
-        }
-        &::before {
-          position: absolute;
-          left: 0;
-          top: 30 / $unit * $symbol;
-          display: block;
-          content: '';
-          width: 9 / $unit * $symbol;
-          height: 39 / $unit * $symbol;
-          background-color: #f02929;
+    height: 96 / $unit * $symbol;
+    padding: {
+      left: 27 / $unit * $symbol;
+      right: 27 / $unit * $symbol;
+    }
+    span {
+      font-size: 30 / $unit * $symbol;
+      color: #262626;
+      font-weight: bold;
+    }
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 30 / $unit * $symbol;
+      display: block;
+      content: '';
+      width: 9 / $unit * $symbol;
+      height: 39 / $unit * $symbol;
+      background-color: #f02929;
+    }
+  }
+  &-list {
+    $param: (flex flex) (flexWrap wrap) (justifyContent flex-start);
+    @include flexSet($param);
+    width: 100%;
+    padding: {
+      left: 9 / $unit * $symbol;
+    }
+    .list-item {
+      $param: (flex flex) (direction column) (alignItems center);
+      @include flexSet($param);
+      width: 240 / $unit * $symbol;
+      height: 399 / $unit * $symbol;
+      margin: {
+        right: 6 / $unit * $symbol;
+      }
+      background-color: #fff;
+      .item-picture {
+        width: 201 / $unit * $symbol;
+        height: 201 / $unit * $symbol;
+        img {
+          width: 100%;
+          height: 100%;
         }
       }
-      .classify-list {
-        $param: (flex flex) (flexWrap wrap) (justifyContent space-between);
+      .item-title {
+        @include center();
+        width: 100%;
+        height: 72 / $unit * $symbol;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        width: 201 / $unit * $symbol;
+        line-height: 36 / $unit * $symbol;
+        font-size: 27 / $unit * $symbol;
+        color: #666666;
+      }
+      .item-price {
+        $param: (flex flex) (alignItems center) (justifyContent center);
         @include flexSet($param);
         width: 100%;
-        .list-item {
-          $param: (flex flex) (direction column) (alignItems center);
+        height: 51 / $unit * $symbol;
+        font-size: 27 / $unit * $symbol;
+        color: #333333;
+      }
+      .item-economize {
+        $param: (flex flex) (alignItems center);
+        @include flexSet($param);
+        width: auto;
+        height: 39 / $unit * $symbol;
+        border: 1px solid #eb2828;
+        border-radius: 4 / $unit * $symbol;
+        p {
+          $param: (flex flex) (direction column) (justifyContent center);
           @include flexSet($param);
-          width: 240 / $unit * $symbol;
-          height: 399 / $unit * $symbol;
-          .item-picture {
-            width: 201 / $unit * $symbol;
-            height: 201 / $unit * $symbol;
-            img {
-              width: 100%;
-              height: 100%;
-            }
+          height: 100%;
+          font-size: 21 / $unit * $symbol;
+        }
+        p:first-of-type {
+          padding: {
+            left: 15 / $unit * $symbol;
+            right: 15 / $unit * $symbol;
           }
-          .item-title {
-            @include center();
-            width: 100%;
-            height: 72 / $unit * $symbol;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            overflow: hidden;
-            width: 201 / $unit * $symbol;
-            line-height: 36 / $unit * $symbol;
-            font-size: 27 / $unit * $symbol;
-            color: #666666;
+          color: #393939;
+          font-weight: bold;
+        }
+        p:last-of-type {
+          padding: {
+            left: 9 / $unit * $symbol;
+            right: 9 / $unit * $symbol;
           }
-          .item-price {
-            $param: (flex flex) (alignItems center) (justifyContent center);
-            @include flexSet($param);
-            width: 100%;
-            height: 51 / $unit * $symbol;
-            font-size: 27 / $unit * $symbol;
-            color: #333333;
-          }
-          .item-economize {
-            $param: (flex flex) (alignItems center);
-            @include flexSet($param);
-            width: auto;
-            height: 39 / $unit * $symbol;
-            border: 1px solid #eb2828;
-            border-radius: 4 / $unit * $symbol;
-            p {
-              $param: (flex flex) (direction column) (justifyContent center);
-              @include flexSet($param);
-              height: 100%;
-              font-size: 21 / $unit * $symbol;
-            }
-            p:first-of-type {
-              padding: {
-                left: 15 / $unit * $symbol;
-                right: 15 / $unit * $symbol;
-              }
-              color: #393939;
-              font-weight: bold;
-            }
-            p:last-of-type {
-              padding: {
-                left: 9 / $unit * $symbol;
-                right: 9 / $unit * $symbol;
-              }
-              text-align: center;
-              background: #eb2828;
-              color: #fff;
-            }
-          }
+          text-align: center;
+          background: #eb2828;
+          color: #fff;
         }
       }
     }

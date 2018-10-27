@@ -6,7 +6,7 @@
       </div>
       <div class="item-detail">
         <div class="detail-img">
-          <img src="../../../../../static/images/shop-picture.png">
+          <img src="../../../../assets/images/shop-picture.png">
         </div>
         <div class="detail-content">
           <p class="content-title">99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G</p>

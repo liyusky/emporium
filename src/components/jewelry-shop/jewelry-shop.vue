@@ -11,34 +11,36 @@
     <div class="jewelry-banner">
       <img src="../../assets/images/jewelry-title.png">
     </div>
-    <ul class="jewelry-brand">
-      <li class="brand-classify" v-for="(group, index) in groups" :key="index">
-        <div class="classify-title">
-          <span>{{group.Key}}</span>
+    <div class="jewelry-title">
+      <span>爆款推荐</span>
+    </div>
+    <ul class="jewelry-list">
+      <li class="list-item" v-for="(item, index) in jewelryList" :key="index" @click="gotoPage(item.Id, item.ProductName)">
+        <div class="item-picture">
+          <img :src="item.Icon">
         </div>
-        <ul class="classify-list">
-          <li class="list-item" v-for="(phone, index) in group.PhoneList" :key="index">
-            <div class="item-picture">
-              <img :src="phone.Icon">
-            </div>
-            <p class="item-title">{{phone.Title}}</p>
-            <div class="item-price">
-              <span>¥{{phone.nowPrice}}</span>
-            </div>
-            <div class="item-economize">
-              <p>￥{{phone.originalPrice}}</p>
-              <p>10期</p>
-            </div>
-          </li>
-        </ul>
+        <p class="item-title">{{item.Title}}</p>
+        <div class="item-price">
+          <span>¥{{item.nowPrice}}</span>
+        </div>
+        <div class="item-economize">
+          <p>￥{{item.InstallmentAmount}}</p>
+          <p>{{item.InstallmentNum}}期</p>
+        </div>
       </li>
     </ul>
+    <InfiniteScroll @LOADMORE_EVENT="loadMore" :loadImgShow="loadImgShow" :loadTip="loadTip" :busy="busy"></InfiniteScroll>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "closeModal"></ModalDialog>
   </section>
   <!-- e  -->
 </template>
 
 <script>
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
+import InfiniteScroll from '../common/infinite-scroll/infinite-scroll.vue'
 import Theme from '../common/theme/theme.vue'
+import Http from '../../class/http.class.js'
+import { mapMutations } from 'vuex'
 export default {
   name: 'JewelryShop',
   data () {
@@ -47,142 +49,80 @@ export default {
         title: '珠宝首饰',
         goal: 'shop'
       },
-      groups: [
-        {
-          Key: '美妆/个护清洁',
-          PhoneList: [
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            }
-          ]
-        },
-        {
-          Key: '美妆/个护清洁',
-          PhoneList: [
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            },
-            {
-              Guarantee: 1,
-              Icon: 'http://hhdsadmin.jietiaodashi.com/File/images/CommodityPhoneIcon/201810/20181016114001729.jpg',
-              InstallmentAmount: 0,
-              InstallmentNum: 0,
-              IsTested: true,
-              ProductName: '美妆/个护清洁',
-              RepertoryNum: 1,
-              SoldNum: 0,
-              Status: 1,
-              Title: '珀莱雅水漾芯肌护肤品女补水保湿玻尿酸化妆品套装 倍润型',
-              nowPrice: 318,
-              originalPrice: 0,
-              rownum: 1
-            }
-          ]
-        }
-      ]
+      loadNum: 0,
+      page: 1,
+      busy: false,
+      loadTip: '加载中...',
+      loadImgShow: true,
+      dialogShow: false,
+      Title: {
+        text: ''
+      },
+      jewelryList: []
     }
   },
   components: {
-    Theme
+    Theme,
+    ModalDialog,
+    InfiniteScroll
+  },
+  created () {
+    this.init()
+  },
+  methods: {
+    init () {
+      this.busy = true
+      Http.send({
+        url: 'mall',
+        data: {
+          productId: '1000031',
+          pageIndex: this.page
+        }
+      }).success(data => {
+        this.jewelryList = data[0].PhoneList
+        this.busy = false
+      }).fail(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
+    loadMore () {
+      this.busy = true
+      Http.send({
+        url: 'mall',
+        data: {
+          productId: '1000031',
+          pageIndex: ++this.page
+        }
+      }).success(data => {
+        if (data.length === 0) {
+          this.loadImgShow = false
+          this.loadTip = '没有更多数据了'
+          this.busy = true
+          return
+        }
+        this.jewelryList = this.jewelryList.concat(data[0].PhoneList)
+        this.busy = false
+      }).fail(data => {
+        this.loadTip = '加载失败'
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
+    gotoPage (id, title) {
+      this.saveProductId(id)
+      this.saveOrigin7('jewelry-shop')
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: id
+        }
+      })
+    },
+    closeModal () {
+      this.dialogShow = false
+    },
+    ...mapMutations(['saveProductId', 'saveOrigin7'])
   }
 }
 </script>

@@ -13,76 +13,96 @@
       <div class="swiper-pagination"></div>
     </div>
     <div class="summary-content">
-      <div class="content-phone">
-        <h3 class="phone-name">{{summary.Title}}</h3>
-        <div class="phone-version">
-          <p>
-            <span>网络:</span>
-            <span>{{summary.NetType}}</span>
+      <div class="content-bill">
+        <div class="bill-amount">
+          <p class="amount-current">
+            <span>￥</span>
+            <span>{{summary.nowPrice}}</span>
           </p>
-          <!-- <p>
-            <span>版本:</span>
-            <span>其他版本</span>
-          </p> -->
+          <p class="amount-original">
+            <span>￥</span>
+            <span>{{summary.originalPrice}}</span>
+          </p>
         </div>
-        <div class="phone-bill">
-          <div class="bill-amount">
-            <p class="amount-current">
-              <span>￥</span>
-              <span>{{summary.nowPrice}}</span>
-            </p>
-            <p class="amount-original">
-              <span>{{summary.Degree == '100' ? '全' : summary.Degree + '成'}}新</span>
-              <span>￥{{summary.originalPrice}}</span>
-            </p>
-          </div>
-          <div class="bill-reduce">
-            <p>省</p>
-            <p>￥{{parseFloat(summary.originalPrice - summary.nowPrice).toFixed(2)}}</p>
-          </div>
-        </div>
-        <div class="phone-installments">
+        <div class="bill-installments">
           <span>￥{{summary.InstallmentAmount}}</span>
           <span> ×{{summary.InstallmentNum}}期</span>
+          <i class="iconfont icon-arrow-right"></i>
         </div>
       </div>
-      <!-- <div class="content-gift">
-        <div>赠品</div>
-        <p>国产苹果充电套装（充电头+数据线）</p>
-      </div> -->
-      <div class="content-tip">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-baozhang1"></use>
-        </svg>
-        <span>{{summary.Guarantee}}</span>
+      <div class="content-guarantee">
+        <div class="guarantee-item">
+          <i class="iconfont icon-weixuanze"></i>
+          <p class="item-text">正品保证</p>
+        </div>
+        <div class="guarantee-item">
+          <i class="iconfont icon-weixuanze"></i>
+          <p class="item-text">全场包邮</p>
+        </div>
+        <div class="guarantee-item">
+          <i class="iconfont icon-weixuanze"></i>
+          <p class="item-text">闪电发货</p>
+        </div>
+        <div class="guarantee-item">
+          <i class="iconfont icon-weixuanze"></i>
+          <p class="item-text">7天退换</p>
+        </div>
       </div>
-      <div class="content-pay-method">
-        <div class="method-selected" @click="openModal('PaymentMethod')">
-          <div class="selected-tip">
-            <b>支付方式</b>
+      <div class="content-detail">
+        <div class="detail-badge">
+          <div class="badge-left"><span>正品</span></div>
+          <div class="badge-right"><span>自营</span></div>
+        </div>
+        <p class="detail-name">{{summary.Title}}</p>
+        <p class="detail-sign">{{summary.ProductName}}</p>
+      </div>
+      <div class="content-parameter">
+        <div class="parameter-item">
+          <div class="item-title">已选</div>
+          <div class="item-value">
+            <p class="value-text">4GB + 64GB，金色</p>
           </div>
-          <i class="iconfont icon-shenglvehao"></i>
+          <div class="item-more">
+            <i class="iconfont icon-shenglvehao"></i>
+          </div>
         </div>
-        <ul class="method-selectable">
-          <li class="selectable-item" v-for="(item, index) in summary.PaymentTypeArr" :key="index">
-            <svg class="icon" aria-hidden="true" v-if="item.icon">
-              <use :xlink:href="item.icon"></use>
-            </svg>
-            <img v-else-if="!item.icon" src="../../../assets/images/receipt-master.png">
-            <p>{{item.name}}</p>
-          </li>
-        </ul>
+        <div class="parameter-item">
+          <div class="item-title">促销</div>
+          <div class="item-value">
+            <p class="value-text">[包税]商品售价已包含税费，无需另付税费</p>
+          </div>
+          <div class="item-more">
+            <i class="iconfont icon-shenglvehao"></i>
+          </div>
+        </div>
+        <div class="parameter-item">
+          <div class="item-title">配送</div>
+          <div class="item-value">
+            <p class="value-text">至 安庆安庆市开发区</p>
+            <p class="value-text">24:00前完成支付，预计8月28日送达</p>
+          </div>
+        </div>
+        <div class="parameter-item">
+          <div class="item-title">说明</div>
+          <div class="item-value">
+             <p class="value-text">包税丨假一赔十丨7无忧退货 丨自营保税仓发货</p>
+          </div>
+          <div class="item-more">
+            <i class="iconfont icon-shenglvehao"></i>
+          </div>
+        </div>
       </div>
-      <div class="content-characteristic" @click="openModal('Parameter')">
+      <!-- <div class="content-characteristic" @click="openModal('Parameter')">
         <span>产品参数</span>
         <i class="iconfont icon-shenglvehao"></i>
-      </div>
+      </div> -->
     </div>
   </section>
   <!-- e 产品简介 -->
 </template>
 
 <script>
+import Swiper from 'swiper'
 export default {
   name: 'Summary',
   props: ['summary', 'banner'],

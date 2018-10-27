@@ -2,7 +2,7 @@
   <!-- s 产品详情 -->
   <section class="product" id="product">
     <Theme :theme="theme"></Theme>
-    <nav class="product-nav">
+    <!-- <nav class="product-nav">
       <div class="nav-content">
         <div class="nav-item" id="summary-btn" @click="scroll('summary', 0)">
           <span>商品</span>
@@ -17,10 +17,10 @@
       <div class="nav-scroll">
         <div class="scroll" id="scroll"></div>
       </div>
-    </nav>
+    </nav> -->
     <Summary id="summary" ref="summary" :summary="summary" :banner="banner" @OPEN_MODAL_EVENT="openModal"></Summary>
     <Sample id="sample" ref="sample" :banner="banner" :sample="sample" :link="shareLink" @OPEN_SHARE_EVENT="openShareModal"></Sample>
-    <Guidance id="guidance"></Guidance>
+    <!-- <Guidance id="guidance"></Guidance> -->
     <footer class="product-order">
       <div class="order-content">
         <div class="content-sign" @click="chatQQ">
@@ -108,6 +108,7 @@ export default {
         id: this.id
       }
     }).success(data => {
+      console.log(data)
       setPaymentTypeArr()
       setPaymentTypePartArr()
       setGuaranteeArr()

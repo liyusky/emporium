@@ -46,7 +46,6 @@ export default {
       this.scrollPosition = parentDom.scrollTop
       this.scrollHeight = parentDom.scrollHeight
       this.maxScrollTop = parentDom.scrollHeight - parentDom.clientHeight
-      console.log(parentDom.scrollHeight)
     },
     handleTouchMove (event) {
       var parentDom = document.getElementById('refresh')

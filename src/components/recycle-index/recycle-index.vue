@@ -14,7 +14,7 @@
       </div>
     </section>
     <section class="recycle-banner">
-      <img src="../../../static/images/recycle-banner.png" alt="">
+      <img src="../../assets/images/recycle-banner.png">
     </section>
     <section class="recycle-appraisal">
       <div class="appraisal-content-up">

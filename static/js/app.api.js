@@ -2,12 +2,15 @@ window.token = null
 window.id = null
 window.phone = null
 window.api = 'http://hhdsapi.jietiaodashi.com'
+// window.api = 'http://xqapi.jietiaodashi.com'
+window.md5key = ''
 window.kill = function () {
   try {
     document.getElementById('back-btn').click()
   } catch (error) {
   }
 }
+
 window.paySuccess = function (finish) {
   if (finish) {
     window.payFinish = 'success'
@@ -46,9 +49,9 @@ window.bindScroll = function () {
     guidanceBtnDom = document.getElementById('guidance-btn')
     scrollDom = document.getElementById('scroll')
     if (!scrollDom || !summaryDom || !sampleDom || !guidanceDom || !summaryBtnDom || !sampleBtnDom || !guidanceBtnDom) return
+    currentTop = document.body.scrollTop || document.documentElement.scrollTop
     summaryLimit = sampleDom.offsetTop - summaryDom.offsetTop
-    sampleLimit = guidanceDom.offsetTop - summaryDom.offsetTop
-    currentTop = document.body.scrollTop
+    sampleLimit = guidanceDom.offsetTop - summaryDom.offsetTop - guidanceDom.offsetHeight
     if (currentTop < summaryLimit) {
       scrollDom.style.left = summaryBtnDom.offsetLeft + 'px'
     } else if (currentTop < sampleLimit) {
@@ -67,8 +70,8 @@ window.init = function (callback) {
     window.phone = basicData[2]
     if (window.localStorage) {
       window.localStorage.setItem('id', window.id)
-      window.localStorage.setItem('token', window.id)
-      window.localStorage.setItem('phone', window.id)
+      window.localStorage.setItem('token', window.token)
+      window.localStorage.setItem('phone', window.phone)
     }
     if (document.cookie) {
       var cookies = {

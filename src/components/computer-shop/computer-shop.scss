@@ -2,13 +2,14 @@
 @import '../../../dependencies/sass/_unit.scss';
 @import '../../../dependencies/sass/_btn.scss';
 .computer-shop {
-  @include vertical_direction_center();
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #600f4f;
   padding: {
-    top: (93+36) / $unit * $symbol;
+    top: 93 / $unit * $symbol;
+    bottom: 99 / $unit * $symbol;
   }
+  overflow: auto;
   .shop-bg {
     width: 100%;
     height: 485 / $unit * $symbol;
@@ -25,11 +26,24 @@
       right: 24 / $unit * $symbol;
     }
     .coupons-item {
+      position: relative;
       @include horizontal_between();
       width: 342 / $unit * $symbol;
       height: 100%;
       background: -webkit-linear-gradient(#ffeba0, #fff2b9 41%,#ffe150);
       border-radius: 12 / $unit * $symbol;
+      .item-badge {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        width: 72 / $unit * $symbol;
+        height: 45 / $unit * $symbol;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
       .item-content {
         position: relative;
         @include vertical_center_horizontal_between();
@@ -39,12 +53,12 @@
         }
         padding: {
           left: 12 / $unit * $symbol;
-          right: 18 / $unit * $symbol;
+          right: 12 / $unit * $symbol;
           top: 42 / $unit * $symbol;
           bottom: 42 / $unit * $symbol;
         }
         .content-money {
-          width: (135 - 12) / $unit * $symbol;
+          width: 129 / $unit * $symbol;
           height: 100%;
           border: {
             right: 1px solid #ffa242;
@@ -60,9 +74,11 @@
           height: 100%;
           font-size: 24 / $unit * $symbol;
           p:nth-of-type(1) {
+            font-weight: 700;
             color: #212121;
           }
           p:nth-of-type(2) {
+            font-size: 21 / $unit * $symbol;
             color: #b80e05;
           }
         }
@@ -107,23 +123,22 @@
   }
   .shop-banner {
     @include center();
-    width: (750 - 18 * 2) / $unit * $symbol;
-    height: (276 + 21) / $unit * $symbol;
-    margin: {
+    width: 100%;
+    height: 333 / $unit * $symbol;
+    padding: {
       top: 18 / $unit * $symbol;
       bottom: 18 / $unit * $symbol;
+      left: 21 / $unit * $symbol;
+      right: 21 / $unit * $symbol;
     }
-    background-color: #fff;
-    border-radius: 12 / $unit * $symbol;
     .banner-image {
-      width: 687 / $unit * $symbol;
-      height: 276 / $unit * $symbol;
+      width: 100%;
+      height: 100%;
     }
   }
   .shop-list {
     @include vertical_between_horizontal_between_wrap();
     width: 100vw;
-    height: auto;
     padding: {
       left: 18 / $unit * $symbol;
       right: 12 / $unit * $symbol;
@@ -161,8 +176,12 @@
         font-size: 21 / $unit * $symbol;
       }
       .item-exhibit {
-        width: 84 / $unit * $symbol;
-        height: 169 / $unit * $symbol;
+        width: 144 / $unit * $symbol;
+        height: 171 / $unit * $symbol;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
       .item-title {
         display: -webkit-box;
@@ -194,6 +213,10 @@
     }
     margin: {
       bottom: 21 / $unit * $symbol;
+    }
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 }

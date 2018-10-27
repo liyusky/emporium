@@ -3,7 +3,7 @@
     <Headbar HeadbarName="订单信息确认"></Headbar>
     <div class="comfirm-address">
       <div class="address-process">
-        <img src="../../../static/images/process-bar.png">
+        <img src="../../assets/images/process-bar.png">
       </div>
       <div class="address-detail">
         <div class="detail-person-info">
@@ -21,7 +21,7 @@
     </div>
     <div class="comfirm-detail">
       <div class="detail-img">
-        <img src="../../../static/images/shop-picture.png">
+        <img src="../../../../assets/images/shop-picture.png">
       </div>
       <div class="detail-content">
         <p class="content-title">99新iPhone SE32G玫瑰金 国行移动4G，联通4G，电信4G</p>

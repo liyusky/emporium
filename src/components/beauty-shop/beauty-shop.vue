@@ -4,7 +4,7 @@
     <Theme :theme="theme"></Theme>
     <div class="shop-banner">
       <div class="banner-bg">
-        <img src="">
+        <img src="../../assets/images/beauty-shop.png">
       </div>
       <ul class="banner-coupon">
         <li class="coupon-item">
@@ -27,7 +27,7 @@
             <div class="content-message">
               <p class="message-money">
                 <span>¥</span>
-                <span class="money-num">40</span>
+                <span class="money-num">80</span>
               </p>
               <p class="message-type">优惠券</p>
             </div>
@@ -48,24 +48,30 @@
       <p class="title-bottom">众多好物，PICK你的心头好</p>
     </div>
     <ul class="shop-list">
-      <li class="list-item">
+      <li class="list-item" v-for="(item, index) in beautyList" :key="index" @click="gotoPage(item.Id, item.ProductName)">
         <div class="item-exhibit">
-          <img src="../../assets/images/computer-shop-sample.png">
+          <img :src="item.Icon">
         </div>
-        <p class="item-title">华为 HUAWEI no...</p>
-        <p class="item-count">￥858</p>
+        <p class="item-title">{{item.Title}}</p>
+        <p class="item-count">￥{{item.nowPrice}}</p>
         <p class="item-money">
-          <span>¥897</span>
-          <span>×3期</span>
+          <span>¥{{item.InstallmentAmount}}</span>
+          <span>×{{item.InstallmentNum}}期</span>
         </p>
       </li>
     </ul>
+    <InfiniteScroll @LOADMORE_EVENT="loadMore" :loadImgShow="loadImgShow" :loadTip="loadTip" :busy="busy"></InfiniteScroll>
+    <ModalDialog v-show="dialogShow" :Title="Title" @CLOSE_DIALOG_EVENT = "closeModal"></ModalDialog>
   </section>
   <!-- e  -->
 </template>
 
 <script>
+import ModalDialog from '../common/alert-modal/modal-dialog/modal-dialog.vue'
+import InfiniteScroll from '../common/infinite-scroll/infinite-scroll.vue'
 import Theme from '../common/theme/theme.vue'
+import Http from '../../class/http.class.js'
+import { mapMutations } from 'vuex'
 export default {
   name: 'BeautyShop',
   data () {
@@ -73,11 +79,80 @@ export default {
       theme: {
         title: '美妆个护',
         goal: 'shop'
+      },
+      beautyList: [],
+      page: 1,
+      busy: false,
+      loadTip: '加载中...',
+      loadImgShow: true,
+      dialogShow: false,
+      Title: {
+        text: ''
       }
     }
   },
   components: {
-    Theme
+    Theme,
+    ModalDialog,
+    InfiniteScroll
+  },
+  created () {
+    this.init()
+  },
+  methods: {
+    init () {
+      this.busy = true
+      Http.send({
+        url: 'mall',
+        data: {
+          productId: '1000029',
+          pageIndex: this.page
+        }
+      }).success(data => {
+        this.beautyList = data[0].PhoneList
+        this.busy = false
+      }).fail(data => {
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
+    loadMore () {
+      this.busy = true
+      Http.send({
+        url: 'mall',
+        data: {
+          productId: '1000029',
+          pageIndex: ++this.page
+        }
+      }).success(data => {
+        if (data.length === 0) {
+          this.loadImgShow = false
+          this.loadTip = '没有更多数据了'
+          this.busy = true
+          return
+        }
+        this.beautyList = this.beautyList.concat(data[0].PhoneList)
+        this.busy = false
+      }).fail(data => {
+        this.loadTip = '加载失败'
+        this.Title.text = data.message
+        this.dialogShow = true
+      })
+    },
+    gotoPage (id, title) {
+      this.saveProductId(id)
+      this.saveOrigin7('beauty-shop')
+      this.$router.push({
+        name: 'product',
+        params: {
+          id: id
+        }
+      })
+    },
+    closeModal () {
+      this.dialogShow = false
+    },
+    ...mapMutations(['saveProductId', 'saveOrigin7'])
   }
 }
 </script>

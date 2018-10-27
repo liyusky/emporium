@@ -4,7 +4,7 @@
     <section class="order-content">
       <div class="content-info">
         <div class="info-picture">
-          <img src="../../../static/images/shop-picture.png">
+          <img src="../../../../assets/images/shop-picture.png">
         </div>
         <div class="info-detail">
           <p class="detail-price">￥590</p>
